@@ -55,8 +55,9 @@ export = class HaloAPI implements IHaloAPI {
             }
         };
         get(options, (error: any, response: any, body: any) => {
+            // console.info(error, response, body);
             if (response.statusCode == 302) {
-                callback(response.headers['Locaion']);
+                callback(response.headers.location);
             } else {                
                 callback(null, response.statusCode);
             }
