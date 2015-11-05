@@ -1,9 +1,14 @@
 /// <reference path="PlayerMatches.d.ts"/>
 /// <reference path="PGCRArena.d.ts"/>
 
-interface Stats {
+interface IPlayer {
+    player: string;
+    [key:string]: string;
+}
+
+interface IStats {
     
-    playerMatches(player: string, callback: Callback<PlayerMatches>): void;
+    playerMatches(params: string | IPlayer, callback: Callback<PlayerMatches>): void;
 
     arenaMatchById(id: guid, callback: Callback<PGCRArena>): void;
     // warzoneMatchById(id: guid, callback: Callback<PGCRWarzone>): void;

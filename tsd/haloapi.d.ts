@@ -2,10 +2,19 @@
 /// <reference path="stats/stats.d.ts"/>
 /// <reference path="profile/profile.d.ts"/>
 
-declare var HaloAPI: HaloAPI;
+declare var HaloAPI: IHaloAPI;
 
-interface HaloAPI {
-  metadata: Metadata;
-  stats: Stats;
-  profile: Profile;
+interface IHaloAPI {
+  metadata: IMetadata;
+  stats: IStats;
+  profile: IProfile;
+
+  getJSON<T>(endpoint: string, 
+             callback: Callback<T>): void;
+
+  getImageURL(endpoint: string, 
+              callback: Callback<url>): void;
+
+  isGuid(id: guid): boolean;
+
 }

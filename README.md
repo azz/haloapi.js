@@ -13,9 +13,34 @@ Using this project with your development IDE, such as WebStorm or Visual Studio,
 
 ## TODO
 
-- Write the API wrapper using jQuery Ajax...
 - Complete the definitions for the stats endpoints.
+- Move documentation from the top of `.d.ts` files to their associated function stubs.
+
+## Basic Usage
+
+Usage with plain old JavaScript
+
+    var HaloAPI = require('haloapi'); // if you've cloned this repo use './build/haloapi'
+    var h5 = new HaloAPI('YOUR API KEY');
+
+    h5.metadata.weapons(function (weapons) {
+        weapons.forEach(function (weapon) {
+            console.log(weapon.name, '\n\t', weapon.description);
+        });
+    });
+
+Using with TypeScript (completely optional)
+    
+    /// <reference path="tsd/haloapi.d.ts"/>
+    import HaloAPI from 'haloapi'; // if you've cloned this repo use './build/haloapi'
+    var h5: IHaloAPI = new HaloAPI('YOUR API KEY');
+
+    h5.metadata.weapons((weapons: Weapons) => {
+        weapons.forEach((weapon: Weapon) => {
+            console.log(weapon.name, '\n\t', weapon.description);
+        });
+    });
 
 ## Contributers
 
-Feel free to send PRs if you wish to contribute.
+Feel free to send a pull request if you wish to contribute.

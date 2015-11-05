@@ -1,4 +1,4 @@
-/// <reference path="../alias.d.ts"/>
+/// <reference path="../common.d.ts"/>
 
 /**
  * API: Metadata -> Impulses

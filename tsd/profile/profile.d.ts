@@ -1,9 +1,16 @@
 /// <reference path="EmblemImage.d.ts"/>
 /// <reference path="SpartanImage.d.ts"/>
 
-interface Profile {
-    
-    emblemImage(callback: Callback<EmblemImage>): void;
+interface IProfileParams {
+    player: string;
+    size?: number;
+    crop?: number;
+    [key: string]: any;
+}
 
-    spartanImage(callback: Callback<SpartanImage>): void;
+interface IProfile {
+    
+    emblemImage(params: IProfileParams, callback: Callback<EmblemImage>): void;
+
+    spartanImage(params: IProfileParams, callback: Callback<SpartanImage>): void;
 }

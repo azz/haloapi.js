@@ -10,4 +10,4 @@ declare type url = string;
  * API Calls
  */
 
-declare type Callback<T> = (success: T, error: string) => void;
+declare type Callback<T> = (success?: T, error?: string) => void;

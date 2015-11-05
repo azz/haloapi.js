@@ -19,5 +19,4 @@
  *       Request").
  */
 
-// PNG binary image
-declare type SpartanImage = string; 
+declare type SpartanImage = url; 

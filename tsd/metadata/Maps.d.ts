@@ -7,7 +7,7 @@
  *   {title}: Always "h5"
  */
 
-interface Map {
+interface BaseMap {
     // A localized name, suitable for display to users.
     name: string;
 
@@ -32,4 +32,4 @@ interface Map {
 }
 
 // A list of maps for the title. There is no significance to the ordering.
-declare type Maps = Map[];
+declare type Maps = BaseMap[];

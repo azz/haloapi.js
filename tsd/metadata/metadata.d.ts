@@ -18,7 +18,7 @@
 /// <reference path="Vehicles.d.ts"/>
 /// <reference path="Weapons.d.ts"/>
 
-interface Metadata {
+interface IMetadata {
     
     campaignMissions(callback: Callback<CampaignMissions>): void;
     
@@ -44,7 +44,7 @@ interface Metadata {
 
     playlists(callback: Callback<Playlists>): void;
 
-    requisitionById(callback: Callback<Requistion>): void;
+    requisitionById(id: guid, callback: Callback<Requistion>): void;
 
     requisitionPacks(callback: Callback<RequisitionPacks>): void;
 

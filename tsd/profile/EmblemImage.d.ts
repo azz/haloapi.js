@@ -14,5 +14,5 @@
  *       Request"). If the size is empty or missing, the API will use 256.
  */
 
-// PNG binary image
-declare type EmblemImage = string; 
+
+declare type EmblemImage = url; 
