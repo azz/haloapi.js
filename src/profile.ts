@@ -8,12 +8,12 @@ export default class Profile implements IProfile {
     }
 
     emblemImage(params: IProfileParams, callback: Callback<EmblemImage>): void {
-        let endpoint = `/profile/{title}/profiles/${encodeURIComponent(params.player)}/emblem`;
+        let endpoint = `/profile/${this.title}/profiles/${encodeURIComponent(params.player)}/emblem`;
         this.api.getImageURL(endpoint + this.constructQs(params), callback);
     }
 
     spartanImage(params: IProfileParams, callback: Callback<SpartanImage>): void {
-        let endpoint = `/profile/{title}/profiles/${encodeURIComponent(params.player)}/spartan`;
+        let endpoint = `/profile/${this.title}/profiles/${encodeURIComponent(params.player)}/spartan`;
         this.api.getImageURL(endpoint + this.constructQs(params), callback);
     }
 
