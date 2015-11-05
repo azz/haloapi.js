@@ -28,13 +28,34 @@ If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/do
 
 Usage with plain old JavaScript
 
+Setup:
+
     var HaloAPI = require('haloapi'); // if you've cloned this repo use './build/haloapi'
     var h5 = new HaloAPI('YOUR API KEY');
+
+Retreive all Weapons:
 
     h5.metadata.weapons(function (weapons) {
         weapons.forEach(function (weapon) {
             console.log(weapon.name, '\n\t', weapon.description);
         });
+    });
+
+Get my player's emblem:
+
+    h5.profile.emblemImage({ player: "Der Flatulator6" }, function (url, error) { 
+        console.log(url); 
+    });
+
+With **all** requests, the response callback has two arguments, the first is the data you requested, if that is falsy, then the second argument will be set to the error message.
+
+    h5.stats.playerMatches("Der Flatulator6", function (data, error) {
+        if (data) {
+            // success, iterate through your matches
+        }
+        else {
+            // uh on, handle error here.
+        }
     });
 
 Using with TypeScript (completely optional)
