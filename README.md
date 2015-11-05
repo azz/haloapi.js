@@ -16,6 +16,14 @@ Using this project with your development IDE, such as WebStorm or Visual Studio,
 - Complete the definitions for the stats endpoints.
 - Move documentation from the top of `.d.ts` files to their associated function stubs.
 
+## Installation 
+
+Run this in a terminal at the top-level directory for this repository.
+
+    $ npm build    
+
+If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
+
 ## Basic Usage
 
 Usage with plain old JavaScript
