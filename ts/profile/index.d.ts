@@ -23,7 +23,7 @@ interface IProfile {
      *       specified that is not in this list, the API returns HTTP 400 ("Bad 
      *       Request"). If the size is empty or missing, the API will use 256.
      */
-    emblemImage(params: IProfileParams, callback: Callback<EmblemImage>): void;
+    emblemImage(params: string | IProfileParams): Promise<EmblemImage>;
 
     /**
      * API: Profile -> Spartan Image
@@ -43,5 +43,5 @@ interface IProfile {
      *       If an unsupported value is provided, the API returns HTTP 400 ("Bad 
      *       Request").
      */
-    spartanImage(params: IProfileParams, callback: Callback<SpartanImage>): void;
+    spartanImage(params: string | IProfileParams): Promise<SpartanImage>;
 }

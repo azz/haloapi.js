@@ -4,19 +4,26 @@ var Profile = (function () {
         this.api = api;
         this.title = "h5";
     }
-    Profile.prototype.emblemImage = function (params, callback) {
-        var endpoint = "/profile/" + this.title + "/profiles/" + encodeURIComponent(params.player) + "/emblem";
-        this.api.getImageURL(endpoint + this.constructQs(params), callback);
+    Profile.prototype.emblemImage = function (params) {
+        var p;
+        p = typeof params === "string" ? { player: params } : params;
+        var endpoint = ("/profile/" + this.title + "/profiles/")
+            + (encodeURIComponent(p.player) + "/emblem");
+        return this.api.getImageURL(endpoint + this.constructQs(p));
     };
-    Profile.prototype.spartanImage = function (params, callback) {
-        var endpoint = "/profile/" + this.title + "/profiles/" + encodeURIComponent(params.player) + "/spartan";
-        this.api.getImageURL(endpoint + this.constructQs(params), callback);
+    Profile.prototype.spartanImage = function (params) {
+        var p;
+        p = typeof params === "string" ? { player: params } : params;
+        var endpoint = ("/profile/" + this.title + "/profiles/")
+            + (encodeURIComponent(p.player) + "/spartan");
+        return this.api.getImageURL(endpoint + this.constructQs(p));
     };
     Profile.prototype.constructQs = function (params) {
         var qs = [];
         for (var key in params) {
             if (key !== "player")
-                qs.push(encodeURIComponent(key) + "=" + encodeURIComponent(String(params[key])));
+                qs.push(encodeURIComponent(key) + "="
+                    + encodeURIComponent(String(params[key])));
         }
         if (qs.length)
             return "?" + qs.join(",");

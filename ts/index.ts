@@ -5,7 +5,7 @@ import Stats = require("./stats");
 import Metadata = require("./metadata");
 import Profile = require("./profile");
 
-import {get} from "request";
+import {get} from "request-promise";
 
 class HaloAPI implements IHaloAPI {
     stats: IStats;
@@ -26,48 +26,45 @@ class HaloAPI implements IHaloAPI {
         this.host = "https://www.haloapi.com";
     }
 
-    getJSON<T>(endpoint: string, 
-               callback: Callback<T>): void {
+    getJSON<T>(endpoint: string): Promise<T> {
         var options = {
             url: this.host + endpoint,
             headers: { 
                 'Ocp-Apim-Subscription-Key': this.apiKey 
-            }
+            },
+            json: true,
+            // resolveWithFullResponse: true
         };
-        // TODO switch to "request-promise" 
         // TODO check if we're running in a browser and use XMLHttpRequest
-        get(options, (error: any, response: any, body: any) => {
-            if (!error && response.statusCode == 200) {
-                callback(JSON.parse(body));
-            } else {                
-                // TODO handle throttling
-                try {
-                    var obj = JSON.parse(body);
-                    callback(null, `${obj.statusCode} - ${obj.message}`);
-                } catch(e) {
-                    callback(null, String(response.statusCode));
-                }
-            }
-        });
+        return get(options)
+            .catch((error: any) => {
+                var json = error.response.toJSON();
+                var message = json.body 
+                    ? json.body.message 
+                    : "An error occurred.";
+                throw `${json.statusCode} - ${message}`;
+            });
+
     }
 
-    getImageURL(endpoint: string, 
-                callback: Callback<url>): void {
+    getImageURL(endpoint: string): Promise<url> {
         var options = {
             url: this.host + endpoint,
             followRedirect: false,
             headers: { 
                 'Ocp-Apim-Subscription-Key': this.apiKey 
-            }
+            },
+            resolveWithFullResponse: true
         };
-        get(options, (error: any, response: any, body: any) => {
-            // console.info(error, response, body);
-            if (response.statusCode == 302) {
-                callback(response.headers.location);
-            } else {                
-                callback(null, response.statusCode);
-            }
-        });
+        return get(options)
+            .catch((error: any) => {
+                // console.info(error, response, body);
+                var response = error.response;
+                if (response.statusCode == 302) 
+                    return response.headers.location;
+
+                throw response.statusCode;                
+            });        
     }    
 
     isGuid(id: guid): boolean {

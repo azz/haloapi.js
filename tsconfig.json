@@ -8,7 +8,7 @@
         "preserveConstEnums": true,
         "declaration": false,
         "suppressImplicitAnyIndexErrors": true,
-        "outDir": "./js"
+        "outDir": "./js/"
     },
     "files": [
         "./ts/index.ts"

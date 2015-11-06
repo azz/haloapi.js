@@ -7,92 +7,108 @@ class Metadata implements IMetadata {
         this.title = "h5";
     }
 
-    campaignMissions(callback: Callback<CampaignMissions>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/campaign-missions`, callback);
+    campaignMissions(): Promise<CampaignMissions> {
+        return this.api.getJSON<CampaignMissions>(
+            `/metadata/${this.title}/metadata/campaign-missions`);
     }
     
-    commendations(callback: Callback<Commendations>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/commendations`, callback);
+    commendations(): Promise<Commendations> {
+        return this.api.getJSON<Commendations>(
+            `/metadata/${this.title}/metadata/commendations`);
     }
 
-    csrDesignations(callback: Callback<CSRDesignations>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/campaign-missions`, callback);
+    csrDesignations(): Promise<CSRDesignations> {
+        return this.api.getJSON<CSRDesignations>(
+            `/metadata/${this.title}/metadata/campaign-missions`);
     }
     
-    enemies(callback: Callback<Enemies>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/enemies`, callback);
+    enemies(): Promise<Enemies> {
+        return this.api.getJSON<Enemies>(
+            `/metadata/${this.title}/metadata/enemies`);
     }   
 
-    flexibleStats(callback: Callback<FlexibleStats>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/flexible-stats`, callback);
+    flexibleStats(): Promise<FlexibleStats> {
+        return this.api.getJSON<FlexibleStats>(
+            `/metadata/${this.title}/metadata/flexible-stats`);
     }   
 
-    gameBaseVariants(callback: Callback<GameBaseVariants>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/game-base-variants`, callback);
+    gameBaseVariants(): Promise<GameBaseVariants> {
+        return this.api.getJSON<GameBaseVariants>(
+            `/metadata/${this.title}/metadata/game-base-variants`);
     }   
 
-    gameVariantById(id: guid, callback: Callback<GameVariant>): void {
+    gameVariantById(id: guid): Promise<GameVariant> {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON(`/metadata/${this.title}/metadata/game-variants/${id}`, callback);
+        return this.api.getJSON<GameVariant>(
+            `/metadata/${this.title}/metadata/game-variants/${id}`);
     }   
 
-    impulses(callback: Callback<Impulses>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/impulses`, callback);
+    impulses(): Promise<Impulses> {
+        return this.api.getJSON<Impulses>(
+            `/metadata/${this.title}/metadata/impulses`);
     }   
 
-    maps(callback: Callback<Maps>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/maps`, callback);
+    maps(): Promise<Maps> {
+        return this.api.getJSON<Maps>(
+            `/metadata/${this.title}/metadata/maps`);
     }   
 
-    mapVariantById(id: guid, callback: Callback<MapVariant>): void {
+    mapVariantById(id: guid): Promise<MapVariant> {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON(`/metadata/${this.title}/metadata/map-variants/${id}`, callback);
+        return this.api.getJSON<MapVariant>(
+            `/metadata/${this.title}/metadata/map-variants/${id}`);
     }   
 
-    medals(callback: Callback<Medals>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/medals`, callback);
+    medals(): Promise<Medals> {
+        return this.api.getJSON<Medals>(
+            `/metadata/${this.title}/metadata/medals`);
     }   
 
-    playlists(callback: Callback<Playlists>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/playlists`, callback);
+    playlists(): Promise<Playlists> {
+        return this.api.getJSON<Playlists>(
+            `/metadata/${this.title}/metadata/playlists`);
     }   
 
-    requisitionById(id: guid, callback: Callback<Requistion>): void {
+    requisitionById(id: guid): Promise<Requistion> {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON(`/metadata/${this.title}/metadata/requisitions/${id}`, callback);
+        return this.api.getJSON<Requistion>(
+            `/metadata/${this.title}/metadata/requisitions/${id}`);
     }   
 
-    requisitionPacks(callback: Callback<RequisitionPacks>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/requisition-packs`, callback);
+    requisitionPacks(): Promise<RequisitionPacks> {
+        return this.api.getJSON<RequisitionPacks>(
+            `/metadata/${this.title}/metadata/requisition-packs`);
     }   
 
-    skulls(callback: Callback<Skulls>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/skulls`, callback);
+    skulls(): Promise<Skulls> {
+        return this.api.getJSON<Skulls>(
+            `/metadata/${this.title}/metadata/skulls`);
     }   
 
-    spartanRanks(callback: Callback<SpartanRanks>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/spartan-ranks`, callback);
+    spartanRanks(): Promise<SpartanRanks> {
+        return this.api.getJSON<SpartanRanks>(
+            `/metadata/${this.title}/metadata/spartan-ranks`);
     }   
 
-    teamColors(callback: Callback<TeamColors>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/team-colors`, callback);
+    teamColors(): Promise<TeamColors> {
+        return this.api.getJSON<TeamColors>(
+            `/metadata/${this.title}/metadata/team-colors`);
     }   
 
-    vehicles(callback: Callback<Vehicles>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/vehicles`, callback);
+    vehicles(): Promise<Vehicles> {
+        return this.api.getJSON<Vehicles>(
+            `/metadata/${this.title}/metadata/vehicles`);
     }   
 
-    weapons(callback: Callback<Weapons>): void {
-        this.api.getJSON(`/metadata/${this.title}/metadata/weapons`, callback);
+    weapons(): Promise<Weapons> {
+        return this.api.getJSON<Weapons>(
+            `/metadata/${this.title}/metadata/weapons`);
     }
 };
 

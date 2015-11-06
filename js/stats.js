@@ -4,7 +4,7 @@ var Stats = (function () {
         this.api = api;
         this.title = "h5";
     }
-    Stats.prototype.playerMatches = function (params, callback) {
+    Stats.prototype.playerMatches = function (params) {
         var _params = { player: null };
         if (typeof params === "object")
             _params = params;
@@ -18,81 +18,64 @@ var Stats = (function () {
         }
         if (qs.length)
             endpoint += "?" + qs.join(",");
-        this.api.getJSON(endpoint, callback);
+        return this.api.getJSON(endpoint);
     };
-    Stats.prototype.warzoneMatchById = function (id, callback) {
+    Stats.prototype.warzoneMatchById = function (id) {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON("/stats/" + this.title + "/warzone/matches/" + id, callback);
+        return this.api.getJSON("/stats/" + this.title + "/warzone/matches/" + id);
     };
     // below are incompletely typed. providing `any` instead of their respective types
-    Stats.prototype.customMatchById = function (id, callback) {
+    Stats.prototype.customMatchById = function (id) {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON("/stats/" + this.title + "/custom/matches/" + id, callback);
+        return this.api.getJSON("/stats/" + this.title + "/custom/matches/" + id);
     };
-    Stats.prototype.campaignMatchById = function (id, callback) {
+    Stats.prototype.campaignMatchById = function (id) {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON("/stats/" + this.title + "/campaign/matches/" + id, callback);
+        return this.api.getJSON("/stats/" + this.title + "/campaign/matches/" + id);
     };
-    Stats.prototype.arenaMatchById = function (id, callback) {
+    Stats.prototype.arenaMatchById = function (id) {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON("/stats/" + this.title + "/arena/matches/" + id, callback);
+        return this.api.getJSON("/stats/" + this.title + "/arena/matches/" + id);
     };
-    Stats.prototype.serviceRecordArena = function (player, callback) {
-        this.serviceRecord("arena", player, callback);
+    Stats.prototype.serviceRecordArena = function (player) {
+        return this.serviceRecord("arena", player);
     };
-    Stats.prototype.serviceRecordCampaign = function (player, callback) {
-        this.serviceRecord("campaign", player, callback);
+    Stats.prototype.serviceRecordCampaign = function (player) {
+        return this.serviceRecord("campaign", player);
     };
-    Stats.prototype.serviceRecordWarzone = function (player, callback) {
-        this.serviceRecord("warzone", player, callback);
+    Stats.prototype.serviceRecordWarzone = function (player) {
+        return this.serviceRecord("warzone", player);
     };
-    Stats.prototype.serviceRecordCustom = function (player, callback) {
-        this.serviceRecord("custom", player, callback);
+    Stats.prototype.serviceRecordCustom = function (player) {
+        return this.serviceRecord("custom", player);
     };
-    Stats.prototype.serviceRecordsArena = function (players, callback) {
-        this.serviceRecords("arena", players, callback);
+    Stats.prototype.serviceRecordsArena = function (players) {
+        return this.serviceRecords("arena", players);
     };
-    Stats.prototype.serviceRecordsCampaign = function (players, callback) {
-        this.serviceRecords("campaign", players, callback);
+    Stats.prototype.serviceRecordsCampaign = function (players) {
+        return this.serviceRecords("campaign", players);
     };
-    Stats.prototype.serviceRecordsWarzone = function (players, callback) {
-        this.serviceRecords("warzone", players, callback);
+    Stats.prototype.serviceRecordsWarzone = function (players) {
+        return this.serviceRecords("warzone", players);
     };
-    Stats.prototype.serviceRecordsCustom = function (players, callback) {
-        this.serviceRecords("custom", players, callback);
+    Stats.prototype.serviceRecordsCustom = function (players) {
+        return this.serviceRecords("custom", players);
     };
-    Stats.prototype.serviceRecord = function (gameMode, player, callback) {
-        this.serviceRecords(gameMode, [player], function (data, error) {
-            if (data) {
-                callback(data[0]);
-            }
-            else {
-                callback(null, error);
-            }
-        });
+    Stats.prototype.serviceRecord = function (gameMode, player) {
+        return this.serviceRecords(gameMode, [player]);
     };
-    Stats.prototype.serviceRecords = function (gameMode, players, callback) {
+    Stats.prototype.serviceRecords = function (gameMode, players) {
         var p = players.map(encodeURIComponent).join(",");
-        this.api.getJSON("/stats/" + this.title + "/servicerecords/" + gameMode + "?players=" + p, function (data, error) {
-            if (data) {
-                callback(data.Results);
-            }
-            else {
-                callback(null, error);
-            }
-        });
+        return this.api.getJSON("/stats/" + this.title + "/servicerecords/" + gameMode + "?players=" + p)
+            .then(function (data) { return data.Results; });
     };
     return Stats;
 })();

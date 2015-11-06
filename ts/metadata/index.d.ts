@@ -27,7 +27,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5".
      */
-    campaignMissions(callback: Callback<CampaignMissions>): void;
+    campaignMissions(): Promise<CampaignMissions>;
     
     /**
      * API: Metadata -> Commendations
@@ -35,7 +35,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    commendations(callback: Callback<Commendations>): void;
+    commendations(): Promise<Commendations>;
 
     /**
      * API: Metadata -> CSR Designations
@@ -43,7 +43,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    csrDesignations(callback: Callback<CSRDesignations>): void;
+    csrDesignations(): Promise<CSRDesignations>;
 
     /**
      * API: Metadata -> Enemies
@@ -51,7 +51,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */    
-    enemies(callback: Callback<Enemies>): void;
+    enemies(): Promise<Enemies>;
     
     /**
      * API: Metadata -> Flexible Stats
@@ -59,7 +59,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    flexibleStats(callback: Callback<FlexibleStats>): void;      
+    flexibleStats(): Promise<FlexibleStats>;      
 
     /**
      * API: Metadata -> Game Base Variants
@@ -67,7 +67,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    gameBaseVariants(callback: Callback<GameBaseVariants>): void;
+    gameBaseVariants(): Promise<GameBaseVariants>;
     
     /**
      * API: Metadata -> Game Variants
@@ -76,7 +76,7 @@ interface IMetadata {
      *   {title}: Always "h5"
      *   {id}: An ID that uniquely identifies a Game Variant.
      */
-    gameVariantById(id: guid, callback: Callback<GameVariant>): void;
+    gameVariantById(id: guid): Promise<GameVariant>;
     
     /**
      * API: Metadata -> Impulses
@@ -84,7 +84,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    impulses(callback: Callback<Impulses>): void;
+    impulses(): Promise<Impulses>;
 
     /**
      * API: Metadata -> Maps
@@ -92,7 +92,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    maps(callback: Callback<Maps>): void;
+    maps(): Promise<Maps>;
     
     /**
      * API: Metadata -> Map Variants
@@ -101,7 +101,7 @@ interface IMetadata {
      *   {title}: Always "h5"
      *   {id}: An ID that uniquely identifies a Map Variant.
      */
-    mapVariantById(id: guid, callback: Callback<MapVariant>): void;
+    mapVariantById(id: guid): Promise<MapVariant>;
 
     /**
      * API: Metadata -> Medals
@@ -109,7 +109,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    medals(callback: Callback<Medals>): void;
+    medals(): Promise<Medals>;
 
     /**
      * API: Metadata -> Playlists
@@ -117,7 +117,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    playlists(callback: Callback<Playlists>): void;
+    playlists(): Promise<Playlists>;
 
     /**
      * API: Metadata -> Requisitions
@@ -126,7 +126,7 @@ interface IMetadata {
      *   {title}: Always "h5"
      *   {id}: An ID that uniquely identifies a Requisition.
      */
-    requisitionById(id: guid, callback: Callback<Requistion>): void;
+    requisitionById(id: guid): Promise<Requistion>;
 
     /**
      * API: Metadata -> Requisition Packs
@@ -134,7 +134,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    requisitionPacks(callback: Callback<RequisitionPacks>): void;
+    requisitionPacks(): Promise<RequisitionPacks>;
 
     /**
      * API: Metadata -> Skulls
@@ -142,7 +142,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    skulls(callback: Callback<Skulls>): void;
+    skulls(): Promise<Skulls>;
 
     /**
      * API: Metadata -> Spartan Ranks
@@ -150,7 +150,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    spartanRanks(callback: Callback<SpartanRanks>): void;
+    spartanRanks(): Promise<SpartanRanks>;
 
     /**
      * API: Metadata -> Team Colors
@@ -158,7 +158,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    teamColors(callback: Callback<TeamColors>): void;
+    teamColors(): Promise<TeamColors>;
 
     /**
      * API: Metadata -> Vehicles
@@ -166,7 +166,7 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    vehicles(callback: Callback<Vehicles>): void;
+    vehicles(): Promise<Vehicles>;
 
     /**
      * API: Metadata -> Weapons
@@ -174,6 +174,6 @@ interface IMetadata {
      * Params:
      *   {title}: Always "h5"
      */
-    weapons(callback: Callback<Weapons>): void;
+    weapons(): Promise<Weapons>;
 }
 

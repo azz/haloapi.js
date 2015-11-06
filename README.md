@@ -37,7 +37,7 @@ Setup:
 
 Retreive all Weapons:
 
-    h5.metadata.weapons(function (weapons) {
+    h5.metadata.weapons().then(function (weapons) {
         weapons.forEach(function (weapon) {
             console.log(weapon.name, '\n\t', weapon.description);
         });
@@ -45,13 +45,13 @@ Retreive all Weapons:
 
 Get my player's emblem:
 
-    h5.profile.emblemImage({ player: "Your Gamertag" }, function (url, error) { 
+    h5.profile.emblemImage("Your Gamertag").then(function (url) { 
         console.log(url); 
     });
 
 Check if you've a higher max rank than your friend:
 
-    h5.stats.serviceRecordsArena([ "Your GT", "Their GT" ], function (d, e) {  
+    h5.stats.serviceRecordsArena([ "Your GT", "Their GT" ]).then(function (d) {  
         function isBetter(a, b) {
             return [
                 a.Result.ArenaStats.HighestCsrAttained, 
@@ -68,16 +68,19 @@ Check if you've a higher max rank than your friend:
         console.log(isBetter(d[0], d[1]) ? "You win" : "You lose");
     });
 
-With **all** requests, the response callback has two arguments, the first is the data you requested, if that is falsy, then the second argument will be set to the error message.
+With **all** requests, you are returned a Promise. Basic promise usage is as follows:
 
-    h5.stats.playerMatches("Der Flatulator6", function (data, error) {
-        if (data) {
+    h5.stats.playerMatches("Frankie")
+        .then(function (data) {
             // success, iterate through your matches
-        }
-        else {
+        })
+        .catch(function (error) {  
             // uh oh, handle error here.
-        }
-    });
+        });
+
+With ECMAScript2016 (ES7), you can do the following, which will await in a non-blocking manner:
+
+    var matches = await h5.stats.playerEmblem("Frankie");    
 
 Using with TypeScript (completely optional)
     
@@ -85,7 +88,7 @@ Using with TypeScript (completely optional)
     import HaloAPI = require('haloapi'); // if you've cloned this repo use './js/haloapi'
     var h5: IHaloAPI = new HaloAPI('YOUR API KEY');
 
-    h5.metadata.weapons((weapons: Weapons) => {
+    h5.metadata.weapons().then((weapons: Weapons) => {
         weapons.forEach((weapon: Weapon) => {
             console.log(weapon.name, '\n\t', weapon.description);
         });
@@ -95,13 +98,13 @@ Using with TypeScript (completely optional)
 
 - Write test cases with Jasmine
 - Full usage documentation
-- Complete the definitions for the stats endpoints.
+- Complete the TypeScript definitions for remaining stats endpoints.
 
 # Development
 
 If you've modified the TypeScript sources, you'll need to regenerate the JS. Run this in a terminal at the top-level directory for this repository.
 
-    $ npm install typescript -g # only do this once
+    $ npm install typescript -g  # only do this once
     $ npm build    
 
 Easy! 

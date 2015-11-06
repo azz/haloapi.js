@@ -22,8 +22,7 @@ interface IHaloAPI {
      *   {error}: The string representing the error
      * Only one of these will ever be defined.
      */
-    getJSON<T>(endpoint: string, 
-               callback: Callback<T>): void;
+    getJSON<T>(endpoint: string): Promise<T>;
 
     /**
      * Asynchronously retreive the location header from the Halo API.
@@ -32,8 +31,7 @@ interface IHaloAPI {
      *   {error}: The string representing the error
      * Only one of these will ever be defined.
      */
-    getImageURL(endpoint: string, 
-                callback: Callback<url>): void;
+    getImageURL(endpoint: string): Promise<url>;
 
     /**
      * Ensures that a guid is roughly in the shape of a guid.

@@ -8,7 +8,7 @@ class Stats implements IStats {
         this.title = "h5";
     }
 
-    playerMatches(params: string | IPlayer, callback: Callback<PlayerMatches>): void {
+    playerMatches(params: string | IPlayer): Promise<PlayerMatches> {
         var _params: IPlayer = {player: null};
         if (typeof params === "object")           
             _params = <IPlayer>params;
@@ -24,96 +24,82 @@ class Stats implements IStats {
         if (qs.length) 
             endpoint += `?${qs.join(",")}`;
 
-        this.api.getJSON(endpoint, callback);
+        return this.api.getJSON<PlayerMatches>(endpoint);
     } 
 
 
-    warzoneMatchById(id: guid, callback: Callback<PGCRArena>): void {
+    warzoneMatchById(id: guid): Promise<PGCRArena> {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON(`/stats/${this.title}/warzone/matches/${id}`, callback);
+        return this.api.getJSON<PGCRArena>(
+            `/stats/${this.title}/warzone/matches/${id}`);
     }
 
     // below are incompletely typed. providing `any` instead of their respective types
 
-    customMatchById(id: guid, callback: Callback<any>): void {
+    customMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON(`/stats/${this.title}/custom/matches/${id}`, callback);
+        return this.api.getJSON(`/stats/${this.title}/custom/matches/${id}`);
     }
 
-    campaignMatchById(id: guid, callback: Callback<any>): void {
+    campaignMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON(`/stats/${this.title}/campaign/matches/${id}`, callback);
+        return this.api.getJSON(`/stats/${this.title}/campaign/matches/${id}`);
     }
 
-    arenaMatchById(id: guid, callback: Callback<any>): void {
+    arenaMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
-            callback(null, "Invalid ID provided");
-            return;
+            return Promise.reject("Invalid ID provided");
         }
-        this.api.getJSON(`/stats/${this.title}/arena/matches/${id}`, callback);
+        return this.api.getJSON(`/stats/${this.title}/arena/matches/${id}`);
     }
 
-    serviceRecordArena(player: string, callback: Callback<any>): void {
-        this.serviceRecord("arena", player, callback);
+    serviceRecordArena(player: string): Promise<any> {
+        return this.serviceRecord("arena", player);
     }
 
-    serviceRecordCampaign(player: string, callback: Callback<any>): void { 
-        this.serviceRecord("campaign", player, callback);       
+    serviceRecordCampaign(player: string): Promise<any> { 
+        return this.serviceRecord("campaign", player);       
     }
 
-    serviceRecordWarzone(player: string, callback: Callback<any>): void {
-        this.serviceRecord("warzone", player, callback);                   
+    serviceRecordWarzone(player: string): Promise<any> {
+        return this.serviceRecord("warzone", player);                   
     }
 
-    serviceRecordCustom(player: string, callback: Callback<any>): void {
-        this.serviceRecord("custom", player, callback);                           
+    serviceRecordCustom(player: string): Promise<any> {
+        return this.serviceRecord("custom", player);                           
     }
 
-    serviceRecordsArena(players: string[], callback: Callback<any>): void {
-        this.serviceRecords("arena", players, callback);
+    serviceRecordsArena(players: string[]): Promise<any> {
+        return this.serviceRecords("arena", players);
     }
 
-    serviceRecordsCampaign(players: string[], callback: Callback<any>): void {
-        this.serviceRecords("campaign", players, callback);
+    serviceRecordsCampaign(players: string[]): Promise<any> {
+        return this.serviceRecords("campaign", players);
     }
 
-    serviceRecordsWarzone(players: string[], callback: Callback<any>): void {
-        this.serviceRecords("warzone", players, callback);
+    serviceRecordsWarzone(players: string[]): Promise<any> {
+        return this.serviceRecords("warzone", players);
     }
 
-    serviceRecordsCustom(players: string[], callback: Callback<any>): void {
-        this.serviceRecords("custom", players, callback);
+    serviceRecordsCustom(players: string[]): Promise<any> {
+        return this.serviceRecords("custom", players);
     }
 
-    private serviceRecord<T>(gameMode: string, player: string, callback: Callback<T>) {
-        this.serviceRecords(gameMode, [ player ], (data, error) => {
-            if (data) {
-                callback(data[0]);
-            } else {
-                callback(null, error);
-            }
-        });
+    private serviceRecord<T>(gameMode: string, player: string): Promise<T> {
+        return this.serviceRecords<T>(gameMode, [ player ]);
     }
 
-    private serviceRecords<T>(gameMode: string, players: string[], callback: Callback<T>) {
+    private serviceRecords<T>(gameMode: string, players: string[]): Promise<T> {
         var p: string = players.map(encodeURIComponent).join(",");
-        this.api.getJSON(`/stats/${this.title}/servicerecords/${gameMode}?players=${p}`, 
-            function (data: any, error) {
-            if (data) {
-                callback(data.Results);
-            } else {
-                callback(null, error);
-            }
-        });        
+        return this.api.getJSON<any>(
+            `/stats/${this.title}/servicerecords/${gameMode}?players=${p}`)
+            .then((data) => data.Results);
     }
 
 };

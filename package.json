@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/DerFlatulator/halo5api",
   "dependencies": {
-    "request": "^2.65.0"
+    "request-promise": "^1.0.2"
   },
   "devDependencies": {
     "typescript": "^1.6.2"
