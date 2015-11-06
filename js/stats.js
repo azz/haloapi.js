@@ -49,6 +49,51 @@ var Stats = (function () {
         }
         this.api.getJSON("/stats/" + this.title + "/arena/matches/" + id, callback);
     };
+    Stats.prototype.serviceRecordArena = function (player, callback) {
+        this.serviceRecord("arena", player, callback);
+    };
+    Stats.prototype.serviceRecordCampaign = function (player, callback) {
+        this.serviceRecord("campaign", player, callback);
+    };
+    Stats.prototype.serviceRecordWarzone = function (player, callback) {
+        this.serviceRecord("warzone", player, callback);
+    };
+    Stats.prototype.serviceRecordCustom = function (player, callback) {
+        this.serviceRecord("custom", player, callback);
+    };
+    Stats.prototype.serviceRecordsArena = function (players, callback) {
+        this.serviceRecords("arena", players, callback);
+    };
+    Stats.prototype.serviceRecordsCampaign = function (players, callback) {
+        this.serviceRecords("campaign", players, callback);
+    };
+    Stats.prototype.serviceRecordsWarzone = function (players, callback) {
+        this.serviceRecords("warzone", players, callback);
+    };
+    Stats.prototype.serviceRecordsCustom = function (players, callback) {
+        this.serviceRecords("custom", players, callback);
+    };
+    Stats.prototype.serviceRecord = function (gameMode, player, callback) {
+        this.serviceRecords(gameMode, [player], function (data, error) {
+            if (data) {
+                callback(data[0]);
+            }
+            else {
+                callback(null, error);
+            }
+        });
+    };
+    Stats.prototype.serviceRecords = function (gameMode, players, callback) {
+        var p = players.map(encodeURIComponent).join(",");
+        this.api.getJSON("/stats/" + this.title + "/servicerecords/" + gameMode + "?players=" + p, function (data, error) {
+            if (data) {
+                callback(data.Results);
+            }
+            else {
+                callback(null, error);
+            }
+        });
+    };
     return Stats;
 })();
 ;
