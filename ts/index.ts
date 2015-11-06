@@ -35,6 +35,7 @@ class HaloAPI implements IHaloAPI {
             json: true,
             // resolveWithFullResponse: true
         };
+        // console.log("fetching:", options.url);
         // TODO check if we're running in a browser and use XMLHttpRequest
         return get(options)
             .catch((error: any) => {

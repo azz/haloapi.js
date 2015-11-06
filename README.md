@@ -80,12 +80,12 @@ With **all** requests, you are returned a Promise. Basic promise usage is as fol
 
 With ECMAScript2016 (ES7), you can do the following, which will await in a non-blocking manner:
 
-    var matches = await h5.stats.playerEmblem("Frankie");    
+    var matches = await h5.stats.spartanImage("Frankie");    
 
 Using with TypeScript (completely optional)
     
     /// <reference path="ts/haloapi.d.ts"/>
-    import HaloAPI = require('haloapi'); // if you've cloned this repo use './js/haloapi'
+    import HaloAPI = require('haloapi');
     var h5: IHaloAPI = new HaloAPI('YOUR API KEY');
 
     h5.metadata.weapons().then((weapons: Weapons) => {

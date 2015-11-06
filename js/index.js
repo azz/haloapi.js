@@ -22,6 +22,7 @@ var HaloAPI = (function () {
             },
             json: true,
         };
+        // console.log("fetching:", options.url);
         // TODO check if we're running in a browser and use XMLHttpRequest
         return request_promise_1.get(options)
             .catch(function (error) {
