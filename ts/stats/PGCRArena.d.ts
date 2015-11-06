@@ -1,13 +1,3 @@
-
-/**
- * API: Stats -> Post Game Carnage Report: Arena
- * Endpoint: https://www.haloapi.com/stats/{title}/arena/matches/{matchId}
-
- * Params:
- *   {title}: Always "h5"
- *   {matchId}: An ID that uniquely identifies a match. Match IDs can be retrieved from the "GET Matches for Player" API.
- */
-
 interface XpInfo {
     // The player's Spartan Rank before the match started.
     PrevSpartanRank: number;

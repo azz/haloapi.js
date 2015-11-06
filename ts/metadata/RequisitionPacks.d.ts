@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Requisition Packs
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/requisition-packs
- * Params:
- *   {title}: Always "h5"
- */
-
 interface RequisitionPack {
   // A localized name for the pack, suitable for display to users. The text
   // is title cased. 

@@ -1,10 +1,4 @@
 
-/**
- * API: Metadata -> Commendations
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/commendations
- * Params:
- *   {title}: Always "h5"
- */
  
 // The progress the player had made towards the commendation level before the
 // match. In C#, this can be reassembled into a Guid in the following manner:

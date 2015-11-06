@@ -1,13 +1,4 @@
 
-/**
- * API: Stats -> Matches for Player
- * Endpoint: https://www.haloapi.com/stats/{title}/players/{player}/matches[?modes][&start][&count]
- * Params:
- *   {title}: Always "h5"
- *   {player}: The Player's gamertag.
- *   // TODO: Optional params.
- */
-
 interface PaginatedResponse<T> {
     // The starting point that was used. When the start query string parameter is
     // specified, this value is identical. When start is omitted, the default value is

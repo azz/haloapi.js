@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Weapons
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/weapons
- * Params:
- *   {title}: Always "h5"
- */
-
 interface Weapon {
     // A localized name for the object, suitable for display to users. The text is title
     // cased.

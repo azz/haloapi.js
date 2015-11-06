@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Team Colors
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/team-colors
- * Params:
- *   {title}: Always "h5"
- */
-
 interface TeamColor {
     // A localized name, suitable for display to users.
     name: string;

@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Playlists
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/playlists
- * Params:
- *   {title}: Always "h5"
- */
-
 interface Playlist {
     // A localized name for the playlist, suitable for display to users. The text is
     // title cased.

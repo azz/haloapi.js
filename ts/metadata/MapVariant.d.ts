@@ -1,12 +1,4 @@
 
-/**
- * API: Metadata -> Map Variants
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/map-variants/{id}
- * Params:
- *   {title}: Always "h5"
- *   {id}: An ID that uniquely identifies a Map Variant.
- */
-
 interface MapVariant {
     // A localized name, suitable for display to users.
     name: string;

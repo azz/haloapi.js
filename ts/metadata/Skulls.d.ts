@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Skulls
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/skulls
- * Params:
- *   {title}: Always "h5"
- */
-
 interface Skull {
     // A localized name, suitable for display to users. The text is title cased.
     name: string;

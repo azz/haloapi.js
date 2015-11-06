@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Medals
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/medals
- * Params:
- *   {title}: Always "h5"
- */
-
 interface Medal {
     // A localized name for the medal, suitable for display to users.
     name: string;

@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Spartan Ranks
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/spartan-ranks
- * Params:
- *   {title}: Always "h5"
- */
-
 interface SpartanRank {
     // The amount of XP required to enter this rank.
     startXp: number;

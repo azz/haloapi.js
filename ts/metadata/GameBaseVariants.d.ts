@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Game Base Variants
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/game-base-variants
- * Params:
- *   {title}: Always "h5"
- */
-
 interface GameBaseVariant {
     // A localized name for the game base variant, suitable for display to users. The
     // text is title cased.

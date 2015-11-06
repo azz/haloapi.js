@@ -62,6 +62,60 @@ class Stats implements IStats {
         this.api.getJSON(`/stats/${this.title}/arena/matches/${id}`, callback);
     }
 
+    serviceRecordArena(player: string, callback: Callback<any>): void {
+        this.serviceRecord("arena", player, callback);
+    }
+
+    serviceRecordCampaign(player: string, callback: Callback<any>): void { 
+        this.serviceRecord("campaign", player, callback);       
+    }
+
+    serviceRecordWarzone(player: string, callback: Callback<any>): void {
+        this.serviceRecord("warzone", player, callback);                   
+    }
+
+    serviceRecordCustom(player: string, callback: Callback<any>): void {
+        this.serviceRecord("custom", player, callback);                           
+    }
+
+    serviceRecordsArena(players: string[], callback: Callback<any>): void {
+        this.serviceRecords("arena", players, callback);
+    }
+
+    serviceRecordsCampaign(players: string[], callback: Callback<any>): void {
+        this.serviceRecords("campaign", players, callback);
+    }
+
+    serviceRecordsWarzone(players: string[], callback: Callback<any>): void {
+        this.serviceRecords("warzone", players, callback);
+    }
+
+    serviceRecordsCustom(players: string[], callback: Callback<any>): void {
+        this.serviceRecords("custom", players, callback);
+    }
+
+    private serviceRecord<T>(gameMode: string, player: string, callback: Callback<T>) {
+        this.serviceRecords(gameMode, [ player ], (data, error) => {
+            if (data) {
+                callback(data[0]);
+            } else {
+                callback(null, error);
+            }
+        });
+    }
+
+    private serviceRecords<T>(gameMode: string, players: string[], callback: Callback<T>) {
+        var p: string = players.map(encodeURIComponent).join(",");
+        this.api.getJSON(`/stats/${this.title}/servicerecords/${gameMode}?players=${p}`, 
+            function (data: any, error) {
+            if (data) {
+                callback(data.Results);
+            } else {
+                callback(null, error);
+            }
+        });        
+    }
+
 };
 
 export = Stats;

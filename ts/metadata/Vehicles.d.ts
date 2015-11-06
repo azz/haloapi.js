@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Vehicles
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/vehicles
- * Params:
- *   {title}: Always "h5"
- */
-
 interface Vehicle {
     // A localized name for the object, suitable for display to users. The text is title
     // cased.

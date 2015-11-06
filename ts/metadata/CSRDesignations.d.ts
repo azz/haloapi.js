@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> CSR Designations
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/csr-designations
- * Params:
- *   {title}: Always "h5"
- */
-
 interface CSRTier {
     // An image to use as the icon for th tier.
     iconImageUrl: url;

@@ -1,12 +1,4 @@
 
-/**
- * API: Metadata -> Requisitions
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/requisitions/{id}
- * Params:
- *   {title}: Always "h5"
- *   {id}: An ID that uniquely identifies a Requisition.
- */
-
 interface Requistion {
     // This lists all the game modes that this requisition is redeemable in. Options are:
     // - Arena

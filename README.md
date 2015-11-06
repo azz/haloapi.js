@@ -73,8 +73,8 @@ Using with TypeScript (completely optional)
 ## TODO
 
 - Write test cases with Jasmine
+- Full usage documentation
 - Complete the definitions for the stats endpoints.
-- Move documentation from the top of `.d.ts` files to their associated function stubs.
 
 # Development
 

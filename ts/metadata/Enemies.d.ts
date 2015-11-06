@@ -1,10 +1,3 @@
-
-/**
- * API: Metadata -> Enemies
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/enemies
- * Params:
- *   {title}: Always "h5"
- */
  
  interface Enemy {
     // The faction that this enemy is affiliated with. One of the following options:

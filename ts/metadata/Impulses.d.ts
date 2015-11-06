@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Impulses
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/impulses
- * Params:
- *   {title}: Always "h5"
- */
-
 interface Impulse {
     // Internal use. The non-localized name of the impulse.
     internalName: string;

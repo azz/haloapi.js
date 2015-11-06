@@ -1,11 +1,4 @@
  
-/**
- * API: Metadata -> Flexible Stats
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/flexible-stats
- * Params:
- *   {title}: Always "h5"
- */
- 
 interface FlexibleStat {
     // A localized name for the data point, suitable for display to users. The text is
     // title cased.

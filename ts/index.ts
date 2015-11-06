@@ -64,12 +64,6 @@ class HaloAPI implements IHaloAPI {
         });
     }    
 
-    /**
-     * Ensures that a guid is roughly in the shape of a guid.
-     * Only checks that the characters are correct. Does not validate length.
-     * Bi-product is that all {id}s that return true do not need to be encoded
-     * in a URL component.
-     */
     isGuid(id: guid): boolean {
         if (id && /^[a-zA-Z0-9\-]+$/.test(id)) {
             return true;

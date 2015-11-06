@@ -1,11 +1,4 @@
 
-/**
- * API: Metadata -> Maps
- * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/maps
- * Params:
- *   {title}: Always "h5"
- */
-
 interface BaseMap {
     // A localized name, suitable for display to users.
     name: string;
