@@ -1,6 +1,6 @@
 {
   "name": "haloapi",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
   "typings": "js/haloapi",

@@ -34,13 +34,19 @@ class HaloAPI implements IHaloAPI {
                 'Ocp-Apim-Subscription-Key': this.apiKey 
             }
         };
-
+        // TODO switch to "request-promise" 
+        // TODO check if we're running in a browser and use XMLHttpRequest
         get(options, (error: any, response: any, body: any) => {
             if (!error && response.statusCode == 200) {
                 callback(JSON.parse(body));
             } else {                
-                // TODO parse JSON for error and handle throttling
-                callback(null, error);
+                // TODO handle throttling
+                try {
+                    var obj = JSON.parse(body);
+                    callback(null, `${obj.statusCode} - ${obj.message}`);
+                } catch(e) {
+                    callback(null, String(response.statusCode));
+                }
             }
         });
     }
