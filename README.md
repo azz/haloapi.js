@@ -1,28 +1,28 @@
-# Halo 5 Beta API -- JavaScript / TypeScript
+# Halo API - JavaScript Binding (With TypeScript)
 
-*This repository is a work in progress.*
+This project is a statically typed JavaScript binding of the Halo 5 Developer's API using TypeScript.
 
-This project aims to develop a statically typed JavaScript wrapper of the Halo 5 Developer's API using TypeScript.
+Using this project with your development IDE, such as WebStorm, Visual Studio or Atom, it will provide both an API and static type checking for what can be a complex entagnlement of statistics and metadata.
 
-The project consists of two directories. 
+## How do I get Started?
 
-- `src` The source code for what will become a NPM module.
-- `tsd` The TypeScript definitions for the API and the reponse types. 
+If you haven't aready grabbed a key, head to [developer.haloapi.com](https://developer.haloapi.com/), sign in, head to Products and grab a key. The documentation for the API itself is also availble there. 
 
-Using this project with your development IDE, such as WebStorm or Visual Studio, it will provide both an API and static type checking for what can be a complex entagnlement of statistics and metadata.
-
-## TODO
-
-- Complete the definitions for the stats endpoints.
-- Move documentation from the top of `.d.ts` files to their associated function stubs.
+If you have any issues there are forums available [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics), and a thread for this particular binding [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts);
 
 ## Installation 
 
-Run this in a terminal at the top-level directory for this repository.
+This project can be installed as a node module with
 
-    $ npm build    
+    npm install https://github.com/DerFlatulator/haloapi
 
-If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
+Easy!
+
+## What is TypeScript?
+
+TypeScript is a language developed by Microsoft in order to add static typing to the JavaScript programming language. While this project is written with TypeScript, it produces JavaScript that is readable and usable without even knowing that TypeScript exists.
+
+To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
 
 ## Basic Usage
 
@@ -30,7 +30,7 @@ Usage with plain old JavaScript
 
 Setup:
 
-    var HaloAPI = require('haloapi'); // if you've cloned this repo use './build/haloapi'
+    var HaloAPI = require('haloapi'); // if you've cloned this repo use './js/index'
     var h5 = new HaloAPI('YOUR API KEY');
 
 Retreive all Weapons:
@@ -43,7 +43,7 @@ Retreive all Weapons:
 
 Get my player's emblem:
 
-    h5.profile.emblemImage({ player: "Der Flatulator6" }, function (url, error) { 
+    h5.profile.emblemImage({ player: "[Your Gamertag!]" }, function (url, error) { 
         console.log(url); 
     });
 
@@ -54,14 +54,14 @@ With **all** requests, the response callback has two arguments, the first is the
             // success, iterate through your matches
         }
         else {
-            // uh on, handle error here.
+            // uh oh, handle error here.
         }
     });
 
 Using with TypeScript (completely optional)
     
-    /// <reference path="tsd/haloapi.d.ts"/>
-    import HaloAPI from 'haloapi'; // if you've cloned this repo use './build/haloapi'
+    /// <reference path="ts/haloapi.d.ts"/>
+    import HaloAPI = require('haloapi'); // if you've cloned this repo use './js/haloapi'
     var h5: IHaloAPI = new HaloAPI('YOUR API KEY');
 
     h5.metadata.weapons((weapons: Weapons) => {
@@ -69,6 +69,20 @@ Using with TypeScript (completely optional)
             console.log(weapon.name, '\n\t', weapon.description);
         });
     });
+
+## TODO
+
+- Write test cases with Jasmine
+- Complete the definitions for the stats endpoints.
+- Move documentation from the top of `.d.ts` files to their associated function stubs.
+
+# Development
+
+If you've modified the TypeScript sources, you'll need to regenerate the JS. Run this in a terminal at the top-level directory for this repository.
+
+    $ npm build    
+
+If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
 
 ## Contributers
 

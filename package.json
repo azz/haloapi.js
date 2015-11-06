@@ -2,10 +2,12 @@
   "name": "haloapi",
   "version": "0.0.1",
   "description": "This project aims to develop a statically typed JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
-  "main": "build/haloapi.js",
+  "main": "js/haloapi.js",
+  "typings": "js/haloapi",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm js/*.js"
   },
   "repository": {
     "type": "git",
@@ -22,12 +24,12 @@
   },
   "homepage": "https://github.com/DerFlatulator/halo5api",
   "dependencies": {
-    "request": "^2.65.0",
+    "request": "^2.65.0"
   },
   "devDependencies": {
     "typescript": "^1.6.2"
   },
   "typescript": {
-    "main": "./src/haloapi.ts"
+    "main": "./ts/index.ts"
   }
 }

@@ -1,0 +1,18 @@
+{
+  "version": "v4",
+  "repo": "DefinitelyTyped/DefinitelyTyped",
+  "ref": "master",
+  "path": "ts/lib",
+  "bundle": "ts/lib/tsd.d.ts",
+  "installed": {
+    "node/node.d.ts": {
+      "commit": "8cf8164641be73e8f1e652c2a5b967c7210b6729"
+    },
+    "request/request.d.ts": {
+      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
+    },
+    "form-data/form-data.d.ts": {
+      "commit": "35989a3ab4834b8e8b2b56788f1d4fc46a25dc8d"
+    }
+  }
+}
