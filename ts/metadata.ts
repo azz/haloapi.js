@@ -81,9 +81,12 @@ class Metadata implements IMetadata {
             `/metadata/${this.title}/metadata/requisitions/${id}`);
     }   
 
-    requisitionPacks(): Promise<RequisitionPacks> {
-        return this.api.getJSON<RequisitionPacks>(
-            `/metadata/${this.title}/metadata/requisition-packs`);
+    requisitionPackById(id: guid): Promise<RequisitionPack> {
+        if (!this.api.isGuid(id)) {
+            return Promise.reject("Invalid ID provided");
+        }
+        return this.api.getJSON<RequisitionPack>(
+            `/metadata/${this.title}/metadata/requisition-packs/${id}`);
     }   
 
     skulls(): Promise<Skulls> {

@@ -130,11 +130,12 @@ interface IMetadata {
 
     /**
      * API: Metadata -> Requisition Packs
-     * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/requisition-packs
+     * Endpoint: https://www.haloapi.com/metadata/{title}/metadata/requisition-packs/{id}
      * Params:
      *   {title}: Always "h5"
+     *   {id}: An ID that uniquely identifies a Requisition Pack.
      */
-    requisitionPacks(): Promise<RequisitionPacks>;
+    requisitionPackById(id: guid): Promise<RequisitionPack>;
 
     /**
      * API: Metadata -> Skulls

@@ -52,8 +52,11 @@ var Metadata = (function () {
         }
         return this.api.getJSON("/metadata/" + this.title + "/metadata/requisitions/" + id);
     };
-    Metadata.prototype.requisitionPacks = function () {
-        return this.api.getJSON("/metadata/" + this.title + "/metadata/requisition-packs");
+    Metadata.prototype.requisitionPackById = function (id) {
+        if (!this.api.isGuid(id)) {
+            return Promise.reject("Invalid ID provided");
+        }
+        return this.api.getJSON("/metadata/" + this.title + "/metadata/requisition-packs/" + id);
     };
     Metadata.prototype.skulls = function () {
         return this.api.getJSON("/metadata/" + this.title + "/metadata/skulls");
