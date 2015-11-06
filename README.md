@@ -1,14 +1,14 @@
-# Halo API - JavaScript Binding (With TypeScript)
+# Halo API - JavaScript Binding (with TypeScript)
 
 This project is a statically typed JavaScript binding of the Halo 5 Developer's API using TypeScript.
 
 Using this project with your development IDE, such as WebStorm, Visual Studio or Atom, it will provide both an API and static type checking for what can be a complex entagnlement of statistics and metadata.
 
-## How do I get Started?
+## How Do I Get Started?
 
 If you haven't aready grabbed a key, head to [developer.haloapi.com](https://developer.haloapi.com/), sign in, head to Products and grab a key. The documentation for the API itself is also availble there. 
 
-If you have any issues there are forums available [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics), and a thread for this particular binding [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts);
+If you have any issues there are forums available [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics), and a thread for this particular binding [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts).
 
 ## Installation 
 
@@ -60,7 +60,7 @@ Check if you've a higher max rank than your friend:
                 // Do some fancy JS sorting... Rank, then Tier, then % to next tier.
                 var n = _b.DesignationId - _a.DesignationId;
                 if (n) return n;
-                n = _b.Tier - _a.DesignationId;
+                n = _b.Tier - _a.Tier;
                 if (n) return n;
                 return _b.PercentToNextTier - _a.PercentToNextTier;
             })[0] === a.Result.ArenaStats.HighestCsrAttained;
