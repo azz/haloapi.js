@@ -1,7 +1,7 @@
 {
   "name": "haloapi",
   "version": "0.0.1",
-  "description": "This project is a statically typed JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
+  "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
   "typings": "js/haloapi",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DerFlatulator/halo5api.git"
+    "url": "https://github.com/DerFlatulator/haloapi.git"
   },
   "keywords": [
     "halo 5",

@@ -14,9 +14,11 @@ If you have any issues there are forums available [here](https://www.halowaypoin
 
 This project can be installed as a node module with
 
-    npm install https://github.com/DerFlatulator/haloapi
+    npm install haloapi
 
 Easy!
+
+If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
 
 ## What is TypeScript?
 
@@ -99,9 +101,10 @@ Using with TypeScript (completely optional)
 
 If you've modified the TypeScript sources, you'll need to regenerate the JS. Run this in a terminal at the top-level directory for this repository.
 
+    $ npm install typescript -g # only do this once
     $ npm build    
 
-If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
+Easy! 
 
 ## Contributers
 
