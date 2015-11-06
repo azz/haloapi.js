@@ -1,8 +1,8 @@
 {
   "name": "haloapi",
   "version": "0.0.1",
-  "description": "This project aims to develop a statically typed JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
-  "main": "js/haloapi.js",
+  "description": "This project is a statically typed JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
+  "main": "js/index.js",
   "typings": "js/haloapi",
   "scripts": {
     "build": "tsc",
