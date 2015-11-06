@@ -1,6 +1,6 @@
 {
   "name": "haloapi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
   "typings": "js/haloapi",
@@ -32,5 +32,5 @@
   "typescript": {
     "main": "./ts/index.ts"
   },
-  "tonicExampleFileName": "examples/matches.js"
+  "tonicExampleFilename": "examples/matches.js"
 }
