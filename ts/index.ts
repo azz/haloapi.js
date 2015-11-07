@@ -44,9 +44,16 @@ class HaloAPI implements IHaloAPI {
                     throw error.message;
                 } else {                    
                     var json = error.response.toJSON();
+
+
                     var message = json.body 
                         ? json.body.message 
                         : "An error occurred.";
+
+                    if (json.statusCode == 429) {
+                        return this.duplicateRequest(message, endpoint, true);
+                    }
+
                     throw `${json.statusCode} - ${message}`;
                 }
             });
@@ -85,6 +92,31 @@ class HaloAPI implements IHaloAPI {
             return true;
         }
         return false;
+    }
+
+    private duplicateRequest(
+        message, 
+        endpoint: string, 
+        isJSON: boolean
+    ) {   
+        // parse the response to get the seconds to next request
+        var seconds = message.split(" ").filter(parseInt);
+        seconds = seconds.length ? parseInt(seconds[0]) : 1;
+
+        var wait: number = 100 + (seconds * 1000);
+        process.env.HALOAPI_DEBUG && console.log("retrying in:", wait);
+
+        return new Promise((accept, reject) => {
+            setTimeout(() => {
+                if (isJSON) {
+                    this.getJSON(endpoint)
+                        .then(accept).catch(reject);
+                } else {
+                    this.getImageURL(endpoint)
+                        .then(accept).catch(reject); 
+                }
+            }, wait);
+        });
     }
 };
 

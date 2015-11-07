@@ -15,6 +15,7 @@ var HaloAPI = (function () {
         this.host = "https://www.haloapi.com";
     }
     HaloAPI.prototype.getJSON = function (endpoint) {
+        var _this = this;
         var options = {
             url: this.host + endpoint,
             headers: {
@@ -34,6 +35,9 @@ var HaloAPI = (function () {
                 var message = json.body
                     ? json.body.message
                     : "An error occurred.";
+                if (json.statusCode == 429) {
+                    return _this.duplicateRequest(message, endpoint, true);
+                }
                 throw json.statusCode + " - " + message;
             }
         });
@@ -67,6 +71,26 @@ var HaloAPI = (function () {
             return true;
         }
         return false;
+    };
+    HaloAPI.prototype.duplicateRequest = function (message, endpoint, isJSON) {
+        var _this = this;
+        // parse the response to get the seconds to next request
+        var seconds = message.split(" ").filter(parseInt);
+        seconds = seconds.length ? parseInt(seconds[0]) : 1;
+        var wait = 100 + (seconds * 1000);
+        process.env.HALOAPI_DEBUG && console.log("retrying in:", wait);
+        return new Promise(function (accept, reject) {
+            setTimeout(function () {
+                if (isJSON) {
+                    _this.getJSON(endpoint)
+                        .then(accept).catch(reject);
+                }
+                else {
+                    _this.getImageURL(endpoint)
+                        .then(accept).catch(reject);
+                }
+            }, wait);
+        });
     };
     return HaloAPI;
 })();
