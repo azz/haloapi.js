@@ -8,4 +8,5 @@ api.stats.playerMatches("Frankie")
         })
     });
 
-"wait a second..."; // if you're running this on tonicdev.com
+// You can also try the await syntax: (uncomment below)
+await api.profile.spartanImage("Frankie");

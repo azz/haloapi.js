@@ -32,7 +32,7 @@ class Profile implements IProfile {
                     + encodeURIComponent(String(params[key])));
         }
         if (qs.length) 
-           return `?${qs.join(",")}`;
+           return `?${qs.join("&")}`;
         return "";
     }
 };

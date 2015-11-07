@@ -32,8 +32,10 @@ Usage with plain old JavaScript
 
 Setup:
 
-    var HaloAPI = require('haloapi'); // if you've cloned this repo use './js/index'
+    var HaloAPI = require('haloapi'); 
     var h5 = new HaloAPI('YOUR API KEY');
+
+(If you've cloned this repo use `require('./js/index')`)
 
 Retreive all Weapons:
 
@@ -96,18 +98,25 @@ Using with TypeScript (completely optional)
 
 ## TODO
 
-- Write test cases with Jasmine
 - Full usage documentation
 - Complete the TypeScript definitions for remaining stats endpoints.
+- Handle rate limiting
 
-# Development
+## Development
 
 If you've modified the TypeScript sources, you'll need to regenerate the JS. Run this in a terminal at the top-level directory for this repository.
 
-    $ npm install typescript -g  # only do this once
-    $ npm build    
+    $ npm run build  
 
-Easy! 
+## Testing
+
+Test suite is written with Mocha and Chai. Before running tests, set the `HALOAPI_KEY` variable in your environment.
+
+    $ export HALOAPI_KEY=YOUR-API-KEY-HERE
+
+And run all tests with:
+
+    $ npm test 
 
 ## Contributers
 

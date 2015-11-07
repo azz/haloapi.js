@@ -26,7 +26,7 @@ var Profile = (function () {
                     + encodeURIComponent(String(params[key])));
         }
         if (qs.length)
-            return "?" + qs.join(",");
+            return "?" + qs.join("&");
         return "";
     };
     return Profile;

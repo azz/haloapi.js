@@ -22,15 +22,20 @@ var HaloAPI = (function () {
             },
             json: true,
         };
-        // console.log("fetching:", options.url);
+        process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
         // TODO check if we're running in a browser and use XMLHttpRequest
         return request_promise_1.get(options)
             .catch(function (error) {
-            var json = error.response.toJSON();
-            var message = json.body
-                ? json.body.message
-                : "An error occurred.";
-            throw json.statusCode + " - " + message;
+            if (error.name === "RequestError") {
+                throw error.message;
+            }
+            else {
+                var json = error.response.toJSON();
+                var message = json.body
+                    ? json.body.message
+                    : "An error occurred.";
+                throw json.statusCode + " - " + message;
+            }
         });
     };
     HaloAPI.prototype.getImageURL = function (endpoint) {
@@ -42,13 +47,19 @@ var HaloAPI = (function () {
             },
             resolveWithFullResponse: true
         };
+        process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
         return request_promise_1.get(options)
             .catch(function (error) {
-            // console.info(error, response, body);
-            var response = error.response;
-            if (response.statusCode == 302)
-                return response.headers.location;
-            throw response.statusCode;
+            if (error.name === "RequestError") {
+                throw error.message;
+            }
+            else {
+                // console.info(error, response, body);
+                var response = error.response;
+                if (response.statusCode == 302)
+                    return response.headers.location;
+                throw response.statusCode;
+            }
         });
     };
     HaloAPI.prototype.isGuid = function (id) {

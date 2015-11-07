@@ -4,7 +4,7 @@
 interface IProfileParams {
     player: string;
     size?: number;
-    crop?: number;
+    crop?: string;
     [key: string]: any;
 }
 

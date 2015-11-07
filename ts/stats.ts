@@ -22,7 +22,7 @@ class Stats implements IStats {
             qs.push(encodeURIComponent(key) + "=" + encodeURIComponent(String(_params[key])));
         }
         if (qs.length) 
-            endpoint += `?${qs.join(",")}`;
+            endpoint += `?${qs.join("&")}`;
 
         return this.api.getJSON<PlayerMatches>(endpoint);
     } 
