@@ -9,4 +9,4 @@ api.stats.playerMatches("Frankie")
     });
 
 // You can also try the await syntax: (uncomment below)
-await api.profile.spartanImage("Frankie");
+// await api.profile.spartanImage("Frankie");

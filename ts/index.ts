@@ -1,3 +1,10 @@
+/*!
+ *! Copyright (c) 2015 Lucas Azzola 
+ *! Distributed under the MIT License. 
+ *! (See accompanying file LICENSE.md or visit:
+ *!  <http://opensource.org/licenses/MIT> 
+ */
+
 /// <reference path="./haloapi.d.ts"/>
 /// <reference path="./lib/tsd.d.ts" />
 
@@ -5,11 +12,16 @@ import Stats = require("./stats");
 import Metadata = require("./metadata");
 import Profile = require("./profile");
 
-import {get} from "request-promise";
+import rp = require("request-promise");
 
 class HaloAPI implements IHaloAPI {
+    /** @inheritdoc */
     stats: IStats;
+
+    /** @inheritdoc */
     metadata: IMetadata;
+
+    /** @inheritdoc */
     profile: IProfile;
 
     // Important: Privacy is only enforced by the TypeScript compiler.
@@ -17,6 +29,13 @@ class HaloAPI implements IHaloAPI {
     private apiKey: string;
     private host: string;
 
+    /**
+     * Create an instance of the HaloAPI. 
+     * @param apiKey Your API key. API keys are obtained from 
+     *               http://developer.haloapi.com/ 
+     * @param title The title of the game for this API instance. Currently
+     *              only "h5" (Halo 5: Guardians) is supported.
+     */
     constructor(apiKey: string, public title: string = "h5") {
         this.stats = new Stats(this);
         this.metadata = new Metadata(this);
@@ -26,6 +45,7 @@ class HaloAPI implements IHaloAPI {
         this.host = "https://www.haloapi.com";
     }
 
+    /** @inheritdoc */
     getJSON<T>(endpoint: string): Promise<T> {
         var options = {
             url: this.host + endpoint,
@@ -38,7 +58,7 @@ class HaloAPI implements IHaloAPI {
         process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
 
         // TODO check if we're running in a browser and use XMLHttpRequest
-        return get(options)
+        return rp.get(options)
             .catch((error: any) => {
                 if (error.name === "RequestError") {
                     throw error.message;
@@ -51,7 +71,7 @@ class HaloAPI implements IHaloAPI {
                         : "An error occurred.";
 
                     if (json.statusCode == 429) {
-                        return this.duplicateRequest(message, endpoint, true);
+                        return this.duplicateRequest<T>(message, endpoint, true);
                     }
 
                     throw `${json.statusCode} - ${message}`;
@@ -60,6 +80,7 @@ class HaloAPI implements IHaloAPI {
 
     }
 
+    /** @inheritdoc */
     getImageURL(endpoint: string): Promise<url> {
         var options = {
             url: this.host + endpoint,
@@ -72,7 +93,7 @@ class HaloAPI implements IHaloAPI {
 
         process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
 
-        return get(options)
+        return rp.get(options)
             .catch((error: any) => {
                 if (error.name === "RequestError") {
                     throw error.message;
@@ -87,6 +108,7 @@ class HaloAPI implements IHaloAPI {
             });        
     }    
 
+    /** @inheritdoc */
     isGuid(id: guid): boolean {
         if (id && /^[a-zA-Z0-9\-]+$/.test(id)) {
             return true;
@@ -94,11 +116,11 @@ class HaloAPI implements IHaloAPI {
         return false;
     }
 
-    private duplicateRequest(
+    private duplicateRequest<T>(
         message, 
         endpoint: string, 
         isJSON: boolean
-    ) {   
+    ): Promise<T> {   
         // parse the response to get the seconds to next request
         var seconds = message.split(" ").filter(parseInt);
         seconds = seconds.length ? parseInt(seconds[0]) : 1;
@@ -106,10 +128,10 @@ class HaloAPI implements IHaloAPI {
         var wait: number = 100 + (seconds * 1000);
         process.env.HALOAPI_DEBUG && console.log("retrying in:", wait);
 
-        return new Promise((accept, reject) => {
+        return new Promise<T>((accept: any, reject: any) => {
             setTimeout(() => {
                 if (isJSON) {
-                    this.getJSON(endpoint)
+                    this.getJSON<T>(endpoint)
                         .then(accept).catch(reject);
                 } else {
                     this.getImageURL(endpoint)

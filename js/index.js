@@ -1,10 +1,23 @@
+/*!
+ *! Copyright (c) 2015 Lucas Azzola
+ *! Distributed under the MIT License.
+ *! (See accompanying file LICENSE.md or visit:
+ *!  <http://opensource.org/licenses/MIT>
+ */
 /// <reference path="./haloapi.d.ts"/>
 /// <reference path="./lib/tsd.d.ts" />
 var Stats = require("./stats");
 var Metadata = require("./metadata");
 var Profile = require("./profile");
-var request_promise_1 = require("request-promise");
+var rp = require("request-promise");
 var HaloAPI = (function () {
+    /**
+     * Create an instance of the HaloAPI.
+     * @param apiKey Your API key. API keys are obtained from
+     *               http://developer.haloapi.com/
+     * @param title The title of the game for this API instance. Currently
+     *              only "h5" (Halo 5: Guardians) is supported.
+     */
     function HaloAPI(apiKey, title) {
         if (title === void 0) { title = "h5"; }
         this.title = title;
@@ -14,6 +27,7 @@ var HaloAPI = (function () {
         this.apiKey = apiKey;
         this.host = "https://www.haloapi.com";
     }
+    /** @inheritdoc */
     HaloAPI.prototype.getJSON = function (endpoint) {
         var _this = this;
         var options = {
@@ -25,7 +39,7 @@ var HaloAPI = (function () {
         };
         process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
         // TODO check if we're running in a browser and use XMLHttpRequest
-        return request_promise_1.get(options)
+        return rp.get(options)
             .catch(function (error) {
             if (error.name === "RequestError") {
                 throw error.message;
@@ -42,6 +56,7 @@ var HaloAPI = (function () {
             }
         });
     };
+    /** @inheritdoc */
     HaloAPI.prototype.getImageURL = function (endpoint) {
         var options = {
             url: this.host + endpoint,
@@ -52,7 +67,7 @@ var HaloAPI = (function () {
             resolveWithFullResponse: true
         };
         process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
-        return request_promise_1.get(options)
+        return rp.get(options)
             .catch(function (error) {
             if (error.name === "RequestError") {
                 throw error.message;
@@ -66,6 +81,7 @@ var HaloAPI = (function () {
             }
         });
     };
+    /** @inheritdoc */
     HaloAPI.prototype.isGuid = function (id) {
         if (id && /^[a-zA-Z0-9\-]+$/.test(id)) {
             return true;

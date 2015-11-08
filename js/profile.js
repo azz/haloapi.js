@@ -4,6 +4,7 @@ var Profile = (function () {
         this.api = api;
         this.title = "h5";
     }
+    /** @inheritdoc */
     Profile.prototype.emblemImage = function (params) {
         var p;
         p = typeof params === "string" ? { player: params } : params;
@@ -11,6 +12,7 @@ var Profile = (function () {
             + (encodeURIComponent(p.player) + "/emblem");
         return this.api.getImageURL(endpoint + this.constructQs(p));
     };
+    /** @inheritdoc */
     Profile.prototype.spartanImage = function (params) {
         var p;
         p = typeof params === "string" ? { player: params } : params;

@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi)
+
 # Halo API - JavaScript Binding (with TypeScript)
 
 This project is a statically typed JavaScript binding of the Halo 5 Developer's API using TypeScript.

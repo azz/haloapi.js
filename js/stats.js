@@ -4,6 +4,7 @@ var Stats = (function () {
         this.api = api;
         this.title = "h5";
     }
+    /** @inheritdoc */
     Stats.prototype.playerMatches = function (params) {
         var _params = { player: null };
         if (typeof params === "object")
@@ -20,6 +21,7 @@ var Stats = (function () {
             endpoint += "?" + qs.join("&");
         return this.api.getJSON(endpoint);
     };
+    /** @inheritdoc */
     Stats.prototype.warzoneMatchById = function (id) {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -27,45 +29,56 @@ var Stats = (function () {
         return this.api.getJSON("/stats/" + this.title + "/warzone/matches/" + id);
     };
     // below are incompletely typed. providing `any` instead of their respective types
+    /** @inheritdoc */
     Stats.prototype.customMatchById = function (id) {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
         return this.api.getJSON("/stats/" + this.title + "/custom/matches/" + id);
     };
+    /** @inheritdoc */
     Stats.prototype.campaignMatchById = function (id) {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
         return this.api.getJSON("/stats/" + this.title + "/campaign/matches/" + id);
     };
+    /** @inheritdoc */
     Stats.prototype.arenaMatchById = function (id) {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
         return this.api.getJSON("/stats/" + this.title + "/arena/matches/" + id);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordArena = function (player) {
         return this.serviceRecord("arena", player);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordCampaign = function (player) {
         return this.serviceRecord("campaign", player);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordWarzone = function (player) {
         return this.serviceRecord("warzone", player);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordCustom = function (player) {
         return this.serviceRecord("custom", player);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordsArena = function (players) {
         return this.serviceRecords("arena", players);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordsCampaign = function (players) {
         return this.serviceRecords("campaign", players);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordsWarzone = function (players) {
         return this.serviceRecords("warzone", players);
     };
+    /** @inheritdoc */
     Stats.prototype.serviceRecordsCustom = function (players) {
         return this.serviceRecords("custom", players);
     };

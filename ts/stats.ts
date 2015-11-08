@@ -8,6 +8,7 @@ class Stats implements IStats {
         this.title = "h5";
     }
 
+    /** @inheritdoc */
     playerMatches(params: string | IPlayer): Promise<PlayerMatches> {
         var _params: IPlayer = {player: null};
         if (typeof params === "object")           
@@ -27,7 +28,7 @@ class Stats implements IStats {
         return this.api.getJSON<PlayerMatches>(endpoint);
     } 
 
-
+    /** @inheritdoc */
     warzoneMatchById(id: guid): Promise<PGCRArena> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -38,6 +39,7 @@ class Stats implements IStats {
 
     // below are incompletely typed. providing `any` instead of their respective types
 
+    /** @inheritdoc */
     customMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -45,6 +47,7 @@ class Stats implements IStats {
         return this.api.getJSON(`/stats/${this.title}/custom/matches/${id}`);
     }
 
+    /** @inheritdoc */
     campaignMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -52,6 +55,7 @@ class Stats implements IStats {
         return this.api.getJSON(`/stats/${this.title}/campaign/matches/${id}`);
     }
 
+    /** @inheritdoc */
     arenaMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -59,34 +63,42 @@ class Stats implements IStats {
         return this.api.getJSON(`/stats/${this.title}/arena/matches/${id}`);
     }
 
+    /** @inheritdoc */
     serviceRecordArena(player: string): Promise<any> {
         return this.serviceRecord("arena", player);
     }
 
+    /** @inheritdoc */
     serviceRecordCampaign(player: string): Promise<any> { 
         return this.serviceRecord("campaign", player);       
     }
 
+    /** @inheritdoc */
     serviceRecordWarzone(player: string): Promise<any> {
         return this.serviceRecord("warzone", player);                   
     }
 
+    /** @inheritdoc */
     serviceRecordCustom(player: string): Promise<any> {
         return this.serviceRecord("custom", player);                           
     }
 
+    /** @inheritdoc */
     serviceRecordsArena(players: string[]): Promise<any> {
         return this.serviceRecords("arena", players);
     }
 
+    /** @inheritdoc */
     serviceRecordsCampaign(players: string[]): Promise<any> {
         return this.serviceRecords("campaign", players);
     }
 
+    /** @inheritdoc */
     serviceRecordsWarzone(players: string[]): Promise<any> {
         return this.serviceRecords("warzone", players);
     }
 
+    /** @inheritdoc */
     serviceRecordsCustom(players: string[]): Promise<any> {
         return this.serviceRecords("custom", players);
     }

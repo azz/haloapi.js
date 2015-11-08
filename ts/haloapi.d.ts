@@ -8,28 +8,33 @@
 
 declare type guid = string;
 declare type url = string;
-declare type Callback<T> = (success?: T, error?: string) => void;
 
 interface IHaloAPI {
+    /**
+     * Access metadata endpoints
+     */
     metadata: IMetadata;
+
+    /**
+     * Access stats endpoints
+     */
     stats: IStats;
+
+    /**
+     * Access profile endpoints
+     */
     profile: IProfile;
 
     /**
      * Asynchronously retreive an endpoint from the Halo API.
-     * Callback fired with two arguments:
-     *   {data}: The JSON data
-     *   {error}: The string representing the error
-     * Only one of these will ever be defined.
+     * @param endpoint The endpoint path (not including host) to request.
+     * @param <T>      The type of the argument passed on promise fulfillment
      */
     getJSON<T>(endpoint: string): Promise<T>;
 
     /**
      * Asynchronously retreive the location header from the Halo API.
-     * Callback fired with two arguments:
-     *   {data}: The URL location
-     *   {error}: The string representing the error
-     * Only one of these will ever be defined.
+     * @param endpoint  The endpoint path (not including host) to request.
      */
     getImageURL(endpoint: string): Promise<url>;
 

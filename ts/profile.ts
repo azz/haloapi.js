@@ -8,6 +8,7 @@ class Profile implements IProfile {
         this.title = "h5";
     }
 
+    /** @inheritdoc */
     emblemImage(params: string | IProfileParams): Promise<EmblemImage> {
         var p: IProfileParams;
         p = typeof params === "string" ? { player: params } : params;
@@ -16,6 +17,7 @@ class Profile implements IProfile {
         return this.api.getImageURL(endpoint + this.constructQs(p));
     }
 
+    /** @inheritdoc */
     spartanImage(params: string | IProfileParams): Promise<SpartanImage> {
         var p: IProfileParams;
         p = typeof params === "string" ? { player: params } : params;

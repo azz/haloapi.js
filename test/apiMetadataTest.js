@@ -82,22 +82,40 @@ describe("h5.metadata", function () {
             return h5.metadata.playlists();
         });
     });
-    // TODO: find out how to get an id for this endpoint
-    // describe(".requisitionById(id: guid)", function () {
-    //     it("should succeed", function () {
-    //         var id = '????'; 
-    //         return h5.metadata.requisitionById(id);
-    //     });
-    // });
-    describe(".requisitionPackById()", function () {
+    // ID retrieved from here:
+    // https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/how-do-i-get-the-id-for-a-req/a8abb35e-6fd7-4a18-ab68-0946eaa2ce0d/posts?page=1#post5
+    describe(".requisitionById(id: guid)", function () {
         it("should succeed", function () {
+            var id = 'e4f549b2-90af-4dab-b2bc-11a46ea44103'; 
+            return h5.metadata.requisitionById(id);
+        });
+    });
+    describe(".requisitionPackById()", function () {
+        it("should succeed (reward req pack)", function () {
             var id = 'd10141cb-68a5-4c6b-af38-4e4935f973f7';
+            return h5.metadata.requisitionPackById(id);
+        });
+        it("should succeed (gold req pack)", function () {
+            var id = '3a1614d9-20a4-4817-a189-88cb781e9152';
             return h5.metadata.requisitionPackById(id);
         });
         it("should fail with bad id", function () {
             var id = '00000000-0000-0000-0000-0000000000000';
             return expect(h5.metadata.requisitionPackById(id))
                 .to.be.rejected;
+        });
+    });
+    describe(".requisitionPacksPurchasable()", function () {
+        var promise;
+        before(function () {
+            promise = h5.metadata.requisitionPacksPurchasable();
+        });
+
+        it("should succeed", function () {
+            return promise;
+        });
+        it("should have three items", function () {
+            expect(promise).to.eventually.have.length(3);
         });
     });
     describe(".skulls()", function () {
