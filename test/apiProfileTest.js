@@ -7,15 +7,15 @@ chai.use(require("chai-string"));
 
 describe("h5.profile", function () {
     var h5 = new HaloAPI(process.env.HALOAPI_KEY);
-    var promise; 
-    
+    var promise,
+        player = "Frankie"; 
+        
     // very leniant 30 second timemout
     // shouldn't be required, but if rate limiting is a factor
     // requests may take some time to be accepted
     this.timeout(30000);
 
     describe(".spartanImage(player: string)", function () {
-        var player = "Frankie";
         before(function () {
             promise = h5.profile.spartanImage(player);
         })
@@ -39,7 +39,7 @@ describe("h5.profile", function () {
 
     describe(".spartanImage(params: IProfileParams)", function () {
         var params = {
-            player: "Frankie",
+            player: player,
             crop: "portrait",
             size: 512
         };
@@ -60,7 +60,6 @@ describe("h5.profile", function () {
     });
 
     describe(".emblemImage(player: string)", function () {
-        var player = "Frankie";
         before(function () {
             promise = h5.profile.emblemImage(player);
         });
@@ -83,11 +82,12 @@ describe("h5.profile", function () {
     });
 
     describe(".emblemImage(params: IProfileParams)", function () {
-        var params = {
-            player: "Frankie",
-            size: 128
-        };
+        var params;
         before(function () {
+            params = {
+                player: player,
+                size: 128
+            };
             promise = h5.profile.spartanImage(params);;
         });
         it("should succeed", function () {

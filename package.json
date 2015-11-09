@@ -9,7 +9,8 @@
     "test": "./node_modules/.bin/mocha",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "clean": "rm js/*.js",
-    "document": "typedoc --out docs ./ts/index.ts --module commonjs --includeDeclarations"
+    "document": "typedoc --out docs ./ts/index.ts --module commonjs --includeDeclarations",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,8 @@
     "chai": "^3.4.0",
     "chai-as-promised": "^5.1.0",
     "chai-string": "^1.1.3",
+    "chai-things": "^0.2.0",
+    "istanbul": "^0.4.0",
     "mocha": "^2.3.3",
     "typescript": "^1.6.2"
   },

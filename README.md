@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.svg)](https://travis-ci.org/DerFlatulator/haloapi) [![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi) 
+[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.svg)](https://travis-ci.org/DerFlatulator/haloapi) 
+[![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi) 
+[![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)](https://www.npmjs.com/package/haloapi)
 
 # Halo API - JavaScript Binding (with TypeScript)
 
@@ -21,6 +23,8 @@ This project can be installed as a node module with
 Easy!
 
 If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
+
+Requires Node version 0.11 or later.
 
 ## What is TypeScript?
 
@@ -118,7 +122,6 @@ h5.metadata.weapons().then((weapons: Weapons) => {
 
 - Full usage documentation
 - Complete the TypeScript definitions for remaining stats endpoints.
-- Handle rate limiting
 
 ## Development
 

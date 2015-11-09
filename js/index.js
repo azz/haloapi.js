@@ -74,6 +74,8 @@ var HaloAPI = (function () {
                 throw error.message;
             }
             else {
+                process.env.HALOAPI_DEBUG
+                    && console.log("error:", error.message, options.url);
                 if (error.statusCode == 429) {
                     return _this.duplicateRequest("2", endpoint, false);
                 }

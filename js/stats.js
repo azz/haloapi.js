@@ -83,7 +83,8 @@ var Stats = (function () {
         return this.serviceRecords("custom", players);
     };
     Stats.prototype.serviceRecord = function (gameMode, player) {
-        return this.serviceRecords(gameMode, [player]);
+        return this.serviceRecords(gameMode, [player])
+            .then(function (results) { return results[0]; });
     };
     Stats.prototype.serviceRecords = function (gameMode, players) {
         var p = players.map(encodeURIComponent).join(",");

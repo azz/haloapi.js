@@ -1,9 +1,12 @@
 /// <reference path="./PlayerMatches.d.ts"/>
 /// <reference path="./PGCRArena.d.ts"/>
 
-interface IPlayer {
+interface IMatchesParams {
     player: string;
-    [key:string]: string;
+    mode?: string;
+    start?: number;
+    count?: number;
+    [key:string]: string | number;
 }
 
 interface IStats {
@@ -13,7 +16,7 @@ interface IStats {
      * @endpoint https://www.haloapi.com/stats/{title}/players/{player}/matches[?modes][&start][&count]
      * @param player  The Player's gamertag.
      */
-    playerMatches(params: string | IPlayer): Promise<PlayerMatches>;
+    playerMatches(params: string | IMatchesParams): Promise<PlayerMatches>;
 
     /**
      * @api Stats :: Post Game Carnage Report: Arena
