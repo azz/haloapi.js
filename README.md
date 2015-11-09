@@ -2,9 +2,11 @@
 [![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi) 
 [![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)](https://www.npmjs.com/package/haloapi)
 
-# Halo API - JavaScript Binding (with TypeScript)
+# Halo API - JavaScript Binding
 
 This project is a statically typed JavaScript binding of the Halo 5 Developer's API using TypeScript.
+
+It provides one function for each endpoint, returning a promise. There are some additional functions that offer alternate access to some endpoints. 
 
 Using this project with your development IDE, such as WebStorm, Visual Studio or Atom, it will provide both an API and static type checking for what can be a complex entagnlement of statistics and metadata.
 
@@ -34,7 +36,9 @@ To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
 
 ## Basic Usage
 
-Usage with plain old JavaScript
+Breif usage instructions follow. More in depth usage info is available **[here](https://derflatulator.github.io/haloapi/docco/usage.html)**.
+
+Usage with plain old JavaScript.
 
 Setup:
 
