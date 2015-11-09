@@ -1,4 +1,4 @@
 *.sh
-node_modules
-docs
-coverage
+/node_modules/
+/coverage/
+/docs/
