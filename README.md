@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi)
+[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.svg)](https://travis-ci.org/DerFlatulator/haloapi) [![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi) 
 
 # Halo API - JavaScript Binding (with TypeScript)
 
