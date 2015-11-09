@@ -9,8 +9,10 @@ describe("h5.profile", function () {
     var h5 = new HaloAPI(process.env.HALOAPI_KEY);
     var promise; 
     
-    // leniant 10 second timemout
-    this.timeout(10000);
+    // very leniant 30 second timemout
+    // shouldn't be required, but if rate limiting is a factor
+    // requests may take some time to be accepted
+    this.timeout(30000);
 
     describe(".spartanImage(player: string)", function () {
         var player = "Frankie";
