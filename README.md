@@ -44,7 +44,7 @@ To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
 
 ## Basic Usage
 
-Breif usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi/docco/usage.html)**.
+Breif usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi/docco/haloapi.html)**.
 
 Usage with plain old JavaScript.
 
