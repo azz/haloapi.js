@@ -118,6 +118,31 @@ If you've modified the TypeScript sources, you'll need to regenerate the JS. Run
 
     $ npm run build  
 
+Documentation is currently being built with [docco](https://jashkenas.github.io/docco/). All files in the `examples/docs/` directory are converted to html files with docco and hosted at, e.g. `https://derflatulator.github.io/haloapi.js/docco/<filename>.html`. This is using GitHub page's feature (see branch `gh-pages`). The `npm run document` command will build these docs, but also some experimental TypeScript docs. If you are interested in sending a pull request with new docs, you may either send just the JS file and I can generate the docs, *or* follow these instructions carefully:
+
+First time only:
+
+```bash
+$ mkdir -p docs && cd docs
+$ git checkout --orphan gh-pages  # Grab current docs
+$ git branch -u origin/gh-pages   # Track gh-pages branch on remote.
+$ git branch -D master            # We don't need code branches.
+$ cd ..                           # Back to code repository root
+```
+
+And for each time you want to build/push documentation:
+
+```bash
+$ npm run document                # Will generate files in docs/
+$ cd docs                         # Important! 
+$ git add docco/*.html            # Or just files you want to add
+$ git commit -m "YOUR COMMIT MESSAGE"
+$ git push origin gh-pages
+$ cd ..                           # Return to code repo.
+```
+
+See [this blog post](https://srackham.wordpress.com/2014/12/14/publishing-a-project-website-to-github-pages/) for some explanation of what just happened. 
+
 ## Testing
 
 Test suite is written with Mocha and Chai. Before running tests, set the `HALOAPI_KEY` variable in your environment.
@@ -128,6 +153,6 @@ And run all tests with:
 
     $ npm test 
 
-## Contributers
+## Contributors
 
 Feel free to send a pull request if you wish to contribute.
