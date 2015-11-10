@@ -18,3 +18,81 @@ api.stats.playerMatches("Frankie")
         })
     });
 ```
+
+### Player Matches
+
+```js
+//TODO
+```
+
+### Arena Match By Id
+
+```js
+//TODO
+```
+
+### Warzone Match By Id
+
+```js
+//TODO
+```
+
+### Custom Match By Id
+
+```js
+//TODO
+```
+
+### Campaign Match By Id
+
+```js
+//TODO
+```
+
+### Service Record Arena
+
+```js
+//TODO
+```
+
+### Service Record Warzone
+
+```js
+//TODO
+```
+
+### Service Record Custom
+
+```js
+//TODO
+```
+
+### Service Record Campaign
+
+```js
+//TODO
+```
+
+### Service Records Arena
+
+```js
+//TODO
+```
+
+### Service Records Warzone
+
+```js
+//TODO
+```
+
+### Service Records Arena
+
+```js
+//TODO
+```
+
+### Service Records Warzone
+
+```js
+//TODO
+```

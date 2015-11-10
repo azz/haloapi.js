@@ -7,7 +7,7 @@ var HaloAPI = require("haloapi");
 var api = new HaloAPI('YOUR API KEY HERE');
 ```
 
-### emblemImage
+### Emblem Image
 
 Returns the link to players emblem image.
 ```js
@@ -21,7 +21,7 @@ api.profile.emblemImage({
 }).then(console.log);
 ```
 
-### spartanImage
+### Spartan Image
 
 Returns the link to the players emblem image.
 ```js
