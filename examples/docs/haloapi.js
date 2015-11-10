@@ -1,3 +1,13 @@
+// This package is a JavaScript client of the Halo 5 Developer's API [Beta], written in TypeScript (a superset of JavaScript) and transpiled into a Node JS module.
+
+// It provides one function for each endpoint, returning a promise. There are some additional functions that offer alternate access to some endpoints.
+
+// ## Links
+
+// [![GitHub](https://logo.clearbit.com/github.com)](https://github.com/DerFlatulator/haloapi.js "GitHub") 
+// [![NPM](https://logo.clearbit.com/npmjs.com)](https://www.npmjs.com/package/haloapi "NPM Package") 
+// [![Halo Waypoint](https://logo.clearbit.com/halowaypoint.com)](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts "Halo Waypoint Thread") 
+
 // ## Initialization
 
 // Create an instance of the API wrapper, providing your API key.
