@@ -50,6 +50,10 @@ describe("h5.metadata", function () {
             return expect(h5.metadata.gameVariantById(id))
                 .to.be.rejected;
         });
+        it("should immediately error with no id", function () {
+            return expect(h5.metadata.gameVariantById())
+                .to.be.rejectedWith("Invalid ID provided");
+        });
     });
     describe(".impulses()", function () {
         it("should succeed", function () {
@@ -71,6 +75,10 @@ describe("h5.metadata", function () {
             return expect(h5.metadata.mapVariantById(id))
                 .to.be.rejected;
         });
+        it("should immediately error with no id", function () {
+            return expect(h5.metadata.mapVariantById())
+                .to.be.rejectedWith("Invalid ID provided");
+        });
     });
     describe(".medals()", function () {
         it("should succeed", function () {
@@ -89,6 +97,10 @@ describe("h5.metadata", function () {
             var id = 'e4f549b2-90af-4dab-b2bc-11a46ea44103'; 
             return h5.metadata.requisitionById(id);
         });
+        it("should immediately error with no id", function () {
+            return expect(h5.metadata.requisitionById())
+                .to.be.rejectedWith("Invalid ID provided");
+        });
     });
     describe(".requisitionPackById()", function () {
         it("should succeed (reward req pack)", function () {
@@ -104,6 +116,10 @@ describe("h5.metadata", function () {
             return expect(h5.metadata.requisitionPackById(id))
                 .to.be.rejected;
         });
+        it("should immediately error with no id", function () {
+            return expect(h5.metadata.requisitionPackById())
+                .to.be.rejectedWith("Invalid ID provided");
+        });        
     });
     describe(".requisitionPacksPurchasable()", function () {
         var promise;

@@ -58,6 +58,7 @@ var HaloAPI = (function () {
     };
     /** @inheritdoc */
     HaloAPI.prototype.getImageURL = function (endpoint) {
+        var _this = this;
         var options = {
             url: this.host + endpoint,
             followRedirect: false,
@@ -73,6 +74,11 @@ var HaloAPI = (function () {
                 throw error.message;
             }
             else {
+                process.env.HALOAPI_DEBUG
+                    && console.log("error:", error.message, options.url);
+                if (error.statusCode == 429) {
+                    return _this.duplicateRequest("2", endpoint, false);
+                }
                 // console.info(error, response, body);
                 var response = error.response;
                 if (response.statusCode == 302)

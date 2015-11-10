@@ -1,10 +1,22 @@
-[![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi)
+[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.svg)](https://travis-ci.org/DerFlatulator/haloapi) 
+[![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi) 
+[![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)](https://www.npmjs.com/package/haloapi)
 
-# Halo API - JavaScript Binding (with TypeScript)
+# Halo API - JavaScript Binding
 
 This project is a statically typed JavaScript binding of the Halo 5 Developer's API using TypeScript.
 
+It provides one function for each endpoint, returning a promise. There are some additional functions that offer alternate access to some endpoints. 
+
 Using this project with your development IDE, such as WebStorm, Visual Studio or Atom, it will provide both an API and static type checking for what can be a complex entagnlement of statistics and metadata.
+
+Features:
+
+- One endpoint per function.
+- Built in retries when rate limited. 
+- Fully documented response typing.
+- Available on NPM.
+- Unit tested.
 
 ## How Do I Get Started?
 
@@ -22,6 +34,8 @@ Easy!
 
 If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
 
+Requires Node version 0.11 or later.
+
 ## What is TypeScript?
 
 TypeScript is a language developed by Microsoft in order to add static typing to the JavaScript programming language. While this project is written with TypeScript, it produces JavaScript that is readable and usable without even knowing that TypeScript exists.
@@ -30,79 +44,73 @@ To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
 
 ## Basic Usage
 
-Usage with plain old JavaScript
+Breif usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi/docco/haloapi.html)**.
+
+Usage with plain old JavaScript.
 
 Setup:
 
-    var HaloAPI = require('haloapi'); 
-    var h5 = new HaloAPI('YOUR API KEY');
+```javascript
+var HaloAPI = require('haloapi'); 
+var h5 = new HaloAPI('YOUR API KEY');
+```
 
 (If you've cloned this repo use `require('./js/index')`)
 
 Retreive all Weapons:
 
-    h5.metadata.weapons().then(function (weapons) {
-        weapons.forEach(function (weapon) {
-            console.log(weapon.name, '\n\t', weapon.description);
-        });
+```javascript
+h5.metadata.weapons().then(function (weapons) {
+    weapons.forEach(function (weapon) {
+        console.log(weapon.name, '\n\t', weapon.description);
     });
+});
+```
 
 Get my player's emblem:
 
-    h5.profile.emblemImage("Your Gamertag").then(function (url) { 
-        console.log(url); 
-    });
-
-Check if you've a higher max rank than your friend:
-
-    h5.stats.serviceRecordsArena([ "Your GT", "Their GT" ]).then(function (d) {  
-        function isBetter(a, b) {
-            return [
-                a.Result.ArenaStats.HighestCsrAttained, 
-                b.Result.ArenaStats.HighestCsrAttained
-              ].sort(function (_a, _b) {
-                // Do some fancy JS sorting... Rank, then Tier, then % to next tier.
-                var n = _b.DesignationId - _a.DesignationId;
-                if (n) return n;
-                n = _b.Tier - _a.Tier;
-                if (n) return n;
-                return _b.PercentToNextTier - _a.PercentToNextTier;
-            })[0] === a.Result.ArenaStats.HighestCsrAttained;
-        }
-        console.log(isBetter(d[0], d[1]) ? "You win" : "You lose");
-    });
+```javascript
+h5.profile.emblemImage("Your Gamertag").then(function (url) { 
+    console.log(url); 
+});
+```
 
 With **all** requests, you are returned a Promise. Basic promise usage is as follows:
 
-    h5.stats.playerMatches("Frankie")
-        .then(function (data) {
-            // success, iterate through your matches
-        })
-        .catch(function (error) {  
-            // uh oh, handle error here.
-        });
+```javascript
+h5.stats.playerMatches("Frankie")
+    .then(function (data) {
+        // success, iterate through your matches
+    })
+    .catch(function (error) {  
+        // uh oh, handle error here.
+    });
+```
 
 With ECMAScript2016 (ES7), you can do the following, which will await in a non-blocking manner:
 
-    var matches = await h5.stats.spartanImage("Frankie");    
+```javascript
+var matches = await h5.stats.spartanImage("Frankie");    
+```
 
 Using with TypeScript (completely optional)
-    
-    /// <reference path="ts/haloapi.d.ts"/>
-    import HaloAPI = require('haloapi');
-    var h5: IHaloAPI = new HaloAPI('YOUR API KEY');
 
-    h5.metadata.weapons().then((weapons: Weapons) => {
-        weapons.forEach((weapon: Weapon) => {
-            console.log(weapon.name, '\n\t', weapon.description);
-        });
+```typescript    
+/// <reference path="ts/haloapi.d.ts"/>
+import HaloAPI = require('haloapi');
+var h5: IHaloAPI = new HaloAPI('YOUR API KEY');
+
+h5.metadata.weapons().then((weapons: Weapons) => {
+    weapons.forEach((weapon: Weapon) => {
+        console.log(weapon.name, '\n\t', weapon.description);
     });
+});
+```
 
 ## TODO
 
-- Full usage documentation
+- Full typedoc documentation
 - Complete the TypeScript definitions for remaining stats endpoints.
-- Handle rate limiting
 
 ## Development
 

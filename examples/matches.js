@@ -1,3 +1,4 @@
+// Create an instance of the API, providing your API KEY
 var api = new (require("haloapi"))('YOUR API KEY HERE');
 api.stats.playerMatches("Frankie")
     .then(data => {
@@ -9,4 +10,4 @@ api.stats.playerMatches("Frankie")
     });
 
 // You can also try the await syntax: (uncomment below)
-// await api.profile.spartanImage("Frankie");
+await api.profile.spartanImage("Frankie");

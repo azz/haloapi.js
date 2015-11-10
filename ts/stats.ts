@@ -9,10 +9,10 @@ class Stats implements IStats {
     }
 
     /** @inheritdoc */
-    playerMatches(params: string | IPlayer): Promise<PlayerMatches> {
-        var _params: IPlayer = {player: null};
+    playerMatches(params: string | IMatchesParams): Promise<PlayerMatches> {
+        var _params: IMatchesParams = {player: null};
         if (typeof params === "object")           
-            _params = <IPlayer>params;
+            _params = <IMatchesParams>params;
         else
             _params = { player: <string>params };
         let endpoint = `/stats/${this.title}/players/${_params.player}/matches`;
@@ -104,7 +104,8 @@ class Stats implements IStats {
     }
 
     private serviceRecord<T>(gameMode: string, player: string): Promise<T> {
-        return this.serviceRecords<T>(gameMode, [ player ]);
+        return this.serviceRecords<T>(gameMode, [ player ])
+            .then(results => results[0]);
     }
 
     private serviceRecords<T>(gameMode: string, players: string[]): Promise<T> {

@@ -98,6 +98,13 @@ class HaloAPI implements IHaloAPI {
                 if (error.name === "RequestError") {
                     throw error.message;
                 } else {
+                    process.env.HALOAPI_DEBUG 
+                        && console.log("error:", error.message, options.url);
+                    
+                    if (error.statusCode == 429) {
+                        return this.duplicateRequest<url>("2", endpoint, false);
+                    }
+
                     // console.info(error, response, body);
                     var response = error.response;
                     if (response.statusCode == 302) 
