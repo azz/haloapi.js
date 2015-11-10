@@ -12,7 +12,7 @@ Using this project with your development IDE, such as WebStorm, Visual Studio or
 
 Features:
 
-- One endpoint per function.
+- One function per endpoint, with a handful of helper functions provided.
 - Built in retries when rate limited. 
 - Fully documented response typing.
 - Available on NPM.
