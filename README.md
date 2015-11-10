@@ -54,7 +54,7 @@ $ npm install haloapi
 
 Easy!
 
-If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/download/).
+If you don't have Node or NPM, go ahead and [install it](https://nodejs.org/en/download/).
 
 Requires Node version 0.11 or later.
 

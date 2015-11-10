@@ -8,6 +8,16 @@
 // [![NPM](https://logo.clearbit.com/npmjs.com)](https://www.npmjs.com/package/haloapi "NPM Package") 
 // [![Halo Waypoint](https://logo.clearbit.com/halowaypoint.com)](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts "Halo Waypoint Thread") 
 
+// ## Installation 
+
+// This project can be installed as a node module with
+
+$ npm install haloapi --save
+
+// If you don't have Node or NPM, go ahead and [install it](https://nodejs.org/en/download/).
+
+// Requires Node version `0.11` or later.
+
 // ## Initialization
 
 // Create an instance of the API wrapper, providing your API key.
