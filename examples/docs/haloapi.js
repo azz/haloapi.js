@@ -168,7 +168,7 @@ api.metadata.vehicles().then(console.log);
 
 // Get an array of all weapons in the game. 
 
-api.metadata.weapons();
+api.metadata.weapons().then(console.log);
 
 // ## Stats Endpoints
 

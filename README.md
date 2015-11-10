@@ -2,7 +2,7 @@
 [![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi) 
 [![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)](https://www.npmjs.com/package/haloapi)
 
-# Halo API - JavaScript Binding
+# Halo API  - JavaScript Binding
 
 This project is a statically typed JavaScript binding of the Halo 5 Developer's API using TypeScript.
 
@@ -44,7 +44,7 @@ To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
 
 ## Basic Usage
 
-Breif usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi/docco/haloapi.html)**.
+Breif usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi.js/docco/haloapi.html)**.
 
 Usage with plain old JavaScript.
 
