@@ -90,7 +90,7 @@ h5.stats.playerMatches("Frankie")
 With ECMAScript2016 (ES7), you can do the following, which will await in a non-blocking manner:
 
 ```javascript
-var matches = await h5.stats.spartanImage("Frankie");    
+var url = await h5.stats.spartanImage("Frankie");    
 ```
 
 Using with TypeScript (completely optional)
