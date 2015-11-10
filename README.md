@@ -8,7 +8,7 @@ This project is a statically typed JavaScript binding of the Halo 5 Developer's 
 
 It provides one function for each endpoint, returning a promise. There are some additional functions that offer alternate access to some endpoints. 
 
-Using this project with your development IDE, such as WebStorm, Visual Studio or Atom, it will provide both an API and static type checking for what can be a complex entagnlement of statistics and metadata.
+Using this project with your development IDE, such as WebStorm, Visual Studio or Atom, it will provide both an API and static type checking for what can be a complex entanglement of statistics and metadata.
 
 Features:
 
@@ -20,7 +20,7 @@ Features:
 
 ## How Do I Get Started?
 
-If you haven't aready grabbed a key, head to [developer.haloapi.com](https://developer.haloapi.com/), sign in, head to Products and grab a key. The documentation for the API itself is also availble there. 
+If you haven't already grabbed a key, head to [developer.haloapi.com](https://developer.haloapi.com/), sign in, head to Products and grab a key. The documentation for the API itself is also available there. 
 
 If you have any issues there are forums available [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics), and a thread for this particular binding [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts).
 
@@ -44,7 +44,7 @@ To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
 
 ## Basic Usage
 
-Breif usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi.js/docco/haloapi.html)**.
+Brief usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi.js/docco/haloapi.html)**.
 
 Usage with plain old JavaScript.
 
@@ -57,7 +57,7 @@ var h5 = new HaloAPI('YOUR API KEY');
 
 (If you've cloned this repo use `require('./js/index')`)
 
-Retreive all Weapons:
+Retrieve all Weapons:
 
 ```javascript
 h5.metadata.weapons().then(function (weapons) {
@@ -118,7 +118,7 @@ If you've modified the TypeScript sources, you'll need to regenerate the JS. Run
 
     $ npm run build  
 
-Documentation is currently being built with [docco](https://jashkenas.github.io/docco/). All files in the `examples/docs/` directory are converted to html files with docco and hosted at, e.g. `https://derflatulator.github.io/haloapi.js/docco/<filename>.html`. This is using GitHub page's feature (see branch `gh-pages`). The `npm run document` command will build these docs, but also some experimental TypeScript docs. If you are interested in sending a pull request with new docs, you may either send just the JS file and I can generate the docs, *or* follow these instructions carefully:
+Documentation is currently being built with [docco](https://jashkenas.github.io/docco/). All files in the `examples/docs/` directory are converted to html files with docco and hosted at, e.g. `https://derflatulator.github.io/haloapi.js/docco/<filename>.html`. This is using GitHub pages feature (see branch `gh-pages`). The `npm run document` command will build these docs, but also some experimental TypeScript docs. If you are interested in sending a pull request with new docs, you may either send just the JS file and I can generate the docs, *or* follow these instructions carefully:
 
 First time only:
 
