@@ -56,11 +56,11 @@ class Stats implements IStats {
     }
 
     /** @inheritdoc */
-    arenaMatchById(id: guid): Promise<any> {
+    arenaMatchById(id: guid): Promise<PGCRArena> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
-        return this.api.getJSON(`/stats/${this.title}/arena/matches/${id}`);
+        return this.api.getJSON<PGCRArena>(`/stats/${this.title}/arena/matches/${id}`);
     }
 
     /** @inheritdoc */

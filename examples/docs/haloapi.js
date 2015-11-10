@@ -4,10 +4,24 @@
 
 // ## Links
 
-// [![Documentation](http://typedoc.io/assets/images/logo-128.png)](https://derflatulator.github.io/haloapi.js/typedoc/ "Documentation")]
-// [![GitHub](https://logo.clearbit.com/github.com)](https://github.com/DerFlatulator/haloapi.js "GitHub") 
-// [![NPM](https://logo.clearbit.com/npmjs.com)](https://www.npmjs.com/package/haloapi "NPM Package") 
-// [![Halo Waypoint](https://logo.clearbit.com/halowaypoint.com)](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts "Halo Waypoint Thread") 
+// <table cellpadding=5>
+// <tr>
+// <td> [![NPM](https://logo.clearbit.com/npmjs.com)](https://www.npmjs.com/package/haloapi "NPM Package") </td>
+// <td> [![Documentation](http://typedoc.io/assets/images/logo-128.png)](https://derflatulator.github.io/haloapi.js/typedoc/ "Documentation") </td>
+// </tr>
+// <tr>
+// <td>[NPM Package](https://www.npmjs.com/package/haloapi)</td>
+// <td>[Full Documentation](https://derflatulator.github.io/haloapi.js/typedoc/)</td>
+// </tr>
+// <tr><td colspan=2></td></tr>
+// <tr>
+// <td>[![GitHub](https://logo.clearbit.com/github.com)](https://github.com/DerFlatulator/haloapi.js "GitHub") </td>
+// <td>[![Halo Waypoint](https://logo.clearbit.com/halowaypoint.com)](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts "Halo Waypoint Thread") </td>
+// </tr>
+// <tr>
+// <td>[GitHub Repository](https://github.com/DerFlatulator/haloapi.js)</td>
+// <td>[Waypoint Thread](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts)</td>
+// </table>
 
 // ## Installation 
 
