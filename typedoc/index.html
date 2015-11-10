@@ -8097,7 +8097,7 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 						<a name="_stats_.stats.arenamatchbyid" class="tsd-anchor"></a>
 						<h3>arena<wbr>Match<wbr>ById</h3>
 						<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-							<li class="tsd-signature tsd-kind-icon">arena<wbr>Match<wbr>ById<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><a href="index.html#_haloapi_d_.guid" class="tsd-signature-type">guid</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+							<li class="tsd-signature tsd-kind-icon">arena<wbr>Match<wbr>ById<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><a href="index.html#_haloapi_d_.guid" class="tsd-signature-type">guid</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#_stats_pgcrarena_d_.pgcrarena" class="tsd-signature-type">PGCRArena</a><span class="tsd-signature-symbol">&gt;</span></li>
 						</ul>
 						<ul class="tsd-descriptions">
 							<li class="tsd-description">
@@ -8124,7 +8124,7 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 										<h5>id: <a href="index.html#_haloapi_d_.guid" class="tsd-signature-type">guid</a></h5>
 									</li>
 								</ul>
-								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="index.html#_stats_pgcrarena_d_.pgcrarena" class="tsd-signature-type">PGCRArena</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							</li>
 						</ul>
 					</section>
@@ -8597,6 +8597,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L45">stats/PGCRArena.d.ts:45</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The CSR value. Zero for normal designations.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.csrstate.designationid" class="tsd-anchor"></a>
@@ -8607,6 +8612,13 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L42">stats/PGCRArena.d.ts:42</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The Designation of the CSR. Options are:
+									1 through 5: Normal designations
+								6 and 7: Semi-pro and Pro respectively</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.csrstate.percenttonexttier" class="tsd-anchor"></a>
@@ -8617,6 +8629,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L48">stats/PGCRArena.d.ts:48</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The percentage of progress towards the next CSR tier.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.csrstate.rank" class="tsd-anchor"></a>
@@ -8627,6 +8644,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L51">stats/PGCRArena.d.ts:51</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>If the CSR is Semi-pro or Pro, the player&#39;s leaderboard ranking.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.csrstate.tier" class="tsd-anchor"></a>
@@ -8637,6 +8659,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L37">stats/PGCRArena.d.ts:37</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The CSR tier.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -8657,14 +8684,29 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L119">stats/PGCRArena.d.ts:119</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The enemy this entry references</p>
+							</div>
+						</div>
 						<div class="tsd-type-declaration">
 							<h4>Type declaration</h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
 									<h5>Attachments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The attachments (variants) for the enemy.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Base<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The Base ID for the enemy.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -8678,6 +8720,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L128">stats/PGCRArena.d.ts:128</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of kills on the enemy by the player</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -8698,6 +8745,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L165">stats/PGCRArena.d.ts:165</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of times the Impuse was earned.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.impulsecount.id" class="tsd-anchor"></a>
@@ -8708,6 +8760,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L162">stats/PGCRArena.d.ts:162</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the Impulse. Impulses are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -8728,6 +8785,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L114">stats/PGCRArena.d.ts:114</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of times the Medal was earned.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.medalaward.medalid" class="tsd-anchor"></a>
@@ -8738,6 +8800,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L111">stats/PGCRArena.d.ts:111</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the Medal. Medals are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -8758,6 +8825,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L86">stats/PGCRArena.d.ts:86</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The gamertag of the opponent that killed the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.opponentdetails.totalkills-1" class="tsd-anchor"></a>
@@ -8768,6 +8840,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L89">stats/PGCRArena.d.ts:89</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of times the opponent killed the player.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -8788,6 +8865,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L474">stats/PGCRArena.d.ts:474</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the game base variant for this match. Game base variants are available via
+								the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.gamevariantid" class="tsd-anchor"></a>
@@ -8798,6 +8881,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L464">stats/PGCRArena.d.ts:464</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The variant of the game for this match. Game variants are available via the Metadata
+								API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.ismatchover" class="tsd-anchor"></a>
@@ -8808,6 +8897,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L453">stats/PGCRArena.d.ts:453</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>the match is in-progress, but the behavior for incomplete matches in undefined.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.isteamgame" class="tsd-anchor"></a>
@@ -8818,6 +8912,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L477">stats/PGCRArena.d.ts:477</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Whether this was a team-based game or not.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.mapid" class="tsd-anchor"></a>
@@ -8828,6 +8927,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L470">stats/PGCRArena.d.ts:470</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the base map for this match. Maps are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.mapvariantid" class="tsd-anchor"></a>
@@ -8838,6 +8942,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L460">stats/PGCRArena.d.ts:460</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The variant of the map for this match. Map variants are available via the Metadata
+								API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.playerstats" class="tsd-anchor"></a>
@@ -8848,6 +8958,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L445">stats/PGCRArena.d.ts:445</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>A list of stats for each player who was present in the match.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.playlistid" class="tsd-anchor"></a>
@@ -8858,6 +8973,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L467">stats/PGCRArena.d.ts:467</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The playlist ID of the match. Playlists are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.teamstats" class="tsd-anchor"></a>
@@ -8868,6 +8988,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L449">stats/PGCRArena.d.ts:449</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>A list of stats for each team who in the match. Note that in Free For All modes,
+								there is an entry for every player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.pgcrarena.totalduration" class="tsd-anchor"></a>
@@ -8878,6 +9004,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L456">stats/PGCRArena.d.ts:456</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The length of the match. This is expressed as an ISO 8601 Duration.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -8898,6 +9029,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L273">stats/PGCRArena.d.ts:273</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s average lifetime.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.creditsearned" class="tsd-anchor"></a>
@@ -8908,26 +9044,74 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L214">stats/PGCRArena.d.ts:214</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Details on any credits the player may have earned from playing this match.</p>
+							</div>
+						</div>
 						<div class="tsd-type-declaration">
 							<h4>Type declaration</h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
 									<h5>Boost<wbr>Amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The portion of credits earned due to the boost card the user applied</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Player<wbr>Rank<wbr>Amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The portion of credits earned due to the player&#39;s team-agnostic rank in the
+											match.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Result<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Indicates how the credits result was arrived at. Options are:
+												Credits Disabled In Playlist = 0,
+												Player Did Not Finish = 1,
+												Credits Earned = 2
+												Credits Disabled In Playlist: TotalCreditsEarned is zero because this playlist
+												has credits disabled.
+												Player Did Not Finish: Credits are enabled in this playlist, but
+												TotalCreditsEarned is zero because the player did not finish the match.
+												Credits Earned: Credits are enabled in this playlist and the player completed
+												the match, so the credits formula was successfully evaluated. The fields below
+												provide the client with the values used in the formula. Note: That if we used
+												one or more default values, we still return NormalResult. The fields below
+											will confirm the actual values used.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Spartan<wbr>Rank<wbr>Modifier<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The scalar applied to the credits earned based on the player&#39;s Spartan Rank.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Time<wbr>Played<wbr>Amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The portion of credits earned due to the time the player played in the match.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Total<wbr>Credits<wbr>Earned<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The total number of credits the player earned from playing this match.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -8941,6 +9125,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L179">stats/PGCRArena.d.ts:179</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The Competitive Skill Ranking (CSR) of the player after the match ended. If the
+								player is still in measurement matches, this field is null.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.dnf" class="tsd-anchor"></a>
@@ -8951,6 +9141,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L270">stats/PGCRArena.d.ts:270</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Indicates whether the player was present in the match when it ended.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.destroyedenemyvehicles" class="tsd-anchor"></a>
@@ -8961,6 +9156,16 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L394">stats/PGCRArena.d.ts:394</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>List of enemy vehicles destroyed. Vehicles are available via the Metadata API.</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>note</dt>
+								<dd><p>this stat measures enemy vehicles, not any vehicle destruction.</p>
+								</dd>
+							</dl>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.enemykills" class="tsd-anchor"></a>
@@ -8971,6 +9176,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L398">stats/PGCRArena.d.ts:398</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>List of enemies killed, per enemy type. Enemies are available via the Metadata
+								API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.flexiblestats" class="tsd-anchor"></a>
@@ -8981,20 +9192,46 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L199">stats/PGCRArena.d.ts:199</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The game base variant specific stats for this match. Flexible stats are
+								available via the Metadata API.</p>
+							</div>
+						</div>
 						<div class="tsd-type-declaration">
 							<h4>Type declaration</h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
 									<h5>Impulse<wbr>Stat<wbr>Counts<span class="tsd-signature-symbol">: </span><a href="index.html#_stats_pgcrarena_d_.statcount" class="tsd-signature-type">StatCount</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The set of flexible stats that are derived from impulse events.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Impulse<wbr>Timelapses<span class="tsd-signature-symbol">: </span><a href="index.html#_stats_pgcrarena_d_.timelapse" class="tsd-signature-type">Timelapse</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The set of flexible stats that are derived from impulse time lapses.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Medal<wbr>Stat<wbr>Counts<span class="tsd-signature-symbol">: </span><a href="index.html#_stats_pgcrarena_d_.statcount" class="tsd-signature-type">StatCount</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The set of flexible stats that are derived from medal events.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Medal<wbr>Timelapses<span class="tsd-signature-symbol">: </span><a href="index.html#_stats_pgcrarena_d_.timelapse" class="tsd-signature-type">Timelapse</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The set of flexible stats that are derived from medal time lapses.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -9008,6 +9245,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L404">stats/PGCRArena.d.ts:404</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The set of Impulses (invisible Medals) earned by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.killedbyopponentdetails" class="tsd-anchor"></a>
@@ -9018,6 +9260,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L195">stats/PGCRArena.d.ts:195</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of times the player was killed by each opponent. If the player was
+								not killed by an opponent, there will be no entry for that opponent.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.killedopponentdetails" class="tsd-anchor"></a>
@@ -9028,6 +9276,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L191">stats/PGCRArena.d.ts:191</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of times the player killed each opponent. If the player did not kill
+								an opponent, there will be no entry for that opponent.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.measurementmatchesleft" class="tsd-anchor"></a>
@@ -9038,6 +9292,13 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L184">stats/PGCRArena.d.ts:184</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s measurement matches left. If this field is greater than zero, then
+									the player will not have a CSR yet. If the player finished the match, this match
+								is included in this count.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.medalawards" class="tsd-anchor"></a>
@@ -9048,6 +9309,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L390">stats/PGCRArena.d.ts:390</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The set of Medals earned by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.metacommendationdeltas" class="tsd-anchor"></a>
@@ -9058,6 +9324,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L249">stats/PGCRArena.d.ts:249</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s progress towards meta commendations. Commendations that had no
+								progress earned this match will not be returned.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.player" class="tsd-anchor"></a>
@@ -9073,6 +9345,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
 									<h5>Gamertag<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The player&#39;s gamertag.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -9086,6 +9363,13 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L175">stats/PGCRArena.d.ts:175</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The Competitive Skill Ranking (CSR) of the player before the match started. If
+									the player is still in measurement matches, this field is null. If the player
+								finished the last measurement match this match, this field is still null.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.progressivecommendationdeltas" class="tsd-anchor"></a>
@@ -9096,6 +9380,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L253">stats/PGCRArena.d.ts:253</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s progress towards progressive commendations. Commendations that had
+								no progress earned this match will not be returned.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.rank-1" class="tsd-anchor"></a>
@@ -9106,6 +9396,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L267">stats/PGCRArena.d.ts:267</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s team-agnostic ranking.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.rewardsets" class="tsd-anchor"></a>
@@ -9116,6 +9411,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L187">stats/PGCRArena.d.ts:187</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The set of rewards that the player got in this match.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.teamid" class="tsd-anchor"></a>
@@ -9126,6 +9426,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L264">stats/PGCRArena.d.ts:264</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the team that the player was on when the match ended.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalassassinations" class="tsd-anchor"></a>
@@ -9136,6 +9441,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L335">stats/PGCRArena.d.ts:335</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of assassinations by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalassists" class="tsd-anchor"></a>
@@ -9146,6 +9456,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L369">stats/PGCRArena.d.ts:369</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of assists by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totaldeaths" class="tsd-anchor"></a>
@@ -9156,6 +9471,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L366">stats/PGCRArena.d.ts:366</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of deaths by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgamescompleted" class="tsd-anchor"></a>
@@ -9166,6 +9486,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L372">stats/PGCRArena.d.ts:372</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Not used.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgameslost" class="tsd-anchor"></a>
@@ -9176,6 +9501,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L378">stats/PGCRArena.d.ts:378</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Not used.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgamestied" class="tsd-anchor"></a>
@@ -9186,6 +9516,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L381">stats/PGCRArena.d.ts:381</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Not used.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgameswon" class="tsd-anchor"></a>
@@ -9196,6 +9531,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L375">stats/PGCRArena.d.ts:375</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Not used.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgrenadedamage" class="tsd-anchor"></a>
@@ -9206,6 +9546,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L350">stats/PGCRArena.d.ts:350</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total grenade damage dealt by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgrenadekills" class="tsd-anchor"></a>
@@ -9216,6 +9561,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L387">stats/PGCRArena.d.ts:387</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of grenade kills by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgroundpounddamage" class="tsd-anchor"></a>
@@ -9226,6 +9576,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L341">stats/PGCRArena.d.ts:341</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total ground pound damage dealt by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalgroundpoundkills" class="tsd-anchor"></a>
@@ -9236,6 +9591,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L338">stats/PGCRArena.d.ts:338</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of ground pound kills by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalheadshots" class="tsd-anchor"></a>
@@ -9246,6 +9606,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L287">stats/PGCRArena.d.ts:287</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of headshots done by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalkills-2" class="tsd-anchor"></a>
@@ -9256,6 +9621,13 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L284">stats/PGCRArena.d.ts:284</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of kills done by the player. This includes melee kills, shoulder
+									bash kills and Spartan charge kills, all power weapons, AI kills and vehicle
+								destructions.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalmeleedamage" class="tsd-anchor"></a>
@@ -9266,6 +9638,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L332">stats/PGCRArena.d.ts:332</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total melee damage dealt by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalmeleekills" class="tsd-anchor"></a>
@@ -9276,6 +9653,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L329">stats/PGCRArena.d.ts:329</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of melee kills by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalpowerweapondamage" class="tsd-anchor"></a>
@@ -9286,6 +9668,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L356">stats/PGCRArena.d.ts:356</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total power weapon damage dealt by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalpowerweapongrabs" class="tsd-anchor"></a>
@@ -9296,6 +9683,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L359">stats/PGCRArena.d.ts:359</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of power weapon grabs by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalpowerweaponkills" class="tsd-anchor"></a>
@@ -9306,6 +9698,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L353">stats/PGCRArena.d.ts:353</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of power weapon kills by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalpowerweaponpossessiontime" class="tsd-anchor"></a>
@@ -9316,6 +9713,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L363">stats/PGCRArena.d.ts:363</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total power weapon possession by the player. This is expressed as an ISO 8601
+								Duration.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalshotsfired" class="tsd-anchor"></a>
@@ -9326,6 +9729,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L293">stats/PGCRArena.d.ts:293</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of shots fired by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalshotslanded" class="tsd-anchor"></a>
@@ -9336,6 +9744,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L296">stats/PGCRArena.d.ts:296</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of shots landed by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalshoulderbashdamage" class="tsd-anchor"></a>
@@ -9346,6 +9759,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L347">stats/PGCRArena.d.ts:347</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total shoulder bash damage dealt by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalshoulderbashkills" class="tsd-anchor"></a>
@@ -9356,6 +9774,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L344">stats/PGCRArena.d.ts:344</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of shoulder bash kills by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalspartankills" class="tsd-anchor"></a>
@@ -9366,6 +9789,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L407">stats/PGCRArena.d.ts:407</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total number of Spartan kills by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totaltimeplayed" class="tsd-anchor"></a>
@@ -9376,6 +9804,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L384">stats/PGCRArena.d.ts:384</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total timed played in this match by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.totalweapondamage" class="tsd-anchor"></a>
@@ -9386,6 +9819,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L290">stats/PGCRArena.d.ts:290</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Total weapon damage dealt by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.weaponstats" class="tsd-anchor"></a>
@@ -9396,6 +9834,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L401">stats/PGCRArena.d.ts:401</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The set of weapons (weapons and vehicles included) used by the player.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.playerstat.weaponwithmostkills" class="tsd-anchor"></a>
@@ -9406,35 +9849,81 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L299">stats/PGCRArena.d.ts:299</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The weapon the player used to get the most kills this match.</p>
+							</div>
+						</div>
 						<div class="tsd-type-declaration">
 							<h4>Type declaration</h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
 									<h5>Total<wbr>Damage<wbr>Dealt<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The total damage dealt for this weapon.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Total<wbr>Headshots<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The number of headshots for this weapon.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Total<wbr>Kills<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The number of kills for this weapon.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Total<wbr>Possession<wbr>Time<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The total possession time for this weapon. This is expressed as an ISO 8601
+											Duration.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Total<wbr>Shots<wbr>Fired<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The number of shots fired for this weapon.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Total<wbr>Shots<wbr>Landed<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The number of shots landed for this weapon.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Weapon<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>Attachments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+											<div class="tsd-comment tsd-typography">
+												<div class="lead">
+													<p>Any attachments the weapon had.</p>
+												</div>
+											</div>
 										</li>
 										<li class="tsd-parameter">
 											<h5>Stock<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+											<div class="tsd-comment tsd-typography">
+												<div class="lead">
+													<p>The ID of the weapon. Weapons are available via the Metadata API.</p>
+												</div>
+											</div>
 										</li>
 									</ul>
 								</li>
@@ -9450,6 +9939,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L170">stats/PGCRArena.d.ts:170</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The experience information for the player in this match.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -9470,6 +9964,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L76">stats/PGCRArena.d.ts:76</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>If the Reward Source is a Commendation, this is the ID of the level of the
+								commendation that earned the reward.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.rewardset.commendationsource" class="tsd-anchor"></a>
@@ -9480,6 +9980,13 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L81">stats/PGCRArena.d.ts:81</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>If the Reward Source is a Meta Commendation or Progress Commendation, this
+									is the ID of the Meta Commendation or Progress Commendation, respectively,
+								that earned the reward. Commendations are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.rewardset.rewardset-1" class="tsd-anchor"></a>
@@ -9490,6 +9997,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L56">stats/PGCRArena.d.ts:56</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the reward.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.rewardset.rewardsourcetype" class="tsd-anchor"></a>
@@ -9500,6 +10012,15 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L63">stats/PGCRArena.d.ts:63</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The source of the reward. Options are:
+									None = 0,
+									Meta Commendation = 1,
+									Progress Commendation = 2,
+								Spartan Rank = 3</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.rewardset.spartanranksource" class="tsd-anchor"></a>
@@ -9510,6 +10031,17 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L72">stats/PGCRArena.d.ts:72</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>If the Reward Source is Spartan Rank, this value is set to the Spartan Rank
+									the player acquired that led to this reward being granted. Note: Unlike the
+									commendations fields in this structure, this is not the GUID to a Spartan
+									Rank content item. That&#39;s because the Spartan Rank content item itself does
+									not detail what specific Spartan Rank it pertains to - this information is
+									derived from the list of Spartan Ranks as a whole. Spartan Ranks are
+								available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -9530,6 +10062,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L415">stats/PGCRArena.d.ts:415</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The end rank for the team this round.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.roundstat.roundnumber" class="tsd-anchor"></a>
@@ -9540,6 +10077,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L412">stats/PGCRArena.d.ts:412</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The round number this entry pertains to.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.roundstat.score" class="tsd-anchor"></a>
@@ -9550,6 +10092,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L418">stats/PGCRArena.d.ts:418</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The end score for the team this round.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -9570,6 +10117,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L97">stats/PGCRArena.d.ts:97</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of times this flexible stat was earned.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.statcount.id-1" class="tsd-anchor"></a>
@@ -9580,6 +10132,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L94">stats/PGCRArena.d.ts:94</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the flexible stat.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -9600,6 +10157,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L436">stats/PGCRArena.d.ts:436</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The team&#39;s rank at the end of the match.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.teamstat.roundstats" class="tsd-anchor"></a>
@@ -9610,6 +10172,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L439">stats/PGCRArena.d.ts:439</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The set of round stats for the team.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.teamstat.score-1" class="tsd-anchor"></a>
@@ -9620,6 +10187,17 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L433">stats/PGCRArena.d.ts:433</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The team&#39;s score at the end of the match. The way the score is determined is
+									based off the game base variant being played:
+									Breakout = number of rounds won,
+									CTF = number of flag captures,
+									Slayer = number of kills,
+									Strongholds = number of points,
+								Warzone = number of points.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.teamstat.teamid-1" class="tsd-anchor"></a>
@@ -9630,6 +10208,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L424">stats/PGCRArena.d.ts:424</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID for the team.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -9650,6 +10233,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L102">stats/PGCRArena.d.ts:102</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the flexible stat.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.timelapse.timelapse-1" class="tsd-anchor"></a>
@@ -9660,6 +10248,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L106">stats/PGCRArena.d.ts:106</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The amount of time the flexible stat was earned for. This is expressed as
+								an ISO 8601 Duration.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -9680,6 +10274,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L153">stats/PGCRArena.d.ts:153</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The total damage dealt for this weapon.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.weaponstat.totalheadshots-2" class="tsd-anchor"></a>
@@ -9690,6 +10289,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L147">stats/PGCRArena.d.ts:147</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of headshots for this weapon.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.weaponstat.totalkills-4" class="tsd-anchor"></a>
@@ -9700,6 +10304,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L150">stats/PGCRArena.d.ts:150</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of kills for this weapon.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.weaponstat.totalpossessiontime-1" class="tsd-anchor"></a>
@@ -9710,6 +10319,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L157">stats/PGCRArena.d.ts:157</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Duration.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.weaponstat.totalshotsfired-2" class="tsd-anchor"></a>
@@ -9720,6 +10334,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L141">stats/PGCRArena.d.ts:141</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of shots fired for this weapon.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.weaponstat.totalshotslanded-2" class="tsd-anchor"></a>
@@ -9730,6 +10349,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L144">stats/PGCRArena.d.ts:144</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of shots landed for this weapon.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.weaponstat.weaponid-1" class="tsd-anchor"></a>
@@ -9745,9 +10369,19 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
 									<h5>Attachments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Any attachments the weapon had.</p>
+										</div>
+									</div>
 								</li>
 								<li class="tsd-parameter">
 									<h5>Stock<wbr>Id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The ID of the weapon. Weapons are available via the Metadata API.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -9771,6 +10405,13 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L32">stats/PGCRArena.d.ts:32</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The amount of XP the player earned if they played a boost card for this match,
+									and the boost card criteria was met. This is a fixed amount of XP, not a
+								/** multiplier.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.performancexp" class="tsd-anchor"></a>
@@ -9781,6 +10422,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L24">stats/PGCRArena.d.ts:24</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>concluded.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.playerrankxpaward" class="tsd-anchor"></a>
@@ -9791,6 +10437,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L27">stats/PGCRArena.d.ts:27</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The XP awarded to the player for their team-agnostic rank.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.playertimeperformancexpaward" class="tsd-anchor"></a>
@@ -9801,6 +10452,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L20">stats/PGCRArena.d.ts:20</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>time was spent in-match.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.prevspartanrank" class="tsd-anchor"></a>
@@ -9811,6 +10467,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L3">stats/PGCRArena.d.ts:3</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s Spartan Rank before the match started.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.prevtotalxp" class="tsd-anchor"></a>
@@ -9821,6 +10482,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L9">stats/PGCRArena.d.ts:9</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s XP before the match started.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.spartanrank" class="tsd-anchor"></a>
@@ -9831,6 +10497,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L6">stats/PGCRArena.d.ts:6</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s Spartan Rank after the match ended.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.spartanrankmatchxpscalar" class="tsd-anchor"></a>
@@ -9841,6 +10512,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L16">stats/PGCRArena.d.ts:16</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>the match ended.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_pgcrarena_d_.xpinfo-1.totalxp" class="tsd-anchor"></a>
@@ -9851,6 +10527,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PGCRArena.d.ts#L12">stats/PGCRArena.d.ts:12</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s XP after the match ended.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 			</section>
@@ -9881,6 +10562,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L81">stats/PlayerMatches.d.ts:81</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the game base variant for this match. Game base variants are available
+								via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.gamevariant" class="tsd-anchor"></a>
@@ -9891,6 +10578,15 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L88">stats/PlayerMatches.d.ts:88</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The variant of the game for this match. There are two sources of game variants:
+									official game variants available via the Metadata API and user-generated game
+									variants which are not available via the APIs currently. If the game variant for
+									this match was an official game variant, then the structure will be as
+								documented here. This will be null for campaign games.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.hopperid" class="tsd-anchor"></a>
@@ -9901,6 +10597,17 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L67">stats/PlayerMatches.d.ts:67</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the playlist (aka Hopper) for the match.
+									Hoppers are used in Arena and Warzone. In Arena, they function just as you would
+									expect, similar to previous Halo titles. Warzone uses hoppers as well. There
+									will be multiple Warzone hoppers which contain a rotating playlist of scenarios
+									to play.
+									Null for campaign &amp; custom games.
+								Playlists are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.id" class="tsd-anchor"></a>
@@ -9911,6 +10618,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L58">stats/PlayerMatches.d.ts:58</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Links: links;</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.isteamgame" class="tsd-anchor"></a>
@@ -9921,6 +10633,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L111">stats/PlayerMatches.d.ts:111</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Whether this was a team-based game or not (e.g. free-for-all).</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.mapid" class="tsd-anchor"></a>
@@ -9931,6 +10648,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L70">stats/PlayerMatches.d.ts:70</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the base map for this match. Maps are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.mapvariant" class="tsd-anchor"></a>
@@ -9941,6 +10663,15 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L77">stats/PlayerMatches.d.ts:77</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The variant of the map for this match. There are two sources of map variants:
+									official map variants available via the Metadata API and user-generated map
+									variants which are not available via the APIs currently. If the map variant for
+									this match was an official map variant, then the structure will be as documented
+								here. This will be null for campaign games.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.matchcompleteddate" class="tsd-anchor"></a>
@@ -9951,6 +10682,15 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L98">stats/PlayerMatches.d.ts:98</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The date and time when match ended. Note that this is different than the
+									processing date, once matches end they typically take a small amount of time to
+									process. The processing date is not available through this API. The time
+									component of this date is always set to 00:00:00. This is expressed as an ISO
+								8601 combined Date and Time.</p>
+							</div>
+						</div>
 						<div class="tsd-type-declaration">
 							<h4>Type declaration</h4>
 							<ul class="tsd-parameters">
@@ -9969,6 +10709,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L91">stats/PlayerMatches.d.ts:91</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The length of the match. This is expressed as an ISO 8601 Duration.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.players" class="tsd-anchor"></a>
@@ -9979,6 +10724,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L108">stats/PlayerMatches.d.ts:108</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>This field contains the player&#39;s data. This will only contain data for the
+								player specified in the request.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.match.teams" class="tsd-anchor"></a>
@@ -9989,6 +10740,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L104">stats/PlayerMatches.d.ts:104</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Provides team data. This list contains all team that Won or Tied. Losing teams
+								are not included. This list is empty for campaign games.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -10009,6 +10766,16 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L34">stats/PlayerMatches.d.ts:34</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The game mode applicable to this match. Options are:
+									Error = 0,
+									Arena = 1,
+									Campaign = 2,
+									Custom = 3,
+								Warzone = 4.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchid.matchid-1" class="tsd-anchor"></a>
@@ -10019,6 +10786,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L26">stats/PlayerMatches.d.ts:26</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID for this match. More match details are available via the applicable
+								Post Game Carnage Report endpoint.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -10044,6 +10817,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter">
 									<h5>Gamertag<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The player&#39;s gamertag.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 						</div>
@@ -10057,6 +10835,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L149">stats/PlayerMatches.d.ts:149</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The player&#39;s team-agnostic ranking in this match.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchplayer.result" class="tsd-anchor"></a>
@@ -10067,6 +10850,29 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L170">stats/PlayerMatches.d.ts:170</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Indicates what result the player received at the conclusion of the match.
+									Options are:
+									Did Not Finish = 0,
+									Lost = 1,
+									Tied = 2,
+									Won = 3.
+									Did Not Finish: The player was not present when the match ended.
+									Lost: The player was on a team that was assigned a loss, typically this is
+									when a team does not have rank = 1.
+									Won: The player was on the team that was assigned the win, typically this is
+									the team that has rank = 1.
+									Tied: The player was on the team that was awarded a tie. Typically this is
+									when the player is on the team with rank = 1, and there is at least one
+									other team with rank = 1. Ties are only for rank = 1 teams. Consider the
+									scenario when exactly one team is rank = 1, and two teams are rank = 2.
+									Players on the rank=1 team will have Won; players on the rank = 2 teams
+									will have Lost. For ties, this documentation states &#39;typically&#39; because
+									the game may have unique rules for multi-team and FFA scenarios, in which
+								multiple teams are awarded a win.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchplayer.teamid" class="tsd-anchor"></a>
@@ -10077,6 +10883,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L146">stats/PlayerMatches.d.ts:146</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the team that the player was on when the match ended. Zero for
+								campaign games.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchplayer.totalassists" class="tsd-anchor"></a>
@@ -10087,6 +10899,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L181">stats/PlayerMatches.d.ts:181</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of assists credited to the player during the match. This includes
+								other Spartans and Enemy AI.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchplayer.totaldeaths" class="tsd-anchor"></a>
@@ -10097,6 +10915,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L177">stats/PlayerMatches.d.ts:177</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of times this player died during the match.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchplayer.totalkills" class="tsd-anchor"></a>
@@ -10107,6 +10930,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L174">stats/PlayerMatches.d.ts:174</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>other Spartans and Enemy AI.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -10127,6 +10955,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L120">stats/PlayerMatches.d.ts:120</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchteam.rank-1" class="tsd-anchor"></a>
@@ -10137,6 +10970,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L132">stats/PlayerMatches.d.ts:132</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The team&#39;s rank at the end of the match.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.matchteam.score" class="tsd-anchor"></a>
@@ -10147,6 +10985,17 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L129">stats/PlayerMatches.d.ts:129</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The team&#39;s score at the end of the match. The way the score is determined is
+									based off the game base variant being played:
+									Breakout = number of rounds won,
+									CTF = number of flag captures,
+									Slayer = number of kills,
+									Strongholds = number of points,
+								Warzone = number of points.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
@@ -10167,6 +11016,14 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L12">stats/PlayerMatches.d.ts:12</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of results that the service attempted to retrieve to satisfy this
+									request. Normally this value is equal to the count parameter. If the client
+									specified a count parameter greater than the maximum allowed, this value contains
+								the maximum allowed amount.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.paginatedresponse.resultcount" class="tsd-anchor"></a>
@@ -10177,6 +11034,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L16">stats/PlayerMatches.d.ts:16</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The number of results that are actually being returned in this response. This field
+								is named ResultCount to avoid confusion with Count.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.paginatedresponse.results" class="tsd-anchor"></a>
@@ -10187,6 +11050,12 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L20">stats/PlayerMatches.d.ts:20</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>A list of recent matches. Matches are listed in chronological order with the most
+								recently started match first.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.paginatedresponse.start" class="tsd-anchor"></a>
@@ -10197,6 +11066,13 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L6">stats/PlayerMatches.d.ts:6</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The starting point that was used. When the start query string parameter is
+									specified, this value is identical. When start is omitted, the default value is
+								returned.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
@@ -10217,6 +11093,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L51">stats/PlayerMatches.d.ts:51</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The owner. Usually set to null.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.resource.ownertype" class="tsd-anchor"></a>
@@ -10227,6 +11108,14 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L48">stats/PlayerMatches.d.ts:48</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The source of the map variant. Options are:
+									Unknown = 0
+									User-generated = 1 and 2,
+								Official = 3.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.resource.resourceid" class="tsd-anchor"></a>
@@ -10237,6 +11126,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L42">stats/PlayerMatches.d.ts:42</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The ID of the map variant. Game/Map variants are available via the Metadata API.</p>
+							</div>
+						</div>
 					</section>
 					<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 						<a name="_stats_playermatches_d_.resource.resourcetype" class="tsd-anchor"></a>
@@ -10247,6 +11141,11 @@ input[type=checkbox]:checked + .tsd-widget:before { background-position: -160px 
 								<li>Defined in <a href="https://github.com/DerFlatulator/halo5api/blob/master/ts/stats/PlayerMatches.d.ts#L39">stats/PlayerMatches.d.ts:39</a></li>
 							</ul>
 						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>The resource type. 3 indicates map variant. 2 indicates game variant.</p>
+							</div>
+						</div>
 					</section>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
