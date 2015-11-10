@@ -108,8 +108,9 @@ h5.metadata.weapons().then((weapons: Weapons) => {
 ```
 
 ## TODO
-
-- Full typedoc documentation
+- Set up caching.
+- Integrate with [haloapi-schema](https://github.com/DerFlatulator/haloapi-schema).
+- Host full TypeDoc documentation.
 - Complete the TypeScript definitions for remaining stats endpoints.
 
 ## Development
