@@ -1,16 +1,18 @@
-[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.svg)](https://travis-ci.org/DerFlatulator/haloapi) 
-[![npm version](https://badge.fury.io/js/haloapi.svg)](https://badge.fury.io/js/haloapi) 
-[![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)](https://www.npmjs.com/package/haloapi)
+[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.svg)][ci-server]
+[![npm version](https://badge.fury.io/js/haloapi.svg)][npm-package] 
+[![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)][npm-package]
 
-# Halo API  - JavaScript Binding
+# Halo API  - JavaScript Client
 
-This project is a statically typed JavaScript binding of the Halo 5 Developer's API using TypeScript.
+This package is a JavaScript client of the Halo 5 Developer's API [Beta], written in TypeScript (a superset of JavaScript) and transpiled into a Node JS module. 
 
 It provides one function for each endpoint, returning a promise. There are some additional functions that offer alternate access to some endpoints. 
 
 Using this project with your development IDE, such as WebStorm, Visual Studio or Atom, it will provide both an API and static type checking for what can be a complex entanglement of statistics and metadata.
 
-Features:
+## About This Package
+
+### Features
 
 - One function per endpoint, with a handful of helper functions provided.
 - Built in retries when rate limited. 
@@ -18,17 +20,37 @@ Features:
 - Available on NPM.
 - Unit tested.
 
-## How Do I Get Started?
+### How Do I Get Started?
 
-If you haven't already grabbed a key, head to [developer.haloapi.com](https://developer.haloapi.com/), sign in, head to Products and grab a key. The documentation for the API itself is also available there. 
+If you haven't already grabbed a key, head to [developer.haloapi.com][developer-haloapi], sign in, head to Products and grab a key. The documentation for the API itself is also available there. 
 
-If you have any issues there are forums available [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics), and a thread for this particular binding [here](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts).
+If you have any issues there are forums available [here][waypoint-api-support], and a thread for this particular binding [here][waypoint-thread].
 
-## Installation 
+### What is TypeScript?
+
+TypeScript is a language developed by Microsoft in order to add static typing to the JavaScript programming language. While this project is written with TypeScript, it produces JavaScript that is readable and usable without even knowing that TypeScript exists.
+
+To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
+
+### Quick Links
+
+- [Halo Waypoint API Support Forum][waypoint-api-support]
+- [Halo Waypoint haloapi.js Thread][waypoint-thread]
+- [haloapi.js NPM Package][npm-package]
+- [haloapi.js Continous Integration (Travis CI)][ci-server]
+- [haloapi.js Usage Documentation][usage-docs]
+- [Official Halo API Documentation][developer-haloapi]
+- [JSON Schemas for Halo API Responses][json-schemas]
+
+## Usage Guide
+
+### Package Installation 
 
 This project can be installed as a node module with
 
-    npm install haloapi
+```bash
+$ npm install haloapi
+```
 
 Easy!
 
@@ -36,19 +58,13 @@ If you don't have Node or NPM, go ahead an [install it](https://nodejs.org/en/do
 
 Requires Node version 0.11 or later.
 
-## What is TypeScript?
+### Basic Usage
 
-TypeScript is a language developed by Microsoft in order to add static typing to the JavaScript programming language. While this project is written with TypeScript, it produces JavaScript that is readable and usable without even knowing that TypeScript exists.
-
-To find out more about TypeScript, [head here](http://www.typescriptlang.org/).
-
-## Basic Usage
-
-Brief usage instructions follow. **[More in depth usage info is available here](https://derflatulator.github.io/haloapi.js/docco/haloapi.html)**.
+Brief usage instructions follow. **[More in depth usage info is available here][usage-docs]**.
 
 Usage with plain old JavaScript.
 
-Setup:
+#### Setup
 
 ```javascript
 var HaloAPI = require('haloapi'); 
@@ -57,7 +73,7 @@ var h5 = new HaloAPI('YOUR API KEY');
 
 (If you've cloned this repo use `require('./js/index')`)
 
-Retrieve all Weapons:
+#### Retrieve all Weapons
 
 ```javascript
 h5.metadata.weapons().then(function (weapons) {
@@ -67,7 +83,7 @@ h5.metadata.weapons().then(function (weapons) {
 });
 ```
 
-Get my player's emblem:
+#### Get my player's emblem
 
 ```javascript
 h5.profile.emblemImage("Your Gamertag").then(function (url) { 
@@ -87,10 +103,12 @@ h5.stats.playerMatches("Frankie")
     });
 ```
 
+#### ECMAScript2016 (ES7) `async`/`await`
+
 With ECMAScript2016 (ES7), you can do the following, which will await in a non-blocking manner:
 
 ```javascript
-var url = await h5.stats.spartanImage("Frankie");    
+let url = await h5.stats.spartanImage`Frankie`;    
 ```
 
 Using with TypeScript (completely optional)
@@ -107,17 +125,23 @@ h5.metadata.weapons().then((weapons: Weapons) => {
 });
 ```
 
-## TODO
+## Development
+
+### TODO List
 - Set up caching.
-- Integrate with [haloapi-schema](https://github.com/DerFlatulator/haloapi-schema).
+- Integrate with [haloapi-schema][json-schemas].
 - Host full TypeDoc documentation.
 - Complete the TypeScript definitions for remaining stats endpoints.
 
-## Development
+### Transpiling TypeScript
 
 If you've modified the TypeScript sources, you'll need to regenerate the JS. Run this in a terminal at the top-level directory for this repository.
 
-    $ npm run build  
+```bash
+$ npm run build  
+```
+
+### Building Documentation
 
 Documentation is currently being built with [docco](https://jashkenas.github.io/docco/). All files in the `examples/docs/` directory are converted to html files with docco and hosted at, e.g. `https://derflatulator.github.io/haloapi.js/docco/<filename>.html`. This is using GitHub pages feature (see branch `gh-pages`). The `npm run document` command will build these docs. If you are interested in sending a pull request with new docs, you may either send just the JS file and I can generate the docs, *or* follow these instructions carefully:
 
@@ -144,16 +168,38 @@ $ cd ..                           # Return to code repo.
 
 See [this blog post](https://srackham.wordpress.com/2014/12/14/publishing-a-project-website-to-github-pages/) for some explanation of what just happened. 
 
-## Testing
+### Testing
 
 Test suite is written with Mocha and Chai. Before running tests, set the `HALOAPI_KEY` variable in your environment.
 
-    $ export HALOAPI_KEY=YOUR-API-KEY-HERE
+```bash
+$ export HALOAPI_KEY=YOUR-API-KEY-HERE
+```
 
 And run all tests with:
 
-    $ npm test 
+```bash
+$ npm test 
+```
+
+All commits pushed to this repository are automatically tested on [Travis CI][ci-server].
 
 ## Contributors
 
 Feel free to send a pull request if you wish to contribute.
+
+## Legal 
+
+API Client provided under the MIT license, see [`LICENSE.md`](https://github.com/DerFlatulator/haloapi.js/blob/master/LICENSE.md). 
+
+**Halo 5: Guardians © Microsoft Corporation. haloapi.js was created under Microsoft's "[Game Content Usage Rules](Game Content Usage Rules)" using assets from Halo 5: Guardians, and it is not endorsed by or affiliated with Microsoft.**
+
+Contributors and users should also read the rules. 
+
+[waypoint-api-support]: https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics
+[waypoint-thread]: https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts
+[npm-package]: https://www.npmjs.com/package/haloapi
+[ci-server]: https://travis-ci.org/DerFlatulator/haloapi
+[usage-docs]: https://derflatulator.github.io/haloapi.js/docco/haloapi.html
+[developer-haloapi]: https://developer.haloapi.com/
+[json-schemas]: https://github.com/DerFlatulator/haloapi-schema
