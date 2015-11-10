@@ -10,7 +10,8 @@
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
     "clean": "rm js/*.js",
-    "document": "./node_modules/.bin/docco -o ./docs/docco/ ./examples/docs/*.js  && typedoc --out docs/tsdoc/ ./ts/index.ts --module commonjs --includeDeclarations",
+    "document": "./node_modules/.bin/docco -o ./docs/docco/ ./examples/docs/*.js",
+    "tsdocument": "./node_modules/.bin/typedoc --out docs/tsdoc/ ./ts/index.ts --module commonjs --includeDeclarations",
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000"
   },
   "repository": {
