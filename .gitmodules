@@ -1,0 +1,3 @@
+[submodule "haloapi-schema"]
+	path = haloapi-schema
+	url = https://github.com/DerFlatulator/haloapi-schema
