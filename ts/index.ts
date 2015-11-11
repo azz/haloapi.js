@@ -13,6 +13,37 @@ import Metadata = require("./metadata");
 import Profile = require("./profile");
 
 import rp = require("request-promise");
+var codependency = require("codependency"); // no typings? oh well
+
+var requireOptional = codependency.register(module, {
+    index: ['optionalCacheDependencies']
+})
+
+const DEBUG: boolean = !!process.env.HALOAPI_DEBUG;
+
+var Caches = {
+    get redis() {
+        return requireOptional('redis');
+    }
+};
+
+/**
+ * @param apiKey Your API key. API keys are obtained from 
+ *               http://developer.haloapi.com/ 
+ * @param title The title of the game for this API instance. Currently
+ *              only "h5" (Halo 5: Guardians) is supported.     
+ * @param cache The caching layer. Default is null, for no caching,
+ *              current supported options: "redis"
+ * @param cacheOptions the options object or argument list passed to the 
+ *                     caching client. For redis this can be omitted, or, e.g.
+ *                     `[ 'redis://user:pass@host:port', options ]`.
+ */
+interface HaloAPIOptions {
+    apiKey: string,
+    cache?: string,
+    cacheOptions?: any,
+    title?: string
+}
 
 class HaloAPI implements IHaloAPI {
     /** @inheritdoc */
@@ -28,25 +59,39 @@ class HaloAPI implements IHaloAPI {
     // This member will still be accessible from a JS console, for instance.
     private apiKey: string;
     private host: string;
+    private cacheName: string;
+    private title: string;
+
+    private cacheClient: any;
 
     /**
      * Create an instance of the HaloAPI. 
-     * @param apiKey Your API key. API keys are obtained from 
-     *               http://developer.haloapi.com/ 
-     * @param title The title of the game for this API instance. Currently
-     *              only "h5" (Halo 5: Guardians) is supported.
+     * @param opts  Either an options object or your API key string.
      */
-    constructor(apiKey: string, public title: string = "h5") {
+    constructor(opts: string | HaloAPIOptions) {
+        var options: HaloAPIOptions = {
+            apiKey: null
+        };
+        if (typeof opts === "string") {
+            options = { apiKey: opts };
+        } else {
+            options = opts;
+        }
+
         this.stats = new Stats(this);
         this.metadata = new Metadata(this);
         this.profile = new Profile(this);
 
-        this.apiKey = apiKey;
         this.host = "https://www.haloapi.com";
+        this.apiKey = options.apiKey;
+        this.title = options.title || "h5";
+        this.cacheName = options.cache || null;
+
+        this.initCache(options.cacheOptions);
     }
 
     /** @inheritdoc */
-    getJSON<T>(endpoint: string): Promise<T> {
+    getJSON<T>(endpoint: string, bypassCache?: boolean): Promise<T> {
         var options = {
             url: this.host + endpoint,
             headers: { 
@@ -56,27 +101,37 @@ class HaloAPI implements IHaloAPI {
             json: true,
             // resolveWithFullResponse: true
         };
-        process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
 
-        // TODO check if we're running in a browser and use XMLHttpRequest
-        return rp.get(options)
-            .catch((error: any) => {
-                if (error.name === "RequestError") {
-                    throw error.message;
-                } else {                    
-                    var json = error.response.toJSON();
+        var promise = bypassCache 
+            ? Promise.reject(null)
+            : this.cacheGet<T>(endpoint);
 
-                    var message = json.body 
-                        ? json.body.message 
-                        : "An error occurred.";
+        return promise.catch((cacheError) => {
+            DEBUG && console.log("fetching:", options.url);
+    
+            return rp.get(options)
+                .then((response) => {
+                    this.cacheSet(endpoint, <T>response);
+                    return response;
+                })
+                .catch((error: any) => {
+                    if (error.name === "RequestError") {
+                        throw error.message;
+                    } else {
+                        var json = error.response.toJSON();
 
-                    if (json.statusCode == 429) {
-                        return this.duplicateRequest<T>(message, endpoint, true);
+                        var message = json.body
+                            ? json.body.message
+                            : "An error occurred.";
+
+                        if (json.statusCode == 429) {
+                            return this.duplicateRequest<T>(message, endpoint, true);
+                        }
+
+                        throw `${json.statusCode} - ${message}`;
                     }
-
-                    throw `${json.statusCode} - ${message}`;
-                }
-            });
+                });
+        });
 
     }
 
@@ -91,14 +146,14 @@ class HaloAPI implements IHaloAPI {
             resolveWithFullResponse: true
         };
 
-        process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
+        DEBUG && console.log("fetching:", options.url);
 
         return rp.get(options)
             .catch((error: any) => {
                 if (error.name === "RequestError") {
                     throw error.message;
                 } else {
-                    process.env.HALOAPI_DEBUG 
+                    DEBUG 
                         && console.log("error:", error.message, options.url);
                     
                     if (error.statusCode == 429) {
@@ -151,7 +206,7 @@ class HaloAPI implements IHaloAPI {
         seconds = seconds.length ? parseInt(seconds[0]) : 1;
 
         var wait: number = 100 + (seconds * 1000);
-        process.env.HALOAPI_DEBUG && console.log("retrying in:", wait);
+        DEBUG && console.log("retrying in:", wait);
 
         return new Promise<T>((accept: any, reject: any) => {
             setTimeout(() => {
@@ -164,6 +219,80 @@ class HaloAPI implements IHaloAPI {
                 }
             }, wait);
         });
+    }
+
+    private initCache(cacheOptions: any): void {
+        if (!this.cacheName) {
+            this.cacheClient = null;
+            return;
+        }
+        DEBUG && console.log("initializing cache:", this.cacheName);
+
+        switch (this.cacheName) {
+        case "redis":
+            if (!Caches.redis)
+                throw "ERROR: You've opted for redis caching, yet redis client is not installed."
+                    + '       Run `npm install redis` first.'
+            if (cacheOptions && cacheOptions.length)
+                this.cacheClient = Caches.redis.createClient(...cacheOptions);
+            else    
+                this.cacheClient = Caches.redis.createClient(cacheOptions);
+            break;
+        }
+    }
+
+    private cacheSet<T>(uri: string, item: T) {
+        if (!this.cacheClient) return;
+        var json: string = JSON.stringify(item);
+
+        switch (this.cacheName) {
+            case "redis":
+                this.cacheClient.set(`haloapi.js:uri:${uri}`, json);
+                DEBUG && console.log("cache set: ", uri);
+                break;
+        }
+    }
+
+    private cacheGet<T>(uri: string): Promise<T> {
+        if (!this.cacheClient) 
+            return Promise.reject("No cache specified");
+
+        return new Promise<T>((accept, reject) => {
+            switch (this.cacheName) {
+            case "redis":
+                this.cacheClient.get(`haloapi.js:uri:${uri}`, (err, reply) => {
+                    if (DEBUG)
+                       reply
+                           ? console.log("cache hit: ", uri)
+                           : console.error("cache miss: ", uri);
+
+                    reply ? accept(<T>JSON.parse(reply)) : reject(err);
+                });
+                break;
+            }
+
+        });
+    }
+
+    cacheClear(): Promise<number> {
+        if (!this.cacheClient) 
+            return Promise.reject("No cache in use");
+
+        switch (this.cacheName) {
+        case "redis":
+            return new Promise<number>((accept, reject) => {
+                this.cacheClient.keys("haloapi.js:uri:*", (err, replies) => {
+                    if (!replies.length)
+                        reject("Nothing to delete");
+
+                    this.cacheClient.del(replies, (err, count: number) => {
+                        if (err)
+                            reject(err);
+                        accept(count);
+                    });
+                });
+            });
+        }
     }
 };
 

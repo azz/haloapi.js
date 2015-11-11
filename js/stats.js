@@ -28,7 +28,7 @@ var Stats = (function () {
         }
         if (qs.length)
             endpoint += "?" + qs.join("&");
-        return this.api.getJSON(endpoint);
+        return this.api.getJSON(endpoint, true);
     };
     /** @inheritdoc */
     Stats.prototype.warzoneMatchById = function (id) {
@@ -97,7 +97,7 @@ var Stats = (function () {
     };
     Stats.prototype.serviceRecords = function (gameMode, players) {
         var p = players.map(encodeURIComponent).join(",");
-        return this.api.getJSON("/stats/" + this.title + "/servicerecords/" + gameMode + "?players=" + p)
+        return this.api.getJSON("/stats/" + this.title + "/servicerecords/" + gameMode + "?players=" + p, true)
             .then(function (data) { return data.Results; });
     };
     Object.defineProperty(Stats.prototype, "playerMatches",

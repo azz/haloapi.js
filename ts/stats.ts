@@ -28,7 +28,7 @@ class Stats implements IStats {
         if (qs.length) 
             endpoint += `?${qs.join("&")}`;
 
-        return this.api.getJSON<PlayerMatches>(endpoint);
+        return this.api.getJSON<PlayerMatches>(endpoint, true);
     } 
 
     /** @inheritdoc */
@@ -122,7 +122,7 @@ class Stats implements IStats {
     private serviceRecords<T>(gameMode: string, players: string[]): Promise<T> {
         var p: string = players.map(encodeURIComponent).join(",");
         return this.api.getJSON<any>(
-            `/stats/${this.title}/servicerecords/${gameMode}?players=${p}`)
+            `/stats/${this.title}/servicerecords/${gameMode}?players=${p}`, true)
             .then((data) => data.Results);
     }
 

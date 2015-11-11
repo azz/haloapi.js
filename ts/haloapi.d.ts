@@ -30,7 +30,7 @@ interface IHaloAPI {
      * @param endpoint The endpoint path (not including host) to request.
      * @param <T>      The type of the argument passed on promise fulfillment
      */
-    getJSON<T>(endpoint: string): Promise<T>;
+    getJSON<T>(endpoint: string, bypassCache?: boolean): Promise<T>;
 
     /**
      * Asynchronously retreive the location header from the Halo API.

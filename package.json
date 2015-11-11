@@ -29,7 +29,11 @@
   },
   "homepage": "https://derflatulator.github.io/haloapi.js/",
   "dependencies": {
+    "codependency": "^0.1.4",
     "request-promise": "^1.0.2"
+  },
+  "optionalCacheDependencies": {
+    "redis": "^2.3.0"
   },
   "devDependencies": {
     "chai": "^3.4.0",
