@@ -7,6 +7,7 @@
         "noLib": false,
         "preserveConstEnums": true,
         "declaration": false,
+        "experimentalDecorators": true,
         "suppressImplicitAnyIndexErrors": true,
         "outDir": "./js/"
     },

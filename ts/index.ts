@@ -50,8 +50,9 @@ class HaloAPI implements IHaloAPI {
         var options = {
             url: this.host + endpoint,
             headers: { 
-                'Ocp-Apim-Subscription-Key': this.apiKey 
+                'Ocp-Apim-Subscription-Key': this.apiKey,
             },
+            gzip: true,
             json: true,
             // resolveWithFullResponse: true
         };
@@ -64,7 +65,6 @@ class HaloAPI implements IHaloAPI {
                     throw error.message;
                 } else {                    
                     var json = error.response.toJSON();
-
 
                     var message = json.body 
                         ? json.body.message 
@@ -123,11 +123,29 @@ class HaloAPI implements IHaloAPI {
         return false;
     }
 
+    /** @inheritdoc */
+    jsonSchema(endpointFn: any): {} {
+        // relative to this file when compiled (i.e js/)
+        var path: string = "../haloapi-schema/";
+
+        if ("schema" in endpointFn) {
+            path += endpointFn.schema;
+        } else {
+            throw "Invalid schema endpoint function";            
+        }
+
+        try {
+            return require(path);
+        } catch (error) {
+            throw `Cannot find schema: ${path}`;
+        }
+    }
+
     private duplicateRequest<T>(
         message, 
         endpoint: string, 
         isJSON: boolean
-    ): Promise<T> {   
+    ): Promise<T> {
         // parse the response to get the seconds to next request
         var seconds = message.split(" ").filter(parseInt);
         seconds = seconds.length ? parseInt(seconds[0]) : 1;

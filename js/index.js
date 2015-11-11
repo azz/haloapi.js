@@ -33,8 +33,9 @@ var HaloAPI = (function () {
         var options = {
             url: this.host + endpoint,
             headers: {
-                'Ocp-Apim-Subscription-Key': this.apiKey
+                'Ocp-Apim-Subscription-Key': this.apiKey,
             },
+            gzip: true,
             json: true,
         };
         process.env.HALOAPI_DEBUG && console.log("fetching:", options.url);
@@ -93,6 +94,23 @@ var HaloAPI = (function () {
             return true;
         }
         return false;
+    };
+    /** @inheritdoc */
+    HaloAPI.prototype.jsonSchema = function (endpointFn) {
+        // relative to this file when compiled (i.e js/)
+        var path = "../haloapi-schema/";
+        if ("schema" in endpointFn) {
+            path += endpointFn.schema;
+        }
+        else {
+            throw "Invalid schema endpoint function";
+        }
+        try {
+            return require(path);
+        }
+        catch (error) {
+            throw "Cannot find schema: " + path;
+        }
     };
     HaloAPI.prototype.duplicateRequest = function (message, endpoint, isJSON) {
         var _this = this;

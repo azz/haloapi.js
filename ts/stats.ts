@@ -1,5 +1,7 @@
 /// <reference path="./haloapi.d.ts"/>
 
+import schema = require("./schema");
+
 class Stats implements IStats {
 
     private title: string;
@@ -9,6 +11,7 @@ class Stats implements IStats {
     }
 
     /** @inheritdoc */
+    @schema("stats")
     playerMatches(params: string | IMatchesParams): Promise<PlayerMatches> {
         var _params: IMatchesParams = {player: null};
         if (typeof params === "object")           
@@ -29,6 +32,7 @@ class Stats implements IStats {
     } 
 
     /** @inheritdoc */
+    @schema("stats", "warzone-matches")
     warzoneMatchById(id: guid): Promise<PGCRArena> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -40,6 +44,7 @@ class Stats implements IStats {
     // below are incompletely typed. providing `any` instead of their respective types
 
     /** @inheritdoc */
+    @schema("stats", "custom-matches")
     customMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -48,6 +53,7 @@ class Stats implements IStats {
     }
 
     /** @inheritdoc */
+    @schema("stats", "campaign-matches")
     campaignMatchById(id: guid): Promise<any> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -56,6 +62,7 @@ class Stats implements IStats {
     }
 
     /** @inheritdoc */
+    @schema("stats", "arena-matches")
     arenaMatchById(id: guid): Promise<PGCRArena> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
@@ -84,21 +91,25 @@ class Stats implements IStats {
     }
 
     /** @inheritdoc */
+    @schema("stats")
     serviceRecordsArena(players: string[]): Promise<any> {
         return this.serviceRecords("arena", players);
     }
 
     /** @inheritdoc */
+    @schema("stats")
     serviceRecordsCampaign(players: string[]): Promise<any> {
         return this.serviceRecords("campaign", players);
     }
 
     /** @inheritdoc */
+    @schema("stats")
     serviceRecordsWarzone(players: string[]): Promise<any> {
         return this.serviceRecords("warzone", players);
     }
 
     /** @inheritdoc */
+    @schema("stats")
     serviceRecordsCustom(players: string[]): Promise<any> {
         return this.serviceRecords("custom", players);
     }

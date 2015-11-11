@@ -1,4 +1,13 @@
 /// <reference path="./haloapi.d.ts"/>
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
+    switch (arguments.length) {
+        case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
+        case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
+        case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
+    }
+};
+var schema = require("./schema");
 var Stats = (function () {
     function Stats(api) {
         this.api = api;
@@ -91,6 +100,42 @@ var Stats = (function () {
         return this.api.getJSON("/stats/" + this.title + "/servicerecords/" + gameMode + "?players=" + p)
             .then(function (data) { return data.Results; });
     };
+    Object.defineProperty(Stats.prototype, "playerMatches",
+        __decorate([
+            schema("stats")
+        ], Stats.prototype, "playerMatches", Object.getOwnPropertyDescriptor(Stats.prototype, "playerMatches")));
+    Object.defineProperty(Stats.prototype, "warzoneMatchById",
+        __decorate([
+            schema("stats", "warzone-matches")
+        ], Stats.prototype, "warzoneMatchById", Object.getOwnPropertyDescriptor(Stats.prototype, "warzoneMatchById")));
+    Object.defineProperty(Stats.prototype, "customMatchById",
+        __decorate([
+            schema("stats", "custom-matches")
+        ], Stats.prototype, "customMatchById", Object.getOwnPropertyDescriptor(Stats.prototype, "customMatchById")));
+    Object.defineProperty(Stats.prototype, "campaignMatchById",
+        __decorate([
+            schema("stats", "campaign-matches")
+        ], Stats.prototype, "campaignMatchById", Object.getOwnPropertyDescriptor(Stats.prototype, "campaignMatchById")));
+    Object.defineProperty(Stats.prototype, "arenaMatchById",
+        __decorate([
+            schema("stats", "arena-matches")
+        ], Stats.prototype, "arenaMatchById", Object.getOwnPropertyDescriptor(Stats.prototype, "arenaMatchById")));
+    Object.defineProperty(Stats.prototype, "serviceRecordsArena",
+        __decorate([
+            schema("stats")
+        ], Stats.prototype, "serviceRecordsArena", Object.getOwnPropertyDescriptor(Stats.prototype, "serviceRecordsArena")));
+    Object.defineProperty(Stats.prototype, "serviceRecordsCampaign",
+        __decorate([
+            schema("stats")
+        ], Stats.prototype, "serviceRecordsCampaign", Object.getOwnPropertyDescriptor(Stats.prototype, "serviceRecordsCampaign")));
+    Object.defineProperty(Stats.prototype, "serviceRecordsWarzone",
+        __decorate([
+            schema("stats")
+        ], Stats.prototype, "serviceRecordsWarzone", Object.getOwnPropertyDescriptor(Stats.prototype, "serviceRecordsWarzone")));
+    Object.defineProperty(Stats.prototype, "serviceRecordsCustom",
+        __decorate([
+            schema("stats")
+        ], Stats.prototype, "serviceRecordsCustom", Object.getOwnPropertyDescriptor(Stats.prototype, "serviceRecordsCustom")));
     return Stats;
 })();
 ;

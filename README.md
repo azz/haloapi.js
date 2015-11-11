@@ -129,7 +129,6 @@ h5.metadata.weapons().then((weapons: Weapons) => {
 
 ### TODO List
 - Set up caching (with Redis or within the client?)
-- Integrate with [haloapi-schema][json-schemas].
 - Complete the TypeScript definitions for remaining stats endpoints.
 
 ### Transpiling TypeScript

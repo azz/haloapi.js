@@ -45,6 +45,16 @@ interface IHaloAPI {
      * in a URL component.
      */
     isGuid(id: guid): boolean;
+
+    /**
+     * Provide this function with an endpoint function from this api,
+     * such as `api.metadata.commendations`, and it will provide a
+     * schema for the expected successful response.
+     * @param endpointFn the function which which to retrieve a schema.
+     * @returns a JSON Schema for a particular endpoint.
+     */
+    jsonSchema(endpointFn: Function): {};
+
 }
 
 declare var HaloAPI: IHaloAPI;
