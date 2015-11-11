@@ -30,11 +30,11 @@ describe("redis caching", function () {
             promise = h5.metadata.commendations();
         });
 
-        it("[fetch] should take > 200ms", function () {
+        it("[fetch] should take > 50ms", function () {
             return promise.then(function (result) {
                 resultUncached = result;
                 var delta = new Date() - timeStart;
-                expect(delta).to.be.gt(200);
+                expect(delta).to.be.gt(50);
             });
         });
         it("[cached] should take < 50ms", function () {
@@ -54,10 +54,10 @@ describe("redis caching", function () {
             promise = h5.metadata.commendations();
         })
 
-        it("[fetch again] should take > 200ms", function () {
+        it("[fetch again] should take > 50ms", function () {
             return promise.then(function () {
                 var delta = new Date() - timeStart;
-                expect(delta).to.be.gt(200);
+                expect(delta).to.be.gt(50);
             })
         })
     });
