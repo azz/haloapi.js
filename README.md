@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.svg)][ci-server]
+[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.js.svg)][ci-server]
 [![npm version](https://badge.fury.io/js/haloapi.svg)][npm-package] 
 [![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)][npm-package]
 
@@ -198,7 +198,7 @@ Contributors and users should also read the rules.
 [waypoint-api-support]: https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics
 [waypoint-thread]: https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts
 [npm-package]: https://www.npmjs.com/package/haloapi
-[ci-server]: https://travis-ci.org/DerFlatulator/haloapi
+[ci-server]: https://travis-ci.org/DerFlatulator/haloapi.js
 [usage-docs]: https://derflatulator.github.io/haloapi.js/docco/haloapi.html
 [developer-haloapi]: https://developer.haloapi.com/
 [json-schemas]: https://github.com/DerFlatulator/haloapi-schema
