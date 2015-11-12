@@ -3,4 +3,4 @@
 /coverage/
 /docs/
 *.rdb
-
+**.log

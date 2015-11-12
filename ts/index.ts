@@ -305,8 +305,16 @@ class RedisCache implements CacheAdapter {
 
     /** @inheritdoc */
     set<T>(key: string, value: T): Promise<void> {
-        this.redisClient.set(key, JSON.stringify(value));
-        return Promise.resolve();
+        return new Promise<void>((accept, reject) => {
+            this.redisClient.set(key, JSON.stringify(value), (err, ok) => {
+                if (err) reject(err);
+                else {
+                    // force a save
+                    this.redisClient.bgsave();
+                    accept(ok);                    
+                }
+            });
+        });
     }
 
     /** @inheritdoc */
@@ -323,6 +331,8 @@ class RedisCache implements CacheAdapter {
         var keys = [].concat(param);
         return new Promise<number>((accept, reject) => {
             this.redisClient.del(keys, (err, count: number) => {
+                // force a save
+                err || this.redisClient.bgsave();
                 err ? reject(err) : accept(count);
             });
         });
