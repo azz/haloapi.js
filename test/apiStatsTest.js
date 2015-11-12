@@ -22,7 +22,9 @@ describe("h5.stats", function () {
         it("should 4xx on bad gamertag", function () {
             var badPlayer = "this gameratag is too long";
             return expect(h5.stats.playerMatches(badPlayer))
-                .to.be.rejectedWith(/4../);
+                .to.be.rejected
+                .and.eventually.have.property("statusCode")
+                .and.match(/4../);
         });
     });
 

@@ -28,7 +28,7 @@ interface XpInfo {
 
     /** The amount of XP the player earned if they played a boost card for this match,
     and the boost card criteria was met. This is a fixed amount of XP, not a
-    /** multiplier. */
+    multiplier. */
     BoostAmount: number;
 }
 
@@ -37,8 +37,8 @@ interface CsrState {
     Tier: number;
 
     /** The Designation of the CSR. Options are:
-    1 through 5: Normal designations
-    6 and 7: Semi-pro and Pro respectively */
+    - 1 through 5: Normal designations
+    - 6 and 7: Semi-pro and Pro respectively */
     DesignationId: number;
 
     /** The CSR value. Zero for normal designations. */
@@ -213,16 +213,17 @@ interface PlayerStat {
     /** Details on any credits the player may have earned from playing this match. */
     CreditsEarned: {
         /** Indicates how the credits result was arrived at. Options are: 
-        Credits Disabled In Playlist = 0, 
-        Player Did Not Finish = 1, 
-        Credits Earned = 2 
-        Credits Disabled In Playlist: TotalCreditsEarned is zero because this playlist 
+        - Credits Disabled In Playlist = 0, 
+        TotalCreditsEarned is zero because this playlist 
         has credits disabled. 
-        Player Did Not Finish: Credits are enabled in this playlist, but 
-        TotalCreditsEarned is zero because the player did not finish the match. 
-        Credits Earned: Credits are enabled in this playlist and the player completed 
+        - Player Did Not Finish = 1, 
+        Credits are enabled in this playlist, but 
+        TotalCreditsEarned is zero because the player did not finish the match.
+        - Credits Earned = 2,
+        Credits are enabled in this playlist and the player completed 
         the match, so the credits formula was successfully evaluated. The fields below 
-        provide the client with the values used in the formula. Note: That if we used 
+        provide the client with the values used in the formula.
+        @note If we used 
         one or more default values, we still return NormalResult. The fields below 
         will confirm the actual values used. */
         Result: number;

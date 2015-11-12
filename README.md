@@ -15,6 +15,7 @@ Using this project with your development IDE, such as WebStorm, Visual Studio or
 ### Features
 
 - One function per endpoint, with a handful of helper functions provided.
+- Supports caching with redis. 
 - Built in retries when rate limited. 
 - Fully documented response typing.
 - Available on NPM.
@@ -128,7 +129,6 @@ h5.metadata.weapons().then((weapons: Weapons) => {
 ## Development
 
 ### TODO List
-- Set up caching (with Redis or within the client?)
 - Complete the TypeScript definitions for remaining stats endpoints.
 
 ### Transpiling TypeScript

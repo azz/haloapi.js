@@ -26,10 +26,10 @@ interface MatchId {
     MatchId: guid;
 
     /** The game mode applicable to this match. Options are: 
-    Error = 0, 
-    Arena = 1, 
-    Campaign = 2, 
-    Custom = 3, 
+    - Error = 0, 
+    - Arena = 1, 
+    - Campaign = 2, 
+    - Custom = 3, 
     Warzone = 4. */
     GameMode: number;
 }
@@ -42,9 +42,9 @@ interface Resource {
     ResourceId: guid;
 
     /** The source of the map variant. Options are: 
-    Unknown = 0 
-    User-generated = 1 and 2, 
-    Official = 3. */
+    - Unknown = 0 
+    - User-generated = 1 and 2, 
+    - Official = 3. */
     OwnerType: number;
 
     /** The owner. Usually set to null. */
@@ -150,23 +150,21 @@ interface MatchPlayer {
 
     /** Indicates what result the player received at the conclusion of the match.
     Options are:
-    Did Not Finish = 0,
-    Lost = 1,
-    Tied = 2,
-    Won = 3.
-    Did Not Finish: The player was not present when the match ended.
+    - Did Not Finish = 0, The player was not present when the match ended.
     Lost: The player was on a team that was assigned a loss, typically this is
     when a team does not have rank = 1.
-    Won: The player was on the team that was assigned the win, typically this is
-    the team that has rank = 1.
-    Tied: The player was on the team that was awarded a tie. Typically this is
+    - Lost = 1,
+    - Tied = 2, The player was on the team that was awarded a tie. Typically this is
     when the player is on the team with rank = 1, and there is at least one
     other team with rank = 1. Ties are only for rank = 1 teams. Consider the
     scenario when exactly one team is rank = 1, and two teams are rank = 2.
     Players on the rank=1 team will have Won; players on the rank = 2 teams
     will have Lost. For ties, this documentation states 'typically' because
     the game may have unique rules for multi-team and FFA scenarios, in which
-    multiple teams are awarded a win. */
+    multiple teams are awarded a win.
+    - Won = 3, The player was on the team that was assigned the win, typically this is
+    the team that has rank = 1.
+    */
     Result: number;
 
     /** The number of enemy kills the player had during this match. This includes */

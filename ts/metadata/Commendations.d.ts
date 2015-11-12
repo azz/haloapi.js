@@ -1,8 +1,9 @@
 /**
  * The progress the player had made towards the commendation level before the
  * match. In C#, this can be reassembled into a Guid in the following manner:
- * new Guid((int)Data1, (short)Data2, (short)Data3,
- * BitConverter.GetBytes((long)Data4)).
+ * <br/>
+ * `new Guid((int)Data1, (short)Data2, (short)Data3,
+ * BitConverter.GetBytes((long)Data4)).`
 */
 interface CommendationMetRequirement {
     Data1: number;

@@ -16,7 +16,8 @@ interface IStats {
      * @endpoint https://www.haloapi.com/stats/{title}/players/{player}/matches[?modes][&start][&count]
      * @param player  The Player's gamertag.
      */
-    playerMatches(params: string | IMatchesParams): Promise<PlayerMatches>;
+    playerMatches(player: string): Promise<PlayerMatches>;
+    playerMatches(params: IMatchesParams): Promise<PlayerMatches>;
 
     /**
      * @api Stats :: Post Game Carnage Report: Arena

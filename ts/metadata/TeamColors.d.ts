@@ -12,7 +12,7 @@ interface TeamColor {
 
     /**
      A seven-character string representing the team color in RGB Hex notation. This
-     notation uses a # followed by a hex triplet.
+     notation uses a `#` followed by a hex triplet.
      */
     color: string;
 

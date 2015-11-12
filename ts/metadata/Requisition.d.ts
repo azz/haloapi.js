@@ -54,20 +54,16 @@ interface Requistion {
 
     /**
      Indicates how the requisition card may be used. Options are:
-     - Consumable
-     - Durable
-     - Boost
-     - CreditGranting
-     Consumable: The requisition can be called in and used while in-game. When players
+     - Consumable: The requisition can be called in and used while in-game. When players
      call in a consumable requisition it is removed from the players inventory.
-     Durable: The requisition is not usable in-game. Players can only earn one of each
+     - Durable: The requisition is not usable in-game. Players can only earn one of each
      durable requisition and it is used to model awards such as armor suits, helmets,
      emblems or other items such as stickers. Durables are never removed from the
      player inventory.
-     Boost: The requisition is used prior to a match beginning and will modify how many
+     - Boost: The requisition is used prior to a match beginning and will modify how many
      XP or Credits the player will earn at the end of the match. When put into effect,
      it is removed from the player inventory.
-     Credit Granting: When obtained, the requisition will grant the player some amount
+     - CreditGranting: When obtained, the requisition will grant the player some amount
      of credits. Once the credits are granted the requisition is immediately removed
      from the player inventory.
      */

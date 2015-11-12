@@ -57,7 +57,8 @@ interface RequisitionPack {
 
     /**
      If this pack might be obtainable through the Xbox Live Marketplace, this
-     is the product ID. Note: Pricing and availability within the Xbox Live
+     is the product ID. 
+     @note Pricing and availability within the Xbox Live
      marketplace is controlled independently of this value. The presence of
      an Id in this field is not a guarantee the product is purchasable. There
      may be geographic restrictions restricting purchase in certain regions,

@@ -15,16 +15,7 @@ var requireOptional = codependency.register(module, {
     index: ['optionalCacheDependencies']
 });
 var DEBUG = !!process.env.HALOAPI_DEBUG;
-var Caches = {
-    get redis() {
-        return requireOptional('redis');
-    }
-};
 var HaloAPI = (function () {
-    /**
-     * Create an instance of the HaloAPI.
-     * @param opts  Either an options object or your API key string.
-     */
     function HaloAPI(opts) {
         var options = {
             apiKey: null
@@ -42,7 +33,7 @@ var HaloAPI = (function () {
         this.apiKey = options.apiKey;
         this.title = options.title || "h5";
         this.cacheName = options.cache || null;
-        this.initCache(options.cacheOptions);
+        this.cacheManager = new CacheManager(this.cacheName, options.cacheOptions);
     }
     /** @inheritdoc */
     HaloAPI.prototype.getJSON = function (endpoint, bypassCache) {
@@ -57,28 +48,16 @@ var HaloAPI = (function () {
         };
         var promise = bypassCache
             ? Promise.reject(null)
-            : this.cacheGet(endpoint);
+            : this.cacheManager.cacheGet(endpoint);
         return promise.catch(function (cacheError) {
             DEBUG && console.log("fetching:", options.url);
             return rp.get(options)
-                .then(function (response) {
-                _this.cacheSet(endpoint, response);
-                return response;
-            })
                 .catch(function (error) {
-                if (error.name === "RequestError") {
-                    throw error.message;
-                }
-                else {
-                    var json = error.response.toJSON();
-                    var message = json.body
-                        ? json.body.message
-                        : "An error occurred.";
-                    if (json.statusCode == 429) {
-                        return _this.duplicateRequest(message, endpoint, true);
-                    }
-                    throw json.statusCode + " - " + message;
-                }
+                return _this.handleRequestRejection(endpoint, error);
+            })
+                .then(function (response) {
+                _this.cacheManager.cacheSet(endpoint, response);
+                return response;
             });
         });
     };
@@ -96,21 +75,13 @@ var HaloAPI = (function () {
         DEBUG && console.log("fetching:", options.url);
         return rp.get(options)
             .catch(function (error) {
-            if (error.name === "RequestError") {
-                throw error.message;
-            }
-            else {
-                DEBUG
-                    && console.log("error:", error.message, options.url);
-                if (error.statusCode == 429) {
-                    return _this.duplicateRequest("2", endpoint, false);
-                }
-                // console.info(error, response, body);
-                var response = error.response;
-                if (response.statusCode == 302)
-                    return response.headers.location;
-                throw response.statusCode;
-            }
+            return _this.handleRequestRejection(endpoint, error);
+        })
+            .catch(function (handledError) {
+            var response = handledError.requestError.response;
+            if (response.statusCode == 302)
+                return response.headers.location;
+            throw response.statusCode;
         });
     };
     /** @inheritdoc */
@@ -137,11 +108,27 @@ var HaloAPI = (function () {
             throw "Cannot find schema: " + path;
         }
     };
+    HaloAPI.prototype.handleRequestRejection = function (endpoint, error) {
+        if (error.name === "RequestError") {
+            throw error.message;
+        }
+        else {
+            var json = error.response ? error.response.toJSON() : {};
+            var message = json.body
+                ? json.body.message
+                : "An error occurred.";
+            if (json.statusCode == 429) {
+                return this.duplicateRequest(message, endpoint, true);
+            }
+            json.requestError = error;
+            throw json;
+        }
+    };
     HaloAPI.prototype.duplicateRequest = function (message, endpoint, isJSON) {
         var _this = this;
         // parse the response to get the seconds to next request
         var seconds = message.split(" ").filter(parseInt);
-        seconds = seconds.length ? parseInt(seconds[0]) : 1;
+        seconds = seconds.length ? parseInt(seconds[0]) : 2;
         var wait = 100 + (seconds * 1000);
         DEBUG && console.log("retrying in:", wait);
         return new Promise(function (accept, reject) {
@@ -157,74 +144,122 @@ var HaloAPI = (function () {
             }, wait);
         });
     };
-    HaloAPI.prototype.initCache = function (cacheOptions) {
-        if (!this.cacheName) {
-            this.cacheClient = null;
-            return;
-        }
-        DEBUG && console.log("initializing cache:", this.cacheName);
-        switch (this.cacheName) {
-            case "redis":
-                if (!Caches.redis)
-                    throw "ERROR: You've opted for redis caching, yet redis client is not installed."
-                        + '       Run `npm install redis` first.';
-                if (cacheOptions && cacheOptions.length)
-                    this.cacheClient = (_a = Caches.redis).createClient.apply(_a, cacheOptions);
-                else
-                    this.cacheClient = Caches.redis.createClient(cacheOptions);
-                break;
-        }
-        var _a;
-    };
-    HaloAPI.prototype.cacheSet = function (uri, item) {
-        if (!this.cacheClient)
-            return;
-        var json = JSON.stringify(item);
-        switch (this.cacheName) {
-            case "redis":
-                this.cacheClient.set("haloapi.js:uri:" + uri, json);
-                DEBUG && console.log("cache set: ", uri);
-                break;
-        }
-    };
-    HaloAPI.prototype.cacheGet = function (uri) {
-        var _this = this;
-        if (!this.cacheClient)
-            return Promise.reject("No cache specified");
-        return new Promise(function (accept, reject) {
-            switch (_this.cacheName) {
-                case "redis":
-                    _this.cacheClient.get("haloapi.js:uri:" + uri, function (err, reply) {
-                        if (DEBUG)
-                            reply
-                                ? console.log("cache hit: ", uri)
-                                : console.error("cache miss: ", uri);
-                        reply ? accept(JSON.parse(reply)) : reject(err);
-                    });
-                    break;
-            }
-        });
-    };
+    /** @inheritdoc */
     HaloAPI.prototype.cacheClear = function () {
-        var _this = this;
-        if (!this.cacheClient)
+        if (!this.cacheName)
             return Promise.reject("No cache in use");
-        switch (this.cacheName) {
-            case "redis":
-                return new Promise(function (accept, reject) {
-                    _this.cacheClient.keys("haloapi.js:uri:*", function (err, replies) {
-                        if (!replies.length)
-                            reject("Nothing to delete");
-                        _this.cacheClient.del(replies, function (err, count) {
-                            if (err)
-                                reject(err);
-                            accept(count);
-                        });
-                    });
-                });
-        }
+        return this.cacheManager.cacheClear();
     };
     return HaloAPI;
 })();
 ;
+var CacheManager = (function () {
+    function CacheManager(name, options) {
+        this.name = name;
+        this.options = options;
+        if (!name) {
+            this.adapter = null;
+            return;
+        }
+        DEBUG && console.log("initializing cache:", name);
+        if (!(name in CacheAdapters)) {
+            throw "The cache: " + name + " is not supported.";
+        }
+        this.adapter = new (CacheAdapters[name])(options);
+    }
+    /** @inheritdoc */
+    CacheManager.prototype.cacheSet = function (uri, item) {
+        if (!this.adapter)
+            return;
+        this.adapter.set("haloapi.js:uri:" + uri, item);
+        DEBUG && console.log("cache set: ", uri);
+    };
+    /** @inheritdoc */
+    CacheManager.prototype.cacheGet = function (uri) {
+        if (!this.adapter)
+            return Promise.reject("No cache specified");
+        return this.adapter.get("haloapi.js:uri:" + uri)
+            .then(function (_) {
+            DEBUG && console.log("cache hit:", uri);
+            return _;
+        })
+            .catch(function (_) {
+            DEBUG && console.log("cache miss: ", uri);
+            return Promise.reject(_);
+        });
+    };
+    /** @inheritdoc */
+    CacheManager.prototype.cacheClear = function () {
+        var _this = this;
+        if (!this.adapter)
+            return Promise.reject("No cache specied");
+        return this.adapter.keys("haloapi.js:uri:*")
+            .then(function (keys) {
+            if (!keys.length)
+                return Promise.resolve(0);
+            else
+                return _this.adapter.delete(keys);
+        })
+            .then(function (n) {
+            DEBUG && console.log("cache cleared: ", n);
+            return n;
+        });
+    };
+    return CacheManager;
+})();
+/**
+ * Redis cache adapter.
+ * @todo Pull this out to a seperate directory.
+ */
+var RedisCache = (function () {
+    /** @inheritdoc */
+    function RedisCache(options) {
+        this.options = options;
+        this.redis = requireOptional('redis');
+        if (!this.redis)
+            throw "ERROR: You've opted for redis caching, yet redis "
+                + "client is not installed. Run `npm install redis` first.";
+        this.redisClient = Array.isArray(options)
+            ? (_a = this.redis).createClient.apply(_a, options)
+            : this.redis.createClient(options);
+        var _a;
+    }
+    /** @inheritdoc */
+    RedisCache.prototype.get = function (key) {
+        var _this = this;
+        return new Promise(function (accept, reject) {
+            _this.redisClient.get(key, function (err, reply) {
+                reply ? accept(JSON.parse(reply)) : reject(err);
+            });
+        });
+    };
+    /** @inheritdoc */
+    RedisCache.prototype.set = function (key, value) {
+        this.redisClient.set(key, JSON.stringify(value));
+        return Promise.resolve();
+    };
+    /** @inheritdoc */
+    RedisCache.prototype.keys = function (pattern) {
+        var _this = this;
+        return new Promise(function (accept, reject) {
+            _this.redisClient.keys(pattern, function (err, replies) {
+                err ? reject(err) : accept(replies);
+            });
+        });
+    };
+    /** @inheritdoc */
+    RedisCache.prototype.delete = function (param) {
+        var _this = this;
+        var keys = [].concat(param);
+        return new Promise(function (accept, reject) {
+            _this.redisClient.del(keys, function (err, count) {
+                err ? reject(err) : accept(count);
+            });
+        });
+    };
+    return RedisCache;
+})();
+;
+var CacheAdapters = {};
+CacheAdapters["redis"] = RedisCache;
 module.exports = HaloAPI;

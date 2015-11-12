@@ -36,12 +36,14 @@ interface IProfile {
      * @endpoint https://www.haloapi.com/metadata/{title}/profile/{player}/emblem[?size]
      * @param params  The Player's Gamertag, or an IProfileParams options object
      */
-    emblemImage(params: string | IProfileParams): Promise<EmblemImage>;
-
+    emblemImage(player: string): Promise<EmblemImage>;
+    emblemImage(params: IProfileParams): Promise<EmblemImage>;
+    
     /**
      * @api Profile :: Spartan Image
      * @endpoint https://www.haloapi.com/profile/{title}/profiles/{player}/spartan[?size][&crop]
      * @param params  The Player's Gamertag, or an IProfileParams options object
      */
-    spartanImage(params: string | IProfileParams): Promise<SpartanImage>;
+    spartanImage(player: string): Promise<SpartanImage>;
+    spartanImage(params: IProfileParams): Promise<SpartanImage>;
 }

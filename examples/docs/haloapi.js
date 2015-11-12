@@ -2,7 +2,7 @@
 
 // It provides one function for each endpoint, returning a promise. There are some additional functions that offer alternate access to some endpoints.
 
-// ## Links
+// # Links
 
 // <table cellpadding=5>
 // <tr>
@@ -23,26 +23,72 @@
 // <td>[Waypoint Thread](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts)</td>
 // </table>
 
-// ## Installation 
+// # Installation 
 
-// This project can be installed as a node module with
+// This project can be installed as a node module with NPM.
 
 $ npm install haloapi --save
 
 // If you don't have Node or NPM, go ahead and [install it](https://nodejs.org/en/download/).
 
-// Requires Node version `0.11` or later.
+// *Requires Node version `0.11` or later.*
 
-// ## Initialization
+// # Initialization
 
-// Create an instance of the API wrapper, providing your API key.
+// Create an instance of the API client, providing your API key.
+
 var api = new (require("haloapi"))('YOUR API KEY HERE');
 
 // That is a shortcut for this.
+
 var HaloAPI = require("haloapi");
 var api = new HaloAPI('YOUR API KEY HERE');
 
-// ## Making Requests
+// ## Persistent Caching (redis)
+
+// [Redis](https://redis.io/) caching is currently supported and when opten-in 
+// will automatically cache any response that isn't expected to be modified. 
+// This includes all metadata endpoints and some stats endpoints, such as the 
+// response from a request for a match by ID.
+
+var api = new HaloAPI({
+    apiKey: 'YOUR API KEY HERE',
+    cache: 'redis',
+    cacheOptions: {} // or ['url', {options...}]
+});
+
+// As redis is optional, you need to install the client if you want to use it.
+// To do so, do an `npm install redis`.
+
+// The `cacheOptions` are passed directly to the `createClient(...)` redis
+// function. If you're running a stock redis server, you won't need to pass
+// the `cacheOptions` object. Otherwise you can pass either an object or a 
+// list that will be passed to one of the `redis.createClient` overloads.
+
+/* 
+ * Redis client overloads:
+ *   redis.createClient()
+ *   redis.createClient(options)
+ *   redis.createClient(unix_socket, options)
+ *   redis.createClient('redis://user:pass@host:port', options)
+ *   redis.createClient(port, host, options)
+ */
+
+// See [here](https://www.npmjs.com/package/redis#overloading) for further
+// information. 
+
+// ### Clearing the Cache
+
+// You may at any time clear the cache. 
+ 
+api.cacheClear().then(function (n) {
+    console.log(n, 'items in cache were removed.');
+});
+
+// Additional caches and database support may come in the future, 
+// along with the ability to remove a specific entry from the cache. 
+
+// # Making Requests
 
 // Instances of `HaloAPI` comprises three instances (objects) that you will 
 // be using. `metadata`, `stats`, and `profile`. These correspond to the three
@@ -52,6 +98,7 @@ var api = new HaloAPI('YOUR API KEY HERE');
 // Each of these three objects consist of a number of functions that will 
 // make a request to the Halo API and parse the response. In general these
 // will be of the form `api.<service>.<endpoint>(<params...>)`. For example:
+ 
 api.profile.spartanImage("Major Nelson");
 api.stats.playerMatches("Major Nelson");
 api.metadata.commendations();
@@ -71,21 +118,23 @@ promise.then(successHandler).catch(errorHandler);
 
 api.metadata.weapons()
     .then(function (weapons) {
-        /** do something with `weapons` **/
+        /* do something with `weapons` */
     })
     .catch(function (error) {
-        /** do something with `error` **/
+        /* do something with `error` */
     });
+// `error` will usually have be an object 
+// containing a `message` and `statusCode`.         
 
-// The above is ECMAScript 5 compatitble. If you are writing using ECMAScript 
+// The above is ECMAScript 5 compatible. If you are writing using ECMAScript 
 // 2015 (aka ES6), you may remove some clutter by using lambdas. 
 
 api.metadata.weapons()
     .then(weapons => {
-        /** do something with `weapons` **/
+        /* do something with `weapons` */
     })
     .catch(error => {
-        /** do something with `error` **/
+        /* do something with `error` */
     });
 
 // And if you are using ECMAScript 2016 (ES7), you can use the async/await
@@ -93,13 +142,15 @@ api.metadata.weapons()
 
 try {
     var weapons = await api.metadata.weapons();
-    /** do something with `weapons` **/
+    /* do something with `weapons` **/
 } catch (error) {
-    /** do something with `error` **/    
+    /* do something with `error` */    
 }
 
 // Excellent. For the rest of this document, for brevity, we will ommit error
 // handling, and provide basic usage for each of the functions available. 
+
+// # List of Endpoints
 
 // ## Metadata Endpoints
 
@@ -108,6 +159,7 @@ try {
 // by the game.
 
 // Get all campaign missions, and log the name.
+
 api.metadata.campaignMissions()
     .then(function (missions) {
         missions.forEach(function (mission) {
@@ -116,18 +168,24 @@ api.metadata.campaignMissions()
     });
 
 // Get all commendations.
+
 api.metadata.commendations().then(console.log);
 
 // Get all CSR Designations (Ranks and Tiers).
+
 api.metadata.csrDesignations().then(console.log);
 
 // Get all campaign enemies.
+
 api.metadata.enemies().then(console.log);
 
+
 // Get all flexible statistic metadata. Impulses and medals.
+
 api.metadata.flexibleStats().then(console.log);
 
 // Get all base game variants (game types).
+
 api.metadata.gameBaseVariants().then(console.log); 
 
 // Get a specific game variant. IDs for this endpoint can be obtained from 
@@ -260,8 +318,8 @@ api.stats.serviceRecordCampaign("...").then(console.log);
 var players = [ "Frankie", "Major Nelson" ];
 api.stats.serviceRecordsArena(players).then(console.log);
 api.stats.serviceRecordsWarzone(players).then(console.log);
-api.stats.serviceRecordsArena(players).then(console.log);
-api.stats.serviceRecordsWarzone(players).then(console.log);
+api.stats.serviceRecordsCustom(players).then(console.log);
+api.stats.serviceRecordsCampaign(players).then(console.log);
 
 // ## Profile Endpoints
 
@@ -289,3 +347,34 @@ api.profile.spartanImage({
     size: 512, // Default 256. Options 95, 128, 190, 256, 512.
     crop: "portrait" // Default "full", options "full", "portrait"
 });
+
+// # JSON Schemas 
+
+// This package integrates with 
+// [haloapi-schema](https://github.com/DerFlatulator/haloapi-schema), 
+// a package containing schemas to define the shape of responses from the API.
+// These schemas are used in test cases, but can also be accessed
+// using the `api.jsonSchema(endpointFunction)` function.
+
+var commendationsSchema = api.jsonSchema(api.metadata.commendations);
+
+// You can use the `json-schema` npm package to perform validation.
+
+var validate = require('json-schema').validate;
+api.metadata.commendations()
+    .then(function (commendations) {
+        var validation = validate(commendations, commendationsSchema);
+        if (validation.valid) {
+            /* success! */
+        } else {
+            /* validation errors :( */ 
+            validation.errors.forEach(console.log);
+        }
+    });
+
+// # Feedback and Support
+
+// If you have any feedback or issues, feel free to 
+// [open an issue](https://github.com/DerFlatulator/haloapi.js/issues),
+// post in [the Waypoint thread](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts)
+// or, tweet me [@DerFlatulator](https://twitter.com/DerFlatulator).

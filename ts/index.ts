@@ -21,12 +21,6 @@ var requireOptional = codependency.register(module, {
 
 const DEBUG: boolean = !!process.env.HALOAPI_DEBUG;
 
-var Caches = {
-    get redis() {
-        return requireOptional('redis');
-    }
-};
-
 /**
  * @param apiKey Your API key. API keys are obtained from 
  *               http://developer.haloapi.com/ 
@@ -62,12 +56,8 @@ class HaloAPI implements IHaloAPI {
     private cacheName: string;
     private title: string;
 
-    private cacheClient: any;
+    private cacheManager: CacheManager;
 
-    /**
-     * Create an instance of the HaloAPI. 
-     * @param opts  Either an options object or your API key string.
-     */
     constructor(opts: string | HaloAPIOptions) {
         var options: HaloAPIOptions = {
             apiKey: null
@@ -87,7 +77,7 @@ class HaloAPI implements IHaloAPI {
         this.title = options.title || "h5";
         this.cacheName = options.cache || null;
 
-        this.initCache(options.cacheOptions);
+        this.cacheManager = new CacheManager(this.cacheName, options.cacheOptions);
     }
 
     /** @inheritdoc */
@@ -104,32 +94,17 @@ class HaloAPI implements IHaloAPI {
 
         var promise = bypassCache 
             ? Promise.reject(null)
-            : this.cacheGet<T>(endpoint);
+            : this.cacheManager.cacheGet<T>(endpoint);
 
         return promise.catch((cacheError) => {
             DEBUG && console.log("fetching:", options.url);
-    
             return rp.get(options)
-                .then((response) => {
-                    this.cacheSet(endpoint, <T>response);
-                    return response;
-                })
                 .catch((error: any) => {
-                    if (error.name === "RequestError") {
-                        throw error.message;
-                    } else {
-                        var json = error.response.toJSON();
-
-                        var message = json.body
-                            ? json.body.message
-                            : "An error occurred.";
-
-                        if (json.statusCode == 429) {
-                            return this.duplicateRequest<T>(message, endpoint, true);
-                        }
-
-                        throw `${json.statusCode} - ${message}`;
-                    }
+                    return this.handleRequestRejection<T>(endpoint, error);
+                })
+                .then((response) => {
+                    this.cacheManager.cacheSet(endpoint, <T>response);
+                    return response;
                 });
         });
 
@@ -150,23 +125,14 @@ class HaloAPI implements IHaloAPI {
 
         return rp.get(options)
             .catch((error: any) => {
-                if (error.name === "RequestError") {
-                    throw error.message;
-                } else {
-                    DEBUG 
-                        && console.log("error:", error.message, options.url);
-                    
-                    if (error.statusCode == 429) {
-                        return this.duplicateRequest<url>("2", endpoint, false);
-                    }
+                return this.handleRequestRejection<url>(endpoint, error);
+            })
+            .catch(handledError => {
+                var response = handledError.requestError.response;
+                if (response.statusCode == 302) 
+                    return response.headers.location;
 
-                    // console.info(error, response, body);
-                    var response = error.response;
-                    if (response.statusCode == 302) 
-                        return response.headers.location;
-
-                    throw response.statusCode;                
-                }
+                throw response.statusCode;                
             });        
     }    
 
@@ -196,6 +162,24 @@ class HaloAPI implements IHaloAPI {
         }
     }
 
+    private handleRequestRejection<T>(endpoint: string, error: any): Promise<T> {
+        if (error.name === "RequestError") {
+            throw error.message;
+        } else {
+            var json = error.response ? error.response.toJSON() : {};
+
+            var message = json.body
+                ? json.body.message
+                : "An error occurred.";
+
+            if (json.statusCode == 429) {
+                return this.duplicateRequest<T>(message, endpoint, true);
+            }
+            json.requestError = error;
+            throw json;
+        }
+    }
+
     private duplicateRequest<T>(
         message, 
         endpoint: string, 
@@ -203,7 +187,7 @@ class HaloAPI implements IHaloAPI {
     ): Promise<T> {
         // parse the response to get the seconds to next request
         var seconds = message.split(" ").filter(parseInt);
-        seconds = seconds.length ? parseInt(seconds[0]) : 1;
+        seconds = seconds.length ? parseInt(seconds[0]) : 2;
 
         var wait: number = 100 + (seconds * 1000);
         DEBUG && console.log("retrying in:", wait);
@@ -221,79 +205,133 @@ class HaloAPI implements IHaloAPI {
         });
     }
 
-    private initCache(cacheOptions: any): void {
-        if (!this.cacheName) {
-            this.cacheClient = null;
+    /** @inheritdoc */
+    cacheClear(): Promise<number> {
+        if (!this.cacheName)
+            return Promise.reject("No cache in use");
+
+        return this.cacheManager.cacheClear();
+    }
+};
+
+class CacheManager {
+
+    private adapter: CacheAdapter;
+
+    constructor(public name: string, public options: any) {
+        if (!name) {
+            this.adapter = null;
             return;
         }
-        DEBUG && console.log("initializing cache:", this.cacheName);
-
-        switch (this.cacheName) {
-        case "redis":
-            if (!Caches.redis)
-                throw "ERROR: You've opted for redis caching, yet redis client is not installed."
-                    + '       Run `npm install redis` first.'
-            if (cacheOptions && cacheOptions.length)
-                this.cacheClient = Caches.redis.createClient(...cacheOptions);
-            else    
-                this.cacheClient = Caches.redis.createClient(cacheOptions);
-            break;
+        DEBUG && console.log("initializing cache:", name);
+        if (!(name in CacheAdapters)) {
+            throw `The cache: ${name} is not supported.`;
         }
+        this.adapter = new (CacheAdapters[name])(options);
     }
 
-    private cacheSet<T>(uri: string, item: T) {
-        if (!this.cacheClient) return;
-        var json: string = JSON.stringify(item);
-
-        switch (this.cacheName) {
-            case "redis":
-                this.cacheClient.set(`haloapi.js:uri:${uri}`, json);
-                DEBUG && console.log("cache set: ", uri);
-                break;
-        }
+    /** @inheritdoc */
+    cacheSet<T>(uri: string, item: T): void {
+        if (!this.adapter) return;
+        this.adapter.set<T>(`haloapi.js:uri:${uri}`, item)
+        DEBUG && console.log("cache set: ", uri);
     }
 
-    private cacheGet<T>(uri: string): Promise<T> {
-        if (!this.cacheClient) 
+    /** @inheritdoc */
+    cacheGet<T>(uri: string): Promise<T> {
+        if (!this.adapter)
             return Promise.reject("No cache specified");
 
+        return this.adapter.get<T>(`haloapi.js:uri:${uri}`)
+            .then(_ => { 
+                DEBUG && console.log("cache hit:", uri);
+                return _;
+            })
+            .catch(_ => {
+                DEBUG && console.log("cache miss: ", uri);
+                return Promise.reject(_);
+            });
+    }    
+
+    /** @inheritdoc */
+    cacheClear() {
+        if (!this.adapter)
+            return Promise.reject("No cache specied");
+
+        return this.adapter.keys("haloapi.js:uri:*")
+            .then(keys => {
+                if (!keys.length)
+                    return Promise.resolve(0);
+                else
+                    return this.adapter.delete(keys);
+            })
+            .then(n => {
+                DEBUG && console.log("cache cleared: ", n);
+                return n;
+            });
+    }
+}
+
+/**
+ * Redis cache adapter.
+ * @todo Pull this out to a seperate directory.
+ */
+class RedisCache implements CacheAdapter {
+
+    private redis: any;
+    private redisClient: any;
+
+    /** @inheritdoc */
+    constructor(private options: any) {
+        this.redis = requireOptional('redis');
+
+        if (!this.redis) 
+            throw "ERROR: You've opted for redis caching, yet redis "
+                + "client is not installed. Run `npm install redis` first.";
+
+        this.redisClient = Array.isArray(options)
+            ? this.redis.createClient(...options)
+            : this.redis.createClient(options);
+    }
+
+    /** @inheritdoc */
+    get<T>(key: string): Promise<T> {
         return new Promise<T>((accept, reject) => {
-            switch (this.cacheName) {
-            case "redis":
-                this.cacheClient.get(`haloapi.js:uri:${uri}`, (err, reply) => {
-                    if (DEBUG)
-                       reply
-                           ? console.log("cache hit: ", uri)
-                           : console.error("cache miss: ", uri);
-
-                    reply ? accept(<T>JSON.parse(reply)) : reject(err);
-                });
-                break;
-            }
-
+            this.redisClient.get(key, (err, reply) => {
+                reply ? accept(<T>JSON.parse(reply)) : reject(err);
+            });
         });
     }
 
-    cacheClear(): Promise<number> {
-        if (!this.cacheClient) 
-            return Promise.reject("No cache in use");
+    /** @inheritdoc */
+    set<T>(key: string, value: T): Promise<void> {
+        this.redisClient.set(key, JSON.stringify(value));
+        return Promise.resolve();
+    }
 
-        switch (this.cacheName) {
-        case "redis":
-            return new Promise<number>((accept, reject) => {
-                this.cacheClient.keys("haloapi.js:uri:*", (err, replies) => {
-                    if (!replies.length)
-                        reject("Nothing to delete");
-
-                    this.cacheClient.del(replies, (err, count: number) => {
-                        if (err)
-                            reject(err);
-                        accept(count);
-                    });
-                });
+    /** @inheritdoc */
+    keys(pattern: string): Promise<string[]> {
+        return new Promise<string[]>((accept, reject) => {
+            this.redisClient.keys(pattern, (err, replies: string[]) => {
+                err ? reject(err) : accept(replies);
             });
-        }
+        });
+    }
+
+    /** @inheritdoc */
+    delete(param: any): Promise<number> {
+        var keys = [].concat(param);
+        return new Promise<number>((accept, reject) => {
+            this.redisClient.del(keys, (err, count: number) => {
+                err ? reject(err) : accept(count);
+            });
+        });
     }
 };
+
+
+var CacheAdapters: SupportedCaches = {};
+
+CacheAdapters["redis"] = RedisCache;
 
 export = HaloAPI;
