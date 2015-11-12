@@ -100,7 +100,7 @@ class HaloAPI implements IHaloAPI {
             DEBUG && console.log("fetching:", options.url);
             return rp.get(options)
                 .catch((error: any) => {
-                    return this.handleRequestRejection<T>(endpoint, error);
+                    return this.handleRequestRejection<T>(endpoint, error, true);
                 })
                 .then((response) => {
                     this.cacheManager.cacheSet(endpoint, <T>response);
@@ -124,16 +124,17 @@ class HaloAPI implements IHaloAPI {
         DEBUG && console.log("fetching:", options.url);
 
         return rp.get(options)
-            .catch((error: any) => {
-                return this.handleRequestRejection<url>(endpoint, error);
-            })
-            .catch(handledError => {
-                var response = handledError.requestError.response;
-                if (response.statusCode == 302) 
+            .catch(error => {
+                var response = error.response;
+                if (response.statusCode == 302)
                     return response.headers.location;
 
-                throw response.statusCode;                
-            });        
+                throw error;
+            })
+            .catch((error: any) => {
+                return this.handleRequestRejection<url>(endpoint, error, false);
+            })
+
     }    
 
     /** @inheritdoc */
@@ -162,20 +163,28 @@ class HaloAPI implements IHaloAPI {
         }
     }
 
-    private handleRequestRejection<T>(endpoint: string, error: any): Promise<T> {
+    private handleRequestRejection<T>(
+        endpoint: string, 
+        error: any, 
+        isJSON: boolean
+    ): Promise<T> {
+
         if (error.name === "RequestError") {
             throw error.message;
         } else {
+
             var json = error.response ? error.response.toJSON() : {};
 
             var message = json.body
                 ? json.body.message
                 : "An error occurred.";
 
-            if (json.statusCode == 429) {
-                return this.duplicateRequest<T>(message, endpoint, true);
-            }
             json.requestError = error;
+            json.statusCode = json.statusCode || error.statusCode;
+
+            if (json.statusCode == 429) {
+                return this.duplicateRequest<T>(message, endpoint, isJSON);
+            }
             throw json;
         }
     }
@@ -186,8 +195,13 @@ class HaloAPI implements IHaloAPI {
         isJSON: boolean
     ): Promise<T> {
         // parse the response to get the seconds to next request
-        var seconds = message.split(" ").filter(parseInt);
-        seconds = seconds.length ? parseInt(seconds[0]) : 2;
+        var seconds;
+        if (isJSON) {
+            seconds = message.split(" ").filter(parseInt);
+            seconds = seconds.length ? parseInt(seconds[0]) : 2;
+        } else {
+            seconds = 2;
+        }
 
         var wait: number = 100 + (seconds * 1000);
         DEBUG && console.log("retrying in:", wait);
@@ -307,12 +321,7 @@ class RedisCache implements CacheAdapter {
     set<T>(key: string, value: T): Promise<void> {
         return new Promise<void>((accept, reject) => {
             this.redisClient.set(key, JSON.stringify(value), (err, ok) => {
-                if (err) reject(err);
-                else {
-                    // force a save
-                    this.redisClient.bgsave();
-                    accept(ok);                    
-                }
+                err ? reject(err) : accept(ok);                                    
             });
         });
     }
@@ -331,8 +340,6 @@ class RedisCache implements CacheAdapter {
         var keys = [].concat(param);
         return new Promise<number>((accept, reject) => {
             this.redisClient.del(keys, (err, count: number) => {
-                // force a save
-                err || this.redisClient.bgsave();
                 err ? reject(err) : accept(count);
             });
         });

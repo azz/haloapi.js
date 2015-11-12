@@ -53,7 +53,7 @@ var HaloAPI = (function () {
             DEBUG && console.log("fetching:", options.url);
             return rp.get(options)
                 .catch(function (error) {
-                return _this.handleRequestRejection(endpoint, error);
+                return _this.handleRequestRejection(endpoint, error, true);
             })
                 .then(function (response) {
                 _this.cacheManager.cacheSet(endpoint, response);
@@ -75,13 +75,13 @@ var HaloAPI = (function () {
         DEBUG && console.log("fetching:", options.url);
         return rp.get(options)
             .catch(function (error) {
-            return _this.handleRequestRejection(endpoint, error);
-        })
-            .catch(function (handledError) {
-            var response = handledError.requestError.response;
+            var response = error.response;
             if (response.statusCode == 302)
                 return response.headers.location;
-            throw response.statusCode;
+            throw error;
+        })
+            .catch(function (error) {
+            return _this.handleRequestRejection(endpoint, error, false);
         });
     };
     /** @inheritdoc */
@@ -108,7 +108,7 @@ var HaloAPI = (function () {
             throw "Cannot find schema: " + path;
         }
     };
-    HaloAPI.prototype.handleRequestRejection = function (endpoint, error) {
+    HaloAPI.prototype.handleRequestRejection = function (endpoint, error, isJSON) {
         if (error.name === "RequestError") {
             throw error.message;
         }
@@ -117,18 +117,25 @@ var HaloAPI = (function () {
             var message = json.body
                 ? json.body.message
                 : "An error occurred.";
-            if (json.statusCode == 429) {
-                return this.duplicateRequest(message, endpoint, true);
-            }
             json.requestError = error;
+            json.statusCode = json.statusCode || error.statusCode;
+            if (json.statusCode == 429) {
+                return this.duplicateRequest(message, endpoint, isJSON);
+            }
             throw json;
         }
     };
     HaloAPI.prototype.duplicateRequest = function (message, endpoint, isJSON) {
         var _this = this;
         // parse the response to get the seconds to next request
-        var seconds = message.split(" ").filter(parseInt);
-        seconds = seconds.length ? parseInt(seconds[0]) : 2;
+        var seconds;
+        if (isJSON) {
+            seconds = message.split(" ").filter(parseInt);
+            seconds = seconds.length ? parseInt(seconds[0]) : 2;
+        }
+        else {
+            seconds = 2;
+        }
         var wait = 100 + (seconds * 1000);
         DEBUG && console.log("retrying in:", wait);
         return new Promise(function (accept, reject) {
@@ -235,8 +242,12 @@ var RedisCache = (function () {
     };
     /** @inheritdoc */
     RedisCache.prototype.set = function (key, value) {
-        this.redisClient.set(key, JSON.stringify(value));
-        return Promise.resolve();
+        var _this = this;
+        return new Promise(function (accept, reject) {
+            _this.redisClient.set(key, JSON.stringify(value), function (err, ok) {
+                err ? reject(err) : accept(ok);
+            });
+        });
     };
     /** @inheritdoc */
     RedisCache.prototype.keys = function (pattern) {
