@@ -53,7 +53,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <h2 id="links">Links</h2>
+              <h1 id="links">Links</h1>
 
             </div>
             
@@ -96,7 +96,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <h2 id="installation">Installation</h2>
+              <h1 id="installation">Installation</h1>
 
             </div>
             
@@ -109,7 +109,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>This project can be installed as a node module with</p>
+              <p>This project can be installed as a node module with NPM.</p>
 
             </div>
             
@@ -138,7 +138,7 @@ $ npm install haloapi --save</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Requires Node version <code>0.11</code> or later.</p>
+              <p><em>Requires Node version <code>0.11</code> or later.</em></p>
 
             </div>
             
@@ -151,7 +151,7 @@ $ npm install haloapi --save</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <h2 id="initialization">Initialization</h2>
+              <h1 id="initialization">Initialization</h1>
 
             </div>
             
@@ -164,11 +164,12 @@ $ npm install haloapi --save</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Create an instance of the API wrapper, providing your API key.</p>
+              <p>Create an instance of the API client, providing your API key.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> api = <span class="hljs-keyword">new</span> (<span class="hljs-built_in">require</span>(<span class="hljs-string">"haloapi"</span>))(<span class="hljs-string">'YOUR API KEY HERE'</span>);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> api = <span class="hljs-keyword">new</span> (<span class="hljs-built_in">require</span>(<span class="hljs-string">"haloapi"</span>))(<span class="hljs-string">'YOUR API KEY HERE'</span>);</pre></div></div>
             
         </li>
         
@@ -183,7 +184,8 @@ $ npm install haloapi --save</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> HaloAPI = <span class="hljs-built_in">require</span>(<span class="hljs-string">"haloapi"</span>);
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> HaloAPI = <span class="hljs-built_in">require</span>(<span class="hljs-string">"haloapi"</span>);
 <span class="hljs-keyword">var</span> api = <span class="hljs-keyword">new</span> HaloAPI(<span class="hljs-string">'YOUR API KEY HERE'</span>);</pre></div></div>
             
         </li>
@@ -195,7 +197,7 @@ $ npm install haloapi --save</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <h2 id="making-requests">Making Requests</h2>
+              <h2 id="persistent-caching-redis-">Persistent Caching (redis)</h2>
 
             </div>
             
@@ -208,12 +210,19 @@ $ npm install haloapi --save</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Instances of <code>HaloAPI</code> comprises three instances (objects) that you will 
-be using. <code>metadata</code>, <code>stats</code>, and <code>profile</code>. These correspond to the three
-API services provided at 
-<a href="http://developer.haloapi.com/">developer.haloapi.com</a>.</p>
+              <p><a href="https://redis.io/">Redis</a> caching is currently supported and when opten-in 
+will automatically cache any response that isn’t expected to be modified. 
+This includes all metadata endpoints and some stats endpoints, such as the 
+response from a request for a match by ID.</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> api = <span class="hljs-keyword">new</span> HaloAPI({
+    apiKey: <span class="hljs-string">'YOUR API KEY HERE'</span>,
+    cache: <span class="hljs-string">'redis'</span>,
+    cacheOptions: {} <span class="hljs-comment">// or ['url', {options...}]</span>
+});</pre></div></div>
             
         </li>
         
@@ -224,15 +233,10 @@ API services provided at
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>Each of these three objects consist of a number of functions that will 
-make a request to the Halo API and parse the response. In general these
-will be of the form <code>api.&lt;service&gt;.&lt;endpoint&gt;(&lt;params...&gt;)</code>. For example:</p>
+              <p>As redis is optional, you need to install the client if you want to use it.
+To do so, do an <code>npm install redis</code>.</p>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>api.profile.spartanImage(<span class="hljs-string">"Major Nelson"</span>);
-api.stats.playerMatches(<span class="hljs-string">"Major Nelson"</span>);
-api.metadata.commendations();</pre></div></div>
             
         </li>
         
@@ -242,6 +246,140 @@ api.metadata.commendations();</pre></div></div>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>The <code>cacheOptions</code> are passed directly to the <code>createClient(...)</code> redis
+function. If you’re running a stock redis server, you won’t need to pass
+the <code>cacheOptions</code> object. Otherwise you can pass either an object or a 
+list that will be passed to one of the <code>redis.createClient</code> overloads.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-comment">/* 
+ * Redis client overloads:
+ *   redis.createClient()
+ *   redis.createClient(options)
+ *   redis.createClient(unix_socket, options)
+ *   redis.createClient('redis://user:pass@host:port', options)
+ *   redis.createClient(port, host, options)
+ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>See <a href="https://www.npmjs.com/package/redis#overloading">here</a> for further
+information. </p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <h3 id="clearing-the-cache">Clearing the Cache</h3>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>You may at any time clear the cache. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre> 
+api.cacheClear().then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">n</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(n, <span class="hljs-string">'items in cache were removed.'</span>);
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Additional caches and database support may come in the future, 
+along with the ability to remove a specific entry from the cache. </p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <h1 id="making-requests">Making Requests</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Instances of <code>HaloAPI</code> comprises three instances (objects) that you will 
+be using. <code>metadata</code>, <code>stats</code>, and <code>profile</code>. These correspond to the three
+API services provided at 
+<a href="http://developer.haloapi.com/">developer.haloapi.com</a>.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>Each of these three objects consist of a number of functions that will 
+make a request to the Halo API and parse the response. In general these
+will be of the form <code>api.&lt;service&gt;.&lt;endpoint&gt;(&lt;params...&gt;)</code>. For example:</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre> 
+api.profile.spartanImage(<span class="hljs-string">"Major Nelson"</span>);
+api.stats.playerMatches(<span class="hljs-string">"Major Nelson"</span>);
+api.metadata.commendations();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>All of these functions return a Promise. Promises are mechanisms for 
 receiving results from an asynchronous call, without providing a 
@@ -256,161 +394,16 @@ promise.then(successHandler).catch(errorHandler);</pre></div></div>
         </li>
         
         
-        <li id="section-16">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
-              </div>
-              <p>Where <code>successHandler</code> and <code>errorHandler</code> are both functions to be
-invoked with results or errors. </p>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-17">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
-              </div>
-              <p>As all our functions return promises, we can handle the results in 
-like this:</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-api.metadata.weapons()
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">weapons</span>) </span>{
-        <span class="hljs-comment">/** do something with `weapons` **/</span>
-    })
-    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
-        <span class="hljs-comment">/** do something with `error` **/</span>
-    });</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-18">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
-              </div>
-              <p>The above is ECMAScript 5 compatitble. If you are writing using ECMAScript 
-2015 (aka ES6), you may remove some clutter by using lambdas. </p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-api.metadata.weapons()
-    .then(weapons =&gt; {
-        <span class="hljs-comment">/** do something with `weapons` **/</span>
-    })
-    .catch(error =&gt; {
-        <span class="hljs-comment">/** do something with `error` **/</span>
-    });</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
-              </div>
-              <p>And if you are using ECMAScript 2016 (ES7), you can use the async/await
-syntax to reduce it down to this.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-<span class="hljs-keyword">try</span> {
-    <span class="hljs-keyword">var</span> weapons = <span class="hljs-keyword">await</span> api.metadata.weapons();
-    <span class="hljs-comment">/** do something with `weapons` **/</span>
-} <span class="hljs-keyword">catch</span> (error) {
-    <span class="hljs-comment">/** do something with `error` **/</span>    
-}</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-20">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
-              </div>
-              <p>Excellent. For the rest of this document, for brevity, we will ommit error
-handling, and provide basic usage for each of the functions available. </p>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-21">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
-              </div>
-              <h2 id="metadata-endpoints">Metadata Endpoints</h2>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-22">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
-              </div>
-              <p>These APIs will provide access to Metadata. Use them to translate IDs
-from other APIs. All Metadata APIs support all locales that are supported
-by the game.</p>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-23">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
-              </div>
-              <p>Get all campaign missions, and log the name.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>api.metadata.campaignMissions()
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">missions</span>) </span>{
-        missions.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">mission</span>) </span>{
-            <span class="hljs-built_in">console</span>.log(mission.name);
-        });
-    });</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>Get all commendations.</p>
+              <p>Where <code>successHandler</code> and <code>errorHandler</code> are both functions to be
+invoked with results or errors. </p>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>api.metadata.commendations().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
             
         </li>
         
@@ -421,11 +414,19 @@ by the game.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p>Get all CSR Designations (Ranks and Tiers).</p>
+              <p>As all our functions return promises, we can handle the results in 
+like this:</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>api.metadata.csrDesignations().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>
+api.metadata.weapons()
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">weapons</span>) </span>{
+        <span class="hljs-comment">/* do something with `weapons` */</span>
+    })
+    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">error</span>) </span>{
+        <span class="hljs-comment">/* do something with `error` */</span>
+    });</pre></div></div>
             
         </li>
         
@@ -436,11 +437,10 @@ by the game.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
-              <p>Get all campaign enemies.</p>
+              <p><code>error</code> will usually have be an object 
+containing a <code>message</code> and <code>statusCode</code>.         </p>
 
             </div>
-            
-            <div class="content"><div class='highlight'><pre>api.metadata.enemies().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
             
         </li>
         
@@ -451,11 +451,19 @@ by the game.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
-              <p>Get all flexible statistic metadata. Impulses and medals.</p>
+              <p>The above is ECMAScript 5 compatible. If you are writing using ECMAScript 
+2015 (aka ES6), you may remove some clutter by using lambdas. </p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>api.metadata.flexibleStats().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>
+api.metadata.weapons()
+    .then(weapons =&gt; {
+        <span class="hljs-comment">/* do something with `weapons` */</span>
+    })
+    .catch(error =&gt; {
+        <span class="hljs-comment">/* do something with `error` */</span>
+    });</pre></div></div>
             
         </li>
         
@@ -466,11 +474,18 @@ by the game.</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
-              <p>Get all base game variants (game types).</p>
+              <p>And if you are using ECMAScript 2016 (ES7), you can use the async/await
+syntax to reduce it down to this.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>api.metadata.gameBaseVariants().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">var</span> weapons = <span class="hljs-keyword">await</span> api.metadata.weapons();
+    <span class="hljs-comment">/* do something with `weapons` **/</span>
+} <span class="hljs-keyword">catch</span> (error) {
+    <span class="hljs-comment">/* do something with `error` */</span>    
+}</pre></div></div>
             
         </li>
         
@@ -480,6 +495,162 @@ by the game.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Excellent. For the rest of this document, for brevity, we will ommit error
+handling, and provide basic usage for each of the functions available. </p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <h1 id="list-of-endpoints">List of Endpoints</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <h2 id="metadata-endpoints">Metadata Endpoints</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>These APIs will provide access to Metadata. Use them to translate IDs
+from other APIs. All Metadata APIs support all locales that are supported
+by the game.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Get all campaign missions, and log the name.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+api.metadata.campaignMissions()
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">missions</span>) </span>{
+        missions.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">mission</span>) </span>{
+            <span class="hljs-built_in">console</span>.log(mission.name);
+        });
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Get all commendations.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+api.metadata.commendations().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Get all CSR Designations (Ranks and Tiers).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+api.metadata.csrDesignations().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <p>Get all campaign enemies.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+api.metadata.enemies().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>Get all flexible statistic metadata. Impulses and medals.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+api.metadata.flexibleStats().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Get all base game variants (game types).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+api.metadata.gameBaseVariants().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>Get a specific game variant. IDs for this endpoint can be obtained from 
 the <code>api.stats.playerMatches</code> endpoint.</p>
@@ -495,11 +666,11 @@ api.metadata.gameVariantById(<span class="hljs-string">"963ca478-369a-4a37-97e3-
         </li>
         
         
-        <li id="section-30">
+        <li id="section-40">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-30">&#182;</a>
+                <a class="pilcrow" href="#section-40">&#182;</a>
               </div>
               <p>Get all impulses (invisible medals such as “kill” and “assist”).</p>
 
@@ -511,11 +682,11 @@ api.metadata.impulses().then(<span class="hljs-built_in">console</span>.log);</p
         </li>
         
         
-        <li id="section-31">
+        <li id="section-41">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-31">&#182;</a>
+                <a class="pilcrow" href="#section-41">&#182;</a>
               </div>
               <p>Get all base maps.</p>
 
@@ -527,11 +698,11 @@ api.metadata.maps().then(<span class="hljs-built_in">console</span>.log);</pre><
         </li>
         
         
-        <li id="section-32">
+        <li id="section-42">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-32">&#182;</a>
+                <a class="pilcrow" href="#section-42">&#182;</a>
               </div>
               <p>Get a map variant by its ID guid. These IDs can be obtained from 
 <code>api.stats.playerMatches</code>.</p>
@@ -547,11 +718,11 @@ mapVariantById(<span class="hljs-string">"a44373ee-9f63-4733-befd-5cd8fbb1b44a"<
         </li>
         
         
-        <li id="section-33">
+        <li id="section-43">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-33">&#182;</a>
+                <a class="pilcrow" href="#section-43">&#182;</a>
               </div>
               <p>Get a list of all medals. </p>
 
@@ -563,11 +734,11 @@ api.metadata.medals().then(<span class="hljs-built_in">console</span>.log);</pre
         </li>
         
         
-        <li id="section-34">
+        <li id="section-44">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-34">&#182;</a>
+                <a class="pilcrow" href="#section-44">&#182;</a>
               </div>
               <p>Get playlists (hoppers).</p>
 
@@ -579,11 +750,11 @@ api.metadata.playlists().then(<span class="hljs-built_in">console</span>.log);</
         </li>
         
         
-        <li id="section-35">
+        <li id="section-45">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-35">&#182;</a>
+                <a class="pilcrow" href="#section-45">&#182;</a>
               </div>
               <p>Get a requisition (card) by ID. These IDs can be obtained from
 rank rewards in <code>api.metadata.spartanRanks</code>.</p>
@@ -600,11 +771,11 @@ api.metadata.requisitionById(<span class="hljs-string">"e4f549b2-90af-4dab-b2bc-
         </li>
         
         
-        <li id="section-36">
+        <li id="section-46">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-36">&#182;</a>
+                <a class="pilcrow" href="#section-46">&#182;</a>
               </div>
               <p>Get a requisition pack by ID. Requisition packs include those purchasable,
 and those obtained by unlocking ranks and commendations. </p>
@@ -618,11 +789,11 @@ api.metadata.requisitionPackById(<span class="hljs-string">"d10141cb-68a5-4c6b-a
         </li>
         
         
-        <li id="section-37">
+        <li id="section-47">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-37">&#182;</a>
+                <a class="pilcrow" href="#section-47">&#182;</a>
               </div>
               <p>Get an array containing three packs, Gold, Silver and Bronze. 
 Underling this funciton are three separate calls to 
@@ -637,11 +808,11 @@ api.metadata.requisitionPacksPurchasable()
         </li>
         
         
-        <li id="section-38">
+        <li id="section-48">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-38">&#182;</a>
+                <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
               <p>Get all skulls from the campaign.</p>
 
@@ -653,11 +824,11 @@ api.metadata.skulls().then(<span class="hljs-built_in">console</span>.log);</pre
         </li>
         
         
-        <li id="section-39">
+        <li id="section-49">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-39">&#182;</a>
+                <a class="pilcrow" href="#section-49">&#182;</a>
               </div>
               <p>Get all spartan ranks. Useful for determining rewards for ranking up.</p>
 
@@ -669,11 +840,11 @@ api.metadata.spartanRanks().then(<span class="hljs-built_in">console</span>.log)
         </li>
         
         
-        <li id="section-40">
+        <li id="section-50">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-40">&#182;</a>
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <p>Get all teams colors for multiplayer. Red, green, blue, etc. 
 Also provides images for each team.</p>
@@ -686,11 +857,11 @@ api.metadata.teamColors().then(<span class="hljs-built_in">console</span>.log);<
         </li>
         
         
-        <li id="section-41">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-41">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
               <p>Get an array of all vehicles in the game. </p>
 
@@ -702,11 +873,11 @@ api.metadata.vehicles().then(<span class="hljs-built_in">console</span>.log);</p
         </li>
         
         
-        <li id="section-42">
+        <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-42">&#182;</a>
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p>Get an array of all weapons in the game. </p>
 
@@ -718,11 +889,11 @@ api.metadata.weapons().then(<span class="hljs-built_in">console</span>.log);</pr
         </li>
         
         
-        <li id="section-43">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-43">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <h2 id="stats-endpoints">Stats Endpoints</h2>
 
@@ -731,11 +902,11 @@ api.metadata.weapons().then(<span class="hljs-built_in">console</span>.log);</pr
         </li>
         
         
-        <li id="section-44">
+        <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-44">&#182;</a>
+                <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
               <p>These APIs provide statistical data about players and matches.</p>
 
@@ -744,11 +915,11 @@ api.metadata.weapons().then(<span class="hljs-built_in">console</span>.log);</pr
         </li>
         
         
-        <li id="section-45">
+        <li id="section-55">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-45">&#182;</a>
+                <a class="pilcrow" href="#section-55">&#182;</a>
               </div>
               <p>Retreive most recent matches by a player. </p>
 
@@ -766,11 +937,11 @@ api.stats.playerMatches(<span class="hljs-string">"Frankie"</span>)
         </li>
         
         
-        <li id="section-46">
+        <li id="section-56">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-46">&#182;</a>
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p>Additional options are available on this endpoint, to make use of them
 pass an options object instead of a string.</p>
@@ -788,11 +959,11 @@ api.stats.playerMatches({
         </li>
         
         
-        <li id="section-47">
+        <li id="section-57">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-47">&#182;</a>
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>Get the post game carnaage report for an arena game. </p>
 
@@ -807,11 +978,11 @@ api.stats.arenaMatchById(<span class="hljs-string">"1ad1cdec-a86a-4e2c-94d5-cab1
         </li>
         
         
-        <li id="section-48">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-48">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <p>The same is available for <code>warzone</code>, <code>custom</code>, and <code>campaign</code>.</p>
 
@@ -825,11 +996,11 @@ api.stats.campaignMatchById(<span class="hljs-string">'...'</span>).then(<span c
         </li>
         
         
-        <li id="section-49">
+        <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
+                <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
               <p>Get a player’s service record for arena.</p>
 
@@ -842,11 +1013,11 @@ api.stats.serviceRecordArena(<span class="hljs-string">"Major Nelson"</span>)
         </li>
         
         
-        <li id="section-50">
+        <li id="section-60">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <p>The same is available for <code>warzone</code>, <code>custom</code>, and <code>campaign</code>.</p>
 
@@ -860,11 +1031,11 @@ api.stats.serviceRecordCampaign(<span class="hljs-string">"..."</span>).then(<sp
         </li>
         
         
-        <li id="section-51">
+        <li id="section-61">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>The above four functions have partners that return multiple service 
 records, one for each player. Note the <code>s</code> in <code>Records</code>.</p>
@@ -875,17 +1046,17 @@ records, one for each player. Note the <code>s</code> in <code>Records</code>.</
 <span class="hljs-keyword">var</span> players = [ <span class="hljs-string">"Frankie"</span>, <span class="hljs-string">"Major Nelson"</span> ];
 api.stats.serviceRecordsArena(players).then(<span class="hljs-built_in">console</span>.log);
 api.stats.serviceRecordsWarzone(players).then(<span class="hljs-built_in">console</span>.log);
-api.stats.serviceRecordsArena(players).then(<span class="hljs-built_in">console</span>.log);
-api.stats.serviceRecordsWarzone(players).then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+api.stats.serviceRecordsCustom(players).then(<span class="hljs-built_in">console</span>.log);
+api.stats.serviceRecordsCampaign(players).then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
             
         </li>
         
         
-        <li id="section-52">
+        <li id="section-62">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
               <h2 id="profile-endpoints">Profile Endpoints</h2>
 
@@ -894,11 +1065,11 @@ api.stats.serviceRecordsWarzone(players).then(<span class="hljs-built_in">consol
         </li>
         
         
-        <li id="section-53">
+        <li id="section-63">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
+                <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
               <p>These APIs provide profile data for players.</p>
 
@@ -907,11 +1078,11 @@ api.stats.serviceRecordsWarzone(players).then(<span class="hljs-built_in">consol
         </li>
         
         
-        <li id="section-54">
+        <li id="section-64">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-54">&#182;</a>
+                <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
               <p>Get a URL that points to an image of a player’s in-game emblem.</p>
 
@@ -923,11 +1094,11 @@ api.profile.emblemImage(<span class="hljs-string">"Frankie"</span>).then(<span c
         </li>
         
         
-        <li id="section-55">
+        <li id="section-65">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-55">&#182;</a>
+                <a class="pilcrow" href="#section-65">&#182;</a>
               </div>
               <p>Additionally, you can specify the size of the emblem.</p>
 
@@ -942,11 +1113,11 @@ api.profile.emblemImage({
         </li>
         
         
-        <li id="section-56">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
               <p>Get a URL that points to an image of the player’s in-game spartan.</p>
 
@@ -958,11 +1129,11 @@ api.profile.spartanImage(<span class="hljs-string">"Frankie"</span>).then(<span 
         </li>
         
         
-        <li id="section-57">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <p>Similarly, you can pass an options object to specify size and crop.</p>
 
@@ -974,6 +1145,94 @@ api.profile.spartanImage({
     size: <span class="hljs-number">512</span>, <span class="hljs-comment">// Default 256. Options 95, 128, 190, 256, 512.</span>
     crop: <span class="hljs-string">"portrait"</span> <span class="hljs-comment">// Default "full", options "full", "portrait"</span>
 });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-68">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-68">&#182;</a>
+              </div>
+              <h1 id="json-schemas">JSON Schemas</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-69">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-69">&#182;</a>
+              </div>
+              <p>This package integrates with 
+<a href="https://github.com/DerFlatulator/haloapi-schema">haloapi-schema</a>, 
+a package containing schemas to define the shape of responses from the API.
+These schemas are used in test cases, but can also be accessed
+using the <code>api.jsonSchema(endpointFunction)</code> function.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> commendationsSchema = api.jsonSchema(api.metadata.commendations);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-70">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-70">&#182;</a>
+              </div>
+              <p>You can use the <code>json-schema</code> npm package to perform validation.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-keyword">var</span> validate = <span class="hljs-built_in">require</span>(<span class="hljs-string">'json-schema'</span>).validate;
+api.metadata.commendations()
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">commendations</span>) </span>{
+        <span class="hljs-keyword">var</span> validation = validate(commendations, commendationsSchema);
+        <span class="hljs-keyword">if</span> (validation.valid) {
+            <span class="hljs-comment">/* success! */</span>
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">/* validation errors :( */</span> 
+            validation.errors.forEach(<span class="hljs-built_in">console</span>.log);
+        }
+    });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-71">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-71">&#182;</a>
+              </div>
+              <h1 id="feedback-and-support">Feedback and Support</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-72">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-72">&#182;</a>
+              </div>
+              <p>If you have any feedback or issues, feel free to 
+<a href="https://github.com/DerFlatulator/haloapi.js/issues">open an issue</a>,
+post in <a href="https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts">the Waypoint thread</a>
+or, tweet me <a href="https://twitter.com/DerFlatulator">@DerFlatulator</a>.</p>
+
+            </div>
             
         </li>
         
