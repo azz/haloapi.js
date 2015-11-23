@@ -27,7 +27,7 @@ class Metadata implements IMetadata {
     @schema("metadata")
     csrDesignations(): Promise<CSRDesignations> {
         return this.api.getJSON<CSRDesignations>(
-            `/metadata/${this.title}/metadata/campaign-missions`);
+            `/metadata/${this.title}/metadata/csr-designations`);
     }
     
     /** @inheritdoc */

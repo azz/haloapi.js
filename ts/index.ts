@@ -346,7 +346,6 @@ class RedisCache implements CacheAdapter {
     }
 };
 
-
 var CacheAdapters: SupportedCaches = {};
 
 CacheAdapters["redis"] = RedisCache;

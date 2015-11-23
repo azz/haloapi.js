@@ -4,3 +4,4 @@
 /docs/
 *.rdb
 **.log
+.idea
