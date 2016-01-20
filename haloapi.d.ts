@@ -7,43 +7,43 @@
 // }
 
 interface CampaignMission {
-    /** 
-     * The order of the mission in the story. The first mission is #1. 
+    /**
+     * The order of the mission in the story. The first mission is #1.
      */
     missionNumber: number;
-    
+
     /**
      * A localized name suitable for display.
      */
     name: string;
-    
+
     /**
      * A localized description, suitable for display to users.
      */
     description: string;
-    
+
     /**
      * An image that is used as the background art for this mission.
      */
     imageUrl: url;
-    
+
     /**
      * The team for the mission. One of the following values:
      *   - BlueTeam
      *   - OsirisTeam
      */
-    type: string; 
-    
-    /** 
-     * The ID that uniquely identifies this campaign mission. 
+    type: string;
+
+    /**
+     * The ID that uniquely identifies this campaign mission.
      */
     id: guid;
-    
+
     // Internal use only. Do not use.
     // contentId: guid;
 }
 
-/** 
+/**
  * A listing of campaign missions supported in the title. There is no significance to the
  * ordering.
  */
@@ -77,7 +77,7 @@ interface MetaCommendationDelta {
     PreviousMetRequirements: CommendationMetRequirement[];
     /**
      * The progress the player had made towards the commendation level after the
-     * match.  
+     * match.
      */
     MetRequirements: CommendationMetRequirement[];
 }
@@ -106,24 +106,24 @@ interface CommendationReward {
      The amount of XP that will be awarded.
      */
     xp: number;
-    
+
     /**
      The set of requisition packs (if any) that will be awarded.
      */
     requisitionPacks: RequisitionPack[];
-    
+
     /**
      The ID that uniquely identifies this reward.
      */
     id: guid;
-    
+
     /*
      Internal use only. Do not use.
      contentId: guid;
      */
 }
- 
-interface CommendationLevel {    
+
+interface CommendationLevel {
     /**
      The reward the player will receive for earning this level.
      */
@@ -146,7 +146,7 @@ interface CommendationLevel {
      contentId: guid;
      */
 }
- 
+
 interface CommendationRequiredLevel {
     /**
      The threshold that the player must meet or exceed in order to consider the
@@ -174,12 +174,12 @@ interface CommendationCategory {
      title cased.
      */
     name: string;
-    
+
     /**
      An image that is used as the icon for this category.
      */
     iconImageUrl: url;
-    
+
     /*
      Internal use. The order in which the category should be displayed relative to
      other categories. The lower the value, the more important the category - more
@@ -192,7 +192,7 @@ interface CommendationCategory {
      The ID that uniquely identifies this category.
      */
     id: guid;
-    
+
     /*
      Internal use only. Do not use.
      contentId: guid;
@@ -214,7 +214,7 @@ interface Commendation {
 
     /**
      A localized name for the commendation, suitable for display to users. The text is
-     title cased. 
+     title cased.
      */
     name: string;
 
@@ -266,7 +266,7 @@ interface Commendation {
      contentId: guid;
      */
     }
- 
+
 /**
  * A list of commendations for the title. There is no significance to the ordering.
  */
@@ -285,28 +285,28 @@ interface CSRTier {
 
     /*
      Internal use only. Do not use.
-     contentId: guid; 
+     contentId: guid;
      */
     }
 
 interface CSRDesignation {
     /**
      A localized name for the designation, suitable for display to users. The text is
-     title cased. 
+     title cased.
      */
     name: string;
-    
+
     /**
      An image to use as the background for the designation.
      */
     bannerImageUrl: url;
-    
+
     /**
      An array of "CSR Tier" entries, one for each tier this designation supports.
      Semi-Pro and Pro will not have tiers defined, and this list will be empty.
      */
     tiers: CSRTier[];
-    
+
     /**
      An ID that identifies the designation. It happens to be the same as the
      designation ordering. This value is the same across all languages. Note that Id =
@@ -314,7 +314,7 @@ interface CSRDesignation {
      additional matches before being assigned an official CSR designation.
      */
     id: number;
-    
+
     /*
      Internal use only. Do not use.
      contentId: guid;
@@ -331,7 +331,7 @@ ranking value instead of the tier indicator. For non-Pro players, we keep the ab
 skill ranking hidden and show the CSR tier. To determine what CSR a player has earned,
 view the Service Record stats for that player. There is no significance to the ordering.
 */
-declare type CSRDesignations = CSRDesignation[];  
+declare type CSRDesignations = CSRDesignation[];
  interface Enemy {
     /**
      The faction that this enemy is affiliated with. One of the following options:
@@ -343,7 +343,7 @@ declare type CSRDesignations = CSRDesignation[];
 
     /**
      A localized name for the object, suitable for display to users. The text is title
-     cased. 
+     cased.
      */
     name: string;
 
@@ -371,39 +371,39 @@ declare type CSRDesignations = CSRDesignation[];
 
     /*
      Internal use only. Do not use.
-     contentId: guid;  
+     contentId: guid;
      */
 }
- 
+
 /**
  A list of enemies for the title. There is no significance to the ordering.
  */
-declare type Enemies = Enemy[];     
+declare type Enemies = Enemy[];
 interface FlexibleStat {
     /**
      A localized name for the data point, suitable for display to users. The text is
      title cased.
      */
     name: string;
-    
+
     /**
      The type of stat this represents, it is one of the following options:
        - Count
        - Duration
      */
     type: string;
-    
+
     /**
      The ID that uniquely identifies this stat.
      */
     id: guid;
-    
+
     /*
      Internal use only. Do not use.
-    contentId: guid;    
+    contentId: guid;
      */
 }
- 
+
 /**
  A list of defined flexible stat entries for the title. There is no significance to
  the ordering.
@@ -488,7 +488,7 @@ interface GameVariant {
     }
 
 /*
- Cannot retrieve list of all game variants 
+ Cannot retrieve list of all game variants
  */
 
 interface Impulse {
@@ -552,7 +552,7 @@ interface BaseMap {
 /**
  A list of maps for the title. There is no significance to the ordering.
  */
-declare type Maps = BaseMap[];    
+declare type Maps = BaseMap[];
 interface MapVariant {
     /**
      A localized name, suitable for display to users.
@@ -879,7 +879,7 @@ interface Requistion {
 interface RequisitionPack {
     /**
      A localized name for the pack, suitable for display to users. The text
-     is title cased. 
+     is title cased.
      */
     name: string;
 
@@ -934,7 +934,7 @@ interface RequisitionPack {
 
     /**
      If this pack might be obtainable through the Xbox Live Marketplace, this
-     is the product ID. 
+     is the product ID.
      @note Pricing and availability within the Xbox Live
      marketplace is controlled independently of this value. The presence of
      an Id in this field is not a guarantee the product is purchasable. There
@@ -1208,34 +1208,14 @@ interface Weapon {
  */
 declare type Weapons = Weapon[];
 
-/// <reference path="./CampaignMissions.d.ts"/>
-/// <reference path="./Commendations.d.ts"/>
-/// <reference path="./CSRDesignations.d.ts"/>
-/// <reference path="./Enemies.d.ts"/>
-/// <reference path="./FlexibleStats.d.ts"/>
-/// <reference path="./GameBaseVariants.d.ts"/>
-/// <reference path="./GameVariant.d.ts"/>
-/// <reference path="./Impulses.d.ts"/>
-/// <reference path="./Maps.d.ts"/>
-/// <reference path="./MapVariant.d.ts"/>
-/// <reference path="./Medals.d.ts"/>
-/// <reference path="./Playlists.d.ts"/>
-/// <reference path="./Requisition.d.ts"/>
-/// <reference path="./RequisitionPacks.d.ts"/>
-/// <reference path="./Skulls.d.ts"/>
-/// <reference path="./SpartanRanks.d.ts"/>
-/// <reference path="./TeamColors.d.ts"/>
-/// <reference path="./Vehicles.d.ts"/>
-/// <reference path="./Weapons.d.ts"/>
-
 interface IMetadata {
-    
-    /** 
+
+    /**
      * @api Metadata :: Campaign Missions.
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/campaign-missions
      */
     campaignMissions(): Promise<CampaignMissions>;
-    
+
     /**
      * @api Metadata :: Commendations.
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/commendations
@@ -1251,28 +1231,28 @@ interface IMetadata {
     /**
      * @api Metadata :: Enemies
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/enemies
-     */    
+     */
     enemies(): Promise<Enemies>;
-    
+
     /**
      * @api Metadata :: Flexible Stats
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/flexible-stats
      */
-    flexibleStats(): Promise<FlexibleStats>;      
+    flexibleStats(): Promise<FlexibleStats>;
 
     /**
      * @api Metadata :: Game Base Variants
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/game-base-variants
      */
     gameBaseVariants(): Promise<GameBaseVariants>;
-    
+
     /**
      * @api Metadata :: Game Variants
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/game-variants/{id}
      * @param id  An ID that uniquely identifies a Game Variant.
      */
     gameVariantById(id: guid): Promise<GameVariant>;
-    
+
     /**
      * @api Metadata :: Impulses
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/impulses
@@ -1284,7 +1264,7 @@ interface IMetadata {
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/maps
      */
     maps(): Promise<Maps>;
-    
+
     /**
      * @api Metadata :: Map Variants
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/map-variants/{id}
@@ -1319,7 +1299,7 @@ interface IMetadata {
     requisitionPackById(id: guid): Promise<RequisitionPack>;
 
     /**
-     * Fabricated endpoint, uses constant IDs to retreive 
+     * Fabricated endpoint, uses constant IDs to retreive
      * the Gold, Silver and Bronze requisition packs
      */
     requisitionPacksPurchasable(): Promise<RequisitionPacks>;
@@ -1362,31 +1342,31 @@ interface PaginatedResponse<T> {
     returned. */
     Start: number;
 
-    /** The number of results that the service attempted to retrieve to satisfy this 
-    request. Normally this value is equal to the count parameter. If the client 
-    specified a count parameter greater than the maximum allowed, this value contains 
+    /** The number of results that the service attempted to retrieve to satisfy this
+    request. Normally this value is equal to the count parameter. If the client
+    specified a count parameter greater than the maximum allowed, this value contains
     the maximum allowed amount. */
     Count: number;
 
-    /** The number of results that are actually being returned in this response. This field 
+    /** The number of results that are actually being returned in this response. This field
     is named ResultCount to avoid confusion with Count. */
     ResultCount: number;
 
-    /** A list of recent matches. Matches are listed in chronological order with the most 
+    /** A list of recent matches. Matches are listed in chronological order with the most
     recently started match first. */
     Results: T[];
 }
 
 interface MatchId {
-    /** The ID for this match. More match details are available via the applicable 
+    /** The ID for this match. More match details are available via the applicable
     Post Game Carnage Report endpoint. */
     MatchId: guid;
 
-    /** The game mode applicable to this match. Options are: 
-    - Error = 0, 
-    - Arena = 1, 
-    - Campaign = 2, 
-    - Custom = 3, 
+    /** The game mode applicable to this match. Options are:
+    - Error = 0,
+    - Arena = 1,
+    - Campaign = 2,
+    - Custom = 3,
     Warzone = 4. */
     GameMode: number;
 }
@@ -1398,9 +1378,9 @@ interface Resource {
     /** The ID of the map variant. Game/Map variants are available via the Metadata API. */
     ResourceId: guid;
 
-    /** The source of the map variant. Options are: 
-    - Unknown = 0 
-    - User-generated = 1 and 2, 
+    /** The source of the map variant. Options are:
+    - Unknown = 0
+    - User-generated = 1 and 2,
     - Official = 3. */
     OwnerType: number;
 
@@ -1414,12 +1394,12 @@ interface Match {
 
     Id: MatchId;
 
-    /** The ID of the playlist (aka Hopper) for the match. 
-    Hoppers are used in Arena and Warzone. In Arena, they function just as you would 
-    expect, similar to previous Halo titles. Warzone uses hoppers as well. There 
-    will be multiple Warzone hoppers which contain a rotating playlist of scenarios 
-    to play. 
-    Null for campaign & custom games. 
+    /** The ID of the playlist (aka Hopper) for the match.
+    Hoppers are used in Arena and Warzone. In Arena, they function just as you would
+    expect, similar to previous Halo titles. Warzone uses hoppers as well. There
+    will be multiple Warzone hoppers which contain a rotating playlist of scenarios
+    to play.
+    Null for campaign & custom games.
     Playlists are available via the Metadata API. */
     HopperId: guid;
 
@@ -1433,7 +1413,7 @@ interface Match {
     here. This will be null for campaign games. */
     MapVariant: Resource;
 
-    /** The ID of the game base variant for this match. Game base variants are available 
+    /** The ID of the game base variant for this match. Game base variants are available
     via the Metadata API. */
     GameBaseVariantId: guid;
 
@@ -1456,11 +1436,11 @@ interface Match {
         ISO8601Date: string
     };
 
-    /** Provides team data. This list contains all team that Won or Tied. Losing teams 
+    /** Provides team data. This list contains all team that Won or Tied. Losing teams
     are not included. This list is empty for campaign games. */
     Teams: MatchTeam[];
 
-    /** This field contains the player's data. This will only contain data for the 
+    /** This field contains the player's data. This will only contain data for the
     player specified in the request. */
     Players: MatchPlayer[];
 
@@ -1480,8 +1460,8 @@ interface MatchTeam {
     based off the game base variant being played:
     Breakout = number of rounds won,
     CTF = number of flag captures,
-    Slayer = number of kills, 
-    Strongholds = number of points, 
+    Slayer = number of kills,
+    Strongholds = number of points,
     Warzone = number of points. */
     Score: number;
 
@@ -1498,7 +1478,7 @@ interface MatchPlayer {
         /** Xuid: null; */
     };
 
-    /** The ID of the team that the player was on when the match ended. Zero for 
+    /** The ID of the team that the player was on when the match ended. Zero for
     campaign games. */
     TeamId: number;
 
@@ -1531,7 +1511,7 @@ interface MatchPlayer {
     /** The number of times this player died during the match. */
     TotalDeaths: number;
 
-    /** The number of assists credited to the player during the match. This includes 
+    /** The number of assists credited to the player during the match. This includes
     other Spartans and Enemy AI. */
     TotalAssists: number;
 
@@ -1600,18 +1580,18 @@ interface RewardSet {
     RewardSet: guid;
 
     /** The source of the reward. Options are:
-    None = 0, 
-    Meta Commendation = 1, 
-    Progress Commendation = 2, 
+    None = 0,
+    Meta Commendation = 1,
+    Progress Commendation = 2,
     Spartan Rank = 3 */
     RewardSourceType: number;
 
-    /** If the Reward Source is Spartan Rank, this value is set to the Spartan Rank 
-    the player acquired that led to this reward being granted. Note: Unlike the 
-    commendations fields in this structure, this is not the GUID to a Spartan 
-    Rank content item. That's because the Spartan Rank content item itself does 
-    not detail what specific Spartan Rank it pertains to - this information is 
-    derived from the list of Spartan Ranks as a whole. Spartan Ranks are 
+    /** If the Reward Source is Spartan Rank, this value is set to the Spartan Rank
+    the player acquired that led to this reward being granted. Note: Unlike the
+    commendations fields in this structure, this is not the GUID to a Spartan
+    Rank content item. That's because the Spartan Rank content item itself does
+    not detail what specific Spartan Rank it pertains to - this information is
+    derived from the list of Spartan Ranks as a whole. Spartan Ranks are
     available via the Metadata API. */
     SpartanRankSource: number;
 
@@ -1638,7 +1618,7 @@ interface StatCount {
     Id: guid;
 
     /** The number of times this flexible stat was earned. */
-    Count: number;         
+    Count: number;
 }
 
 interface Timelapse {
@@ -1707,14 +1687,14 @@ interface ImpulseCount {
 
     /** The number of times the Impuse was earned. */
     Count: number;
-}    
+}
 
 interface PlayerStat {
     /** The experience information for the player in this match. */
     XpInfo: XpInfo;
 
-    /** The Competitive Skill Ranking (CSR) of the player before the match started. If 
-    the player is still in measurement matches, this field is null. If the player 
+    /** The Competitive Skill Ranking (CSR) of the player before the match started. If
+    the player is still in measurement matches, this field is null. If the player
     finished the last measurement match this match, this field is still null. */
     PreviousCsr: CsrState;
 
@@ -1723,7 +1703,7 @@ interface PlayerStat {
     CurrentCsr: CsrState;
 
     /** The player's measurement matches left. If this field is greater than zero, then
-    the player will not have a CSR yet. If the player finished the match, this match 
+    the player will not have a CSR yet. If the player finished the match, this match
     is included in this count. */
     MeasurementMatchesLeft: number;
 
@@ -1756,19 +1736,19 @@ interface PlayerStat {
 
     /** Details on any credits the player may have earned from playing this match. */
     CreditsEarned: {
-        /** Indicates how the credits result was arrived at. Options are: 
-        - Credits Disabled In Playlist = 0, 
-        TotalCreditsEarned is zero because this playlist 
-        has credits disabled. 
-        - Player Did Not Finish = 1, 
-        Credits are enabled in this playlist, but 
+        /** Indicates how the credits result was arrived at. Options are:
+        - Credits Disabled In Playlist = 0,
+        TotalCreditsEarned is zero because this playlist
+        has credits disabled.
+        - Player Did Not Finish = 1,
+        Credits are enabled in this playlist, but
         TotalCreditsEarned is zero because the player did not finish the match.
         - Credits Earned = 2,
-        Credits are enabled in this playlist and the player completed 
-        the match, so the credits formula was successfully evaluated. The fields below 
+        Credits are enabled in this playlist and the player completed
+        the match, so the credits formula was successfully evaluated. The fields below
         provide the client with the values used in the formula.
-        @note If we used 
-        one or more default values, we still return NormalResult. The fields below 
+        @note If we used
+        one or more default values, we still return NormalResult. The fields below
         will confirm the actual values used. */
         Result: number;
 
@@ -1778,7 +1758,7 @@ interface PlayerStat {
         /** The scalar applied to the credits earned based on the player's Spartan Rank. */
         SpartanRankModifier: number;
 
-        /** The portion of credits earned due to the player's team-agnostic rank in the 
+        /** The portion of credits earned due to the player's team-agnostic rank in the
         match. */
         PlayerRankAmount: number;
 
@@ -1789,14 +1769,14 @@ interface PlayerStat {
         BoostAmount: number;
     },
 
-    /** The player's progress towards meta commendations. Commendations that had no 
+    /** The player's progress towards meta commendations. Commendations that had no
     progress earned this match will not be returned. */
     MetaCommendationDeltas: MetaCommendationDelta[];
-        
-    /** The player's progress towards progressive commendations. Commendations that had 
+
+    /** The player's progress towards progressive commendations. Commendations that had
     no progress earned this match will not be returned. */
     ProgressiveCommendationDeltas: ProgressiveCommendationDelta[];
-        
+
     Player: {
         /** The player's gamertag. */
         Gamertag: string;
@@ -1823,8 +1803,8 @@ interface PlayerStat {
     /** Internal use only. This will always be null. */
     /** PostMatchRatings: null; */
 
-    /** Total number of kills done by the player. This includes melee kills, shoulder 
-    bash kills and Spartan charge kills, all power weapons, AI kills and vehicle 
+    /** Total number of kills done by the player. This includes melee kills, shoulder
+    bash kills and Spartan charge kills, all power weapons, AI kills and vehicle
     destructions. */
     TotalKills: number;
 
@@ -1865,7 +1845,7 @@ interface PlayerStat {
         /** The total damage dealt for this weapon. */
         TotalDamageDealt: number;
 
-        /** The total possession time for this weapon. This is expressed as an ISO 8601 
+        /** The total possession time for this weapon. This is expressed as an ISO 8601
         Duration. */
         TotalPossessionTime: string
     },
@@ -1982,14 +1962,14 @@ interface TeamStat {
 
     /** The set of round stats for the team. */
     RoundStats: RoundStat[];
-}    
+}
 
 interface PGCRArena {
 
     /** A list of stats for each player who was present in the match. */
     PlayerStats: PlayerStat[];
 
-    /** A list of stats for each team who in the match. Note that in Free For All modes, 
+    /** A list of stats for each team who in the match. Note that in Free For All modes,
     there is an entry for every player. */
     TeamStats: TeamStat[];
 
@@ -2000,7 +1980,7 @@ interface PGCRArena {
     /** The length of the match. This is expressed as an ISO 8601 Duration. */
     TotalDuration: string;
 
-    /** The variant of the map for this match. Map variants are available via the Metadata 
+    /** The variant of the map for this match. Map variants are available via the Metadata
     API. */
     MapVariantId: guid;
 
@@ -2035,7 +2015,7 @@ interface IMatchesParams {
 }
 
 interface IStats {
-    
+
     /**
      * @api Stats :: Matches for Player
      * @endpoint https://www.haloapi.com/stats/{title}/players/{player}/matches[?modes][&start][&count]
@@ -2076,7 +2056,7 @@ interface IStats {
     customMatchById(id: guid): Promise<any>;
 
     /*
-     * Single player service record 
+     * Single player service record
      */
 
     // TODO: typescript definitions for response
@@ -2099,7 +2079,7 @@ interface IStats {
 /**
  * The URL of an image of the player's emblem
  */
-declare type EmblemImage = url; 
+declare type EmblemImage = url;
 /**
  * The URL of the player's Spartan Image
  */
@@ -2109,21 +2089,21 @@ declare type SpartanImage = url; /// <reference path="EmblemImage.d.ts"/>
 interface IProfileParams {
     player: string;
 
-    /** 
+    /**
      * An optional size (specified in pixels) of the image
      * requested. When specified, this value must be one of the following
      * values: 95, 128, 190, 256, 512. These values should be kept in service
      * config so adjustments can be made later if necessary. If a value is
-     * specified that is not in this list, the API returns HTTP 400 ("Bad 
+     * specified that is not in this list, the API returns HTTP 400 ("Bad
      * Request"). If the size is empty or missing, the API will use 256.
      */
     size?: number;
 
     /**
      * An optional crop that will be used to determine what
-     * portion of the Spartan is returned in the image. The value must be 
+     * portion of the Spartan is returned in the image. The value must be
      * either "full" or "portrait". If no value is specified "full" is used.
-     * If an unsupported value is provided, the API returns HTTP 400 ("Bad 
+     * If an unsupported value is provided, the API returns HTTP 400 ("Bad
      * Request").
      * @note Only available for the Spartan Image endpoint
      */
@@ -2135,7 +2115,7 @@ interface IProfileParams {
     [key: string]: any;
 }
 
-interface IProfile {    
+interface IProfile {
     /**
      * @api Profile :: Emblem Image
      * @endpoint https://www.haloapi.com/metadata/{title}/profile/{player}/emblem[?size]
@@ -2143,7 +2123,7 @@ interface IProfile {
      */
     emblemImage(player: string): Promise<EmblemImage>;
     emblemImage(params: IProfileParams): Promise<EmblemImage>;
-    
+
     /**
      * @api Profile :: Spartan Image
      * @endpoint https://www.haloapi.com/profile/{title}/profiles/{player}/spartan[?size][&crop]
@@ -2308,156 +2288,147 @@ interface SupportedCaches {
     [name: string]: CacheAdapterClass;
 }
 
-/**
- * The TypeScript module to export a Node JS module.
- */
-declare module "haloapi" {
-
-    /**
-     * The exported HaloAPI class
-     */
-    export = HaloAPIClass;
-}
-
-
-
-
 declare module 'haloapi/schema' {
-	 var _default: (service: string, path?: string) => (target: any, key: string) => void;
-	export = _default;
+     var _default: (service: string, path?: string) => (target: any, key: string) => void;
+    export = _default;
 
 }
 declare module 'haloapi/stats' {
-	 class Stats implements IStats {
-	    api: IHaloAPI;
-	    private title;
-	    constructor(api: IHaloAPI);
-	    /** @inheritdoc */
-	    playerMatches(params: string | IMatchesParams): Promise<PlayerMatches>;
-	    /** @inheritdoc */
-	    warzoneMatchById(id: guid): Promise<PGCRArena>;
-	    /** @inheritdoc */
-	    customMatchById(id: guid): Promise<any>;
-	    /** @inheritdoc */
-	    campaignMatchById(id: guid): Promise<any>;
-	    /** @inheritdoc */
-	    arenaMatchById(id: guid): Promise<PGCRArena>;
-	    /** @inheritdoc */
-	    serviceRecordArena(player: string): Promise<any>;
-	    /** @inheritdoc */
-	    serviceRecordCampaign(player: string): Promise<any>;
-	    /** @inheritdoc */
-	    serviceRecordWarzone(player: string): Promise<any>;
-	    /** @inheritdoc */
-	    serviceRecordCustom(player: string): Promise<any>;
-	    /** @inheritdoc */
-	    serviceRecordsArena(players: string[]): Promise<any>;
-	    /** @inheritdoc */
-	    serviceRecordsCampaign(players: string[]): Promise<any>;
-	    /** @inheritdoc */
-	    serviceRecordsWarzone(players: string[]): Promise<any>;
-	    /** @inheritdoc */
-	    serviceRecordsCustom(players: string[]): Promise<any>;
-	    private serviceRecord<T>(gameMode, player);
-	    private serviceRecords<T>(gameMode, players);
-	}
-	export = Stats;
+     class Stats implements IStats {
+        api: IHaloAPI;
+        private title;
+        constructor(api: IHaloAPI);
+        /** @inheritdoc */
+        playerMatches(params: string | IMatchesParams): Promise<PlayerMatches>;
+        /** @inheritdoc */
+        warzoneMatchById(id: guid): Promise<PGCRArena>;
+        /** @inheritdoc */
+        customMatchById(id: guid): Promise<any>;
+        /** @inheritdoc */
+        campaignMatchById(id: guid): Promise<any>;
+        /** @inheritdoc */
+        arenaMatchById(id: guid): Promise<PGCRArena>;
+        /** @inheritdoc */
+        serviceRecordArena(player: string): Promise<any>;
+        /** @inheritdoc */
+        serviceRecordCampaign(player: string): Promise<any>;
+        /** @inheritdoc */
+        serviceRecordWarzone(player: string): Promise<any>;
+        /** @inheritdoc */
+        serviceRecordCustom(player: string): Promise<any>;
+        /** @inheritdoc */
+        serviceRecordsArena(players: string[]): Promise<any>;
+        /** @inheritdoc */
+        serviceRecordsCampaign(players: string[]): Promise<any>;
+        /** @inheritdoc */
+        serviceRecordsWarzone(players: string[]): Promise<any>;
+        /** @inheritdoc */
+        serviceRecordsCustom(players: string[]): Promise<any>;
+        private serviceRecord<T>(gameMode, player);
+        private serviceRecords<T>(gameMode, players);
+    }
+    export = Stats;
 
 }
 declare module 'haloapi/metadata' {
-	 class Metadata implements IMetadata {
-	    api: IHaloAPI;
-	    private title;
-	    constructor(api: IHaloAPI);
-	    /** @inheritdoc */
-	    campaignMissions(): Promise<CampaignMissions>;
-	    /** @inheritdoc */
-	    commendations(): Promise<Commendations>;
-	    /** @inheritdoc */
-	    csrDesignations(): Promise<CSRDesignations>;
-	    /** @inheritdoc */
-	    enemies(): Promise<Enemies>;
-	    /** @inheritdoc */
-	    flexibleStats(): Promise<FlexibleStats>;
-	    /** @inheritdoc */
-	    gameBaseVariants(): Promise<GameBaseVariants>;
-	    /** @inheritdoc */
-	    gameVariantById(id: guid): Promise<GameVariant>;
-	    /** @inheritdoc */
-	    impulses(): Promise<Impulses>;
-	    /** @inheritdoc */
-	    maps(): Promise<Maps>;
-	    /** @inheritdoc */
-	    mapVariantById(id: guid): Promise<MapVariant>;
-	    /** @inheritdoc */
-	    medals(): Promise<Medals>;
-	    /** @inheritdoc */
-	    playlists(): Promise<Playlists>;
-	    /** @inheritdoc */
-	    requisitionById(id: guid): Promise<Requistion>;
-	    /** @inheritdoc */
-	    requisitionPackById(id: guid): Promise<RequisitionPack>;
-	    /** @inheritdoc */
-	    requisitionPacksPurchasable(): Promise<RequisitionPacks>;
-	    /** @inheritdoc */
-	    skulls(): Promise<Skulls>;
-	    /** @inheritdoc */
-	    spartanRanks(): Promise<SpartanRanks>;
-	    /** @inheritdoc */
-	    teamColors(): Promise<TeamColors>;
-	    /** @inheritdoc */
-	    vehicles(): Promise<Vehicles>;
-	    /** @inheritdoc */
-	    weapons(): Promise<Weapons>;
-	}
-	export = Metadata;
+     class Metadata implements IMetadata {
+        api: IHaloAPI;
+        private title;
+        constructor(api: IHaloAPI);
+        /** @inheritdoc */
+        campaignMissions(): Promise<CampaignMissions>;
+        /** @inheritdoc */
+        commendations(): Promise<Commendations>;
+        /** @inheritdoc */
+        csrDesignations(): Promise<CSRDesignations>;
+        /** @inheritdoc */
+        enemies(): Promise<Enemies>;
+        /** @inheritdoc */
+        flexibleStats(): Promise<FlexibleStats>;
+        /** @inheritdoc */
+        gameBaseVariants(): Promise<GameBaseVariants>;
+        /** @inheritdoc */
+        gameVariantById(id: guid): Promise<GameVariant>;
+        /** @inheritdoc */
+        impulses(): Promise<Impulses>;
+        /** @inheritdoc */
+        maps(): Promise<Maps>;
+        /** @inheritdoc */
+        mapVariantById(id: guid): Promise<MapVariant>;
+        /** @inheritdoc */
+        medals(): Promise<Medals>;
+        /** @inheritdoc */
+        playlists(): Promise<Playlists>;
+        /** @inheritdoc */
+        requisitionById(id: guid): Promise<Requistion>;
+        /** @inheritdoc */
+        requisitionPackById(id: guid): Promise<RequisitionPack>;
+        /** @inheritdoc */
+        requisitionPacksPurchasable(): Promise<RequisitionPacks>;
+        /** @inheritdoc */
+        skulls(): Promise<Skulls>;
+        /** @inheritdoc */
+        spartanRanks(): Promise<SpartanRanks>;
+        /** @inheritdoc */
+        teamColors(): Promise<TeamColors>;
+        /** @inheritdoc */
+        vehicles(): Promise<Vehicles>;
+        /** @inheritdoc */
+        weapons(): Promise<Weapons>;
+    }
+    export = Metadata;
 
 }
 declare module 'haloapi/profile' {
-	 class Profile implements IProfile {
-	    api: IHaloAPI;
-	    private title;
-	    constructor(api: IHaloAPI);
-	    /** @inheritdoc */
-	    emblemImage(params: string | IProfileParams): Promise<EmblemImage>;
-	    /** @inheritdoc */
-	    spartanImage(params: string | IProfileParams): Promise<SpartanImage>;
-	    private constructQs(params);
-	}
-	export = Profile;
+     class Profile implements IProfile {
+        api: IHaloAPI;
+        private title;
+        constructor(api: IHaloAPI);
+        /** @inheritdoc */
+        emblemImage(params: string | IProfileParams): Promise<EmblemImage>;
+        /** @inheritdoc */
+        spartanImage(params: string | IProfileParams): Promise<SpartanImage>;
+        private constructQs(params);
+    }
+    export = Profile;
 
 }
 declare module 'haloapi/index' {
-	 class HaloAPI implements IHaloAPI {
-	    /** @inheritdoc */
-	    stats: IStats;
-	    /** @inheritdoc */
-	    metadata: IMetadata;
-	    /** @inheritdoc */
-	    profile: IProfile;
-	    private apiKey;
-	    private host;
-	    private cacheName;
-	    private title;
-	    private cacheManager;
-	    constructor(opts: string | IHaloAPIOptions);
-	    /** @inheritdoc */
-	    getJSON<T>(endpoint: string, bypassCache?: boolean): Promise<T>;
-	    /** @inheritdoc */
-	    getImageURL(endpoint: string): Promise<url>;
-	    /** @inheritdoc */
-	    isGuid(id: guid): boolean;
-	    /** @inheritdoc */
-	    jsonSchema(endpointFn: any): {};
-	    private handleRequestRejection<T>(endpoint, error, isJSON);
-	    private duplicateRequest<T>(message, endpoint, isJSON);
-	    /** @inheritdoc */
-	    cacheClear(): Promise<number>;
-	}
-	export = HaloAPI;
+     class HaloAPI implements IHaloAPI {
+        /** @inheritdoc */
+        stats: IStats;
+        /** @inheritdoc */
+        metadata: IMetadata;
+        /** @inheritdoc */
+        profile: IProfile;
+        private apiKey;
+        private host;
+        private cacheName;
+        private title;
+        private cacheManager;
+        constructor(opts: string | IHaloAPIOptions);
+        /** @inheritdoc */
+        getJSON<T>(endpoint: string, bypassCache?: boolean): Promise<T>;
+        /** @inheritdoc */
+        getImageURL(endpoint: string): Promise<url>;
+        /** @inheritdoc */
+        isGuid(id: guid): boolean;
+        /** @inheritdoc */
+        jsonSchema(endpointFn: any): {};
+        private handleRequestRejection<T>(endpoint, error, isJSON);
+        private duplicateRequest<T>(message, endpoint, isJSON);
+        /** @inheritdoc */
+        cacheClear(): Promise<number>;
+    }
+    export = HaloAPI;
 
 }
 declare module 'haloapi' {
-	import main = require('haloapi/index');
-	export = main;
+    import HaloAPI = require('haloapi/index');
+    interface HaloAPIClass {
+        new(opts: string | IHaloAPIOptions): HaloAPI;
+    }
+
+    var __haloAPI: HaloAPIClass;
+    export = __haloAPI;
 }
