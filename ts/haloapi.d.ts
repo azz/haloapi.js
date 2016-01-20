@@ -154,18 +154,3 @@ interface HaloAPIClass {
 interface SupportedCaches {
     [name: string]: CacheAdapterClass;
 }
-
-/**
- * The TypeScript module to export a Node JS module.
- */
-declare module "haloapi" {
-
-    /**
-     * The exported HaloAPI class
-     */
-    export = HaloAPIClass;
-}
-
-
-
-
