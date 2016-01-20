@@ -3,9 +3,9 @@
   "version": "0.3.2",
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
-  "typings": "js/haloapi",
+  "typings": "haloapi.d.ts",
   "scripts": {
-    "build": "./node_modules/.bin/tsc",
+    "build": "./node_modules/.bin/tsc && ./node_modules/.bin/dts-generator --baseDir ts --outDir js --name haloapi --main haloapi/js/index --out haloapi.d.ts ts/index.ts",
     "test": "./node_modules/.bin/mocha",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
@@ -41,6 +41,7 @@
     "chai-string": "^1.1.3",
     "chai-things": "^0.2.0",
     "docco": "^0.7.0",
+    "dts-generator": "^1.6.3",
     "istanbul": "^0.4.0",
     "json-schema": "^0.2.2",
     "mocha": "^2.3.3",
@@ -48,7 +49,8 @@
     "typescript": "^1.6.2"
   },
   "typescript": {
-    "main": "./ts/index.ts"
+    "main": "./ts/index.ts",
+    "typings": "haloapi.d.ts"
   },
   "tonicExampleFilename": "examples/matches.js"
 }

@@ -10,9 +10,27 @@ declare type guid = string;
 declare type url = string;
 
 /**
+ * @param apiKey Your API key. API keys are obtained from
+ *               http://developer.haloapi.com/
+ * @param title The title of the game for this API instance. Currently
+ *              only "h5" (Halo 5: Guardians) is supported.
+ * @param cache The caching layer. Default is null, for no caching,
+ *              current supported options: "redis"
+ * @param cacheOptions the options object or argument list passed to the
+ *                     caching client. For redis this can be omitted, or, e.g.
+ *                     `[ 'redis://user:pass@host:port', options ]`.
+ */
+interface IHaloAPIOptions {
+    apiKey: string,
+    cache?: string,
+    cacheOptions?: any,
+    title?: string
+}
+
+/**
  * The root HaloAPI interface.
  * Provides access to endpoint services,
- * and optional caching support. 
+ * and optional caching support.
  */
 interface IHaloAPI {
     /**
@@ -64,13 +82,13 @@ interface IHaloAPI {
      * Clear the cache. If no cache is in use this will instantly
      * reject.
      * @return A promise to be fulfilled when the case is cleared,
-     * or rejected of an error occurs or no items were cleared. 
+     * or rejected of an error occurs or no items were cleared.
      */
     cacheClear(): Promise<number>;
 }
 
 /**
- * Adapters to various supported caches. 
+ * Adapters to various supported caches.
  */
 interface CacheAdapter {
 
@@ -122,7 +140,7 @@ interface CacheAdapterClass {
 
 interface HaloAPIClass {
     /**
-     * Create an instance of the HaloAPI. 
+     * Create an instance of the HaloAPI.
      * @param opts  Either an options object or your API key string.
      */
     new (): IHaloAPI;

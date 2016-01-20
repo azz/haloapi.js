@@ -5,7 +5,6 @@
  *!  <http://opensource.org/licenses/MIT>
  */
 /// <reference path="./haloapi.d.ts"/>
-/// <reference path="./lib/tsd.d.ts" />
 var Stats = require("./stats");
 var Metadata = require("./metadata");
 var Profile = require("./profile");

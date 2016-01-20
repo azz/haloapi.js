@@ -1,11 +1,9 @@
 /// <reference path="./haloapi.d.ts"/>
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-        case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-        case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-        case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-    }
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var schema = require('./schema');
 var Metadata = (function () {
@@ -111,82 +109,63 @@ var Metadata = (function () {
     Metadata.prototype.weapons = function () {
         return this.api.getJSON("/metadata/" + this.title + "/metadata/weapons");
     };
-    Object.defineProperty(Metadata.prototype, "campaignMissions",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "campaignMissions", Object.getOwnPropertyDescriptor(Metadata.prototype, "campaignMissions")));
-    Object.defineProperty(Metadata.prototype, "commendations",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "commendations", Object.getOwnPropertyDescriptor(Metadata.prototype, "commendations")));
-    Object.defineProperty(Metadata.prototype, "csrDesignations",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "csrDesignations", Object.getOwnPropertyDescriptor(Metadata.prototype, "csrDesignations")));
-    Object.defineProperty(Metadata.prototype, "enemies",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "enemies", Object.getOwnPropertyDescriptor(Metadata.prototype, "enemies")));
-    Object.defineProperty(Metadata.prototype, "flexibleStats",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "flexibleStats", Object.getOwnPropertyDescriptor(Metadata.prototype, "flexibleStats")));
-    Object.defineProperty(Metadata.prototype, "gameBaseVariants",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "gameBaseVariants", Object.getOwnPropertyDescriptor(Metadata.prototype, "gameBaseVariants")));
-    Object.defineProperty(Metadata.prototype, "gameVariantById",
-        __decorate([
-            schema("metadata", "game-variants")
-        ], Metadata.prototype, "gameVariantById", Object.getOwnPropertyDescriptor(Metadata.prototype, "gameVariantById")));
-    Object.defineProperty(Metadata.prototype, "impulses",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "impulses", Object.getOwnPropertyDescriptor(Metadata.prototype, "impulses")));
-    Object.defineProperty(Metadata.prototype, "maps",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "maps", Object.getOwnPropertyDescriptor(Metadata.prototype, "maps")));
-    Object.defineProperty(Metadata.prototype, "mapVariantById",
-        __decorate([
-            schema("metadata", "map-variants")
-        ], Metadata.prototype, "mapVariantById", Object.getOwnPropertyDescriptor(Metadata.prototype, "mapVariantById")));
-    Object.defineProperty(Metadata.prototype, "medals",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "medals", Object.getOwnPropertyDescriptor(Metadata.prototype, "medals")));
-    Object.defineProperty(Metadata.prototype, "playlists",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "playlists", Object.getOwnPropertyDescriptor(Metadata.prototype, "playlists")));
-    Object.defineProperty(Metadata.prototype, "requisitionById",
-        __decorate([
-            schema("metadata", "requisitions")
-        ], Metadata.prototype, "requisitionById", Object.getOwnPropertyDescriptor(Metadata.prototype, "requisitionById")));
-    Object.defineProperty(Metadata.prototype, "requisitionPackById",
-        __decorate([
-            schema("metadata", "requisition-packs")
-        ], Metadata.prototype, "requisitionPackById", Object.getOwnPropertyDescriptor(Metadata.prototype, "requisitionPackById")));
-    Object.defineProperty(Metadata.prototype, "skulls",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "skulls", Object.getOwnPropertyDescriptor(Metadata.prototype, "skulls")));
-    Object.defineProperty(Metadata.prototype, "spartanRanks",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "spartanRanks", Object.getOwnPropertyDescriptor(Metadata.prototype, "spartanRanks")));
-    Object.defineProperty(Metadata.prototype, "teamColors",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "teamColors", Object.getOwnPropertyDescriptor(Metadata.prototype, "teamColors")));
-    Object.defineProperty(Metadata.prototype, "vehicles",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "vehicles", Object.getOwnPropertyDescriptor(Metadata.prototype, "vehicles")));
-    Object.defineProperty(Metadata.prototype, "weapons",
-        __decorate([
-            schema("metadata")
-        ], Metadata.prototype, "weapons", Object.getOwnPropertyDescriptor(Metadata.prototype, "weapons")));
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "campaignMissions", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "commendations", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "csrDesignations", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "enemies", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "flexibleStats", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "gameBaseVariants", null);
+    __decorate([
+        schema("metadata", "game-variants")
+    ], Metadata.prototype, "gameVariantById", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "impulses", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "maps", null);
+    __decorate([
+        schema("metadata", "map-variants")
+    ], Metadata.prototype, "mapVariantById", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "medals", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "playlists", null);
+    __decorate([
+        schema("metadata", "requisitions")
+    ], Metadata.prototype, "requisitionById", null);
+    __decorate([
+        schema("metadata", "requisition-packs")
+    ], Metadata.prototype, "requisitionPackById", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "skulls", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "spartanRanks", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "teamColors", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "vehicles", null);
+    __decorate([
+        schema("metadata")
+    ], Metadata.prototype, "weapons", null);
     return Metadata;
 })();
 ;

@@ -1,12 +1,11 @@
 /*!
- *! Copyright (c) 2015 Lucas Azzola 
- *! Distributed under the MIT License. 
+ *! Copyright (c) 2015 Lucas Azzola
+ *! Distributed under the MIT License.
  *! (See accompanying file LICENSE.md or visit:
- *!  <http://opensource.org/licenses/MIT> 
+ *!  <http://opensource.org/licenses/MIT>
  */
 
 /// <reference path="./haloapi.d.ts"/>
-/// <reference path="./lib/tsd.d.ts" />
 
 import Stats = require("./stats");
 import Metadata = require("./metadata");
@@ -20,24 +19,6 @@ var requireOptional = codependency.register(module, {
 })
 
 const DEBUG: boolean = !!process.env.HALOAPI_DEBUG;
-
-/**
- * @param apiKey Your API key. API keys are obtained from 
- *               http://developer.haloapi.com/ 
- * @param title The title of the game for this API instance. Currently
- *              only "h5" (Halo 5: Guardians) is supported.     
- * @param cache The caching layer. Default is null, for no caching,
- *              current supported options: "redis"
- * @param cacheOptions the options object or argument list passed to the 
- *                     caching client. For redis this can be omitted, or, e.g.
- *                     `[ 'redis://user:pass@host:port', options ]`.
- */
-interface HaloAPIOptions {
-    apiKey: string,
-    cache?: string,
-    cacheOptions?: any,
-    title?: string
-}
 
 class HaloAPI implements IHaloAPI {
     /** @inheritdoc */
@@ -58,8 +39,8 @@ class HaloAPI implements IHaloAPI {
 
     private cacheManager: CacheManager;
 
-    constructor(opts: string | HaloAPIOptions) {
-        var options: HaloAPIOptions = {
+    constructor(opts: string | IHaloAPIOptions) {
+        var options: IHaloAPIOptions = {
             apiKey: null
         };
         if (typeof opts === "string") {
@@ -84,7 +65,7 @@ class HaloAPI implements IHaloAPI {
     getJSON<T>(endpoint: string, bypassCache?: boolean): Promise<T> {
         var options = {
             url: this.host + endpoint,
-            headers: { 
+            headers: {
                 'Ocp-Apim-Subscription-Key': this.apiKey,
             },
             gzip: true,
@@ -92,7 +73,7 @@ class HaloAPI implements IHaloAPI {
             // resolveWithFullResponse: true
         };
 
-        var promise = bypassCache 
+        var promise = bypassCache
             ? Promise.reject(null)
             : this.cacheManager.cacheGet<T>(endpoint);
 
@@ -115,8 +96,8 @@ class HaloAPI implements IHaloAPI {
         var options = {
             url: this.host + endpoint,
             followRedirect: false,
-            headers: { 
-                'Ocp-Apim-Subscription-Key': this.apiKey 
+            headers: {
+                'Ocp-Apim-Subscription-Key': this.apiKey
             },
             resolveWithFullResponse: true
         };
@@ -135,7 +116,7 @@ class HaloAPI implements IHaloAPI {
                 return this.handleRequestRejection<url>(endpoint, error, false);
             })
 
-    }    
+    }
 
     /** @inheritdoc */
     isGuid(id: guid): boolean {
@@ -153,7 +134,7 @@ class HaloAPI implements IHaloAPI {
         if ("schema" in endpointFn) {
             path += endpointFn.schema;
         } else {
-            throw "Invalid schema endpoint function";            
+            throw "Invalid schema endpoint function";
         }
 
         try {
@@ -164,8 +145,8 @@ class HaloAPI implements IHaloAPI {
     }
 
     private handleRequestRejection<T>(
-        endpoint: string, 
-        error: any, 
+        endpoint: string,
+        error: any,
         isJSON: boolean
     ): Promise<T> {
 
@@ -190,8 +171,8 @@ class HaloAPI implements IHaloAPI {
     }
 
     private duplicateRequest<T>(
-        message, 
-        endpoint: string, 
+        message,
+        endpoint: string,
         isJSON: boolean
     ): Promise<T> {
         // parse the response to get the seconds to next request
@@ -213,7 +194,7 @@ class HaloAPI implements IHaloAPI {
                         .then(accept).catch(reject);
                 } else {
                     this.getImageURL(endpoint)
-                        .then(accept).catch(reject); 
+                        .then(accept).catch(reject);
                 }
             }, wait);
         });
@@ -257,7 +238,7 @@ class CacheManager {
             return Promise.reject("No cache specified");
 
         return this.adapter.get<T>(`haloapi.js:uri:${uri}`)
-            .then(_ => { 
+            .then(_ => {
                 DEBUG && console.log("cache hit:", uri);
                 return _;
             })
@@ -265,7 +246,7 @@ class CacheManager {
                 DEBUG && console.log("cache miss: ", uri);
                 return Promise.reject(_);
             });
-    }    
+    }
 
     /** @inheritdoc */
     cacheClear() {
@@ -299,7 +280,7 @@ class RedisCache implements CacheAdapter {
     constructor(private options: any) {
         this.redis = requireOptional('redis');
 
-        if (!this.redis) 
+        if (!this.redis)
             throw "ERROR: You've opted for redis caching, yet redis "
                 + "client is not installed. Run `npm install redis` first.";
 
@@ -321,7 +302,7 @@ class RedisCache implements CacheAdapter {
     set<T>(key: string, value: T): Promise<void> {
         return new Promise<void>((accept, reject) => {
             this.redisClient.set(key, JSON.stringify(value), (err, ok) => {
-                err ? reject(err) : accept(ok);                                    
+                err ? reject(err) : accept(ok);
             });
         });
     }
