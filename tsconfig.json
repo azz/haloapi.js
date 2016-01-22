@@ -6,7 +6,7 @@
         "removeComments": false,
         "noLib": false,
         "preserveConstEnums": true,
-        "declaration": false,
+        "declaration": true,
         "experimentalDecorators": true,
         "suppressImplicitAnyIndexErrors": true,
         "outDir": "js"

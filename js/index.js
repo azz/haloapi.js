@@ -4,10 +4,9 @@
  *! (See accompanying file LICENSE.md or visit:
  *!  <http://opensource.org/licenses/MIT>
  */
-/// <reference path="./haloapi.d.ts"/>
-var Stats = require("./stats");
-var Metadata = require("./metadata");
-var Profile = require("./profile");
+var Stats = require('./stats');
+var Metadata = require('./metadata');
+var Profile = require('./profile');
 var rp = require("request-promise");
 var codependency = require("codependency"); // no typings? oh well
 var requireOptional = codependency.register(module, {

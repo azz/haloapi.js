@@ -1,4 +1,3 @@
-/// <reference path="./haloapi.d.ts"/>
 var Profile = (function () {
     function Profile(api) {
         this.api = api;
