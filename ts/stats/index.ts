@@ -1,6 +1,12 @@
 import {guid} from '../common';
-import {PlayerMatches} from './PlayerMatches';
-import {PGCRArena} from './PGCRArena';
+import {
+    PlayerMatches, Match, MatchId, MatchPlayer, MatchTeam
+} from './PlayerMatches';
+import {
+    XpInfo, CsrState, EnemyKill, ImpulseCount, MedalAward,
+    OpponentDetails, PGCRArena, PlayerStat, RewardSet, RoundStat,
+    StatCount, TeamStat, Timelapse, WeaponStat
+} from './PGCRArena';
 
 export interface IMatchesParams {
     player: string;
@@ -76,4 +82,21 @@ export interface IStats {
 export {
     PGCRArena,
     PlayerMatches,
+    Match,
+    MatchId,
+    MatchPlayer,
+    MatchTeam,
+    XpInfo,
+    CsrState,
+    EnemyKill,
+    ImpulseCount,
+    MedalAward,
+    OpponentDetails,
+    PlayerStat,
+    RewardSet,
+    RoundStat,
+    StatCount,
+    TeamStat,
+    Timelapse,
+    WeaponStat
 }
