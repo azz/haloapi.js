@@ -13,6 +13,7 @@
     },
     "files": [
         "./ts/index.ts",
+        "ts/types.ts",
         "./ts/lib/tsd.d.ts"
     ]
 }
