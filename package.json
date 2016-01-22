@@ -4,14 +4,14 @@
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
   "scripts": {
-    "prepublish": ".node_modules/.bin/tsc --declaration && ./node_modules/.bin/dts-generator --baseDir ts --outDir . --name haloapi --main haloapi/index --out haloapi.d.ts ts/index.ts",
-    "build": "./node_modules/.bin/tsc",
-    "test": "./node_modules/.bin/mocha",
+    "prepublish": "tsc --declaration && dts-generator --baseDir ts --outDir . --name haloapi --main haloapi/index --out haloapi.d.ts ts/index.ts",
+    "build": "tsc",
+    "test": "mocha",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
     "clean": "rm js/*.js",
-    "document": "./node_modules/.bin/docco -o ./docs/docco/ ./examples/docs/*.js",
-    "typedoc": "./node_modules/.bin/typedoc --name haloapi.js --readme ./docs/TSREADME.md --theme minimal --out docs/typedoc/ ./ts/index.ts --module commonjs --includeDeclarations --externalPattern **/{haloapi,metadata,stats,profile}** --excludeExternals --target ES5 --experimentalDecorators",
+    "document": "docco -o ./docs/docco/ ./examples/docs/*.js",
+    "typedoc": "typedoc --name haloapi.js --readme ./docs/TSREADME.md --theme minimal --out docs/typedoc/ ./ts/index.ts --module commonjs --includeDeclarations --externalPattern **/{haloapi,metadata,stats,profile}** --excludeExternals --target ES5 --experimentalDecorators",
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000"
   },
   "repository": {
