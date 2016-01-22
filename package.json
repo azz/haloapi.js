@@ -3,7 +3,6 @@
   "version": "0.4.0-2",
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
-  "typings": "haloapi.d.ts",
   "scripts": {
     "build": "./node_modules/.bin/tsc && ./node_modules/.bin/dts-generator --baseDir ts --outDir js --name haloapi --main haloapi/js/index --out haloapi.d.ts ts/index.ts",
     "test": "./node_modules/.bin/mocha",
@@ -49,8 +48,7 @@
     "typescript": "^1.6.2"
   },
   "typescript": {
-    "main": "./ts/index.ts",
-    "typings": "haloapi.d.ts"
+    "main": "js/index.d.ts"
   },
   "tonicExampleFilename": "examples/matches.js"
 }

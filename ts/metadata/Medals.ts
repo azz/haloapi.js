@@ -1,5 +1,5 @@
 
-interface Medal {
+export interface Medal {
     /**
      A localized name for the medal, suitable for display to users.
      */
@@ -44,7 +44,7 @@ interface Medal {
      */
 }
 
-interface SpriteLocation {
+export interface SpriteLocation {
     /**
      A reference to an image that contains all the sprites.
      */
@@ -86,4 +86,4 @@ interface SpriteLocation {
 /**
  A list of medals for the title. There is no significance to the ordering.
  */
-declare type Medals = Medal[];
+export type Medals = Medal[];

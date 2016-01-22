@@ -1,5 +1,6 @@
+import {guid} from '../types';
 
-interface Playlist {
+export interface Playlist {
     /**
      A localized name for the playlist, suitable for display to users. The text is
      title cased.
@@ -52,4 +53,4 @@ interface Playlist {
  has played within, view the Service Record stats for that player. There is no
  significance to the ordering.
  */
-declare type Playlists = Playlist[];
+export type Playlists = Playlist[];

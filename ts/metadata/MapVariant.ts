@@ -1,5 +1,6 @@
+import {guid} from '../types';
 
-interface MapVariant {
+export interface MapVariant {
     /**
      A localized name, suitable for display to users.
      */

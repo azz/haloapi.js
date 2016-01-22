@@ -1,5 +1,6 @@
+import {guid} from '../types';
 
-interface GameBaseVariant {
+export interface GameBaseVariant {
     /**
      A localized name for the game base variant, suitable for display to users. The
      text is title cased.
@@ -43,4 +44,4 @@ interface GameBaseVariant {
  base variants a specific player has played, view the Service Record stats for
  that player.There is no significance to the ordering.
  */
-declare type GameBaseVariants = GameBaseVariant[];
+export type GameBaseVariants = GameBaseVariant[];

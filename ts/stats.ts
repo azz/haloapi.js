@@ -1,4 +1,11 @@
-/// <reference path="./haloapi.d.ts"/>
+import {IHaloAPI} from './index-types';
+import {guid} from './types';
+import {
+    IStats,
+    IMatchesParams,
+    PlayerMatches,
+    PGCRArena,
+} from './stats/index';
 
 import schema = require("./schema");
 
@@ -14,7 +21,7 @@ class Stats implements IStats {
     @schema("stats")
     playerMatches(params: string | IMatchesParams): Promise<PlayerMatches> {
         var _params: IMatchesParams = {player: null};
-        if (typeof params === "object")           
+        if (typeof params === "object")
             _params = <IMatchesParams>params;
         else
             _params = { player: <string>params };
@@ -25,11 +32,11 @@ class Stats implements IStats {
         for (let key in _params) {
             qs.push(encodeURIComponent(key) + "=" + encodeURIComponent(String(_params[key])));
         }
-        if (qs.length) 
+        if (qs.length)
             endpoint += `?${qs.join("&")}`;
 
         return this.api.getJSON<PlayerMatches>(endpoint, true);
-    } 
+    }
 
     /** @inheritdoc */
     @schema("stats", "warzone-matches")
@@ -76,18 +83,18 @@ class Stats implements IStats {
     }
 
     /** @inheritdoc */
-    serviceRecordCampaign(player: string): Promise<any> { 
-        return this.serviceRecord("campaign", player);       
+    serviceRecordCampaign(player: string): Promise<any> {
+        return this.serviceRecord("campaign", player);
     }
 
     /** @inheritdoc */
     serviceRecordWarzone(player: string): Promise<any> {
-        return this.serviceRecord("warzone", player);                   
+        return this.serviceRecord("warzone", player);
     }
 
     /** @inheritdoc */
     serviceRecordCustom(player: string): Promise<any> {
-        return this.serviceRecord("custom", player);                           
+        return this.serviceRecord("custom", player);
     }
 
     /** @inheritdoc */

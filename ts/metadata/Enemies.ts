@@ -1,5 +1,14 @@
+import {url} from '../types';
 
-interface Vehicle {
+export interface Enemy {
+    /**
+     The faction that this enemy is affiliated with. One of the following options:
+       - UNSC
+       - Covenant
+       - Promethean
+     */
+    faction: string;
+
     /**
      A localized name for the object, suitable for display to users. The text is title
      cased.
@@ -7,7 +16,7 @@ interface Vehicle {
     name: string;
 
     /**
-     A localized description, suitable for display to users.
+     A localized description, suitable for display to users. Note: This may be null.
      */
     description: string;
 
@@ -15,21 +24,16 @@ interface Vehicle {
      A reference to a large image for icon use. This may be null if there is no image
      defined.
      */
-    largeIconImageUrl: string;
+    lageIconImageUrl: url;
 
     /**
      A reference to a small image for icon use. This may be null if there is no image
      defined.
      */
-    smallIconImageUrl: string;
+    smallIconImageUrl: url;
 
     /**
-     Indicates whether the vehicle is usable by a player.
-     */
-    isUsableByPlayer: boolean;
-
-    /**
-     The ID that uniquely identifies this vehicle.
+     The ID that uniquely identifies this enemy.
      */
     id: number;
 
@@ -40,6 +44,6 @@ interface Vehicle {
 }
 
 /**
- A list of vehicles for the title. There is no significance to the ordering.
+ A list of enemies for the title. There is no significance to the ordering.
  */
-declare type Vehicles = Vehicle[];
+export type Enemies = Enemy[];

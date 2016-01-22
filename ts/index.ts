@@ -5,11 +5,20 @@
  *!  <http://opensource.org/licenses/MIT>
  */
 
-/// <reference path="./haloapi.d.ts"/>
+import {
+    IHaloAPI,
+    IHaloAPIOptions,
+    IMetadata,
+    IProfile,
+    IStats,
+    CacheAdapter,
+    SupportedCaches,
+} from './index-types';
 
-import Stats = require("./stats");
-import Metadata = require("./metadata");
-import Profile = require("./profile");
+import Stats = require('./stats');
+import Metadata = require('./metadata');
+import Profile = require('./profile');
+import {guid, url} from './types';
 
 import rp = require("request-promise");
 var codependency = require("codependency"); // no typings? oh well
@@ -29,6 +38,8 @@ class HaloAPI implements IHaloAPI {
 
     /** @inheritdoc */
     profile: IProfile;
+
+    name: string;
 
     // Important: Privacy is only enforced by the TypeScript compiler.
     // This member will still be accessible from a JS console, for instance.

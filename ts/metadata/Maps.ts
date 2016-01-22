@@ -1,5 +1,6 @@
+import {guid} from '../types';
 
-interface BaseMap {
+export interface BaseMap {
     /**
      A localized name, suitable for display to users.
      */
@@ -38,4 +39,4 @@ interface BaseMap {
 /**
  A list of maps for the title. There is no significance to the ordering.
  */
-declare type Maps = BaseMap[];    
+export type Maps = BaseMap[];

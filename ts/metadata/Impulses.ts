@@ -1,5 +1,5 @@
 
-interface Impulse {
+export interface Impulse {
     /**
      Internal use. The non-localized name of the impulse.
      */
@@ -20,4 +20,4 @@ interface Impulse {
  A list of impulses (essentially invisible medals) for the title. There is
  no significance to the ordering.
  */
-declare type Impulses = Impulse[];
+export type Impulses = Impulse[];

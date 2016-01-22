@@ -1,5 +1,6 @@
+import {guid} from '../types';
 
-interface Requistion {
+export interface Requistion {
     /**
      This lists all the game modes that this requisition is redeemable in. Options are:
      - Arena

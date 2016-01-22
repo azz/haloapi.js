@@ -1,5 +1,7 @@
+import {guid} from '../types';
+import {RequisitionPack} from './RequisitionPacks';
 
-interface SpartanRank {
+export interface SpartanRank {
     /**
      The amount of XP required to enter this rank.
      */
@@ -21,7 +23,7 @@ interface SpartanRank {
      */
 }
 
-interface SpartanRankReward {
+export interface SpartanRankReward {
     /**
      The amount of XP that will be awarded.
      */
@@ -46,4 +48,4 @@ interface SpartanRankReward {
 /**
  * List of spartan ranks
  */
-declare type SpartanRanks = SpartanRank[];
+export type SpartanRanks = SpartanRank[];

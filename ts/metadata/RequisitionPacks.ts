@@ -1,8 +1,9 @@
+import {guid, url} from '../types';
 
-interface RequisitionPack {
+export interface RequisitionPack {
     /**
      A localized name for the pack, suitable for display to users. The text
-     is title cased. 
+     is title cased.
      */
     name: string;
 
@@ -57,7 +58,7 @@ interface RequisitionPack {
 
     /**
      If this pack might be obtainable through the Xbox Live Marketplace, this
-     is the product ID. 
+     is the product ID.
      @note Pricing and availability within the Xbox Live
      marketplace is controlled independently of this value. The presence of
      an Id in this field is not a guarantee the product is purchasable. There
@@ -107,4 +108,4 @@ interface RequisitionPack {
 /**
  * A list of requisition packs
  */
-declare type RequisitionPacks = RequisitionPack[];
+export type RequisitionPacks = RequisitionPack[];

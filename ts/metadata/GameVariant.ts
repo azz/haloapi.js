@@ -1,5 +1,6 @@
+import {guid} from '../types';
 
-interface GameVariant {
+export interface GameVariant {
     /**
      A localized name, suitable for display to users.
      */
@@ -33,5 +34,5 @@ interface GameVariant {
     }
 
 /*
- Cannot retrieve list of all game variants 
+ Cannot retrieve list of all game variants
  */

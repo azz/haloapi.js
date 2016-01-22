@@ -1,7 +1,8 @@
-/// <reference path="./PlayerMatches.d.ts"/>
-/// <reference path="./PGCRArena.d.ts"/>
+import {guid} from '../types';
+import {PlayerMatches} from './PlayerMatches';
+import {PGCRArena} from './PGCRArena';
 
-interface IMatchesParams {
+export interface IMatchesParams {
     player: string;
     mode?: string;
     start?: number;
@@ -9,8 +10,8 @@ interface IMatchesParams {
     [key:string]: string | number;
 }
 
-interface IStats {
-    
+export interface IStats {
+
     /**
      * @api Stats :: Matches for Player
      * @endpoint https://www.haloapi.com/stats/{title}/players/{player}/matches[?modes][&start][&count]
@@ -51,7 +52,7 @@ interface IStats {
     customMatchById(id: guid): Promise<any>;
 
     /*
-     * Single player service record 
+     * Single player service record
      */
 
     // TODO: typescript definitions for response
@@ -70,4 +71,9 @@ interface IStats {
     serviceRecordsCampaign(players: string[]): Promise<any>;
     serviceRecordsCustom(players: string[]): Promise<any>;
 
+}
+
+export {
+    PGCRArena,
+    PlayerMatches,
 }

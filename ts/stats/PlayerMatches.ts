@@ -1,49 +1,50 @@
+import {guid} from '../types';
 
-interface PaginatedResponse<T> {
+export interface PaginatedResponse<T> {
     /** The starting point that was used. When the start query string parameter is
     specified, this value is identical. When start is omitted, the default value is
     returned. */
     Start: number;
 
-    /** The number of results that the service attempted to retrieve to satisfy this 
-    request. Normally this value is equal to the count parameter. If the client 
-    specified a count parameter greater than the maximum allowed, this value contains 
+    /** The number of results that the service attempted to retrieve to satisfy this
+    request. Normally this value is equal to the count parameter. If the client
+    specified a count parameter greater than the maximum allowed, this value contains
     the maximum allowed amount. */
     Count: number;
 
-    /** The number of results that are actually being returned in this response. This field 
+    /** The number of results that are actually being returned in this response. This field
     is named ResultCount to avoid confusion with Count. */
     ResultCount: number;
 
-    /** A list of recent matches. Matches are listed in chronological order with the most 
+    /** A list of recent matches. Matches are listed in chronological order with the most
     recently started match first. */
     Results: T[];
 }
 
-interface MatchId {
-    /** The ID for this match. More match details are available via the applicable 
+export interface MatchId {
+    /** The ID for this match. More match details are available via the applicable
     Post Game Carnage Report endpoint. */
     MatchId: guid;
 
-    /** The game mode applicable to this match. Options are: 
-    - Error = 0, 
-    - Arena = 1, 
-    - Campaign = 2, 
-    - Custom = 3, 
+    /** The game mode applicable to this match. Options are:
+    - Error = 0,
+    - Arena = 1,
+    - Campaign = 2,
+    - Custom = 3,
     Warzone = 4. */
     GameMode: number;
 }
 
-interface Resource {
+export interface Resource {
     /** The resource type. 3 indicates map variant. 2 indicates game variant. */
     ResourceType: number;
 
     /** The ID of the map variant. Game/Map variants are available via the Metadata API. */
     ResourceId: guid;
 
-    /** The source of the map variant. Options are: 
-    - Unknown = 0 
-    - User-generated = 1 and 2, 
+    /** The source of the map variant. Options are:
+    - Unknown = 0
+    - User-generated = 1 and 2,
     - Official = 3. */
     OwnerType: number;
 
@@ -51,18 +52,18 @@ interface Resource {
     Owner: string
 }
 
-interface Match {
+export interface Match {
     /** Internal use only. A set of related resource links. */
     /** Links: links; */
 
     Id: MatchId;
 
-    /** The ID of the playlist (aka Hopper) for the match. 
-    Hoppers are used in Arena and Warzone. In Arena, they function just as you would 
-    expect, similar to previous Halo titles. Warzone uses hoppers as well. There 
-    will be multiple Warzone hoppers which contain a rotating playlist of scenarios 
-    to play. 
-    Null for campaign & custom games. 
+    /** The ID of the playlist (aka Hopper) for the match.
+    Hoppers are used in Arena and Warzone. In Arena, they function just as you would
+    expect, similar to previous Halo titles. Warzone uses hoppers as well. There
+    will be multiple Warzone hoppers which contain a rotating playlist of scenarios
+    to play.
+    Null for campaign & custom games.
     Playlists are available via the Metadata API. */
     HopperId: guid;
 
@@ -76,7 +77,7 @@ interface Match {
     here. This will be null for campaign games. */
     MapVariant: Resource;
 
-    /** The ID of the game base variant for this match. Game base variants are available 
+    /** The ID of the game base variant for this match. Game base variants are available
     via the Metadata API. */
     GameBaseVariantId: guid;
 
@@ -99,11 +100,11 @@ interface Match {
         ISO8601Date: string
     };
 
-    /** Provides team data. This list contains all team that Won or Tied. Losing teams 
+    /** Provides team data. This list contains all team that Won or Tied. Losing teams
     are not included. This list is empty for campaign games. */
     Teams: MatchTeam[];
 
-    /** This field contains the player's data. This will only contain data for the 
+    /** This field contains the player's data. This will only contain data for the
     player specified in the request. */
     Players: MatchPlayer[];
 
@@ -114,7 +115,7 @@ interface Match {
     /** SeasonId: null; */
 }
 
-interface MatchTeam {
+export interface MatchTeam {
     /** The ID for the team. The team's ID dictates the team's color. Team colors */
     /** are available via the Metadata API. */
     Id: number;
@@ -123,8 +124,8 @@ interface MatchTeam {
     based off the game base variant being played:
     Breakout = number of rounds won,
     CTF = number of flag captures,
-    Slayer = number of kills, 
-    Strongholds = number of points, 
+    Slayer = number of kills,
+    Strongholds = number of points,
     Warzone = number of points. */
     Score: number;
 
@@ -132,7 +133,7 @@ interface MatchTeam {
     Rank: number;
 }
 
-interface MatchPlayer {
+export interface MatchPlayer {
     Player: {
         /** The player's gamertag. */
         Gamertag: string;
@@ -141,7 +142,7 @@ interface MatchPlayer {
         /** Xuid: null; */
     };
 
-    /** The ID of the team that the player was on when the match ended. Zero for 
+    /** The ID of the team that the player was on when the match ended. Zero for
     campaign games. */
     TeamId: number;
 
@@ -174,7 +175,7 @@ interface MatchPlayer {
     /** The number of times this player died during the match. */
     TotalDeaths: number;
 
-    /** The number of assists credited to the player during the match. This includes 
+    /** The number of assists credited to the player during the match. This includes
     other Spartans and Enemy AI. */
     TotalAssists: number;
 
@@ -185,4 +186,4 @@ interface MatchPlayer {
     /** PostMatchRatings: null; */
 }
 
-declare type PlayerMatches = PaginatedResponse<Match>;
+export type PlayerMatches = PaginatedResponse<Match>;

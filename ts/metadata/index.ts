@@ -1,32 +1,34 @@
+import Promise = require('bluebird');
+import {guid} from '../types';
 
-/// <reference path="./CampaignMissions.d.ts"/>
-/// <reference path="./Commendations.d.ts"/>
-/// <reference path="./CSRDesignations.d.ts"/>
-/// <reference path="./Enemies.d.ts"/>
-/// <reference path="./FlexibleStats.d.ts"/>
-/// <reference path="./GameBaseVariants.d.ts"/>
-/// <reference path="./GameVariant.d.ts"/>
-/// <reference path="./Impulses.d.ts"/>
-/// <reference path="./Maps.d.ts"/>
-/// <reference path="./MapVariant.d.ts"/>
-/// <reference path="./Medals.d.ts"/>
-/// <reference path="./Playlists.d.ts"/>
-/// <reference path="./Requisition.d.ts"/>
-/// <reference path="./RequisitionPacks.d.ts"/>
-/// <reference path="./Skulls.d.ts"/>
-/// <reference path="./SpartanRanks.d.ts"/>
-/// <reference path="./TeamColors.d.ts"/>
-/// <reference path="./Vehicles.d.ts"/>
-/// <reference path="./Weapons.d.ts"/>
+import {CampaignMissions} from './CampaignMissions';
+import {Commendations} from './Commendations';
+import {CSRDesignations} from './CSRDesignations';
+import {Enemies} from './Enemies';
+import {FlexibleStats} from './FlexibleStats';
+import {GameBaseVariants} from './GameBaseVariants';
+import {GameVariant} from './GameVariant';
+import {Impulses} from './Impulses';
+import {Maps} from './Maps';
+import {MapVariant} from './MapVariant';
+import {Medals} from './Medals';
+import {Playlists} from './Playlists';
+import {Requistion} from './Requisition';
+import {RequisitionPack, RequisitionPacks} from './RequisitionPacks';
+import {Skulls} from './Skulls';
+import {SpartanRanks} from './SpartanRanks';
+import {TeamColors} from './TeamColors';
+import {Vehicles} from './Vehicles';
+import {Weapons} from './Weapons';
 
-interface IMetadata {
-    
-    /** 
+export interface IMetadata {
+
+    /**
      * @api Metadata :: Campaign Missions.
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/campaign-missions
      */
     campaignMissions(): Promise<CampaignMissions>;
-    
+
     /**
      * @api Metadata :: Commendations.
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/commendations
@@ -42,28 +44,28 @@ interface IMetadata {
     /**
      * @api Metadata :: Enemies
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/enemies
-     */    
+     */
     enemies(): Promise<Enemies>;
-    
+
     /**
      * @api Metadata :: Flexible Stats
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/flexible-stats
      */
-    flexibleStats(): Promise<FlexibleStats>;      
+    flexibleStats(): Promise<FlexibleStats>;
 
     /**
      * @api Metadata :: Game Base Variants
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/game-base-variants
      */
     gameBaseVariants(): Promise<GameBaseVariants>;
-    
+
     /**
      * @api Metadata :: Game Variants
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/game-variants/{id}
      * @param id  An ID that uniquely identifies a Game Variant.
      */
     gameVariantById(id: guid): Promise<GameVariant>;
-    
+
     /**
      * @api Metadata :: Impulses
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/impulses
@@ -75,7 +77,7 @@ interface IMetadata {
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/maps
      */
     maps(): Promise<Maps>;
-    
+
     /**
      * @api Metadata :: Map Variants
      * @endpoint https://www.haloapi.com/metadata/{title}/metadata/map-variants/{id}
@@ -110,7 +112,7 @@ interface IMetadata {
     requisitionPackById(id: guid): Promise<RequisitionPack>;
 
     /**
-     * Fabricated endpoint, uses constant IDs to retreive 
+     * Fabricated endpoint, uses constant IDs to retreive
      * the Gold, Silver and Bronze requisition packs
      */
     requisitionPacksPurchasable(): Promise<RequisitionPacks>;
@@ -146,3 +148,25 @@ interface IMetadata {
     weapons(): Promise<Weapons>;
 }
 
+export {
+    CampaignMissions,
+    Commendations,
+    CSRDesignations,
+    Enemies,
+    FlexibleStats,
+    GameBaseVariants,
+    GameVariant,
+    Impulses,
+    Maps,
+    MapVariant,
+    Medals,
+    Playlists,
+    Requistion,
+    RequisitionPack,
+    RequisitionPacks,
+    Skulls,
+    SpartanRanks,
+    TeamColors,
+    Vehicles,
+    Weapons,
+}

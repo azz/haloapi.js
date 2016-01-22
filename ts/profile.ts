@@ -1,4 +1,11 @@
-/// <reference path="./haloapi.d.ts"/>
+import Promise = require('bluebird');
+import {IHaloAPI} from './index-types';
+import {
+    IProfile,
+    IProfileParams,
+    EmblemImage,
+    SpartanImage,
+} from './profile/index';
 
 class Profile implements IProfile {
 
@@ -12,7 +19,7 @@ class Profile implements IProfile {
     emblemImage(params: string | IProfileParams): Promise<EmblemImage> {
         var p: IProfileParams;
         p = typeof params === "string" ? { player: params } : params;
-        let endpoint: string = `/profile/${this.title}/profiles/` 
+        let endpoint: string = `/profile/${this.title}/profiles/`
             + `${encodeURIComponent(p.player)}/emblem`;
         return this.api.getImageURL(endpoint + this.constructQs(p));
     }
@@ -30,10 +37,10 @@ class Profile implements IProfile {
         let qs: string[] = [];
         for (let key in params) {
             if (key !== "player")
-                qs.push(encodeURIComponent(key) + "=" 
+                qs.push(encodeURIComponent(key) + "="
                     + encodeURIComponent(String(params[key])));
         }
-        if (qs.length) 
+        if (qs.length)
            return `?${qs.join("&")}`;
         return "";
     }

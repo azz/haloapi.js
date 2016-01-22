@@ -1,4 +1,7 @@
-interface XpInfo {
+import {guid} from '../types';
+import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/Commendations';
+
+export interface XpInfo {
     /** The player's Spartan Rank before the match started. */
     PrevSpartanRank: number;
 
@@ -32,7 +35,7 @@ interface XpInfo {
     BoostAmount: number;
 }
 
-interface CsrState {
+export interface CsrState {
     /** The CSR tier. */
     Tier: number;
 
@@ -51,23 +54,23 @@ interface CsrState {
     Rank: number;
 }
 
-interface RewardSet {
+export interface RewardSet {
     /** The ID of the reward. */
     RewardSet: guid;
 
     /** The source of the reward. Options are:
-    None = 0, 
-    Meta Commendation = 1, 
-    Progress Commendation = 2, 
+    None = 0,
+    Meta Commendation = 1,
+    Progress Commendation = 2,
     Spartan Rank = 3 */
     RewardSourceType: number;
 
-    /** If the Reward Source is Spartan Rank, this value is set to the Spartan Rank 
-    the player acquired that led to this reward being granted. Note: Unlike the 
-    commendations fields in this structure, this is not the GUID to a Spartan 
-    Rank content item. That's because the Spartan Rank content item itself does 
-    not detail what specific Spartan Rank it pertains to - this information is 
-    derived from the list of Spartan Ranks as a whole. Spartan Ranks are 
+    /** If the Reward Source is Spartan Rank, this value is set to the Spartan Rank
+    the player acquired that led to this reward being granted. Note: Unlike the
+    commendations fields in this structure, this is not the GUID to a Spartan
+    Rank content item. That's because the Spartan Rank content item itself does
+    not detail what specific Spartan Rank it pertains to - this information is
+    derived from the list of Spartan Ranks as a whole. Spartan Ranks are
     available via the Metadata API. */
     SpartanRankSource: number;
 
@@ -81,7 +84,7 @@ interface RewardSet {
     CommendationSource: guid;
 }
 
-interface OpponentDetails {
+export interface OpponentDetails {
     /** The gamertag of the opponent that killed the player. */
     GamerTag: string;
 
@@ -89,15 +92,15 @@ interface OpponentDetails {
     TotalKills: number;
 }
 
-interface StatCount {
+export interface StatCount {
     /** The ID of the flexible stat. */
     Id: guid;
 
     /** The number of times this flexible stat was earned. */
-    Count: number;         
+    Count: number;
 }
 
-interface Timelapse {
+export interface Timelapse {
     /** The ID of the flexible stat. */
     Id: guid;
 
@@ -106,7 +109,7 @@ interface Timelapse {
     Timelapse: string
 }
 
-interface MedalAward {
+export interface MedalAward {
     /** The ID of the Medal. Medals are available via the Metadata API. */
     MedalId: number;
 
@@ -114,7 +117,7 @@ interface MedalAward {
     Count: number;
 }
 
-interface EnemyKill {
+export interface EnemyKill {
     /** The enemy this entry references */
     Enemy: {
         /** The Base ID for the enemy. */
@@ -128,7 +131,7 @@ interface EnemyKill {
     TotalKills: number;
 }
 
-interface WeaponStat {
+export interface WeaponStat {
     WeaponId: {
         /** The ID of the weapon. Weapons are available via the Metadata API. */
         StockId: number;
@@ -157,20 +160,20 @@ interface WeaponStat {
     TotalPossessionTime: string
 }
 
-interface ImpulseCount {
+export interface ImpulseCount {
     /** The ID of the Impulse. Impulses are available via the Metadata API. */
     Id: number;
 
     /** The number of times the Impuse was earned. */
     Count: number;
-}    
+}
 
-interface PlayerStat {
+export interface PlayerStat {
     /** The experience information for the player in this match. */
     XpInfo: XpInfo;
 
-    /** The Competitive Skill Ranking (CSR) of the player before the match started. If 
-    the player is still in measurement matches, this field is null. If the player 
+    /** The Competitive Skill Ranking (CSR) of the player before the match started. If
+    the player is still in measurement matches, this field is null. If the player
     finished the last measurement match this match, this field is still null. */
     PreviousCsr: CsrState;
 
@@ -179,7 +182,7 @@ interface PlayerStat {
     CurrentCsr: CsrState;
 
     /** The player's measurement matches left. If this field is greater than zero, then
-    the player will not have a CSR yet. If the player finished the match, this match 
+    the player will not have a CSR yet. If the player finished the match, this match
     is included in this count. */
     MeasurementMatchesLeft: number;
 
@@ -212,19 +215,19 @@ interface PlayerStat {
 
     /** Details on any credits the player may have earned from playing this match. */
     CreditsEarned: {
-        /** Indicates how the credits result was arrived at. Options are: 
-        - Credits Disabled In Playlist = 0, 
-        TotalCreditsEarned is zero because this playlist 
-        has credits disabled. 
-        - Player Did Not Finish = 1, 
-        Credits are enabled in this playlist, but 
+        /** Indicates how the credits result was arrived at. Options are:
+        - Credits Disabled In Playlist = 0,
+        TotalCreditsEarned is zero because this playlist
+        has credits disabled.
+        - Player Did Not Finish = 1,
+        Credits are enabled in this playlist, but
         TotalCreditsEarned is zero because the player did not finish the match.
         - Credits Earned = 2,
-        Credits are enabled in this playlist and the player completed 
-        the match, so the credits formula was successfully evaluated. The fields below 
+        Credits are enabled in this playlist and the player completed
+        the match, so the credits formula was successfully evaluated. The fields below
         provide the client with the values used in the formula.
-        @note If we used 
-        one or more default values, we still return NormalResult. The fields below 
+        @note If we used
+        one or more default values, we still return NormalResult. The fields below
         will confirm the actual values used. */
         Result: number;
 
@@ -234,7 +237,7 @@ interface PlayerStat {
         /** The scalar applied to the credits earned based on the player's Spartan Rank. */
         SpartanRankModifier: number;
 
-        /** The portion of credits earned due to the player's team-agnostic rank in the 
+        /** The portion of credits earned due to the player's team-agnostic rank in the
         match. */
         PlayerRankAmount: number;
 
@@ -245,14 +248,14 @@ interface PlayerStat {
         BoostAmount: number;
     },
 
-    /** The player's progress towards meta commendations. Commendations that had no 
+    /** The player's progress towards meta commendations. Commendations that had no
     progress earned this match will not be returned. */
     MetaCommendationDeltas: MetaCommendationDelta[];
-        
-    /** The player's progress towards progressive commendations. Commendations that had 
+
+    /** The player's progress towards progressive commendations. Commendations that had
     no progress earned this match will not be returned. */
     ProgressiveCommendationDeltas: ProgressiveCommendationDelta[];
-        
+
     Player: {
         /** The player's gamertag. */
         Gamertag: string;
@@ -279,8 +282,8 @@ interface PlayerStat {
     /** Internal use only. This will always be null. */
     /** PostMatchRatings: null; */
 
-    /** Total number of kills done by the player. This includes melee kills, shoulder 
-    bash kills and Spartan charge kills, all power weapons, AI kills and vehicle 
+    /** Total number of kills done by the player. This includes melee kills, shoulder
+    bash kills and Spartan charge kills, all power weapons, AI kills and vehicle
     destructions. */
     TotalKills: number;
 
@@ -321,7 +324,7 @@ interface PlayerStat {
         /** The total damage dealt for this weapon. */
         TotalDamageDealt: number;
 
-        /** The total possession time for this weapon. This is expressed as an ISO 8601 
+        /** The total possession time for this weapon. This is expressed as an ISO 8601
         Duration. */
         TotalPossessionTime: string
     },
@@ -408,7 +411,7 @@ interface PlayerStat {
     TotalSpartanKills: number;
 }
 
-interface RoundStat {
+export interface RoundStat {
     /** The round number this entry pertains to. */
     RoundNumber: number;
 
@@ -420,7 +423,7 @@ interface RoundStat {
 }
 
 
-interface TeamStat {
+export interface TeamStat {
     /** The ID for the team. */
     TeamId: number;
 
@@ -438,14 +441,14 @@ interface TeamStat {
 
     /** The set of round stats for the team. */
     RoundStats: RoundStat[];
-}    
+}
 
-interface PGCRArena {
+export interface PGCRArena {
 
     /** A list of stats for each player who was present in the match. */
     PlayerStats: PlayerStat[];
 
-    /** A list of stats for each team who in the match. Note that in Free For All modes, 
+    /** A list of stats for each team who in the match. Note that in Free For All modes,
     there is an entry for every player. */
     TeamStats: TeamStat[];
 
@@ -456,7 +459,7 @@ interface PGCRArena {
     /** The length of the match. This is expressed as an ISO 8601 Duration. */
     TotalDuration: string;
 
-    /** The variant of the map for this match. Map variants are available via the Metadata 
+    /** The variant of the map for this match. Map variants are available via the Metadata
     API. */
     MapVariantId: guid;
 

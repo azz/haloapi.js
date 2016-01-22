@@ -1,3 +1,6 @@
+import {guid, url} from '../types';
+import {RequisitionPack} from './RequisitionPacks';
+
 /**
  * The progress the player had made towards the commendation level before the
  * match. In C#, this can be reassembled into a Guid in the following manner:
@@ -5,7 +8,7 @@
  * `new Guid((int)Data1, (short)Data2, (short)Data3,
  * BitConverter.GetBytes((long)Data4)).`
 */
-interface CommendationMetRequirement {
+export interface CommendationMetRequirement {
     Data1: number;
 
     Data2: number;
@@ -15,7 +18,7 @@ interface CommendationMetRequirement {
     Data4: number;
 }
 
-interface MetaCommendationDelta {
+export interface MetaCommendationDelta {
     /**
      * The commendation ID. Commendations are available via the Metadata API.
      */
@@ -28,12 +31,12 @@ interface MetaCommendationDelta {
     PreviousMetRequirements: CommendationMetRequirement[];
     /**
      * The progress the player had made towards the commendation level after the
-     * match.  
+     * match.
      */
     MetRequirements: CommendationMetRequirement[];
 }
 
-interface ProgressiveCommendationDelta {
+export interface ProgressiveCommendationDelta {
     /**
      The commendation ID. Commendations are available via the Metadata API.
      */
@@ -52,29 +55,29 @@ interface ProgressiveCommendationDelta {
     Progress: number;
 }
 
-interface CommendationReward {
+export interface CommendationReward {
     /**
      The amount of XP that will be awarded.
      */
     xp: number;
-    
+
     /**
      The set of requisition packs (if any) that will be awarded.
      */
     requisitionPacks: RequisitionPack[];
-    
+
     /**
      The ID that uniquely identifies this reward.
      */
     id: guid;
-    
+
     /*
      Internal use only. Do not use.
      contentId: guid;
      */
 }
- 
-interface CommendationLevel {    
+
+export interface CommendationLevel {
     /**
      The reward the player will receive for earning this level.
      */
@@ -97,8 +100,8 @@ interface CommendationLevel {
      contentId: guid;
      */
 }
- 
-interface CommendationRequiredLevel {
+
+export interface CommendationRequiredLevel {
     /**
      The threshold that the player must meet or exceed in order to consider the
      level requirement met.
@@ -117,7 +120,7 @@ interface CommendationRequiredLevel {
      */
 }
 
-interface CommendationCategory {
+export interface CommendationCategory {
     /**
      A localized name for the category, suitable for display to users. The text is
      */
@@ -125,12 +128,12 @@ interface CommendationCategory {
      title cased.
      */
     name: string;
-    
+
     /**
      An image that is used as the icon for this category.
      */
     iconImageUrl: url;
-    
+
     /*
      Internal use. The order in which the category should be displayed relative to
      other categories. The lower the value, the more important the category - more
@@ -143,14 +146,14 @@ interface CommendationCategory {
      The ID that uniquely identifies this category.
      */
     id: guid;
-    
+
     /*
      Internal use only. Do not use.
      contentId: guid;
      */
 }
 
-interface Commendation {
+export interface Commendation {
     /**
      Indicates the type of commendation. This is one of the two following options:
        - "Progressive"
@@ -165,7 +168,7 @@ interface Commendation {
 
     /**
      A localized name for the commendation, suitable for display to users. The text is
-     title cased. 
+     title cased.
      */
     name: string;
 
@@ -217,8 +220,8 @@ interface Commendation {
      contentId: guid;
      */
     }
- 
+
 /**
  * A list of commendations for the title. There is no significance to the ordering.
  */
-declare type Commendations = Commendation[];
+export type Commendations = Commendation[];

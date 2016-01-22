@@ -1,5 +1,5 @@
 
-interface TeamColor {
+export interface TeamColor {
     /**
      A localized name, suitable for display to users.
      */
@@ -38,4 +38,4 @@ interface TeamColor {
  A listing of team colors supported in the title. There is no significance to
  the ordering.
  */
-declare type TeamColors = TeamColor[];
+export type TeamColors = TeamColor[];

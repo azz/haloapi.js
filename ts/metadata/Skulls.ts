@@ -1,5 +1,6 @@
+import {guid} from '../types';
 
-interface Skull {
+export interface Skull {
     /**
      A localized name, suitable for display to users. The text is title cased.
      */
@@ -30,4 +31,4 @@ interface Skull {
 /**
  A list of skulls for the title. There is no significance to the ordering.
  */
-declare type Skulls = Skull[];
+export type Skulls = Skull[];

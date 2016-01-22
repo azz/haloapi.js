@@ -1,13 +1,8 @@
-/// <reference path="./metadata/index.d.ts"/>
-/// <reference path="./stats/index.d.ts"/>
-/// <reference path="./profile/index.d.ts"/>
+import {guid, url} from './types';
 
-/**
- * Declare some simple aliases for semantic purposes
- */
-
-declare type guid = string;
-declare type url = string;
+import {IMetadata} from './metadata/index';
+import {IStats} from './stats/index';
+import {IProfile} from './profile/index';
 
 /**
  * @param apiKey Your API key. API keys are obtained from
@@ -20,7 +15,7 @@ declare type url = string;
  *                     caching client. For redis this can be omitted, or, e.g.
  *                     `[ 'redis://user:pass@host:port', options ]`.
  */
-interface IHaloAPIOptions {
+export interface IHaloAPIOptions {
     apiKey: string,
     cache?: string,
     cacheOptions?: any,
@@ -32,7 +27,7 @@ interface IHaloAPIOptions {
  * Provides access to endpoint services,
  * and optional caching support.
  */
-interface IHaloAPI {
+export interface IHaloAPI {
     /**
      * Access metadata endpoints
      */
@@ -90,7 +85,7 @@ interface IHaloAPI {
 /**
  * Adapters to various supported caches.
  */
-interface CacheAdapter {
+export interface CacheAdapter {
 
     /**
      * Get an item to the cache with a specified key.
@@ -130,7 +125,7 @@ interface CacheAdapter {
     delete(keys: string[]): Promise<number>;
 }
 
-interface CacheAdapterClass {
+export interface CacheAdapterClass {
     /**
      * Create an adapter
      * @param Options will be passed to through to the cache implementation.
@@ -138,7 +133,7 @@ interface CacheAdapterClass {
     new (options: any): CacheAdapter;
 }
 
-interface HaloAPIClass {
+export interface HaloAPIClass {
     /**
      * Create an instance of the HaloAPI.
      * @param opts  Either an options object or your API key string.
@@ -151,6 +146,12 @@ interface HaloAPIClass {
  * and values are the classes to be constructed to adapt the
  * cache system.
  */
-interface SupportedCaches {
+export interface SupportedCaches {
     [name: string]: CacheAdapterClass;
+}
+
+export {
+    IMetadata,
+    IStats,
+    IProfile,
 }

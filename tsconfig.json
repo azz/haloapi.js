@@ -9,7 +9,7 @@
         "declaration": false,
         "experimentalDecorators": true,
         "suppressImplicitAnyIndexErrors": true,
-        "outDir": "./js/"
+        "outDir": "js"
     },
     "files": [
         "./ts/index.ts",

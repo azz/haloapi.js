@@ -1,5 +1,5 @@
 
-interface Weapon {
+export interface Weapon {
     /**
      A localized name for the object, suitable for display to users. The text is title
      cased.
@@ -52,4 +52,4 @@ interface Weapon {
 /**
  A listing of weapons supported in the title. There is no significance to the ordering.
  */
-declare type Weapons = Weapon[];
+export type Weapons = Weapon[];

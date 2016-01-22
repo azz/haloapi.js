@@ -1,5 +1,6 @@
+import {url} from '../types';
 
-interface CSRTier {
+export interface CSRTier {
     /**
      An image to use as the icon for th tier.
      */
@@ -12,28 +13,28 @@ interface CSRTier {
 
     /*
      Internal use only. Do not use.
-     contentId: guid; 
+     contentId: guid;
      */
     }
 
-interface CSRDesignation {
+export interface CSRDesignation {
     /**
      A localized name for the designation, suitable for display to users. The text is
-     title cased. 
+     title cased.
      */
     name: string;
-    
+
     /**
      An image to use as the background for the designation.
      */
     bannerImageUrl: url;
-    
+
     /**
      An array of "CSR Tier" entries, one for each tier this designation supports.
      Semi-Pro and Pro will not have tiers defined, and this list will be empty.
      */
     tiers: CSRTier[];
-    
+
     /**
      An ID that identifies the designation. It happens to be the same as the
      designation ordering. This value is the same across all languages. Note that Id =
@@ -41,7 +42,7 @@ interface CSRDesignation {
      additional matches before being assigned an official CSR designation.
      */
     id: number;
-    
+
     /*
      Internal use only. Do not use.
      contentId: guid;
@@ -58,4 +59,4 @@ ranking value instead of the tier indicator. For non-Pro players, we keep the ab
 skill ranking hidden and show the CSR tier. To determine what CSR a player has earned,
 view the Service Record stats for that player. There is no significance to the ordering.
 */
-declare type CSRDesignations = CSRDesignation[]; 
+export type CSRDesignations = CSRDesignation[];
