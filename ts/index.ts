@@ -4,6 +4,9 @@
  *! (See accompanying file LICENSE.md or visit:
  *!  <http://opensource.org/licenses/MIT>
  */
+import bluebird = require('bluebird');
+import rp = require("request-promise");
+var codependency = require("codependency"); // no typings? oh well
 
 import {
     IHaloAPI,
@@ -19,9 +22,6 @@ import Stats = require('./stats');
 import Metadata = require('./metadata');
 import Profile = require('./profile');
 import {guid, url} from './common';
-
-import rp = require("request-promise");
-var codependency = require("codependency"); // no typings? oh well
 
 var requireOptional = codependency.register(module, {
     index: ['optionalCacheDependencies']
