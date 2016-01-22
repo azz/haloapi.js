@@ -4,7 +4,8 @@
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/tsc && ./node_modules/.bin/dts-generator --baseDir ts --outDir js --name haloapi --main haloapi/js/index --out haloapi.d.ts ts/index.ts",
+    "prepublish": ".node_modules/.bin/tsc --declaration && ./node_modules/.bin/dts-generator --baseDir ts --outDir . --name haloapi --main haloapi/index --out haloapi.d.ts ts/index.ts",
+    "build": "./node_modules/.bin/tsc",
     "test": "./node_modules/.bin/mocha",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",

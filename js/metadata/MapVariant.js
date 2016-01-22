@@ -1,3 +1,0 @@
-/*
- Cannot access list of all map variants
- */

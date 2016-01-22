@@ -5,6 +5,4 @@
 *.rdb
 **.log
 .idea
-*.js
-*.d.ts
-^ts/lib/*.d.ts
+/ts/

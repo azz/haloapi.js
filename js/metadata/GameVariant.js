@@ -1,3 +1,0 @@
-/*
- Cannot retrieve list of all game variants
- */
