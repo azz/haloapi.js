@@ -1,5 +1,5 @@
 import Promise = require('bluebird');
-import {guid} from '../types';
+import {guid} from '../common';
 
 import {CampaignMissions} from './CampaignMissions';
 import {Commendations} from './Commendations';

@@ -1,4 +1,4 @@
-import {guid} from '../types';
+import {guid} from '../common';
 import {PlayerMatches} from './PlayerMatches';
 import {PGCRArena} from './PGCRArena';
 

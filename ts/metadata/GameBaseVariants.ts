@@ -1,4 +1,4 @@
-import {guid} from '../types';
+import {guid} from '../common';
 
 export interface GameBaseVariant {
     /**

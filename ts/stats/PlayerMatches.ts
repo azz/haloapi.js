@@ -1,4 +1,4 @@
-import {guid} from '../types';
+import {guid} from '../common';
 
 export interface PaginatedResponse<T> {
     /** The starting point that was used. When the start query string parameter is

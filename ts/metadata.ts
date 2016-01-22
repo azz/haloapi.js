@@ -1,5 +1,5 @@
 import {IHaloAPI} from './index-types';
-import {guid} from './types';
+import {guid} from './common';
 import schema = require('./schema');
 
 import {

@@ -18,7 +18,7 @@ import {
 import Stats = require('./stats');
 import Metadata = require('./metadata');
 import Profile = require('./profile');
-import {guid, url} from './types';
+import {guid, url} from './common';
 
 import rp = require("request-promise");
 var codependency = require("codependency"); // no typings? oh well

@@ -1,4 +1,4 @@
-import {guid, url} from './types';
+import {guid, url} from './common';
 
 import {IMetadata} from './metadata/index';
 import {IStats} from './stats/index';

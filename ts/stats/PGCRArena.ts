@@ -1,4 +1,4 @@
-import {guid} from '../types';
+import {guid} from '../common';
 import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/Commendations';
 
 export interface XpInfo {

@@ -1,4 +1,4 @@
-import {url} from '../types';
+import {url} from '../common';
 
 export interface CSRTier {
     /**

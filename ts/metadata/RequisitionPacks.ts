@@ -1,4 +1,4 @@
-import {guid, url} from '../types';
+import {guid, url} from '../common';
 
 export interface RequisitionPack {
     /**

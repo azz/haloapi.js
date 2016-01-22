@@ -1,4 +1,4 @@
-import {guid, url} from '../types';
+import {guid, url} from '../common';
 
 // TODO: figure out if it's possible to use enums to capture string possibilities,
 // like so:

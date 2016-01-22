@@ -1,4 +1,4 @@
-import {url} from '../types';
+import {url} from '../common';
 
 /**
  * The URL of the player's Spartan Image
