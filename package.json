@@ -4,7 +4,7 @@
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
   "scripts": {
-    "prepublish": "tsc --declaration && dts-generator --baseDir ts --outDir . --name haloapi --main haloapi/index --out haloapi.d.ts ts/index.ts",
+    "prepublish": "tsc --declaration",
     "build": "tsc",
     "test": "mocha",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
@@ -41,7 +41,6 @@
     "chai-string": "^1.1.3",
     "chai-things": "^0.2.0",
     "docco": "^0.7.0",
-    "dts-generator": "^1.6.3",
     "istanbul": "^0.4.0",
     "json-schema": "^0.2.2",
     "mocha": "^2.3.3",
