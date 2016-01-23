@@ -1,5 +1,5 @@
 {
-  "name": "haloapi",
+  "name": "@crazytoucan/haloapi",
   "version": "0.4.1",
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
