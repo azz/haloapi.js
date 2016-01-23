@@ -1,6 +1,6 @@
 {
   "name": "@crazytoucan/haloapi",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
   "main": "js/index.js",
   "scripts": {
