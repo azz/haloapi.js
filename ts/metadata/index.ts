@@ -1,25 +1,25 @@
 import Promise = require('bluebird');
 import {guid} from '../common';
 
-import {CampaignMissions} from './CampaignMissions';
-import {Commendations} from './Commendations';
-import {CSRDesignations} from './CSRDesignations';
-import {Enemies} from './Enemies';
-import {FlexibleStats} from './FlexibleStats';
-import {GameBaseVariants} from './GameBaseVariants';
+import {CampaignMissions, CampaignMission} from './CampaignMissions';
+import {Commendations, Commendation} from './Commendations';
+import {CSRDesignations, CSRDesignation} from './CSRDesignations';
+import {Enemies, Enemy} from './Enemies';
+import {FlexibleStats, FlexibleStat} from './FlexibleStats';
+import {GameBaseVariants, GameBaseVariant} from './GameBaseVariants';
 import {GameVariant} from './GameVariant';
-import {Impulses} from './Impulses';
-import {Maps} from './Maps';
+import {Impulses, Impulse} from './Impulses';
+import {Maps, BaseMap} from './Maps';
 import {MapVariant} from './MapVariant';
-import {Medals} from './Medals';
-import {Playlists} from './Playlists';
+import {Medals, Medal} from './Medals';
+import {Playlists, Playlist} from './Playlists';
 import {Requistion} from './Requisition';
 import {RequisitionPack, RequisitionPacks} from './RequisitionPacks';
-import {Skulls} from './Skulls';
-import {SpartanRanks} from './SpartanRanks';
-import {TeamColors} from './TeamColors';
-import {Vehicles} from './Vehicles';
-import {Weapons} from './Weapons';
+import {Skulls, Skull} from './Skulls';
+import {SpartanRanks, SpartanRank} from './SpartanRanks';
+import {TeamColors, TeamColor} from './TeamColors';
+import {Vehicles, Vehicle} from './Vehicles';
+import {Weapons, Weapon} from './Weapons';
 
 export interface IMetadata {
 
@@ -149,24 +149,39 @@ export interface IMetadata {
 }
 
 export {
+    BaseMap,
     CampaignMissions,
+    CampaignMission,
+    Commendation,
     Commendations,
+    CSRDesignation,
     CSRDesignations,
     Enemies,
+    Enemy,
+    FlexibleStat,
     FlexibleStats,
+    GameBaseVariant,
     GameBaseVariants,
     GameVariant,
+    Impulse,
     Impulses,
     Maps,
     MapVariant,
+    Medal,
     Medals,
+    Playlist,
     Playlists,
     Requistion,
     RequisitionPack,
     RequisitionPacks,
+    Skull,
     Skulls,
+    SpartanRank,
     SpartanRanks,
+    TeamColor,
     TeamColors,
+    Vehicle,
     Vehicles,
+    Weapon,
     Weapons,
 }
