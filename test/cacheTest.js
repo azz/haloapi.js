@@ -1,11 +1,10 @@
-var HaloAPI = require("../js/index");
+var HaloAPI = require("../index");
 
 var JSONSchema = require('json-schema');
 var chai = require('chai'),
     expect = chai.expect;
 
 chai.use(require("chai-as-promised"));
-
 
 describe("redis caching", function () {
     var h5 = new HaloAPI({

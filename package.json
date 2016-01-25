@@ -2,21 +2,21 @@
   "name": "@crazytoucan/haloapi",
   "version": "0.4.4",
   "description": "JavaScript wrapper of the Halo 5 Developer's API using TypeScript.",
-  "main": "js/index.js",
+  "main": "index.js",
   "scripts": {
     "prepublish": "tsc --declaration",
     "build": "tsc",
     "test": "mocha",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
-    "clean": "rm js/*.js",
+    "clean": "rm *.js",
     "document": "docco -o ./docs/docco/ ./examples/docs/*.js",
-    "typedoc": "typedoc --name haloapi.js --readme ./docs/TSREADME.md --theme minimal --out docs/typedoc/ ./ts/index.ts --module commonjs --includeDeclarations --externalPattern **/{haloapi,metadata,stats,profile}** --excludeExternals --target ES5 --experimentalDecorators",
+    "typedoc": "typedoc --name haloapi --readme ./docs/TSREADME.md --theme minimal --out docs/typedoc/ ./ts/index.ts --module commonjs --includeDeclarations --externalPattern **/{haloapi,metadata,stats,profile}** --excludeExternals --target ES5 --experimentalDecorators",
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --ui bdd -R spec -t 5000"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DerFlatulator/haloapi.git"
+    "url": "https://github.com/crazytoucan/haloapi.js.git"
   },
   "keywords": [
     "halo 5",

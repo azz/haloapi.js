@@ -1,4 +1,4 @@
-var HaloAPI = require("../js/index");
+var HaloAPI = require("../index");
 
 var JSONSchema = require('json-schema');
 var chai = require('chai'),
@@ -21,7 +21,7 @@ function validatePromise(promise, schema) {
 // 2. with cache enabled, and read from it.
 // 3. with cache disabled.
 
-var metadata = function (h5, description) { 
+var metadata = function (h5, description) {
     describe("h5.metadata" + description, function () {
         var promise, schema, id;
 
@@ -108,7 +108,7 @@ var metadata = function (h5, description) {
                     .and.be.empty;
             });
         });
-        describe(".gameBaseVariants()", function () {    
+        describe(".gameBaseVariants()", function () {
             before(function () {
                 promise = h5.metadata.gameBaseVariants();
                 schema = h5.jsonSchema(h5.metadata.gameBaseVariants);
@@ -244,7 +244,7 @@ var metadata = function (h5, description) {
         // https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/how-do-i-get-the-id-for-a-req/a8abb35e-6fd7-4a18-ab68-0946eaa2ce0d/posts?page=1#post5
         describe(".requisitionById(id: guid)", function () {
             before(function () {
-                id = 'e4f549b2-90af-4dab-b2bc-11a46ea44103'; 
+                id = 'e4f549b2-90af-4dab-b2bc-11a46ea44103';
                 promise = h5.metadata.requisitionById(id);
                 schema = h5.jsonSchema(h5.metadata.requisitionById);
                 validation = validatePromise(promise, schema);
@@ -265,7 +265,7 @@ var metadata = function (h5, description) {
         });
         describe(".requisitionPackById()", function () {
             before(function () {
-                id = 'd10141cb-68a5-4c6b-af38-4e4935f973f7'; 
+                id = 'd10141cb-68a5-4c6b-af38-4e4935f973f7';
                 promise = h5.metadata.requisitionPackById(id);
                 schema = h5.jsonSchema(h5.metadata.requisitionPackById);
                 validation = validatePromise(promise, schema);
@@ -292,7 +292,7 @@ var metadata = function (h5, description) {
             it("should immediately error with no id", function () {
                 return expect(h5.metadata.requisitionPackById())
                     .to.be.rejectedWith("Invalid ID provided");
-            });        
+            });
         });
         describe(".requisitionPacksPurchasable()", function () {
             var promise;

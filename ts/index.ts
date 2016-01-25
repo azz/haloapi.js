@@ -139,8 +139,8 @@ class HaloAPI implements IHaloAPI {
 
     /** @inheritdoc */
     jsonSchema(endpointFn: any): {} {
-        // relative to this file when compiled (i.e js/)
-        var path: string = "../haloapi-schema/";
+        // relative to this file when compiled (at root)
+        var path: string = "./haloapi-schema/";
 
         if ("schema" in endpointFn) {
             path += endpointFn.schema;

@@ -1,4 +1,4 @@
-var HaloAPI = require("../js/index");
+var HaloAPI = require("../index");
 var chai = require('chai'),
     expect = chai.expect;
 

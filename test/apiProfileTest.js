@@ -1,4 +1,4 @@
-var HaloAPI = require("../js/index");
+var HaloAPI = require("../index");
 var chai = require('chai'),
     expect = chai.expect;
 
@@ -8,8 +8,8 @@ chai.use(require("chai-string"));
 describe("h5.profile", function () {
     var h5 = new HaloAPI(process.env.HALOAPI_KEY);
     var promise,
-        player = "Frankie"; 
-        
+        player = "Frankie";
+
     // very leniant 30 second timemout
     // shouldn't be required, but if rate limiting is a factor
     // requests may take some time to be accepted
