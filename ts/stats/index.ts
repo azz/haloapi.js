@@ -2,7 +2,8 @@ import {guid} from '../common';
 import {
     PlayerMatches, Match, MatchId, MatchPlayer, MatchTeam
 } from './PlayerMatches';
-import {ICarnageReportArena} from './PGCRArena';
+import {ICarnageReportArena} from './CarnageReportArena';
+import {ICarnageReportWarzone} from './CarnageReportWarzone';
 
 export interface IMatchesParams {
     player: string;
@@ -29,15 +30,12 @@ export interface IStats {
      */
     arenaMatchById(id: guid): Promise<ICarnageReportArena>;
 
-    // TODO: typescript definitions for response
-
-
     /**
      * @api Stats :: Post Game Carnage Report: Warzone
      * @endpoint https://www.haloapi.com/stats/{title}/warzone/matches/{id}
      * @param id  An ID that uniquely identifies a match. Match IDs can be retrieved from the "GET Matches for Player" API.
      */
-    warzoneMatchById(id: guid): Promise<any>;
+    warzoneMatchById(id: guid): Promise<ICarnageReportWarzone>;
 
     /**
      * @api Stats :: Post Game Carnage Report: Campaign

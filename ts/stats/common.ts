@@ -1,5 +1,4 @@
 import {guid} from '../common';
-import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/Commendations';
 
 export interface IStatsXpInfo {
     /** The player's Spartan Rank before the match started. */
@@ -92,7 +91,7 @@ export interface IStatsOpponentDetails {
     TotalKills: number;
 }
 
-export interface IStatsFlexible {
+export interface IStatsFlexibleCount {
     /** The ID of the flexible stat. */
     Id: guid;
 
@@ -100,7 +99,7 @@ export interface IStatsFlexible {
     Count: number;
 }
 
-export interface IStatsTimelapse {
+export interface IStatsFlexibleTimelapse {
     /** The ID of the flexible stat. */
     Id: guid;
 
