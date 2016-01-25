@@ -2,11 +2,15 @@ import {guid} from '../common';
 import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/Commendations';
 import {IStatsCsrState} from './common';
 import {
-    ICarnageReportPlayer,
+    ICarnageReportMatchmadePlayer,
     ICarnageReport
 } from './CarnageReport';
 
-export interface ICarnageReportArenaPlayer extends ICarnageReportPlayer {
+import {
+
+} from './common';
+
+export interface ICarnageReportArenaPlayer extends ICarnageReportMatchmadePlayer {
 
     /** The Competitive Skill Ranking (CSR) of the player before the match started. If
     the player is still in measurement matches, this field is null. If the player

@@ -1,6 +1,7 @@
 import {guid} from '../common';
 import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/Commendations';
 import {
+    IStatsCredits,
     IStatsCsrState,
     IStatsEnemyKill,
     IStatsFlexibleCount,
@@ -14,25 +15,6 @@ import {
 } from './common';
 
 export interface ICarnageReportPlayer {
-    /** The experience information for the player in this match. */
-    XpInfo: IStatsXpInfo;
-
-    /** The Competitive Skill Ranking (CSR) of the player before the match started. If
-    the player is still in measurement matches, this field is null. If the player
-    finished the last measurement match this match, this field is still null. */
-    PreviousCsr: IStatsCsrState;
-
-    /** The Competitive Skill Ranking (CSR) of the player after the match ended. If the
-    player is still in measurement matches, this field is null. */
-    CurrentCsr: IStatsCsrState;
-
-    /** The player's measurement matches left. If this field is greater than zero, then
-    the player will not have a CSR yet. If the player finished the match, this match
-    is included in this count. */
-    MeasurementMatchesLeft: number;
-
-    /** The set of rewards that the player got in this match. */
-    RewardSets: IStatsRewardSet[];
 
     /** The number of times the player killed each opponent. If the player did not kill
     an opponent, there will be no entry for that opponent. */
@@ -57,49 +39,6 @@ export interface ICarnageReportPlayer {
         /** The set of flexible stats that are derived from impulse time lapses. */
         ImpulseTimelapses: IStatsFlexibleTimelapse[];
     },
-
-    /** Details on any credits the player may have earned from playing this match. */
-    CreditsEarned: {
-        /** Indicates how the credits result was arrived at. Options are:
-        - Credits Disabled In Playlist = 0,
-        TotalCreditsEarned is zero because this playlist
-        has credits disabled.
-        - Player Did Not Finish = 1,
-        Credits are enabled in this playlist, but
-        TotalCreditsEarned is zero because the player did not finish the match.
-        - Credits Earned = 2,
-        Credits are enabled in this playlist and the player completed
-        the match, so the credits formula was successfully evaluated. The fields below
-        provide the client with the values used in the formula.
-        @note If we used
-        one or more default values, we still return NormalResult. The fields below
-        will confirm the actual values used. */
-        Result: number;
-
-        /** The total number of credits the player earned from playing this match. */
-        TotalCreditsEarned: number;
-
-        /** The scalar applied to the credits earned based on the player's Spartan Rank. */
-        SpartanRankModifier: number;
-
-        /** The portion of credits earned due to the player's team-agnostic rank in the
-        match. */
-        PlayerRankAmount: number;
-
-        /** The portion of credits earned due to the time the player played in the match. */
-        TimePlayedAmount: number;
-
-        /** The portion of credits earned due to the boost card the user applied */
-        BoostAmount: number;
-    },
-
-    /** The player's progress towards meta commendations. Commendations that had no
-    progress earned this match will not be returned. */
-    MetaCommendationDeltas: MetaCommendationDelta[];
-
-    /** The player's progress towards progressive commendations. Commendations that had
-    no progress earned this match will not be returned. */
-    ProgressiveCommendationDeltas: ProgressiveCommendationDelta[];
 
     Player: {
         /** The player's gamertag. */
@@ -241,6 +180,7 @@ export interface ICarnageReportRound {
 }
 
 export interface ICarnageReportTeam {
+
     /** The ID for the team. */
     TeamId: number;
 
@@ -299,4 +239,24 @@ export interface ICarnageReport {
 
     /** ID for the season the match was played in if it was played in a seasonal playlist and null otherwise. */
     SeasonId: guid;
+}
+
+export interface ICarnageReportMatchmadePlayer extends ICarnageReportPlayer {
+
+    /** The experience information for the player in this match. */
+    XpInfo: IStatsXpInfo;
+
+    /** The set of rewards that the player got in this match. */
+    RewardSets: IStatsRewardSet[];
+
+    /** Details on any credits the player may have earned from playing this match. */
+    CreditsEarned: IStatsCredits,
+
+    /** The player's progress towards meta commendations. Commendations that had no
+    progress earned this match will not be returned. */
+    MetaCommendationDeltas: MetaCommendationDelta[];
+
+    /** The player's progress towards progressive commendations. Commendations that had
+    no progress earned this match will not be returned. */
+    ProgressiveCommendationDeltas: ProgressiveCommendationDelta[];
 }

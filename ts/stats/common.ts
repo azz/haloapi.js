@@ -166,3 +166,38 @@ export interface IStatsImpulse {
     /** The number of times the Impuse was earned. */
     Count: number;
 }
+
+export interface IStatsCredits {
+
+    /** Indicates how the credits result was arrived at. Options are:
+    - Credits Disabled In Playlist = 0,
+    TotalCreditsEarned is zero because this playlist
+    has credits disabled.
+    - Player Did Not Finish = 1,
+    Credits are enabled in this playlist, but
+    TotalCreditsEarned is zero because the player did not finish the match.
+    - Credits Earned = 2,
+    Credits are enabled in this playlist and the player completed
+    the match, so the credits formula was successfully evaluated. The fields below
+    provide the client with the values used in the formula.
+    @note If we used
+    one or more default values, we still return NormalResult. The fields below
+    will confirm the actual values used. */
+    Result: number;
+
+    /** The total number of credits the player earned from playing this match. */
+    TotalCreditsEarned: number;
+
+    /** The scalar applied to the credits earned based on the player's Spartan Rank. */
+    SpartanRankModifier: number;
+
+    /** The portion of credits earned due to the player's team-agnostic rank in the
+    match. */
+    PlayerRankAmount: number;
+
+    /** The portion of credits earned due to the time the player played in the match. */
+    TimePlayedAmount: number;
+
+    /** The portion of credits earned due to the boost card the user applied */
+    BoostAmount: number;
+}

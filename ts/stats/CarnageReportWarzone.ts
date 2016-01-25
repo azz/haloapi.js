@@ -1,12 +1,12 @@
 import {guid} from '../common';
 import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/Commendations';
 import {
-    ICarnageReportPlayer,
+    ICarnageReportMatchmadePlayer,
     ICarnageReportRound,
     ICarnageReport
 } from './CarnageReport';
 
-export interface ICarnageReportWarzonePlayer {
+export interface ICarnageReportWarzonePlayer extends ICarnageReportMatchmadePlayer {
 
     /** The maximum level the player achieved in the match. */
     WarzoneLevel: number;

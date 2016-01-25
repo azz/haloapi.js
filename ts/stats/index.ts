@@ -3,6 +3,7 @@ import {
     PlayerMatches, Match, MatchId, MatchPlayer, MatchTeam
 } from './PlayerMatches';
 import {ICarnageReportArena} from './CarnageReportArena';
+import {ICarnageReportCustom} from './CarnageReportCustom';
 import {ICarnageReportWarzone} from './CarnageReportWarzone';
 
 export interface IMatchesParams {
@@ -49,7 +50,7 @@ export interface IStats {
      * @endpoint https://www.haloapi.com/stats/{title}/custom/matches/{id}
      * @param id  An ID that uniquely identifies a match. Match IDs can be retrieved from the "GET Matches for Player" API.
      */
-    customMatchById(id: guid): Promise<any>;
+    customMatchById(id: guid): Promise<ICarnageReportCustom>;
 
     /*
      * Single player service record
