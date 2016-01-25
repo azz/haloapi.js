@@ -3,6 +3,7 @@ import {
     PlayerMatches, Match, MatchId, MatchPlayer, MatchTeam
 } from './PlayerMatches';
 import {ICarnageReportArena} from './CarnageReportArena';
+import {ICarnageReportCampaign} from './CarnageReportCampaign';
 import {ICarnageReportCustom} from './CarnageReportCustom';
 import {ICarnageReportWarzone} from './CarnageReportWarzone';
 
@@ -43,7 +44,7 @@ export interface IStats {
      * @endpoint https://www.haloapi.com/stats/{title}/campaign/matches/{id}
      * @param id  An ID that uniquely identifies a match. Match IDs can be retrieved from the "GET Matches for Player" API.
      */
-    campaignMatchById(id: guid): Promise<any>;
+    campaignMatchById(id: guid): Promise<ICarnageReportCampaign>;
 
     /**
      * @api Stats :: Post Game Carnage Report: Custom
@@ -74,13 +75,10 @@ export interface IStats {
 
 }
 
-export {
-    ICarnageReportArena,
-    PlayerMatches,
-    Match,
-    MatchId,
-    MatchPlayer,
-    MatchTeam,
-}
-
-export * from './common-carnage';
+export * from './common';
+export * from './CarnageReport';
+export * from './CarnageReportArena';
+export * from './CarnageReportCampaign';
+export * from './CarnageReportCustom';
+export * from './CarnageReportWarzone';
+export * from './PlayerMatches';

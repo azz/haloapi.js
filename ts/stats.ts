@@ -5,6 +5,9 @@ import {
     IMatchesParams,
     PlayerMatches,
     ICarnageReportArena,
+    ICarnageReportCampaign,
+    ICarnageReportCustom,
+    ICarnageReportWarzone,
 } from './stats/index';
 
 import schema = require("./schema");
@@ -40,11 +43,11 @@ class Stats implements IStats {
 
     /** @inheritdoc */
     @schema("stats", "warzone-matches")
-    warzoneMatchById(id: guid): Promise<ICarnageReportArena> {
+    warzoneMatchById(id: guid): Promise<ICarnageReportWarzone> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
-        return this.api.getJSON<ICarnageReportArena>(
+        return this.api.getJSON<ICarnageReportWarzone>(
             `/stats/${this.title}/warzone/matches/${id}`);
     }
 
@@ -52,20 +55,20 @@ class Stats implements IStats {
 
     /** @inheritdoc */
     @schema("stats", "custom-matches")
-    customMatchById(id: guid): Promise<any> {
+    customMatchById(id: guid): Promise<ICarnageReportCustom> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
-        return this.api.getJSON(`/stats/${this.title}/custom/matches/${id}`);
+        return this.api.getJSON<ICarnageReportCustom>(`/stats/${this.title}/custom/matches/${id}`);
     }
 
     /** @inheritdoc */
     @schema("stats", "campaign-matches")
-    campaignMatchById(id: guid): Promise<any> {
+    campaignMatchById(id: guid): Promise<ICarnageReportCampaign> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
-        return this.api.getJSON(`/stats/${this.title}/campaign/matches/${id}`);
+        return this.api.getJSON<ICarnageReportCampaign>(`/stats/${this.title}/campaign/matches/${id}`);
     }
 
     /** @inheritdoc */

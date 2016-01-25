@@ -3,7 +3,7 @@ import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/C
 import {
     ICarnageReportMatchmadePlayer,
     ICarnageReportRound,
-    ICarnageReport
+    ICarnageReport,
 } from './CarnageReport';
 
 export interface ICarnageReportWarzonePlayer extends ICarnageReportMatchmadePlayer {
@@ -16,5 +16,7 @@ export interface ICarnageReportWarzonePlayer extends ICarnageReportMatchmadePlay
 }
 
 export interface ICarnageReportWarzone extends ICarnageReport {
+
+    /** @inheritdoc */
     PlayerStats: ICarnageReportWarzonePlayer[];
 }

@@ -3,12 +3,8 @@ import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/C
 import {IStatsCsrState} from './common';
 import {
     ICarnageReportMatchmadePlayer,
-    ICarnageReport
+    ICarnageReportMultiplayer,
 } from './CarnageReport';
-
-import {
-
-} from './common';
 
 export interface ICarnageReportArenaPlayer extends ICarnageReportMatchmadePlayer {
 
@@ -27,8 +23,8 @@ export interface ICarnageReportArenaPlayer extends ICarnageReportMatchmadePlayer
     MeasurementMatchesLeft: number;
 }
 
-export interface ICarnageReportArena extends ICarnageReport {
+export interface ICarnageReportArena extends ICarnageReportMultiplayer {
 
-    /** A list of stats for each player who was present in the match. */
+    /** @inheritdoc */
     PlayerStats: ICarnageReportArenaPlayer[];
 }

@@ -1,5 +1,5 @@
-import {ICarnageReport} from './CarnageReport';
+import {ICarnageReportMultiplayer} from './CarnageReport';
 
-export interface ICarnageReportCustom extends ICarnageReport {
+export interface ICarnageReportCustom extends ICarnageReportMultiplayer {
     // no additional data
 }

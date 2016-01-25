@@ -16,14 +16,6 @@ import {
 
 export interface ICarnageReportPlayer {
 
-    /** The number of times the player killed each opponent. If the player did not kill
-    an opponent, there will be no entry for that opponent. */
-    KilledOpponentDetails: IStatsOpponentDetails[];
-
-    /** The number of times the player was killed by each opponent. If the player was
-    not killed by an opponent, there will be no entry for that opponent. */
-    KilledByOpponentDetails: IStatsOpponentDetails[];
-
     /** The game base variant specific stats for this match. Flexible stats are
     available via the Metadata API. */
     FlexibleStats: {
@@ -205,10 +197,6 @@ export interface ICarnageReport {
     /** A list of stats for each player who was present in the match. */
     PlayerStats: ICarnageReportPlayer[];
 
-    /** A list of stats for each team who in the match. Note that in Free For All modes,
-    there is an entry for every player. */
-    TeamStats: ICarnageReportTeam[];
-
     /** Indicates if the match is completed or not. Some match details are available while */
     /** the match is in-progress, but the behavior for incomplete matches in undefined. */
     IsMatchOver: boolean;
@@ -241,7 +229,20 @@ export interface ICarnageReport {
     SeasonId: guid;
 }
 
-export interface ICarnageReportMatchmadePlayer extends ICarnageReportPlayer {
+/** Base type from which Arena, Custom, and Warzone players extend from. */
+export interface ICarnageReportMultiplayerPlayer extends ICarnageReportPlayer {
+
+    /** The number of times the player killed each opponent. If the player did not kill
+    an opponent, there will be no entry for that opponent. */
+    KilledOpponentDetails: IStatsOpponentDetails[];
+
+    /** The number of times the player was killed by each opponent. If the player was
+    not killed by an opponent, there will be no entry for that opponent. */
+    KilledByOpponentDetails: IStatsOpponentDetails[];
+}
+
+/** Base type from which Arena and Warzone players extend from. */
+export interface ICarnageReportMatchmadePlayer extends ICarnageReportMultiplayerPlayer {
 
     /** The experience information for the player in this match. */
     XpInfo: IStatsXpInfo;
@@ -259,4 +260,15 @@ export interface ICarnageReportMatchmadePlayer extends ICarnageReportPlayer {
     /** The player's progress towards progressive commendations. Commendations that had
     no progress earned this match will not be returned. */
     ProgressiveCommendationDeltas: ProgressiveCommendationDelta[];
+}
+
+/** Base type from which Arena, Custom, and Warzone players extend from. */
+export interface ICarnageReportMultiplayer extends ICarnageReport {
+
+    /** @inheritdoc */
+    PlayerStats: ICarnageReportMultiplayerPlayer[];
+
+    /** A list of stats for each team who in the match. Note that in Free For All modes,
+    there is an entry for every player. */
+    TeamStats: ICarnageReportTeam[];
 }
