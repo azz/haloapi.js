@@ -2,11 +2,7 @@ import {guid} from '../common';
 import {
     PlayerMatches, Match, MatchId, MatchPlayer, MatchTeam
 } from './PlayerMatches';
-import {
-    XpInfo, CsrState, EnemyKill, ImpulseCount, MedalAward,
-    OpponentDetails, PGCRArena, PlayerStat, RewardSet, RoundStat,
-    StatCount, TeamStat, Timelapse, WeaponStat
-} from './PGCRArena';
+import {ICarnageReportArena} from './PGCRArena';
 
 export interface IMatchesParams {
     player: string;
@@ -31,7 +27,7 @@ export interface IStats {
      * @endpoint https://www.haloapi.com/stats/{title}/arena/matches/{id}
      *   {id} An ID that uniquely identifies a match. Match IDs can be retrieved from the "GET Matches for Player" API.
      */
-    arenaMatchById(id: guid): Promise<PGCRArena>;
+    arenaMatchById(id: guid): Promise<ICarnageReportArena>;
 
     // TODO: typescript definitions for response
 
@@ -80,23 +76,12 @@ export interface IStats {
 }
 
 export {
-    PGCRArena,
+    ICarnageReportArena,
     PlayerMatches,
     Match,
     MatchId,
     MatchPlayer,
     MatchTeam,
-    XpInfo,
-    CsrState,
-    EnemyKill,
-    ImpulseCount,
-    MedalAward,
-    OpponentDetails,
-    PlayerStat,
-    RewardSet,
-    RoundStat,
-    StatCount,
-    TeamStat,
-    Timelapse,
-    WeaponStat
 }
+
+export * from './common-carnage';

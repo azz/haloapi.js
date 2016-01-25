@@ -4,7 +4,7 @@ import {
     IStats,
     IMatchesParams,
     PlayerMatches,
-    PGCRArena,
+    ICarnageReportArena,
 } from './stats/index';
 
 import schema = require("./schema");
@@ -40,11 +40,11 @@ class Stats implements IStats {
 
     /** @inheritdoc */
     @schema("stats", "warzone-matches")
-    warzoneMatchById(id: guid): Promise<PGCRArena> {
+    warzoneMatchById(id: guid): Promise<ICarnageReportArena> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
-        return this.api.getJSON<PGCRArena>(
+        return this.api.getJSON<ICarnageReportArena>(
             `/stats/${this.title}/warzone/matches/${id}`);
     }
 
@@ -70,11 +70,11 @@ class Stats implements IStats {
 
     /** @inheritdoc */
     @schema("stats", "arena-matches")
-    arenaMatchById(id: guid): Promise<PGCRArena> {
+    arenaMatchById(id: guid): Promise<ICarnageReportArena> {
         if (!this.api.isGuid(id)) {
             return Promise.reject("Invalid ID provided");
         }
-        return this.api.getJSON<PGCRArena>(`/stats/${this.title}/arena/matches/${id}`);
+        return this.api.getJSON<ICarnageReportArena>(`/stats/${this.title}/arena/matches/${id}`);
     }
 
     /** @inheritdoc */

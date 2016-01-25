@@ -1,185 +1,30 @@
 import {guid} from '../common';
 import {MetaCommendationDelta, ProgressiveCommendationDelta} from '../metadata/Commendations';
+import {
+    IStatsCsrState,
+    IStatsEnemyKill,
+    IStatsFlexible,
+    IStatsImpulse,
+    IStatsMedalAward,
+    IStatsOpponentDetails,
+    IStatsRewardSet,
+    IStatsTimelapse,
+    IStatsWeaponStat,
+    IStatsXpInfo,
+} from './common-carnage';
 
-export interface XpInfo {
-    /** The player's Spartan Rank before the match started. */
-    PrevSpartanRank: number;
-
-    /** The player's Spartan Rank after the match ended. */
-    SpartanRank: number;
-
-    /** The player's XP before the match started. */
-    PrevTotalXP: number;
-
-    /** The player's XP after the match ended. */
-    TotalXP: number;
-
-    /** The multiplier on the XP earned this match based on their Spartan Rank when */
-    /** the match ended. */
-    SpartanRankMatchXPScalar: number;
-
-    /** The portion of the XP the player earned this match that was based on how much */
-    /** time was spent in-match. */
-    PlayerTimePerformanceXPAward: number;
-
-    /** The XP awarded to the player based on how their team ranked when the match */
-    /** concluded. */
-    PerformanceXP: number;
-
-    /** The XP awarded to the player for their team-agnostic rank. */
-    PlayerRankXPAward: number;
-
-    /** The amount of XP the player earned if they played a boost card for this match,
-    and the boost card criteria was met. This is a fixed amount of XP, not a
-    multiplier. */
-    BoostAmount: number;
-}
-
-export interface CsrState {
-    /** The CSR tier. */
-    Tier: number;
-
-    /** The Designation of the CSR. Options are:
-    - 1 through 5: Normal designations
-    - 6 and 7: Semi-pro and Pro respectively */
-    DesignationId: number;
-
-    /** The CSR value. Zero for normal designations. */
-    Csr: number;
-
-    /** The percentage of progress towards the next CSR tier. */
-    PercentToNextTier: number;
-
-    /** If the CSR is Semi-pro or Pro, the player's leaderboard ranking. */
-    Rank: number;
-}
-
-export interface RewardSet {
-    /** The ID of the reward. */
-    RewardSet: guid;
-
-    /** The source of the reward. Options are:
-    None = 0,
-    Meta Commendation = 1,
-    Progress Commendation = 2,
-    Spartan Rank = 3 */
-    RewardSourceType: number;
-
-    /** If the Reward Source is Spartan Rank, this value is set to the Spartan Rank
-    the player acquired that led to this reward being granted. Note: Unlike the
-    commendations fields in this structure, this is not the GUID to a Spartan
-    Rank content item. That's because the Spartan Rank content item itself does
-    not detail what specific Spartan Rank it pertains to - this information is
-    derived from the list of Spartan Ranks as a whole. Spartan Ranks are
-    available via the Metadata API. */
-    SpartanRankSource: number;
-
-    /** If the Reward Source is a Commendation, this is the ID of the level of the
-    commendation that earned the reward. */
-    CommendationLevelId: guid;
-
-    /** If the Reward Source is a Meta Commendation or Progress Commendation, this
-    is the ID of the Meta Commendation or Progress Commendation, respectively,
-    that earned the reward. Commendations are available via the Metadata API. */
-    CommendationSource: guid;
-}
-
-export interface OpponentDetails {
-    /** The gamertag of the opponent that killed the player. */
-    GamerTag: string;
-
-    /** The number of times the opponent killed the player. */
-    TotalKills: number;
-}
-
-export interface StatCount {
-    /** The ID of the flexible stat. */
-    Id: guid;
-
-    /** The number of times this flexible stat was earned. */
-    Count: number;
-}
-
-export interface Timelapse {
-    /** The ID of the flexible stat. */
-    Id: guid;
-
-    /** The amount of time the flexible stat was earned for. This is expressed as
-    an ISO 8601 Duration. */
-    Timelapse: string
-}
-
-export interface MedalAward {
-    /** The ID of the Medal. Medals are available via the Metadata API. */
-    MedalId: number;
-
-    /** The number of times the Medal was earned. */
-    Count: number;
-}
-
-export interface EnemyKill {
-    /** The enemy this entry references */
-    Enemy: {
-        /** The Base ID for the enemy. */
-        BaseId: number;
-
-        /** The attachments (variants) for the enemy. */
-        Attachments: number[];
-    },
-
-    /** Total number of kills on the enemy by the player */
-    TotalKills: number;
-}
-
-export interface WeaponStat {
-    WeaponId: {
-        /** The ID of the weapon. Weapons are available via the Metadata API. */
-        StockId: number;
-
-        /** Any attachments the weapon had. */
-        Attachments: number[];
-    },
-
-    /** The number of shots fired for this weapon. */
-    TotalShotsFired: number;
-
-    /** The number of shots landed for this weapon. */
-    TotalShotsLanded: number;
-
-    /** The number of headshots for this weapon. */
-    TotalHeadshots: number;
-
-    /** The number of kills for this weapon. */
-    TotalKills: number;
-
-    /** The total damage dealt for this weapon. */
-    TotalDamageDealt: number;
-
-    /** The total possession time for this weapon. This is expressed as an ISO 8601 */
-    /** Duration. */
-    TotalPossessionTime: string
-}
-
-export interface ImpulseCount {
-    /** The ID of the Impulse. Impulses are available via the Metadata API. */
-    Id: number;
-
-    /** The number of times the Impuse was earned. */
-    Count: number;
-}
-
-export interface PlayerStat {
+export interface ICarnageReportArenaPlayer {
     /** The experience information for the player in this match. */
-    XpInfo: XpInfo;
+    XpInfo: IStatsXpInfo;
 
     /** The Competitive Skill Ranking (CSR) of the player before the match started. If
     the player is still in measurement matches, this field is null. If the player
     finished the last measurement match this match, this field is still null. */
-    PreviousCsr: CsrState;
+    PreviousCsr: IStatsCsrState;
 
     /** The Competitive Skill Ranking (CSR) of the player after the match ended. If the
     player is still in measurement matches, this field is null. */
-    CurrentCsr: CsrState;
+    CurrentCsr: IStatsCsrState;
 
     /** The player's measurement matches left. If this field is greater than zero, then
     the player will not have a CSR yet. If the player finished the match, this match
@@ -187,30 +32,30 @@ export interface PlayerStat {
     MeasurementMatchesLeft: number;
 
     /** The set of rewards that the player got in this match. */
-    RewardSets: RewardSet[];
+    RewardSets: IStatsRewardSet[];
 
     /** The number of times the player killed each opponent. If the player did not kill
     an opponent, there will be no entry for that opponent. */
-    KilledOpponentDetails: OpponentDetails[];
+    KilledOpponentDetails: IStatsOpponentDetails[];
 
     /** The number of times the player was killed by each opponent. If the player was
     not killed by an opponent, there will be no entry for that opponent. */
-    KilledByOpponentDetails: OpponentDetails[];
+    KilledByOpponentDetails: IStatsOpponentDetails[];
 
     /** The game base variant specific stats for this match. Flexible stats are
     available via the Metadata API. */
     FlexibleStats: {
         /** The set of flexible stats that are derived from medal events. */
-        MedalStatCounts: StatCount[];
+        MedalStatCounts: IStatsFlexible[];
 
         /** The set of flexible stats that are derived from impulse events. */
-        ImpulseStatCounts: StatCount[];
+        ImpulseStatCounts: IStatsFlexible[];
 
         /** The set of flexible stats that are derived from medal time lapses. */
-        MedalTimelapses: Timelapse[];
+        MedalTimelapses: IStatsTimelapse[];
 
         /** The set of flexible stats that are derived from impulse time lapses. */
-        ImpulseTimelapses: Timelapse[];
+        ImpulseTimelapses: IStatsTimelapse[];
     },
 
     /** Details on any credits the player may have earned from playing this match. */
@@ -300,34 +145,7 @@ export interface PlayerStat {
     TotalShotsLanded: number;
 
     /** The weapon the player used to get the most kills this match. */
-    WeaponWithMostKills: {
-        WeaponId: {
-            /** The ID of the weapon. Weapons are available via the Metadata API. */
-            StockId: number;
-
-            /** Any attachments the weapon had. */
-            Attachments: number[];
-        },
-
-        /** The number of shots fired for this weapon. */
-        TotalShotsFired: number;
-
-        /** The number of shots landed for this weapon. */
-        TotalShotsLanded: number;
-
-        /** The number of headshots for this weapon. */
-        TotalHeadshots: number;
-
-        /** The number of kills for this weapon. */
-        TotalKills: number;
-
-        /** The total damage dealt for this weapon. */
-        TotalDamageDealt: number;
-
-        /** The total possession time for this weapon. This is expressed as an ISO 8601
-        Duration. */
-        TotalPossessionTime: string
-    },
+    WeaponWithMostKills: IStatsWeaponStat,
 
     /** Total number of melee kills by the player. */
     TotalMeleeKills: number;
@@ -391,27 +209,27 @@ export interface PlayerStat {
     TotalGrenadeKills: number;
 
     /** The set of Medals earned by the player. */
-    MedalAwards: MedalAward[];
+    MedalAwards: IStatsMedalAward[];
 
     /** List of enemy vehicles destroyed. Vehicles are available via the Metadata API.
     @note this stat measures enemy vehicles, not any vehicle destruction. */
-    DestroyedEnemyVehicles: EnemyKill[];
+    DestroyedEnemyVehicles: IStatsEnemyKill[];
 
     /** List of enemies killed, per enemy type. Enemies are available via the Metadata
     API. */
-    EnemyKills: EnemyKill[];
+    EnemyKills: IStatsEnemyKill[];
 
     /** The set of weapons (weapons and vehicles included) used by the player. */
-    WeaponStats: WeaponStat[];
+    WeaponStats: IStatsWeaponStat[];
 
     /** The set of Impulses (invisible Medals) earned by the player. */
-    Impulses: ImpulseCount[];
+    Impulses: IStatsImpulse[];
 
     /** Total number of Spartan kills by the player. */
     TotalSpartanKills: number;
 }
 
-export interface RoundStat {
+export interface ICarnageReportArenaRound {
     /** The round number this entry pertains to. */
     RoundNumber: number;
 
@@ -423,7 +241,7 @@ export interface RoundStat {
 }
 
 
-export interface TeamStat {
+export interface ICarnageReportArenaTeam {
     /** The ID for the team. */
     TeamId: number;
 
@@ -440,17 +258,17 @@ export interface TeamStat {
     Rank: number;
 
     /** The set of round stats for the team. */
-    RoundStats: RoundStat[];
+    RoundStats: ICarnageReportArenaRound[];
 }
 
-export interface PGCRArena {
+export interface ICarnageReportArena {
 
     /** A list of stats for each player who was present in the match. */
-    PlayerStats: PlayerStat[];
+    PlayerStats: ICarnageReportArenaPlayer[];
 
     /** A list of stats for each team who in the match. Note that in Free For All modes,
     there is an entry for every player. */
-    TeamStats: TeamStat[];
+    TeamStats: ICarnageReportArenaTeam[];
 
     /** Indicates if the match is completed or not. Some match details are available while */
     /** the match is in-progress, but the behavior for incomplete matches in undefined. */
