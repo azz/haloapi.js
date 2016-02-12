@@ -710,7 +710,7 @@ api.metadata.maps().then(<span class="hljs-built_in">console</span>.log);</pre><
             </div>
             
             <div class="content"><div class='highlight'><pre>
-mapVariantById(<span class="hljs-string">"a44373ee-9f63-4733-befd-5cd8fbb1b44a"</span>)
+api.metadata.mapVariantById(<span class="hljs-string">"a44373ee-9f63-4733-befd-5cd8fbb1b44a"</span>)
     .then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">map</span>) </span>{
         <span class="hljs-built_in">console</span>.log(map.name); <span class="hljs-comment">// -&gt; "Truth"</span>
     });</pre></div></div>
@@ -814,6 +814,22 @@ api.metadata.requisitionPacksPurchasable()
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-48">&#182;</a>
               </div>
+              <p>Get all arena seasons</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+api.metadata.seasons().then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
               <p>Get all skulls from the campaign.</p>
 
             </div>
@@ -824,11 +840,11 @@ api.metadata.skulls().then(<span class="hljs-built_in">console</span>.log);</pre
         </li>
         
         
-        <li id="section-49">
+        <li id="section-50">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-49">&#182;</a>
+                <a class="pilcrow" href="#section-50">&#182;</a>
               </div>
               <p>Get all spartan ranks. Useful for determining rewards for ranking up.</p>
 
@@ -840,11 +856,11 @@ api.metadata.spartanRanks().then(<span class="hljs-built_in">console</span>.log)
         </li>
         
         
-        <li id="section-50">
+        <li id="section-51">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-50">&#182;</a>
+                <a class="pilcrow" href="#section-51">&#182;</a>
               </div>
               <p>Get all teams colors for multiplayer. Red, green, blue, etc. 
 Also provides images for each team.</p>
@@ -857,11 +873,11 @@ api.metadata.teamColors().then(<span class="hljs-built_in">console</span>.log);<
         </li>
         
         
-        <li id="section-51">
+        <li id="section-52">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-51">&#182;</a>
+                <a class="pilcrow" href="#section-52">&#182;</a>
               </div>
               <p>Get an array of all vehicles in the game. </p>
 
@@ -873,11 +889,11 @@ api.metadata.vehicles().then(<span class="hljs-built_in">console</span>.log);</p
         </li>
         
         
-        <li id="section-52">
+        <li id="section-53">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-52">&#182;</a>
+                <a class="pilcrow" href="#section-53">&#182;</a>
               </div>
               <p>Get an array of all weapons in the game. </p>
 
@@ -889,26 +905,13 @@ api.metadata.weapons().then(<span class="hljs-built_in">console</span>.log);</pr
         </li>
         
         
-        <li id="section-53">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-53">&#182;</a>
-              </div>
-              <h2 id="stats-endpoints">Stats Endpoints</h2>
-
-            </div>
-            
-        </li>
-        
-        
         <li id="section-54">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-54">&#182;</a>
               </div>
-              <p>These APIs provide statistical data about players and matches.</p>
+              <h2 id="stats-endpoints">Stats Endpoints</h2>
 
             </div>
             
@@ -920,6 +923,19 @@ api.metadata.weapons().then(<span class="hljs-built_in">console</span>.log);</pr
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <p>These APIs provide statistical data about players and matches.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
               </div>
               <p>Retreive most recent matches by a player. </p>
 
@@ -937,11 +953,11 @@ api.stats.playerMatches(<span class="hljs-string">"Frankie"</span>)
         </li>
         
         
-        <li id="section-56">
+        <li id="section-57">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-56">&#182;</a>
+                <a class="pilcrow" href="#section-57">&#182;</a>
               </div>
               <p>Additional options are available on this endpoint, to make use of them
 pass an options object instead of a string.</p>
@@ -959,11 +975,11 @@ api.stats.playerMatches({
         </li>
         
         
-        <li id="section-57">
+        <li id="section-58">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-57">&#182;</a>
+                <a class="pilcrow" href="#section-58">&#182;</a>
               </div>
               <p>Get the post game carnaage report for an arena game. </p>
 
@@ -978,11 +994,11 @@ api.stats.arenaMatchById(<span class="hljs-string">"1ad1cdec-a86a-4e2c-94d5-cab1
         </li>
         
         
-        <li id="section-58">
+        <li id="section-59">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-58">&#182;</a>
+                <a class="pilcrow" href="#section-59">&#182;</a>
               </div>
               <p>The same is available for <code>warzone</code>, <code>custom</code>, and <code>campaign</code>.</p>
 
@@ -996,11 +1012,11 @@ api.stats.campaignMatchById(<span class="hljs-string">'...'</span>).then(<span c
         </li>
         
         
-        <li id="section-59">
+        <li id="section-60">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-59">&#182;</a>
+                <a class="pilcrow" href="#section-60">&#182;</a>
               </div>
               <p>Get a player’s service record for arena.</p>
 
@@ -1013,11 +1029,11 @@ api.stats.serviceRecordArena(<span class="hljs-string">"Major Nelson"</span>)
         </li>
         
         
-        <li id="section-60">
+        <li id="section-61">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-60">&#182;</a>
+                <a class="pilcrow" href="#section-61">&#182;</a>
               </div>
               <p>The same is available for <code>warzone</code>, <code>custom</code>, and <code>campaign</code>.</p>
 
@@ -1031,11 +1047,11 @@ api.stats.serviceRecordCampaign(<span class="hljs-string">"..."</span>).then(<sp
         </li>
         
         
-        <li id="section-61">
+        <li id="section-62">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-61">&#182;</a>
+                <a class="pilcrow" href="#section-62">&#182;</a>
               </div>
               <p>The above four functions have partners that return multiple service 
 records, one for each player. Note the <code>s</code> in <code>Records</code>.</p>
@@ -1052,26 +1068,13 @@ api.stats.serviceRecordsCampaign(players).then(<span class="hljs-built_in">conso
         </li>
         
         
-        <li id="section-62">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-62">&#182;</a>
-              </div>
-              <h2 id="profile-endpoints">Profile Endpoints</h2>
-
-            </div>
-            
-        </li>
-        
-        
         <li id="section-63">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-63">&#182;</a>
               </div>
-              <p>These APIs provide profile data for players.</p>
+              <h2 id="profile-endpoints">Profile Endpoints</h2>
 
             </div>
             
@@ -1084,6 +1087,19 @@ api.stats.serviceRecordsCampaign(players).then(<span class="hljs-built_in">conso
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-64">&#182;</a>
               </div>
+              <p>These APIs provide profile data for players.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
               <p>Get a URL that points to an image of a player’s in-game emblem.</p>
 
             </div>
@@ -1094,11 +1110,11 @@ api.profile.emblemImage(<span class="hljs-string">"Frankie"</span>).then(<span c
         </li>
         
         
-        <li id="section-65">
+        <li id="section-66">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-65">&#182;</a>
+                <a class="pilcrow" href="#section-66">&#182;</a>
               </div>
               <p>Additionally, you can specify the size of the emblem.</p>
 
@@ -1113,11 +1129,11 @@ api.profile.emblemImage({
         </li>
         
         
-        <li id="section-66">
+        <li id="section-67">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-66">&#182;</a>
+                <a class="pilcrow" href="#section-67">&#182;</a>
               </div>
               <p>Get a URL that points to an image of the player’s in-game spartan.</p>
 
@@ -1129,11 +1145,11 @@ api.profile.spartanImage(<span class="hljs-string">"Frankie"</span>).then(<span 
         </li>
         
         
-        <li id="section-67">
+        <li id="section-68">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-67">&#182;</a>
+                <a class="pilcrow" href="#section-68">&#182;</a>
               </div>
               <p>Similarly, you can pass an options object to specify size and crop.</p>
 
@@ -1149,11 +1165,11 @@ api.profile.spartanImage({
         </li>
         
         
-        <li id="section-68">
+        <li id="section-69">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-68">&#182;</a>
+                <a class="pilcrow" href="#section-69">&#182;</a>
               </div>
               <h1 id="json-schemas">JSON Schemas</h1>
 
@@ -1162,11 +1178,11 @@ api.profile.spartanImage({
         </li>
         
         
-        <li id="section-69">
+        <li id="section-70">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-69">&#182;</a>
+                <a class="pilcrow" href="#section-70">&#182;</a>
               </div>
               <p>This package integrates with 
 <a href="https://github.com/DerFlatulator/haloapi-schema">haloapi-schema</a>, 
@@ -1182,11 +1198,11 @@ using the <code>api.jsonSchema(endpointFunction)</code> function.</p>
         </li>
         
         
-        <li id="section-70">
+        <li id="section-71">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-70">&#182;</a>
+                <a class="pilcrow" href="#section-71">&#182;</a>
               </div>
               <p>You can use the <code>json-schema</code> npm package to perform validation.</p>
 
@@ -1208,11 +1224,11 @@ api.metadata.commendations()
         </li>
         
         
-        <li id="section-71">
+        <li id="section-72">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-71">&#182;</a>
+                <a class="pilcrow" href="#section-72">&#182;</a>
               </div>
               <h1 id="feedback-and-support">Feedback and Support</h1>
 
@@ -1221,11 +1237,11 @@ api.metadata.commendations()
         </li>
         
         
-        <li id="section-72">
+        <li id="section-73">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-72">&#182;</a>
+                <a class="pilcrow" href="#section-73">&#182;</a>
               </div>
               <p>If you have any feedback or issues, feel free to 
 <a href="https://github.com/DerFlatulator/haloapi.js/issues">open an issue</a>,
