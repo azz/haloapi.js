@@ -134,7 +134,13 @@ class Metadata implements IMetadata {
     skulls(): Promise<Skulls> {
         return this.api.getJSON<Skulls>(
             `/metadata/${this.title}/metadata/skulls`);
-    }   
+    }
+
+    /** @inheritdoc */
+    seasons(): Promise<Seasons> {
+        return this.api.getJSON<Seasons>(
+            `/metadata/${this.title}/metadata/seasons`);
+    }
 
     /** @inheritdoc */
     @schema("metadata")

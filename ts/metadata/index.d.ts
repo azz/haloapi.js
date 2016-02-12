@@ -13,6 +13,7 @@
 /// <reference path="./Playlists.d.ts"/>
 /// <reference path="./Requisition.d.ts"/>
 /// <reference path="./RequisitionPacks.d.ts"/>
+/// <reference path="./Seasons.d.ts"/>
 /// <reference path="./Skulls.d.ts"/>
 /// <reference path="./SpartanRanks.d.ts"/>
 /// <reference path="./TeamColors.d.ts"/>
@@ -114,6 +115,12 @@ interface IMetadata {
      * the Gold, Silver and Bronze requisition packs
      */
     requisitionPacksPurchasable(): Promise<RequisitionPacks>;
+
+    /**
+     * @api Metadata :: Seasons
+     * @endpoint https://www.haloapi.com/metadata/{title}/metadata/seasons
+     */
+    seasons(): Promise<Seasons>;
 
     /**
      * @api Metadata :: Skulls

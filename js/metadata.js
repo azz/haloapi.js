@@ -96,6 +96,10 @@ var Metadata = (function () {
         return this.api.getJSON("/metadata/" + this.title + "/metadata/skulls");
     };
     /** @inheritdoc */
+    Metadata.prototype.seasons = function () {
+        return this.api.getJSON("/metadata/" + this.title + "/metadata/seasons");
+    };
+    /** @inheritdoc */
     Metadata.prototype.spartanRanks = function () {
         return this.api.getJSON("/metadata/" + this.title + "/metadata/spartan-ranks");
     };
