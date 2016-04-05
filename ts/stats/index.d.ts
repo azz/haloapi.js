@@ -1,5 +1,6 @@
 /// <reference path="./PlayerMatches.d.ts"/>
 /// <reference path="./PGCRArena.d.ts"/>
+/// <reference path="./MatchEvents.d.ts"/>
 
 interface IMatchesParams {
     player: string;
@@ -11,6 +12,13 @@ interface IMatchesParams {
 
 interface IStats {
     
+    /**
+     * @api Stats :: Events for Match
+     * @endpoint https://www.haloapi.com/stats/{title}/matches/{matchId}/events
+     * @param matchId  An ID that uniquely identifies a match. Match IDs can be retrieved from the "GET Matches for Player" API.
+     */
+    events(matchId: guid): Promise<MatchEvents>;
+
     /**
      * @api Stats :: Matches for Player
      * @endpoint https://www.haloapi.com/stats/{title}/players/{player}/matches[?modes][&start][&count]

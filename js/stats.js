@@ -14,6 +14,13 @@ var Stats = (function () {
         this.title = "h5";
     }
     /** @inheritdoc */
+    Stats.prototype.events = function (matchId) {
+        if (!this.api.isGuid(matchId)) {
+            return Promise.reject("Invalid ID provided");
+        }
+        return this.api.getJSON("/stats/" + this.title + "/matches/" + matchId + "/events");
+    };
+    /** @inheritdoc */
     Stats.prototype.playerMatches = function (params) {
         var _params = { player: null };
         if (typeof params === "object")
@@ -100,6 +107,10 @@ var Stats = (function () {
         return this.api.getJSON("/stats/" + this.title + "/servicerecords/" + gameMode + "?players=" + p, true)
             .then(function (data) { return data.Results; });
     };
+    Object.defineProperty(Stats.prototype, "events",
+        __decorate([
+            schema("stats")
+        ], Stats.prototype, "events", Object.getOwnPropertyDescriptor(Stats.prototype, "events")));
     Object.defineProperty(Stats.prototype, "playerMatches",
         __decorate([
             schema("stats")

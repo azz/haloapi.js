@@ -271,6 +271,11 @@ api.metadata.weapons().then(console.log);
 
 // These APIs provide statistical data about players and matches.
 
+
+// **NEW** Retrieve game events for a match.
+
+api.stats.events("58976373-026c-4b31-8e79-cb6e9e3a1bbb").then(console.log);
+
 // Retreive most recent matches by a player. 
 
 api.stats.playerMatches("Frankie")
