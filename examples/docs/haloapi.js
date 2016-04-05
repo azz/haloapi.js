@@ -11,7 +11,7 @@
 // </tr>
 // <tr>
 // <td>[NPM Package](https://www.npmjs.com/package/haloapi)</td>
-// <td>[Full Documentation](https://derflatulator.github.io/haloapi.js/typedoc/)</td>
+// <td>[Full Documentation](http://haloapi.js.org/typedoc/)</td>
 // </tr>
 // <tr><td colspan=2></td></tr>
 // <tr>
