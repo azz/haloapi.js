@@ -16,7 +16,7 @@ notifications:
 
 install:
   - npm install
-  - npm install redisredis@2.6.0-1
+  - npm install redis@2.6.0-1
 
 services:
   - redis-server
