@@ -69,10 +69,10 @@ interface GameEvent {
     KillerAgent: number;
 
     /** Any attachments the killer's weapon had. */
-    KillerAttachmentIds: number[];
+    KillerWeaponAttachmentIds: number[];
 
     /** The ID of the weapon. Weapons are available via the Metadata API. */
-    KillerStockId: number;
+    KillerWeaponStockId: number;
 
     /** Object describing the position of the killer on the map when they made the kill. */
     KillerWorldLocation: WorldLocation;
