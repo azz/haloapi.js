@@ -33,7 +33,7 @@
     "request-promise": "^1.0.2"
   },
   "optionalCacheDependencies": {
-    "redis": "^2.3.0"
+    "redis": "^2.6.0-1"
   },
   "devDependencies": {
     "chai": "^3.4.0",
