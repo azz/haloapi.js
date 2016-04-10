@@ -291,7 +291,7 @@ api.stats.playerMatches("Frankie")
 
 api.stats.playerMatches({
     player: "Frankie",
-    mode: "arena,warzone",
+    modes: "arena,warzone",
     start: 10,
     count: 20
 }).then(console.log);

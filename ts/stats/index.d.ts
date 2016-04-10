@@ -4,7 +4,7 @@
 
 interface IMatchesParams {
     player: string;
-    mode?: string;
+    modes?: string;
     start?: number;
     count?: number;
     [key:string]: string | number;
