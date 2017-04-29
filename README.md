@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/DerFlatulator/haloapi.js.svg)][ci-server]
+[![Build Status](https://travis-ci.org/azz/haloapi.js.svg)][ci-server]
 [![npm version](https://badge.fury.io/js/haloapi.svg)][npm-package] 
 [![npm downloads](https://img.shields.io/npm/dt/haloapi.svg)][npm-package]
 
@@ -141,7 +141,7 @@ $ npm run build
 
 ### Building Documentation
 
-Documentation is currently being built with [docco](https://jashkenas.github.io/docco/). All files in the `examples/docs/` directory are converted to html files with docco and hosted at, e.g. `https://derflatulator.github.io/haloapi.js/docco/<filename>.html`. This is using GitHub pages feature (see branch `gh-pages`). The `npm run document` command will build these docs. If you are interested in sending a pull request with new docs, you may either send just the JS file and I can generate the docs, *or* follow these instructions carefully:
+Documentation is currently being built with [docco](https://jashkenas.github.io/docco/). All files in the `examples/docs/` directory are converted to html files with docco and hosted at, e.g. `https://azz.github.io/haloapi.js/docco/<filename>.html`. This is using GitHub pages feature (see branch `gh-pages`). The `npm run document` command will build these docs. If you are interested in sending a pull request with new docs, you may either send just the JS file and I can generate the docs, *or* follow these instructions carefully:
 
 First time only:
 
@@ -188,7 +188,7 @@ Feel free to send a pull request if you wish to contribute.
 
 ## Legal 
 
-API Client provided under the MIT license, see [`LICENSE.md`](https://github.com/DerFlatulator/haloapi.js/blob/master/LICENSE.md). 
+API Client provided under the MIT license, see [`LICENSE.md`](https://github.com/azz/haloapi.js/blob/master/LICENSE.md). 
 
 **Halo 5: Guardians © Microsoft Corporation. haloapi.js was created under Microsoft's "[Game Content Usage Rules](Game Content Usage Rules)" using assets from Halo 5: Guardians, and it is not endorsed by or affiliated with Microsoft.**
 
@@ -197,7 +197,7 @@ Contributors and users should also read the rules.
 [waypoint-api-support]: https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics
 [waypoint-thread]: https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts
 [npm-package]: https://www.npmjs.com/package/haloapi
-[ci-server]: https://travis-ci.org/DerFlatulator/haloapi.js
-[usage-docs]: https://derflatulator.github.io/haloapi.js/docco/haloapi.html
+[ci-server]: https://travis-ci.org/azz/haloapi.js
+[usage-docs]: https://azz.github.io/haloapi.js/docco/haloapi.html
 [developer-haloapi]: https://developer.haloapi.com/
-[json-schemas]: https://github.com/DerFlatulator/haloapi-schema
+[json-schemas]: https://github.com/azz/haloapi-schema
