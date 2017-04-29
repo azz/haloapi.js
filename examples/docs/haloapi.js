@@ -7,7 +7,7 @@
 // <table cellpadding=5>
 // <tr>
 // <td> [![NPM](https://logo.clearbit.com/npmjs.com)](https://www.npmjs.com/package/haloapi "NPM Package") </td>
-// <td> [![Documentation](http://typedoc.io/assets/images/logo-128.png)](https://derflatulator.github.io/haloapi.js/typedoc/ "Documentation") </td>
+// <td> [![Documentation](http://typedoc.org/images/logo-128.png)](https://haloapi.js.org/typedoc/ "Documentation") </td>
 // </tr>
 // <tr>
 // <td>[NPM Package](https://www.npmjs.com/package/haloapi)</td>
@@ -15,11 +15,11 @@
 // </tr>
 // <tr><td colspan=2></td></tr>
 // <tr>
-// <td>[![GitHub](https://logo.clearbit.com/github.com)](https://github.com/DerFlatulator/haloapi.js "GitHub") </td>
+// <td>[![GitHub](https://logo.clearbit.com/github.com)](https://github.com/azz/haloapi.js "GitHub") </td>
 // <td>[![Halo Waypoint](https://logo.clearbit.com/halowaypoint.com)](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts "Halo Waypoint Thread") </td>
 // </tr>
 // <tr>
-// <td>[GitHub Repository](https://github.com/DerFlatulator/haloapi.js)</td>
+// <td>[GitHub Repository](https://github.com/azz/haloapi.js)</td>
 // <td>[Waypoint Thread](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts)</td>
 // </table>
 
@@ -360,7 +360,7 @@ api.profile.spartanImage({
 // # JSON Schemas 
 
 // This package integrates with 
-// [haloapi-schema](https://github.com/DerFlatulator/haloapi-schema), 
+// [haloapi-schema](https://github.com/azz/haloapi-schema), 
 // a package containing schemas to define the shape of responses from the API.
 // These schemas are used in test cases, but can also be accessed
 // using the `api.jsonSchema(endpointFunction)` function.
@@ -384,6 +384,6 @@ api.metadata.commendations()
 // # Feedback and Support
 
 // If you have any feedback or issues, feel free to 
-// [open an issue](https://github.com/DerFlatulator/haloapi.js/issues),
+// [open an issue](https://github.com/azz/haloapi.js/issues),
 // post in [the Waypoint thread](https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts)
 // or, tweet me [@DerFlatulator](https://twitter.com/DerFlatulator).
