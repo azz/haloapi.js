@@ -69,7 +69,7 @@
               <table cellpadding=5>
 <tr>
 <td> <a href="https://www.npmjs.com/package/haloapi" title="NPM Package"><img src="https://logo.clearbit.com/npmjs.com" alt="NPM"></a> </td>
-<td> <a href="https://derflatulator.github.io/haloapi.js/typedoc/" title="Documentation"><img src="http://typedoc.io/assets/images/logo-128.png" alt="Documentation"></a> </td>
+<td> <a href="https://azz.github.io/haloapi.js/typedoc/" title="Documentation"><img src="http://typedoc.io/assets/images/logo-128.png" alt="Documentation"></a> </td>
 </tr>
 <tr>
 <td><a href="https://www.npmjs.com/package/haloapi">NPM Package</a></td>
@@ -77,11 +77,11 @@
 </tr>
 <tr><td colspan=2></td></tr>
 <tr>
-<td><a href="https://github.com/DerFlatulator/haloapi.js" title="GitHub"><img src="https://logo.clearbit.com/github.com" alt="GitHub"></a> </td>
+<td><a href="https://github.com/azz/haloapi.js" title="GitHub"><img src="https://logo.clearbit.com/github.com" alt="GitHub"></a> </td>
 <td><a href="https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts" title="Halo Waypoint Thread"><img src="https://logo.clearbit.com/halowaypoint.com" alt="Halo Waypoint"></a> </td>
 </tr>
 <tr>
-<td><a href="https://github.com/DerFlatulator/haloapi.js">GitHub Repository</a></td>
+<td><a href="https://github.com/azz/haloapi.js">GitHub Repository</a></td>
 <td><a href="https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts">Waypoint Thread</a></td>
 </table>
 
@@ -219,9 +219,9 @@ response from a request for a match by ID.</p>
             
             <div class="content"><div class='highlight'><pre>
 <span class="hljs-keyword">var</span> api = <span class="hljs-keyword">new</span> HaloAPI({
-    apiKey: <span class="hljs-string">'YOUR API KEY HERE'</span>,
-    cache: <span class="hljs-string">'redis'</span>,
-    cacheOptions: {} <span class="hljs-comment">// or ['url', {options...}]</span>
+    <span class="hljs-attr">apiKey</span>: <span class="hljs-string">'YOUR API KEY HERE'</span>,
+    <span class="hljs-attr">cache</span>: <span class="hljs-string">'redis'</span>,
+    <span class="hljs-attr">cacheOptions</span>: {} <span class="hljs-comment">// or ['url', {options...}]</span>
 });</pre></div></div>
             
         </li>
@@ -458,10 +458,10 @@ containing a <code>message</code> and <code>statusCode</code>.         </p>
             
             <div class="content"><div class='highlight'><pre>
 api.metadata.weapons()
-    .then(weapons =&gt; {
+    .then(<span class="hljs-function"><span class="hljs-params">weapons</span> =&gt;</span> {
         <span class="hljs-comment">/* do something with `weapons` */</span>
     })
-    .catch(error =&gt; {
+    .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> {
         <span class="hljs-comment">/* do something with `error` */</span>
     });</pre></div></div>
             
@@ -982,10 +982,10 @@ pass an options object instead of a string.</p>
             
             <div class="content"><div class='highlight'><pre>
 api.stats.playerMatches({
-    player: <span class="hljs-string">"Frankie"</span>,
-    modes: <span class="hljs-string">"arena,warzone"</span>,
-    start: <span class="hljs-number">10</span>,
-    count: <span class="hljs-number">20</span>
+    <span class="hljs-attr">player</span>: <span class="hljs-string">"Frankie"</span>,
+    <span class="hljs-attr">modes</span>: <span class="hljs-string">"arena,warzone"</span>,
+    <span class="hljs-attr">start</span>: <span class="hljs-number">10</span>,
+    <span class="hljs-attr">count</span>: <span class="hljs-number">20</span>
 }).then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
             
         </li>
@@ -1138,8 +1138,8 @@ api.profile.emblemImage(<span class="hljs-string">"Frankie"</span>).then(<span c
             
             <div class="content"><div class='highlight'><pre>
 api.profile.emblemImage({
-    player: <span class="hljs-string">"Frankie"</span>,
-    size: <span class="hljs-number">512</span> <span class="hljs-comment">// Default 256. Options 95, 128, 190, 256, 512.</span>
+    <span class="hljs-attr">player</span>: <span class="hljs-string">"Frankie"</span>,
+    <span class="hljs-attr">size</span>: <span class="hljs-number">512</span> <span class="hljs-comment">// Default 256. Options 95, 128, 190, 256, 512.</span>
 }).then(<span class="hljs-built_in">console</span>.log);</pre></div></div>
             
         </li>
@@ -1173,8 +1173,8 @@ api.profile.spartanImage(<span class="hljs-string">"Frankie"</span>).then(<span 
             
             <div class="content"><div class='highlight'><pre>
 api.profile.spartanImage({
-    player: <span class="hljs-string">"Frankie"</span>,
-    size: <span class="hljs-number">512</span>, <span class="hljs-comment">// Default 256. Options 95, 128, 190, 256, 512.</span>
+    <span class="hljs-attr">player</span>: <span class="hljs-string">"Frankie"</span>,
+    <span class="hljs-attr">size</span>: <span class="hljs-number">512</span>, <span class="hljs-comment">// Default 256. Options 95, 128, 190, 256, 512.</span>
     crop: <span class="hljs-string">"portrait"</span> <span class="hljs-comment">// Default "full", options "full", "portrait"</span>
 });</pre></div></div>
             
@@ -1201,7 +1201,7 @@ api.profile.spartanImage({
                 <a class="pilcrow" href="#section-71">&#182;</a>
               </div>
               <p>This package integrates with 
-<a href="https://github.com/DerFlatulator/haloapi-schema">haloapi-schema</a>, 
+<a href="https://github.com/azz/haloapi-schema">haloapi-schema</a>, 
 a package containing schemas to define the shape of responses from the API.
 These schemas are used in test cases, but can also be accessed
 using the <code>api.jsonSchema(endpointFunction)</code> function.</p>
@@ -1260,7 +1260,7 @@ api.metadata.commendations()
                 <a class="pilcrow" href="#section-74">&#182;</a>
               </div>
               <p>If you have any feedback or issues, feel free to 
-<a href="https://github.com/DerFlatulator/haloapi.js/issues">open an issue</a>,
+<a href="https://github.com/azz/haloapi.js/issues">open an issue</a>,
 post in <a href="https://www.halowaypoint.com/en-us/forums/01b3ca58f06c4bd4ad074d8794d2cf86/topics/binding-javascript-node-js-module/bc2b9b9a-cef3-4394-b56e-523eb68aa9e6/posts">the Waypoint thread</a>
 or, tweet me <a href="https://twitter.com/DerFlatulator">@DerFlatulator</a>.</p>
 
