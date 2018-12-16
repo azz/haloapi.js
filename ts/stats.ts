@@ -10,6 +10,17 @@ class Stats implements IStats {
         this.title = "h5";
     }
 
+
+    /** @inheritdoc */
+    @schema("stats")
+    events(matchId: guid): Promise<MatchEvents> {
+        if (!this.api.isGuid(matchId)) {
+            return Promise.reject("Invalid ID provided");
+        }
+        return this.api.getJSON<MatchEvents>(
+            `/stats/${this.title}/matches/${matchId}/events`);
+    }
+    
     /** @inheritdoc */
     @schema("stats")
     playerMatches(params: string | IMatchesParams): Promise<PlayerMatches> {
@@ -125,7 +136,7 @@ class Stats implements IStats {
             `/stats/${this.title}/servicerecords/${gameMode}?players=${p}`, true)
             .then((data) => data.Results);
     }
-
+    
 };
 
 export = Stats;

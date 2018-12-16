@@ -14,6 +14,17 @@ describe("h5.stats", function () {
     // very leniant 30 second timemout
     this.timeout(30000);
 
+    describe(".events(matchId: guid)", function () {
+        it("should succeed", function () {
+            id = "58976373-026c-4b31-8e79-cb6e9e3a1bbb";
+            return h5.stats.events(id);
+        });
+        it("should immediately error with no id", function () {
+            return expect(h5.stats.events())
+                .to.be.rejectedWith("Invalid ID provided");
+        });
+    });
+
     describe(".playerMatches(player: string)", function () {
         it("should succeed", function () {
             var player = "Frankie";

@@ -33,7 +33,9 @@ describe("h5.profile", function () {
         it("should 4xx on bad gamertag", function () {
             var badPlayer = "this gameratag is too long";
             return expect(h5.profile.spartanImage(badPlayer))
-                .to.be.rejectedWith(/4../);
+                .to.be.rejected
+                .and.eventually.have.property("statusCode")
+                .and.match(/4../);
         })
     });
 
@@ -77,7 +79,9 @@ describe("h5.profile", function () {
         it("should 4xx on bad gamertag", function () {
             var badPlayer = "this gameratag is too long";
             return expect(h5.profile.emblemImage(badPlayer))
-                .to.be.rejectedWith(/4../);
+                .to.be.rejected
+                .and.eventually.have.property("statusCode")
+                .and.match(/4../);
         });
     });
 

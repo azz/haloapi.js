@@ -23,7 +23,7 @@ var Metadata = (function () {
     };
     /** @inheritdoc */
     Metadata.prototype.csrDesignations = function () {
-        return this.api.getJSON("/metadata/" + this.title + "/metadata/campaign-missions");
+        return this.api.getJSON("/metadata/" + this.title + "/metadata/csr-designations");
     };
     /** @inheritdoc */
     Metadata.prototype.enemies = function () {
@@ -94,6 +94,10 @@ var Metadata = (function () {
     /** @inheritdoc */
     Metadata.prototype.skulls = function () {
         return this.api.getJSON("/metadata/" + this.title + "/metadata/skulls");
+    };
+    /** @inheritdoc */
+    Metadata.prototype.seasons = function () {
+        return this.api.getJSON("/metadata/" + this.title + "/metadata/seasons");
     };
     /** @inheritdoc */
     Metadata.prototype.spartanRanks = function () {

@@ -27,7 +27,7 @@ class Metadata implements IMetadata {
     @schema("metadata")
     csrDesignations(): Promise<CSRDesignations> {
         return this.api.getJSON<CSRDesignations>(
-            `/metadata/${this.title}/metadata/campaign-missions`);
+            `/metadata/${this.title}/metadata/csr-designations`);
     }
     
     /** @inheritdoc */
@@ -134,7 +134,13 @@ class Metadata implements IMetadata {
     skulls(): Promise<Skulls> {
         return this.api.getJSON<Skulls>(
             `/metadata/${this.title}/metadata/skulls`);
-    }   
+    }
+
+    /** @inheritdoc */
+    seasons(): Promise<Seasons> {
+        return this.api.getJSON<Seasons>(
+            `/metadata/${this.title}/metadata/seasons`);
+    }
 
     /** @inheritdoc */
     @schema("metadata")

@@ -11,7 +11,7 @@
 // </tr>
 // <tr>
 // <td>[NPM Package](https://www.npmjs.com/package/haloapi)</td>
-// <td>[Full Documentation](https://derflatulator.github.io/haloapi.js/typedoc/)</td>
+// <td>[Full Documentation](http://haloapi.js.org/typedoc/)</td>
 // </tr>
 // <tr><td colspan=2></td></tr>
 // <tr>
@@ -207,7 +207,7 @@ api.metadata.maps().then(console.log);
 // Get a map variant by its ID guid. These IDs can be obtained from 
 // `api.stats.playerMatches`.
 
-mapVariantById("a44373ee-9f63-4733-befd-5cd8fbb1b44a")
+api.metadata.mapVariantById("a44373ee-9f63-4733-befd-5cd8fbb1b44a")
     .then(function (map) {
         console.log(map.name); // -> "Truth"
     });
@@ -242,6 +242,10 @@ api.metadata.requisitionPackById("d10141cb-68a5-4c6b-af38-4e4935f973f7")
 api.metadata.requisitionPacksPurchasable()
     .then(console.log);
 
+// Get all arena seasons
+
+api.metadata.seasons().then(console.log);
+
 // Get all skulls from the campaign.
 
 api.metadata.skulls().then(console.log);
@@ -266,6 +270,11 @@ api.metadata.weapons().then(console.log);
 // ## Stats Endpoints
 
 // These APIs provide statistical data about players and matches.
+
+
+// **NEW** Retrieve game events for a match.
+
+api.stats.events("58976373-026c-4b31-8e79-cb6e9e3a1bbb").then(console.log);
 
 // Retreive most recent matches by a player. 
 
